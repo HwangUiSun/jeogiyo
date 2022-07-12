@@ -128,8 +128,10 @@ public class JstoreController {
 	@RequestMapping("store_sale")
 	public ModelAndView store_sale() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_sale.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("store/store_sale");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
