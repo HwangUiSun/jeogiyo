@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>noti_main</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 %애 나 noti_main
