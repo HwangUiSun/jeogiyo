@@ -57,7 +57,9 @@ public class JstoreController {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_main.jsp";
 		mv.addObject("inc",url);
+		
 		mv.setViewName("store/store_index");
+		
 		
 		return mv;
 	}

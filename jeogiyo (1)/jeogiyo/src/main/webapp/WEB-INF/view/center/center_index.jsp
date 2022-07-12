@@ -17,5 +17,9 @@ center_index<br/>
 <div id="section">
 	<jsp:include page="${inc}"></jsp:include>
 </div>
+
+<div id="section2">
+	<jsp:include page="${inc2}"></jsp:include>
+</div>
 </body>
 </html>
