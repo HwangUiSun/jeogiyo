@@ -11,6 +11,8 @@ order_view
 <a href='store_orderUpdate'>저장</a>
 <a href='store_orderDelete'>삭제</a>
 <a href='store_orderCancel'>취소</a>
-<a href='SC_login'>Home</a>
+<a href='center_orderAccept'>승인</a>
+<a href='center_orderWait'>대기</a>
+<a href='storeCenter'>Home</a>
 </body>
 </html>

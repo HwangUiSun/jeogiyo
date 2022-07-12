@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>store_orderStatus</title>
+<title>center_storeDrop</title>
 </head>
 <body>
-%애 나 store_orderStatus
+center_storeDrop<br/>
 <a href='storeCenter'>Home</a>
-
 </body>
 </html>
