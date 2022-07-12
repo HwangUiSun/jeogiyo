@@ -7,7 +7,7 @@
 <title>noti_main</title>
 </head>
 <body>
-%애 나 noti_main
+%애 나 noti_main asdfasdf
 <form name='frm_noti' class='frm_noti' method='post'>
 	<a href='noti_view'>공지사항 상세보기</a>
 	<a href='centerNoti_view'>(본사)공지사항 상세보기</a>
