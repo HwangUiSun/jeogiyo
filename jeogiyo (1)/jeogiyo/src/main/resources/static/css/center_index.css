@@ -1,0 +1,61 @@
+@charset "EUC-KR";
+
+/*
+	center css 07-12 JR
+*/
+
+#container{
+	width : 1200px;
+	margin : 0 auto;
+	min-height : 500px;
+}
+
+#top_logo{
+	height : 100px;
+}
+
+#top_logo h1{
+	text-align : center;
+	color : #f00;
+}
+
+#center_logoutBtn{
+	position : relative;
+	left : 1100px;
+	top : -50px;
+	width : 100px;
+	height : 40px;
+	border : none;
+	background-color : #999;
+	color : #fff;
+	font-size : 18px;
+}
+
+#title_menu{
+	float : right;
+}
+
+#title_menu>ul{
+	color : #fff;
+	border : 2px solid #000;
+	width : 580px;
+	height : 40px;
+}
+
+#title_menu>ul li{
+	display : inline-block;
+	padding : 8px 10px;
+}
+
+#section{
+	margin-top : 80px;
+}
+
+#section #sub_menu{
+	text-align : center;
+	font-size: 4em;
+	background-color : #9997;
+	height : 90px;
+	margin-bottom : 20px;
+}
+
