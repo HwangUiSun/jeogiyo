@@ -1,11 +1,20 @@
 package com.jpro.jcontroller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jpro.common.J_notiService;
+import com.jpro.common.J_notiVo;
+import com.jpro.common.Page;
+
 @RestController
 public class JstoreController {
+	@Autowired
+	J_notiService notiDao;
 	
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
@@ -65,10 +74,14 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("noti_view")
-	public ModelAndView noti_view() {
+	public ModelAndView noti_view(Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_view.jsp";
 		mv.addObject("inc",url);
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("notilist",notilist);
+		mv.addObject("notipage",notipage);
 		
 		mv.setViewName("store/store_index");
 		

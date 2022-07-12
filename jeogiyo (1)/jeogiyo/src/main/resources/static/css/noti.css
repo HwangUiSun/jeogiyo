@@ -1,22 +1,38 @@
 @charset "UTF-8";
 /*공지사항 리스트 CSS 시작*/
-.title{
-	border:1px solid #222;
+
+#subject{
 	width:70%;
-	margin:10px auto;
+	margin: 0px auto;
+	text-align:center;
+	padding: 10px 0px;
+	background:#B2B2B2;
+}
+.title{
+	font-weight:600;
+	color:#fff;
+	background:#353434;
+	width:70%;
+	margin:2px auto;
 	display:flex;
 	flex-direction: row;
 }
 .itemsWrap{
-	border:1px solid #222;
+	
 	width:70%;
-	margin:10px auto;
+	margin:2px auto;
 }
 .itemsWrap .items{
-	margin:10px 0;
+	font-weight:200;
+	color:#fff;
+	margin:2px 0;
 	display:flex;
 	flex-direction: row;
+	background:#565656;
 	
+}
+.itemsWrap .items:nth-child(2n){
+	background:#353434;
 }
 .itemsWrap .items span, .title span{
 	display:block;
@@ -42,22 +58,28 @@
 	width:40%;
 }
 .itemsWrap .items:hover{
+	color:#000000;
 	cursor:pointer;
-	bacKground: #00E8FF;
+	bacKground: #ffffff;
 }
+
 .paging{
-	width:90%;
-	margin:20px auto;
+	background:#B2B2B2;
+	height:60px;
+	margin:2px auto;
 	display:flex;
 	flex-direction: row;
 	justify-content:center;
 }
 .paging button{
+	background:#B2B2B2;
+	display:block;
+	border:0px;
+	text-align:center;
+	height:30px;
+	margin:15px 5px;
+	padding:1px 10px;
 	font-size:20px;
-	background: #ccc;
-	border :0px;
-	margin: 0px 5px;
-	padding: 5px 10px;
 }
 .paging button:hover{
 	cursor:pointer;

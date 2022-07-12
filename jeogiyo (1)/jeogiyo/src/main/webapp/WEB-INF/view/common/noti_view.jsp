@@ -9,7 +9,7 @@
 <link href="/css/noti.css" rel="stylesheet">
 </head>
 <body>
-<h1>공지 사항</h1>
+<h1 id="subject">공지 사항</h1>
 <div class='title' onclick="">
 		<span>NO</span>
 		<span>제목</span>

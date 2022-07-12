@@ -29,26 +29,28 @@ public class JcenterController {
 	}
 	
 	@RequestMapping("center_noti")
-	public ModelAndView centerNoti(com.jpro.common.Page notipage) {
+	public ModelAndView centerNoti() {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_main.jsp";
-		String url2 = "../common/noti_view.jsp";
-		List<J_notiVo> notilist = notiDao.select(notipage); 
-		notipage = notiDao.getPage();
+		
+
+
 		mv.addObject("inc",url);
-		mv.addObject("inc2",url2);
-		mv.addObject("notilist",notilist);
-		mv.addObject("notipage",notipage);
+		
+
 		mv.setViewName("center/center_index");		
 		return mv;
 	}
 	
 	@RequestMapping("center_notiView")
-	public ModelAndView center_notiView() {
+	public ModelAndView center_notiView(com.jpro.common.Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_view.jsp";
 		mv.addObject("inc",url);
-		
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("notilist",notilist);
+		mv.addObject("notipage",notipage);
 		mv.setViewName("center/center_index");
 		
 		return mv;
