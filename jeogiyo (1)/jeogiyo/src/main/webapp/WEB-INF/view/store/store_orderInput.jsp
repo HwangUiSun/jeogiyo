@@ -10,6 +10,6 @@
 store_orderInput
 <a href='order'>완료</a>
 <a href='order'>취소</a>
-<a href='SC_login'>Home</a>
+<a href='storeCenter'>Home</a>
 </body>
 </html>

@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>order_view</title>
+<title>center_storeSale</title>
 </head>
 <body>
-order_view
-<a href='store_orderUpdate'>저장</a>
-<a href='store_orderDelete'>삭제</a>
-<a href='store_orderCancel'>취소</a>
+center_storeSale
 <a href='storeCenter'>Home</a>
 </body>
 </html>

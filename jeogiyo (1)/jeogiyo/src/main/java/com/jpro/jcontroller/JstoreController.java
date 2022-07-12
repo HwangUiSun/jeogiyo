@@ -16,8 +16,8 @@ public class JstoreController {
 		return mv;
 	}
 	
-	@RequestMapping("SC_login")
-	public ModelAndView SC_login() {
+	@RequestMapping("store_login")
+	public ModelAndView store_login() {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("store/store_index");
@@ -51,12 +51,15 @@ public class JstoreController {
 		
 		return mv;
 	}
+	
 	@RequestMapping("noti")
 	public ModelAndView noti() {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_main.jsp";
-		mv.addObject("inc",url);
-		mv.setViewName("store/store_index");
+		
+		mv.addObject("inc", url);
+		
+		mv.setViewName("common/store_index");
 		
 		return mv;
 	}
@@ -73,9 +76,8 @@ public class JstoreController {
 	@RequestMapping("order")
 	public ModelAndView order() {
 		ModelAndView mv = new ModelAndView();
-		String url = "../common/order_main.jsp";
-		mv.addObject("inc",url);
-		mv.setViewName("store/store_index");
+		
+		mv.setViewName("common/order_main");
 		
 		return mv;
 	}
@@ -128,10 +130,8 @@ public class JstoreController {
 	@RequestMapping("store_sale")
 	public ModelAndView store_sale() {
 		ModelAndView mv = new ModelAndView();
-		String url = "../store/store_sale.jsp";
-		mv.addObject("inc",url);
 		
-		mv.setViewName("store/store_index");
+		mv.setViewName("store/store_sale");
 		
 		return mv;
 	}

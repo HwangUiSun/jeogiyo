@@ -8,7 +8,7 @@
 </head>
 <body>
 %애 나 store_orderStatus
-<a href='SC_login'>Home</a>
+<a href='storeCenter'>Home</a>
 
 </body>
 </html>

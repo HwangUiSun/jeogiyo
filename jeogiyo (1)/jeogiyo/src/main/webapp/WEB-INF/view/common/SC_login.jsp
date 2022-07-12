@@ -8,7 +8,8 @@
 </head>
 <body>
 %애 나 SC_login
-<a href='SC_login'>로그인</a>
+<a href='store_login'>가맹로그인</a>
+<a href='center_login'>본사로그인</a>
 <a href='store_findId'>아이디 찾기</a>
 <a href='store_findPwd'>비밀번호 찾기</a>
 <a href='store_join'>회원가입</a>

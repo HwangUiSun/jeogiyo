@@ -9,6 +9,6 @@
 <body>
 noti_view
 <a href='noti'>돌아가기</a>
-<a href='SC_login'>Home</a>
+<a href='storeCenter'>Home</a>
 </body>
 </html>

@@ -8,6 +8,6 @@
 </head>
 <body>
 %애 나 store_sale
-<a href='SC_login'>Home</a>
+<a href='storeCenter'>Home</a>
 </body>
 </html>
