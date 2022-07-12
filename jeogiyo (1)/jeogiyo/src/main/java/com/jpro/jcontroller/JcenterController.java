@@ -26,10 +26,21 @@ public class JcenterController {
 		return mv;
 	}
 	
-	@RequestMapping("centerNoti_view")
-	public ModelAndView centerNoti_view() {
+	@RequestMapping("center_notiView")
+	public ModelAndView center_notiView() {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_view.jsp";
+		mv.addObject("inc",url);
+		
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_notiInput")
+	public ModelAndView center_notiInput() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_notiInput.jsp";
 		mv.addObject("inc",url);
 		
 		mv.setViewName("center/center_index");
