@@ -1,0 +1,65 @@
+@charset "UTF-8";
+/*공지사항 리스트 CSS 시작*/
+.title{
+	border:1px solid #222;
+	width:70%;
+	margin:10px auto;
+	display:flex;
+	flex-direction: row;
+}
+.itemsWrap{
+	border:1px solid #222;
+	width:70%;
+	margin:10px auto;
+}
+.itemsWrap .items{
+	margin:10px 0;
+	display:flex;
+	flex-direction: row;
+	
+}
+.itemsWrap .items span, .title span{
+	display:block;
+	text-align:center;
+	height:42px;
+	box-sizing:border-box;
+	padding: 10px 5px;
+	line-height:21px;
+}
+.itemsWrap .items span:nth-child(1), .title span:nth-child(1){
+	width:10%;
+ 
+ }
+.itemsWrap .items span:nth-child(2), .title span:nth-child(2){ 
+	width:40%;
+ 
+}
+.itemsWrap .items span:nth-child(3), .title span:nth-child(3){ 
+	width:10%;
+
+}
+.itemsWrap .items span:nth-child(4), .title span:nth-child(4){ 
+	width:40%;
+}
+.itemsWrap .items:hover{
+	cursor:pointer;
+	bacKground: #00E8FF;
+}
+.paging{
+	width:90%;
+	margin:20px auto;
+	display:flex;
+	flex-direction: row;
+	justify-content:center;
+}
+.paging button{
+	font-size:20px;
+	background: #ccc;
+	border :0px;
+	margin: 0px 5px;
+	padding: 5px 10px;
+}
+.paging button:hover{
+	cursor:pointer;
+}
+/*공지사항 리스트 CSS 끝*/
