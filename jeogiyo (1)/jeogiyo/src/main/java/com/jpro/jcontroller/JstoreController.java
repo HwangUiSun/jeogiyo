@@ -65,8 +65,10 @@ public class JstoreController {
 	@RequestMapping("noti_view")
 	public ModelAndView noti_view() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../common/noti_view.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("common/noti_view");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
@@ -84,8 +86,10 @@ public class JstoreController {
 	@RequestMapping("order_view")
 	public ModelAndView order_view() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../common/order_view.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("common/order_view");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
@@ -93,8 +97,10 @@ public class JstoreController {
 	@RequestMapping("store_orderInput")
 	public ModelAndView store_orderInput() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_orderInput.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("store/store_orderInput");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
@@ -102,8 +108,10 @@ public class JstoreController {
 	@RequestMapping("store_orderUpdate")
 	public ModelAndView store_orderUpdate() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../common/order_main.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("common/order_main");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
@@ -111,8 +119,10 @@ public class JstoreController {
 	@RequestMapping("store_orderDelete")
 	public ModelAndView store_orderDelete() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../common/order_main.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("common/order_main");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
@@ -120,8 +130,10 @@ public class JstoreController {
 	@RequestMapping("store_orderCancel")
 	public ModelAndView store_orderCancel() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../common/order_main.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("common/order_main");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
@@ -129,8 +141,10 @@ public class JstoreController {
 	@RequestMapping("store_sale")
 	public ModelAndView store_sale() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_sale.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("store/store_sale");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
@@ -138,8 +152,10 @@ public class JstoreController {
 	@RequestMapping("store_orderStatus")
 	public ModelAndView store_orderStatus() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_orderStatus.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("store/store_orderStatus");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}

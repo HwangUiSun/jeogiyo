@@ -16,11 +16,78 @@ public class JcenterController {
 		return mv;
 	}
 	
+	@RequestMapping("center_noti")
+	public ModelAndView centerNoti() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../common/noti_main.jsp";
+		mv.addObject("inc",url);
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("centerNoti_view")
+	public ModelAndView centerNoti_view() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../common/noti_view.jsp";
+		mv.addObject("inc",url);
+		
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_order")
+	public ModelAndView centerOrder() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../common/order_main.jsp";
+		mv.addObject("inc",url);
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_orderView")
+	public ModelAndView centerOrder_view() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../common/order_view.jsp";
+		mv.addObject("inc",url);
+		
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_orderAccept")
+	public ModelAndView center_orderAccept() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../common/order_main.jsp";
+		mv.addObject("inc",url);
+		
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_orderWait")
+	public ModelAndView center_orderWait() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../common/order_main.jsp";
+		mv.addObject("inc",url);
+		
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	
 	@RequestMapping("center_storeM")
 	public ModelAndView storeM() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeM.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("center/center_storeM");
+		mv.setViewName("center/center_index");
 		
 		return mv;
 	}
@@ -28,8 +95,10 @@ public class JcenterController {
 	@RequestMapping("center_storeSale")
 	public ModelAndView storeSale() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeSale.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("center/center_storeSale");
+		mv.setViewName("center/center_index");
 		
 		return mv;
 	}
@@ -37,8 +106,10 @@ public class JcenterController {
 	@RequestMapping("center_consumerList")
 	public ModelAndView consumerList() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_consumerList.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("center/center_consumerList");
+		mv.setViewName("center/center_index");
 		
 		return mv;
 	}
@@ -46,8 +117,10 @@ public class JcenterController {
 	@RequestMapping("center_storeDrop")
 	public ModelAndView center_storeDrop() {
 		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeDrop.jsp";
+		mv.addObject("inc",url);
 		
-		mv.setViewName("center/center_storeDrop");
+		mv.setViewName("center/center_index");
 		
 		return mv;
 	}

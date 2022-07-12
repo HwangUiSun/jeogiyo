@@ -11,8 +11,6 @@
 <body>
 %애 나 index<br/>
 
-<% String inc = request.getParameter("inc"); %>
-
 <form name='frm_menubar' class='frm_menubar' method='post'>
 	<a href='noti'>공지사항</a><br/>
 	<a href='order'>발주</a><br/>

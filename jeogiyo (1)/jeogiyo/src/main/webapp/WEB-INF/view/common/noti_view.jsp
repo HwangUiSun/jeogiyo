@@ -9,6 +9,7 @@
 <body>
 noti_view
 <a href='noti'>돌아가기</a>
+<a href='center_noti'>(본사)돌아가기</a>
 <a href='storeCenter'>Home</a>
 </body>
 </html>
