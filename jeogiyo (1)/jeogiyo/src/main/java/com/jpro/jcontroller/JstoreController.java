@@ -56,10 +56,8 @@ public class JstoreController {
 	public ModelAndView noti() {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_main.jsp";
-		
-		mv.addObject("inc", url);
-		
-		mv.setViewName("common/store_index");
+		mv.addObject("inc",url);
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
@@ -76,8 +74,9 @@ public class JstoreController {
 	@RequestMapping("order")
 	public ModelAndView order() {
 		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("common/order_main");
+		String url = "../common/order_main.jsp";
+		mv.addObject("inc",url);
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
