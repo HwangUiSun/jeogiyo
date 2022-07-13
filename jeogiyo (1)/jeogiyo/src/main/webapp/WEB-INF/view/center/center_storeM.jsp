@@ -15,6 +15,7 @@ center_storeM<br/>
 <a href='center_storeDrop'>탈퇴신청 현황</a>
 <a href='center_storeMview'>가맹상세 보기</a>
 <a href='storeCenter'>Home</a>
+<a href='center_storeDropView'>가맹 탈퇴 상세보기</a>
 	</div>
 
 </body>
