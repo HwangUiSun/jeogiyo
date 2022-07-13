@@ -20,27 +20,29 @@
 }
 
 #center_notiInput .btns{
-	margin-left : 520px;
+	margin-left : 500px;
 }
 
 #center_notiInput .btns button[name = input]{
-	background-color : #88f;
-	color : #fff;
-	font-weight : bold;
-	margin : 5px;
-	height : 30px;
-	width : 70px;
-	border-radius : 10px;
+	height : 50px;
+	width : 100px;
+	background-color : #9997;
 	border : none;
+	border-radius : 15px;
+	font-size : 15px;
+	margin-top : 50px;
 }
 
 #center_notiInput .btns button[name = back]{
-	background-color : #88f;
-	color : #fff;
-	font-weight : bold;
-	margin : 5px;
-	height : 30px;
-	width : 70px;
-	border-radius : 10px;
+	height : 50px;
+	width : 100px;
+	background-color : #9997;
 	border : none;
+	border-radius : 15px;
+	font-size : 15px;
+}
+
+#center_notiInput .btns button:hover{
+	cursor : pointer;
+	background-color : #999;
 }
