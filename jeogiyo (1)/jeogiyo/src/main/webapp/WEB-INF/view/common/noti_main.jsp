@@ -10,7 +10,6 @@
 </head>
 <body>
 <div id="subject">공지 사항</div>
-%애 나 noti_main
 <div id='menuTitle'>
 	<a href='noti_view'>공지사항 상세보기</a>
 	<a href='center_notiView'>(본사)공지사항 상세보기</a>
@@ -56,6 +55,6 @@
 	<form name="frm_noti" method="post">
 		<input type="hidden" name="nowPage" value="${notipage.nowPage}">
 	</form>
-<script src="./js/noti.js"></script>
+<script src='./js/noti.js'></script>
 </body>
 </html>
