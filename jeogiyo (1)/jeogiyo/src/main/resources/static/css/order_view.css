@@ -1,8 +1,7 @@
 @charset "UTF-8";
 #order_view {
 	width : 1200px;
-	margin : 20px auto;
-	line-height : 1.4em;
+	margin : 0 auto;
 }
 
 #order_view #subject{
@@ -11,7 +10,7 @@
     background-color : #9997;
     height : 90px;
     margin-bottom : 20px;
-    padding-top : 38px;
+    padding-top : 20px;
 }
 
 #order_view .frm_order_view label{

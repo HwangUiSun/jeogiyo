@@ -100,7 +100,7 @@ public class JstoreController {
 		notipage = notiDao.getPage();
 		mv.addObject("orderlist",notilist);
 		mv.addObject("orderpage",notipage);
-		mv.setViewName("center/center_index");
+		mv.setViewName("store/store_index");
 		
 		return mv;
 	}

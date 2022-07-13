@@ -9,15 +9,15 @@
 </head>
 <body>
 <div id="order_view">
+	
+	
+	<div id="subject">발주 상세보기</div>
 	<a href='store_orderUpdate'>저장</a>
 	<a href='store_orderDelete'>삭제</a>
 	<a href='store_orderCancel'>취소</a>
 	<a href='center_orderAccept'>승인</a>
 	<a href='center_orderWait'>대기</a>
 	<a href='storeCenter'>Home</a>
-	
-	
-	<div id="subject">발주 상세보기</div>
 	<form name = 'frm_order_view' class = 'frm_order_view' method = 'post'>
 		<label>가맹점명</label>
 		<input type = 'text' name = 'jcenterName' value = '서울대입구역점' readonly><br/>
