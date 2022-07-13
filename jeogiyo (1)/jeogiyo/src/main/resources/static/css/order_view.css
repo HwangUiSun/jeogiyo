@@ -20,40 +20,35 @@
 }
 
 #order_view .btns{
-	margin-left : 480px;
+	margin-left : 450px;
 }
 
 #order_view .btns button[name = update]{
-	background-color : #88f;
-	color : #fff;
-	font-weight : bold;
-	margin : 5px;
-	height : 30px;
-	width : 70px;
-	border-radius : 10px;
+	height : 50px;
+	width : 100px;
+	background-color : #9997;
 	border : none;
+	border-radius : 15px;
+	font-size : 15px;
+	margin-top : 50px;
 }
 
 #order_view .btns button[name = delete]{
-	background-color : #88f;
-	color : #fff;
-	font-weight : bold;
-	margin : 5px;
-	height : 30px;
-	width : 70px;
-	border-radius : 10px;
+	height : 50px;
+	width : 100px;
+	background-color : #9997;
 	border : none;
+	border-radius : 15px;
+	font-size : 15px;
 }
 
 #order_view .btns button[name = back]{
-	background-color : #88f;
-	color : #fff;
-	font-weight : bold;
-	margin : 5px;
-	height : 30px;
-	width : 70px;
-	border-radius : 10px;
+	height : 50px;
+	width : 100px;
+	background-color : #9997;
 	border : none;
+	border-radius : 15px;
+	font-size : 15px;
 }
 
 #order_view .frm_order_view #orderlist{
@@ -65,6 +60,9 @@
 	font-size: 1.2em;
 }
 
-
+#order_view .btns button:hover{
+	cursor : pointer;
+	background-color : #999;
+}
 
 

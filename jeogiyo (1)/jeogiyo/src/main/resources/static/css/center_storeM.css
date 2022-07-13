@@ -9,6 +9,20 @@
 	padding-top : 20px;	
 }
 
+#go_storeDropBtn{
+	height : 50px;
+	width : 120px;
+	background-color : #9997;
+	border : none;
+	border-radius : 15px;
+	font-size : 15px;
+}
+
+#go_storeDropBtn:hover{
+	cursor : pointer;
+	background-color : #999;
+}
+
 #select1, #select2, #select3{
 	display : inline-block;
 	background-color : #9998;
@@ -78,4 +92,9 @@
 	margin:15px 5px;
 	padding:1px 10px;
 	font-size:20px;
+}
+
+#pageBtn:hover{
+	cursor : pointer;
+	background-color : #999;	
 }

@@ -1,11 +1,11 @@
 @charset "UTF-8";
-#center_notiInput {
+#center {
 	width : 1200px;
 	margin : 20px auto;
 	line-height : 1.4em;
 }
 
-#center_notiInput #subject{
+#center #subject{
 	text-align : center;
 	font-size: 3em;
     background-color : #9997;
@@ -14,16 +14,16 @@
     padding-top : 38px;
 }
 
-#center_notiInput .frm_center_notiInput label{
+#center .frm_input label{
 	display : inline-block;
 	width : 45px;
 }
 
-#center_notiInput .btns{
+#center .btns{
 	margin-left : 520px;
 }
 
-#center_notiInput .btns button[name = input]{
+#center .btns button[name = input]{
 	background-color : #88f;
 	color : #fff;
 	font-weight : bold;
@@ -34,12 +34,7 @@
 	border : none;
 }
 
-#center_notiInput .btns button:hover[name = input]{
-	background-color : #00f;
-	cursor : pointer;
-}
-
-#center_notiInput .btns button[name = back]{
+#center .btns button[name = back]{
 	background-color : #88f;
 	color : #fff;
 	font-weight : bold;
@@ -48,9 +43,4 @@
 	width : 70px;
 	border-radius : 10px;
 	border : none;
-}
-
-#center_notiInput .btns button:hover[name = back]{
-	background-color : #00f;
-	cursor : pointer;
 }

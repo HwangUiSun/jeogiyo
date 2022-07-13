@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='com.jpro.jmybatis.JbaljuMapper'>
+	
+	<select id="createTable" parameterType="map">
+		${create_table}
+	</select>
+
+	<update id="update" parameterType="map">
+		${insertTable}
+	</update>
+	
+	<update id="updateStatusTrue" parameterType="map">
+		${updateStatusTrue}
+	</update>
+	
+	<update id="updateStatusFalse" parameterType="map">
+		${updateStatusFalse}
+	</update>	
+	
+	<delete id="delete" parameterType="map">
+		${drop_table}   
+	</delete>
+ 
+ 	<delete id="deleteSno" parameterType="map">
+ 		${deleteSno}   
+		
+	</delete>
+	
+	<insert id="insertVO" parameterType="map">
+		${insert}  
+	</insert>
+</mapper> 
