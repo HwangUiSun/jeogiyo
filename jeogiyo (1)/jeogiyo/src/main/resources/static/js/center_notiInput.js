@@ -1,8 +1,8 @@
 /**
  * 
  */
-let center = {};
-center.init = function(){
+let center_notiInput = {};
+center_notiInput.init = function(){
 	fonts = [
 		"맑은고딕", "돋음", "궁서", "굴림", "굴림체",
 		"궁서체", "바탕", "바탕체", "HY엽서체M", "휴먼옛체" ];
@@ -23,8 +23,4 @@ center.init = function(){
 			}
 		}
 	});
-}
-
-center.click = function(){
-	console.log("hello");
 }
