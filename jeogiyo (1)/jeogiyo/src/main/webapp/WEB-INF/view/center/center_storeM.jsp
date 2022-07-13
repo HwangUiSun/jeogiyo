@@ -12,7 +12,6 @@
 <div id='subject'>가맹관리</div>
 <a href='center_storeDrop'>탈퇴신청 현황</a>
 <a href='storeCenter'>Home</a>
-<a href='center_storeDropView'>가맹 탈퇴 상세보기</a>
 <div id='center_storeM'>
 	<div id='select1'>서울</div>
 	<div id='select2'>경기</div>

@@ -12,7 +12,7 @@
 center_storeM<br/>
 <div id = "subject">가맹 탈퇴신청 현황</div>
 <div id ='center_Drop'>
-<a href='center_storeDrop'>탈퇴신청 현황</a>
+<a href='center_storeDropView'>가맹 탈퇴 상세보기</a>
 <a href='storeCenter'>Home</a>
 </div>
 <div id='Drop'>
