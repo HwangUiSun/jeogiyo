@@ -117,11 +117,17 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("store_orderInput")
-	public ModelAndView store_orderInput() {
+	public ModelAndView store_orderInput(Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../store/store_orderInput.jsp";
 		mv.addObject("inc",url);
 		
+		
+		
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("orderlist",notilist);
+		mv.addObject("orderpage",notipage);
 		mv.setViewName("store/store_index");
 		
 		return mv;
