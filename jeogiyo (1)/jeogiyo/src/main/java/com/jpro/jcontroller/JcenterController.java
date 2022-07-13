@@ -170,4 +170,15 @@ public class JcenterController {
 		return mv;
 	}
 	
+	@RequestMapping("center_storeMview")
+	public ModelAndView center_storeMview() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeMview.jsp";
+		mv.addObject("inc",url);
+		
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
 }
