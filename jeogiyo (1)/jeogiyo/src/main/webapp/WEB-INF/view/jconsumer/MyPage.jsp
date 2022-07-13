@@ -27,7 +27,6 @@
     
     <label>우편번호</label>
     <input type='text' name='zipcode'  size='12'>
-    <button type='button' id='btnZipFind'>우편번호 검색</button>
     <br/>
     
     <label>주소</label>
@@ -45,7 +44,7 @@
     <br/>
   
   <label></label>
-  <a href ='change_1Btn'><button type='button' id='change_1Btn'>수정완료</button></a>
+  <a href ='change_1Btn'><button type='button' id='change_1Btn'>정보수정</button></a>
   <button onclick="javascript:joinOutBtn()">회원탈퇴</button>
   <input type='hidden' name='findStr' value='${param.findStr}'/>
   <input type='hidden' name='nowPage' value='${param.nowPage}'/>
