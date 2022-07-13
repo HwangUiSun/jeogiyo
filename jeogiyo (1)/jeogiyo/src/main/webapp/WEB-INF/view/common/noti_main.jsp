@@ -9,7 +9,7 @@
 <link href="/css/noti.css" rel="stylesheet">
 </head>
 <body>
-<h1 id="subject">공지 사항</h1>
+<div id="subject">공지 사항</div>
 %애 나 noti_main
 <div id='menuTitle'>
 	<a href='noti_view'>공지사항 상세보기</a>
