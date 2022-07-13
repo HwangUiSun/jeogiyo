@@ -2,6 +2,7 @@
  * 
  */
 let center_notiInput = {};
+let loadInterval = {};
 center_notiInput.init = function(){
 	fonts = [
 		"맑은고딕", "돋음", "궁서", "굴림", "굴림체",
@@ -16,7 +17,7 @@ center_notiInput.init = function(){
 		callbacks : {
 			onImageUpload : function(files){
 				loadInterval.length = files.length;
-				$('#center').addClass('spinner');
+				$('#center_notiInput').addClass('spinner');
 				for(var i = files.length-1; i>=0; i--){
 					sendFile(i, files[i]);
 				}

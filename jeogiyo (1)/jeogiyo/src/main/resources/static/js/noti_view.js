@@ -2,6 +2,7 @@
  * 
  */
  let noti_view = {};
+ let loadInterval = {};
 noti_view.init = function(){
 	fonts = [
 		"맑은고딕", "돋음", "궁서", "굴림", "굴림체",
@@ -16,7 +17,7 @@ noti_view.init = function(){
 		callbacks : {
 			onImageUpload : function(files){
 				loadInterval.length = files.length;
-				$('#center').addClass('spinner');
+				$('#noti_view').addClass('spinner');
 				for(var i = files.length-1; i>=0; i--){
 					sendFile(i, files[i]);
 				}
