@@ -22,6 +22,13 @@ public class JcenterController {
 	J_notiService notiDao;
 	
 	
+	@RequestMapping("index")
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("index");
+		return mv;
+	}
+	
 	@RequestMapping("center_login")
 	public ModelAndView center_login() {
 		ModelAndView mv = new ModelAndView();		
