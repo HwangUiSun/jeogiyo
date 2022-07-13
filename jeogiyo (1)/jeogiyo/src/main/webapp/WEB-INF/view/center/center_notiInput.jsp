@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>center_notiInput</title>
-<script src = './js/center.js'></script>
-<link rel = 'stylesheet' href = './css/center.css'>
+<script src = './js/center_notiInput.js'></script>
+<link rel = 'stylesheet' href = './css/center_notiInput.css'>
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -15,9 +15,9 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
-<div id = 'center'>
+<div id = 'center_notiInput'>
 	<div id='subject'>공지사항 작성</div>
-	<form name = 'frm_input' class = 'frm_input' method = 'post'>
+	<form name = 'frm_center_notiInput' class = 'frm_center_notiInput' method = 'post'>
 		<label>제목</label>
 		<input type = 'text' name = 'subject'><br/>
 		<label>작성자</label>
@@ -32,12 +32,8 @@
 		<button type = 'button' value = 'btn_back' name = 'back'>돌아가기</button>
 	</div>
 </div>
-<!-- 
-	<a href='center_noti'>작성</a>
-	<a href='center_noti'>돌아가기</a>
- -->
 <script>
-center.init();
+center_notiInput.init();
 </script>
 </body>
 </html>
