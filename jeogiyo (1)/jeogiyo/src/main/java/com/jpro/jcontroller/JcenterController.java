@@ -66,10 +66,15 @@ public class JcenterController {
 	}
 	
 	@RequestMapping("center_order")
-	public ModelAndView centerOrder() {
+	public ModelAndView centerOrder(com.jpro.common.Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_main.jsp";
 		mv.addObject("inc",url);
+		
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("orderlist",notilist);
+		mv.addObject("orderpage",notipage);
 		mv.setViewName("center/center_index");
 		
 		return mv;

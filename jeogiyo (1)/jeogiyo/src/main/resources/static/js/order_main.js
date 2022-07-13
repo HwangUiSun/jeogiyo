@@ -1,11 +1,11 @@
 /**
-* 공지사항 
+ * 
  */
  
- function movePage(page){
+  function movePage(page){
 	console.log("movePage")
-	let url = 'center_noti';
-	let frm = document.frm_noti;
+	let url = 'center_order';
+	let frm = document.frm_order;
 	frm.nowPage.value = page;
 	frm.action = url;
 	frm.submit();	
