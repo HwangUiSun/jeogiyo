@@ -58,6 +58,11 @@
 	border : none;
 }
 
+#center_storeDrop_view .btns button:hover[name = accept]{
+	background-color : #00f;
+	cursor : pointer;
+}
+
 #center_storeDrop_view .btns button[name = back]{
 	background-color : #88f;
 	color : #fff;
@@ -67,4 +72,9 @@
 	width : 70px;
 	border-radius : 10px;
 	border : none;
+}
+
+#center_storeDrop_view .btns button:hover[name = back]{
+	background-color : #00f;
+	cursor : pointer;
 }
