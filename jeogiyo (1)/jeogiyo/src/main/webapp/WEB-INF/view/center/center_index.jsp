@@ -30,5 +30,9 @@
 	</div>
 	
 </div>
+
+<div id="section2">
+	<jsp:include page="${inc2}"></jsp:include>
+</div>
 </body>
 </html>
