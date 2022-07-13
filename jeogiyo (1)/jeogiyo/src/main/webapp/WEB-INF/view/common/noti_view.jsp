@@ -9,7 +9,7 @@
 <link href="/css/noti.css" rel="stylesheet">
 </head>
 <body>
-<h1 id="subject">공지 사항 상세보기</h1>
+<div id="subject">공지 사항 상세보기</div>
 
 <script src="./js/noti.js"></script>
 </body>

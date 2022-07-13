@@ -9,9 +9,9 @@
 <link href="css/center_consumerList.css" rel="stylesheet">
 </head>
 <body>
+<div id="subject">회원 목록</div>
 center_consumerList<br/>
 <a href='storeCenter'>Home</a>
-<h1 id="subject">회원 목록</h1>
 <div id="wrap">
 	
 	<div class="title">

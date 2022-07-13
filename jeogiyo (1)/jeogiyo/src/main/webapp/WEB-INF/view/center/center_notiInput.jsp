@@ -16,7 +16,7 @@
 </head>
 <body>
 <div id = 'center'>
-	<h2>공지사항 작성</h2>
+	<div id='subject'>공지사항 작성</div>
 	<form name = 'frm_input' class = 'frm_input' method = 'post'>
 		<label>제목</label>
 		<input type = 'text' name = 'subject'><br/>

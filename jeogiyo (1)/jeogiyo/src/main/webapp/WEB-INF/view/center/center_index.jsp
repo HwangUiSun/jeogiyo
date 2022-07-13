@@ -25,7 +25,6 @@
 	</div>
 	
 	<div id="section">
-		<div id='sub_menu'>TEST</div>
 		<jsp:include page="${inc}"></jsp:include>
 	</div>
 	
