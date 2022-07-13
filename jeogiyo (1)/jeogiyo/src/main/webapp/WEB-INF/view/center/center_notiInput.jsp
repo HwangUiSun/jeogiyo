@@ -15,7 +15,6 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
-center_notiInput
 <div id = 'center'>
 	<div id='subject'>공지사항 작성</div>
 	<form name = 'frm_input' class = 'frm_input' method = 'post'>
