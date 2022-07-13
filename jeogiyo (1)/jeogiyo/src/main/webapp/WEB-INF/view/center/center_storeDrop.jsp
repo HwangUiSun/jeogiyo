@@ -9,5 +9,6 @@
 <body>
 center_storeDrop<br/>
 <a href='storeCenter'>Home</a>
+<a href='center_storeDropView'>가맹 탈퇴 상세보기</a>
 </body>
 </html>
