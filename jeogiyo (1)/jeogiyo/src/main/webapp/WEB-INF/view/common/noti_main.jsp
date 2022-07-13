@@ -36,7 +36,7 @@
 	<div class='paging'>
 		
 			<c:if test="${notipage.startPage>1 }">
-				<button type='button' class='btnFirst'  onclick='movePage(1)'  >맨첨</button>
+				<button type='button' class='btnFirst'  onclick='movePage(1)' >맨첨</button>
 				<button type='button' class='btnPrev'   onclick='movePage(${notipage.startPage-1})' >이전</button>
 			</c:if>		
 			

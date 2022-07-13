@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.jcenter.JcenterMemberVo;
+import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
 
@@ -118,8 +119,9 @@ public class JcenterController {
 	public ModelAndView storeM() {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeM.jsp";
-		mv.addObject("inc",url);
 		
+		mv.addObject("inc",url);
+
 		mv.setViewName("center/center_index");
 		
 		return mv;
@@ -152,10 +154,16 @@ public class JcenterController {
 	}
 	
 	@RequestMapping("center_storeDrop")
-	public ModelAndView center_storeDrop() {
+	public ModelAndView center_storeDrop(com.jpro.common.Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeDrop.jsp";
 		mv.addObject("inc",url);
+		
+		List<J_notiVo> notilist = notiDao.select(notipage);
+		
+		notipage = notiDao.getPage();
+		mv.addObject("notilist",notilist);
+		mv.addObject("notipage",notipage);
 		
 		mv.setViewName("center/center_index");
 		
