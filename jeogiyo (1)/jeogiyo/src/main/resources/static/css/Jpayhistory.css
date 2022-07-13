@@ -1,0 +1,121 @@
+@charset "EUC-KR";
+#subject{
+	
+   text-align : center;
+   font-size: 3em;
+   background-color : #9997;
+   height : 90px;
+   margin-bottom : 20px;
+   padding-top : 20px;
+}
+#payInfo{
+	text-align : center;
+	border-top: 3px solid #999;
+	margin-bottom : 20px;
+	margin-top : 50px;
+	
+}
+.sub{
+    font: 200;
+	text-align : center;
+   font-size: 1em;
+    background-color : #9997;
+}
+ #priceInfo{
+    text-align : center;
+	border-top: 3px solid #999;
+	margin-bottom : 20px;
+	margin-top : 50px;
+	
+ }
+ 
+ #paySelect{
+    text-align : center;
+	border-top: 3px solid #999;
+	margin-bottom : 20px;
+	margin-top : 50px;
+	height : 150px;
+ 
+ } 
+#paySelect>.meetPayBtn, #paySelect>.cardPayBtn {
+    width:130px;
+	height:30px;
+	background-color:#aaa;
+	margin : 50px;
+	outline: 0;
+	border: 0;
+	color : #000000;
+	 font-size: medium;
+  }
+.meetPayBtn:hover, .cardPayBtn:hover, .usePointBtn {
+	cursor:pointer;
+}
+ #point{
+    text-align : center;
+	border-top: 3px solid #999;
+	margin-bottom : 20px;
+	margin-top : 50px;
+	height : 150px;
+ }
+ 
+ .msg{
+       margin : 50px;
+       text-align : left;
+       
+ }
+ 
+#point>.usePointBtn {
+   width:130px;
+	height:30px;
+	background-color:#aaa;
+	margin : 50px;
+	outline: 0;
+	border: 0;
+	color : #000000;
+	 font-size: medium;
+ }
+ 
+ #payPrice{
+    text-align : center;
+	border-top: 3px solid #999;
+	margin-bottom : 20px;
+	margin-top : 50px;
+	height : 150px;
+  }
+
+#payPrice{
+	text-align : center;
+	border-top: 3px solid #999;
+	margin-bottom : 20px;
+	margin-top : 50px;
+	
+}
+
+
+.font{
+	font-size: 1em;
+}
+.font2{
+	font-size: 2em;
+}
+
+.payBtn, .paycancelBtn {
+	position: relative;
+    left: 46%;
+    transform: translateX(-50%);
+	margin:5px;
+	padding:5px 10px;
+	text-align : center;
+	width:130px;
+	height:30px;
+	background-color:#ff0000;
+	border-radius: 10px;
+	outline: 0;
+	border: 0;
+	color : #fff;
+	 font-size: medium;
+	
+}
+.payBtn:hover, .paycancelBtn:hover {
+	cursor:pointer;
+}

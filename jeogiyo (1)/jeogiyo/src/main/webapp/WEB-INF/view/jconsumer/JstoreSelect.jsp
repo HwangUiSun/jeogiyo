@@ -1,30 +1,22 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel = 'stylesheet' type='text/css' href = './css/consumer.css'>
-<script src = './js/consumer.js'></script>
+
+<script src="/js/JstoreSelect.js"></script>
 <title>JstoreSelect</title>
+<link href="css/JstoreSelect.css" rel="stylesheet">
 </head>
 <body>
 <div id='JstoreSelect'>
-	<div id='main'>
-	     <a href='homeBtn'><span  id='homeBtn' >HOME</span></a>
-	     <h1>저기요</h1>
-	</div>
-	<div id='top'>
-	          <ul>
-	             <a href='JstoreSelect'>주문하기  |</a>
-	             <a href='MyPage'>내정보  |</a>
-	             <a href='JorderList'>주문내역  |</a>
-	             <a href='FAQ'>FAQ</a>   
-	          </ul>
-	</div>
+	
 	<div id= 'Jstore_list'>
-	        <h3>주문하기</h3><br/>
-	        <h1>매장찾기</h1><br/>
+	       <div id = 'subject' >주문하기</div>
+	        <div id = 'sub'>매장찾기</div>
+			<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a>
 		<form name='frm_Jstore' method='post' id='frm_Jstore'>
 	             
 	            
@@ -49,23 +41,22 @@
 		
 		 						
 	
-	<div id='list'>
+	<div id='wrap'>
 		<div class='title'>
-			<span class='sno'>No</span>
-			<span class='storeName'>매장명</span>
-			<span class='storeaddress'>주소</span>
-			<span class='storecall'>전화번호</span>
+			<span>No</span>
+			<span>매장명</span>
+			<span>주소</span>
+			<span>전화번호</span>
 			
 		</div>
-		<div class='items'>
+		<div class='itemsWrap'>
 			<c:set var='num' value='${page.startNo }' />
 			<c:forEach var='v' items='${list }'>
-				<div class='item' onclick="modify('${v.id}')">
+				<div class='items'>
 					<span class='no'     >${num }</span>
-					<span class='storeName'     >${v.id }</span>
-					<span class='storeaddress'  >${v.mName}</span>
-					<span class='genstorecall' >${v.gender}</span>
-			<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a>
+					<span class='storeName'     >${v.Jname }</span>
+					<span class='storeaddress'  >${v.Jname}</span>
+					<span class='genstorecall' >${v.Jphone}</span>
 			<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기</button></a>
 				
 				</div>
@@ -77,7 +68,7 @@
 	
 	<c:if test="${page.startPage>1}">
 		<button type= 'button' class= 'btnFirst' onclick='movePage(1)'>맨처음</button>
-		<button type= 'button' class= 'btnPrev' onclick='movePage(${page.startPage})'>이전</button>
+		<button type= 'button' class= 'btnPrev' onclick='movePage(${page.startPage-1})'>이전</button>
 	</c:if>
 		
 

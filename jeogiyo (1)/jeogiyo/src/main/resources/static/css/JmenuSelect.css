@@ -1,0 +1,10 @@
+@charset "EUC-KR";
+
+#subject{
+   text-align : center;
+   font-size: 3em;
+   background-color : #9997;
+   height : 90px;
+   margin-bottom : 20px;
+   padding-top : 20px;
+}

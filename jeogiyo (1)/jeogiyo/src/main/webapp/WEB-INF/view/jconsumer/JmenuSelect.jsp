@@ -1,31 +1,21 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel = 'stylesheet' type='text/css' href = './css/consumer.css'>
+<link href="css/JmenuSelect.css" rel="stylesheet">
 <script src = './js/consumer.js'></script>
 <title>JmenuSelect</title>
 
 </head>
 <body>
-<h1>JmenuSelect</h1>
+
 <div id='JmenuSelect'>
-	<div id='main'>
-	            <a href='homeBtn'><span  id='homeBtn' >HOME</span></a>
-	     <h1>저기요</h1>
-	</div>
-	<div id='top'>
-	          <ul>
-	             <a href='JstoreSelect'>주문하기</a>
-	             <a href='MyPage'>내정보</a>
-	             <a href='JorderList'>주문내역</a>
-	             <a href='FAQ'>FAQ</a>
-	          </ul>
-	</div>
+	
 	<div id= 'Jmenu_list'>
-	        <h1>메뉴보기</h1><br/>
+	       <div id='subject' >메뉴보기</div>
 	        <a href='menuNew'> <input type='button' class='menuNew' value='신메뉴' /></a>
 	        <a href='menuDal'> <input type='button' class='menuDal' value='달콤메뉴' /></a>
 	        <a href='menuMae'> <input type='button' class='menuMae' value='매콤메뉴' /></a>
