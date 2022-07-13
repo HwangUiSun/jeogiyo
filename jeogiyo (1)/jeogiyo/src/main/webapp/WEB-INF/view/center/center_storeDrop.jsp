@@ -14,7 +14,6 @@ center_storeM<br/>
 <div id ='center_Drop'>
 <a href='center_storeDrop'>탈퇴신청 현황</a>
 <a href='storeCenter'>Home</a>
-<a href='center_storeDropView'>가맹 탈퇴 상세보기</a>
 </div>
 <div id='Drop'>
 	<input type = 'text' name='finStr' value=''>
