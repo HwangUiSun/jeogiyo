@@ -31,7 +31,7 @@
 			<span>010-0000-0000</span>
 		</div>
 		
-		<div id='store_view'></div>
+		<div id='store_view' onclick="location.href='center_storeMview'"></div>
 	<br/><br/><hr/>
 </c:forEach>
 

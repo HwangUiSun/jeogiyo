@@ -60,6 +60,10 @@
 	background-image: url("../img/돋보기.png");
 }
 
+#store_view:hover{
+	cursor : pointer;
+}
+
 #paging{
 	width : 1200px;
 	text-align : center;
