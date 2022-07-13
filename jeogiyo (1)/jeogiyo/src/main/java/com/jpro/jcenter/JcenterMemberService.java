@@ -13,7 +13,7 @@ import com.jpro.jmybatis.JcenterMemberMapper;
 import com.jpro.jstore.JstoreVo;
 
 @Service
-public class JcenterMomberService implements Jcenter {
+public class JcenterMemberService implements Jcenter {
 	@Autowired
 	@Qualifier("mCenterMember")
 	JcenterMemberMapper mapper;
