@@ -1,11 +1,11 @@
 @charset "UTF-8";
-#center {
+#noti_view {
 	width : 1200px;
 	margin : 20px auto;
 	line-height : 1.4em;
 }
 
-#center #subject{
+#noti_view #subject{
 	text-align : center;
 	font-size: 3em;
     background-color : #9997;
@@ -14,16 +14,16 @@
     padding-top : 38px;
 }
 
-#center .frm_input label{
+#noti_view .frm_noti_view label{
 	display : inline-block;
 	width : 45px;
 }
 
-#center .btns{
-	margin-left : 520px;
+#noti_view .btns{
+	margin-left : 480px;
 }
 
-#center .btns button[name = input]{
+#noti_view .btns button[name = update]{
 	background-color : #88f;
 	color : #fff;
 	font-weight : bold;
@@ -34,7 +34,18 @@
 	border : none;
 }
 
-#center .btns button[name = back]{
+#noti_view .btns button[name = delete]{
+	background-color : #88f;
+	color : #fff;
+	font-weight : bold;
+	margin : 5px;
+	height : 30px;
+	width : 70px;
+	border-radius : 10px;
+	border : none;
+}
+
+#noti_view .btns button[name = back]{
 	background-color : #88f;
 	color : #fff;
 	font-weight : bold;
