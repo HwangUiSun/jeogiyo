@@ -12,7 +12,7 @@ import com.jpro.common.J_notiVo;
 import com.jpro.jcenter.JcenterMemberVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
-/* 수정 확인 */
+
 @RestController
 public class JcenterController {
 	@Autowired
