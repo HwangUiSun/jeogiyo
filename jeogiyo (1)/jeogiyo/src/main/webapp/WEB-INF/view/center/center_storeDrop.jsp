@@ -6,15 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>center_storeM</title>
-<link href="/css/storeM.css" rel="stylesheet">
+<link href="/css/store_Drop.css" rel="stylesheet">
 </head>
 <body>
 center_storeM<br/>
-<div id = "subject">가맹 탈퇴 현황</div>
+<div id = "subject">가맹 탈퇴신청 현황</div>
 <div id ='center_Drop'>
 <a href='center_storeDrop'>탈퇴신청 현황</a>
 <a href='storeCenter'>Home</a>
-	</div>
+<a href='center_storeDropView'>가맹 탈퇴 상세보기</a>
+</div>
 <div id='Drop'>
 	<input type = 'text' name='finStr' value=''>
 	<input type = 'text' name='nowPage' value=''>
