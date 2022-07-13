@@ -62,10 +62,15 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("noti")
-	public ModelAndView noti() {
+	public ModelAndView noti(Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_main.jsp";
 		mv.addObject("inc",url);
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("notilist",notilist);
+		mv.addObject("notipage",notipage);
+		
 		
 		mv.setViewName("store/store_index");
 		
@@ -78,10 +83,6 @@ public class JstoreController {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_view.jsp";
 		mv.addObject("inc",url);
-		List<J_notiVo> notilist = notiDao.select(notipage); 
-		notipage = notiDao.getPage();
-		mv.addObject("notilist",notilist);
-		mv.addObject("notipage",notipage);
 		
 		mv.setViewName("store/store_index");
 		
