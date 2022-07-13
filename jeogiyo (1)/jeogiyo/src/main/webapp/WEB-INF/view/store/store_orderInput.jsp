@@ -9,7 +9,6 @@
 <title>store_orderInput</title>
 </head>
 <body>
-store_orderInput
 <a href='order'>완료</a>
 <a href='order'>취소</a>
 <a href='storeCenter'>Home</a>

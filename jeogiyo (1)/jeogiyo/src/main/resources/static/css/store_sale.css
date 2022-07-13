@@ -81,11 +81,16 @@
 	border-radius : 10px;
 	border : none;
 }
+
+#frm_store_sale button[name = lookUp]:hover{
+	cursor : pointer;
+	background-color : #999;
+}
  
- 
- 
- 
- 
+ .paging button:hover{
+ 	cursor : pointer;
+	background-color : #999;
+ }
  
  #left_area{
  	float: left;
@@ -111,10 +116,6 @@
  	font-weight: bold;
  	margin: 30px 10px;
  }
-
- 
- 
- 
  
  #right_area{
  	float: right;

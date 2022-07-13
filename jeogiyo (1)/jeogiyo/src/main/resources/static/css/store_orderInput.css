@@ -69,6 +69,10 @@
 	margin: 6px;
 }
 
+#orderInput{
+	width : 700px;
+}
+
 #Input .orderInput_list{
 	overflow: scroll;
 	width: 700px;
