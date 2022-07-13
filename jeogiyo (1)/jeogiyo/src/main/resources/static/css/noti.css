@@ -14,14 +14,14 @@
 	font-weight:600;
 	color:#fff;
 	background:#353434;
-	width:70%;
+	width:1200px;
 	margin:2px auto;
 	display:flex;
 	flex-direction: row;
 }
 .itemsWrap{
 	
-	width:70%;
+	width:1200px;
 	margin:2px auto;
 }
 .itemsWrap .items{
