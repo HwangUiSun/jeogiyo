@@ -46,7 +46,7 @@
   
   <label></label>
   <a href ='change_1Btn'><button type='button' id='change_1Btn'>수정완료</button></a>
-  <button onclick="javascript:joinOutBtn()">회원탈퇴</button>
+  <a href='joinOutBtn'><button type='button' id='joinOutBtn()'>회원탈퇴</button></a>
   <input type='hidden' name='findStr' value='${param.findStr}'/>
   <input type='hidden' name='nowPage' value='${param.nowPage}'/>
   </form>

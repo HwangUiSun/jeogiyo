@@ -208,7 +208,7 @@ public class JConsumerController {
 		return mv;
 	}
 	
-	//리뷰작성버튼 -> 리뷰 작성 리스트
+	//리뷰 작성 버튼 -> 리뷰 작성 리스트
 	@RequestMapping("writeBtn")
 	public ModelAndView upload() {
 		ModelAndView mv = new ModelAndView();
@@ -227,4 +227,25 @@ public class JConsumerController {
 		
 		return mv;
 	}
+	
+	//내정보 -> 회원탈퇴 버튼 -> 매장페이지 
+	@RequestMapping("joinOutBtn")
+	public ModelAndView joinOutBtn() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/JstoreSelect");
+		
+		return mv;
+	}
+	
+	//리뷰 작성 버튼
+	/*@RequestMapping("writeBtn")
+	public ModelAndView writeBtn() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/JReview");
+		
+		return mv;
+	}
+	*/
 }
