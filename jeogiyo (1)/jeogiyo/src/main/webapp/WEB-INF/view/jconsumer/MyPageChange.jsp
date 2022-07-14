@@ -39,7 +39,7 @@
     <input type='text' name='apiAddressDetail' size='14'/>
     <br>
     
-    <button type='button' name='change_2Btn'>수정</button>
+    <a href='change_2Btn'><button type='button' name='change_2Btn'>수정</button></a>
   </div>
 </div>
 

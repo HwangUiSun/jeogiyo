@@ -49,8 +49,8 @@ var dateString = year + '-' + month + '-' + day;
     </div>
    <br>
   
-    <button type='button' id='writeBtn'>리뷰 작성</button>
-    <button type='button' id='backBtn'>돌아가기</button>
+    <a href='writeBtn'><button type='button' id='writeBtn'>확인</button></a>
+    <a href='backBtn'><button type='button' id='backBtn'>돌아가기</button></a>
   </form>
 </div>
 
