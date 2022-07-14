@@ -151,7 +151,6 @@ public class JstoreController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
-		System.out.println(tableName);
 		if(tableName==null || tableName.equals("")) {
 			tableName= baljuDao.createTable("test");
 			s.setAttribute("tableName", tableName);			

@@ -54,7 +54,6 @@ public class JbaljuSurvice {
 			page.setTotSize(totSize);
 			page.compute();	
 			list = mapper.selecSubtList(page);
-			System.out.println(list);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -68,8 +67,7 @@ public class JbaljuSurvice {
 		try {
 			totSize = mapper.totSize(mpage);		
 			mpage.setTotSize(totSize);
-			mpage.compute();
-			System.out.println(mpage.getEndNo());
+			mpage.compute();			
 			list = mapper.select(mpage);
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -108,7 +106,6 @@ public class JbaljuSurvice {
 	public void updateEa(int ea, int sno, String mstoreName) {
 		String storeName=mstoreName ;
 		String insertTable = "update "+ storeName+" set ea = \""+ea+" \"where sno = "+ sno;
-		System.out.println(sno);
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("insertTable",insertTable);
 		try {			
