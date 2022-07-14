@@ -3,9 +3,28 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace='com.jpro.jmybatis.JbaljuMapper'>
+
+	<select id="totSize" parameterType="mPage" resultType="Integer">
+		select count(sno) from jbaljudetails
+		where title like "%${findStr}%"
+	</select>
 	
-	<select id="createTable" parameterType="map">
-		${create_table}
+	<select id="select" parameterType="mPage" resultType="JbaljudetailsVo">
+		select * from jbaljudetails
+		where title like "%${findStr}%"
+		limit ${startNo-1}, ${listSize}
+	</select>
+	
+	<select id="selectList" parameterType="mPage" resultType="JbaljuListVo">
+		select * from ${tableName} where ea = 0
+	</select>
+	<select id="selecSubtList" parameterType="mPage" resultType="JbaljuListVo">
+		select * from ${tableName} where ea > 0
+	</select>
+	
+	
+	<select id="createTable" parameterType="map">		
+			${create_table}		
 	</select>
 
 	<update id="update" parameterType="map">

@@ -6,13 +6,11 @@ public class JbaljuListVo {
 	String productName;
 	int ea;
 	boolean status;
+	int price;
 	
-	
+
 	public JbaljuListVo() {
-		this.category="임시카테고리";
-		this.productName="임시제품명";
-		this.ea=0;
-		this.status=true;
+
 	}
 	
 	public JbaljuListVo(String productName) {
@@ -29,6 +27,13 @@ public class JbaljuListVo {
 		this.status=status;
 	}
 	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public int getSno() {
 		return sno;
 	}
@@ -59,7 +64,9 @@ public class JbaljuListVo {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+	public boolean getStatus() {
+		return this.status;
+	}
 	
 	
 }

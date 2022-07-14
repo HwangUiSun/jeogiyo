@@ -13,22 +13,73 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import com.jpro.jcenter.Page;
+
 import com.jpro.jmybatis.JbaljuMapper;
-import com.jpro.jstore.JbaljuListVo;
+
 
 @Service
 public class JbaljuSurvice {
 	@Autowired
 	@Qualifier("JbaljuMapper")
 	JbaljuMapper mapper;
-
+	Page page;
 	
 	@Autowired
 	DataSourceTransactionManager transaction;
 	TransactionStatus status;
 	
-	public void createTable(String mstoreName) {
+	public Page getPage() {
+		return this.page;
+	}
+	
+	public List<JbaljuListVo> selectList(Page page){
+		List<JbaljuListVo> list =new ArrayList<JbaljuListVo>();
+		int totSize = 0;
+		try {
+			totSize = mapper.totSize(page);		
+			page.setTotSize(totSize);
+			page.compute();	
+			list = mapper.selectList(page);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return list;
+	}
+	public List<JbaljuListVo> selecSubtList(Page page){
+		List<JbaljuListVo> list =new ArrayList<JbaljuListVo>();
+		int totSize = 0;
+		try {
+			totSize = mapper.totSize(page);		
+			page.setTotSize(totSize);
+			page.compute();	
+			list = mapper.selecSubtList(page);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public List<JbaljudetailsVo> select(Page mpage) {
+		List<JbaljudetailsVo> list = new ArrayList<JbaljudetailsVo>();
+		int totSize = 0;
+		try {
+			totSize = mapper.totSize(mpage);		
+			mpage.setTotSize(totSize);
+			mpage.compute();
+			System.out.println(mpage.getEndNo());
+			list = mapper.select(mpage);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		this.page = mpage;
+		return list;
+	}
+	
+	
+	public String createTable(String mstoreName) {
 
 		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)        
 		LocalDate now = LocalDate.now();         
@@ -48,12 +99,15 @@ public class JbaljuSurvice {
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		
+		return storeName+days;
 	}
 	
 	//row 한줄 ea값 변경 함수
 	public void updateEa(int ea, int sno, String mstoreName) {
 		String storeName=mstoreName ;
 		String insertTable = "update "+ storeName+" set ea = \""+ea+" \"where sno = "+ sno;
+		System.out.println(sno);
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("insertTable",insertTable);
 		try {			
@@ -67,7 +121,7 @@ public class JbaljuSurvice {
 	//row 한줄 ea값 0로 변경
 	public void updateToZoro(int sno, String mstoreName) {
 		String storeName=mstoreName ;
-		String insertTable = "update "+storeName+" set ea = "+ "0" +" where sno = "+ sno;
+		String insertTable = "update "+storeName+" set ea = "+ "0" +" where sno = "+ sno ;
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("insertTable",insertTable);
 		try {			
@@ -88,7 +142,7 @@ public class JbaljuSurvice {
 		int dayOfMonth = now.getDayOfMonth();  
 		String days = year+"_"+monthValue+"_"+dayOfMonth;
 		String storeName=mstoreName ;
-		String drop_table = "drop table "+storeName+days;
+		String drop_table = "drop table "+storeName;
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("drop_table",drop_table);
 		try {
