@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel = 'stylesheet' type='text/css' href = './css/consumer.css'>
+<link href="css/JpayAfter.css" rel="stylesheet">
 <script src = './js/consumer.js'></script>
 <title>JpayAfter</title>
 </head>
@@ -25,11 +25,11 @@
 	          </ul>
 	</div>
 	<div id= 'JpayAfter_list'>
-	        <h1>결제내역</h1><br/>
+	        <div id='subject'>결제내역</div>
 	</div>
 	<div id='priceInfo'>
-	       <h3>주문내역</h3>
-	       <span class = 'foodImg'><img src='./Jimages/chicken1.png'width='240px' height='240px'/></span>
+	       <div class='sub'>주문내역</div>
+	       <span class = 'foodImg'><img src='../img/chicken1.png'width='240px' height='240px'/></span>
 	     
 	       <span class = 'foodInfo'>발사믹치킨</span>
 	       <span class = 'ea'>1개</span>
