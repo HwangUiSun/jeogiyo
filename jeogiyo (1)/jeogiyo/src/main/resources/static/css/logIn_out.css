@@ -53,7 +53,18 @@ section .contentBx .formBx .h5flex{
 	display:flex;
     justify-content:space-around;
 }
-section .contentBx .formBx .h5flex h5 a{
+section .contentBx .formBx .h5flex h5:first-child{
+	
+    color:#607d8b;
+    font-weight: 600;
+    font-size:1.5em;
+    text-transform: uppercase;
+    margin-bottom:20px;
+    border-bottom:4px solid #DC143C;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+section .contentBx .formBx .h5flex h5:last-child{
 	
     color:#607d8b;
     font-weight: 600;
@@ -90,8 +101,14 @@ section .contentBx .formBx .inputBx input{
     border : 1px solid #4200f7;
     border-radius: 30px;
 }
-section .contentBx .formBx .inputBx #logIntoData{
-    background:#4200f7;
+#logIntoData{
+    background:#DC143C;
+    color:#fff;
+    outline:none;
+    cursor:pointer;
+}
+#logIntoData2{
+	background:#4200f7;
     color:#fff;
     outline:none;
     cursor:pointer;
