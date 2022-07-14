@@ -8,12 +8,7 @@
  <link rel="stylesheet" type="text/css" href="css/logIn_out.css">
 </head>
 <body>
-%애 나 SC_login
-<a href='store_login'>가맹로그인</a>
-<a href='center_login'>본사로그인</a>
-<a href='store_findId'>아이디 찾기</a>
-<a href='store_findPwd'>비밀번호 찾기</a>
-<a href='store_join'>회원가입</a>
+
 <body>
     <section>
         <div class="imgBx">
@@ -21,7 +16,10 @@
         </div>
         <div class="contentBx"> 
             <div class="formBx">
-                <h2>Login</h2>           
+            <div class="h5flex">
+                <h5><a href='store_login'>가맹로그인</a></h5> 
+ 				<h5><a href='center_login'>본사로그인</a></h5> 
+ 			</div>          
                 <form name="loginFrm" method="post" id="loginFrm">                
                     <div class="inputBx">
                         <span>Username</span>
@@ -39,10 +37,11 @@
                     </div>
                     <div class="inputBx">
                         <p>Don't have a account? <a href='store_join'><span class="singIn">회원가입</span></a></p>
-                        <p>Don't remember passwords? <span class="findStr">Find out<span></p>
+                        <p>Don't remember ID?<a href='store_findId'> <span class="findStr">아이디 찾기<span></span></a></p>
+                        <p>Don't remember passwords?<a href='store_findPwd'> <span class="findStr">비밀번호 찾기<span></span></a></p>
                     </div>
                 </form>
-                <h3>Login with social media</h3>
+                <h3>Welcome to another pages</h3>
                 <ul class="sci">
                     <li><a><img src="img/face.png"/></a></li>
                     <li><a><img src="img/ins.png"/></a></li>

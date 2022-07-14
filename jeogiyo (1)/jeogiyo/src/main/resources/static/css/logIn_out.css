@@ -2,6 +2,7 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration:none;
 
 }
 section{
@@ -46,9 +47,14 @@ section .contentBx{
 
 section .contentBx .formBx{
     width:50%;
+   
 }
-
-section .contentBx .formBx h2{
+section .contentBx .formBx .h5flex{
+	display:flex;
+    justify-content:space-around;
+}
+section .contentBx .formBx .h5flex h5 a{
+	
     color:#607d8b;
     font-weight: 600;
     font-size:1.5em;
@@ -58,6 +64,7 @@ section .contentBx .formBx h2{
     display: inline-block;
     letter-spacing: 1px;
 }
+
 
 section .contentBx .formBx .inputBx{
     margin-bottom: 20px;
