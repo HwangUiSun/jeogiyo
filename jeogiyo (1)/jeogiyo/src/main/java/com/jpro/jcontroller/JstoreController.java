@@ -114,13 +114,10 @@ public class JstoreController {
 //		mv.addObject("orderlist",notilist);
 //		mv.addObject("orderpage",notipage);
 //		mv.setViewName("store/store_index");
-		
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);
-		mv.setViewName("store/store_index");		
-		
-		
+		mv.setViewName("store/store_index");
 		List<JbaljudetailsVo> baljulist = baljuDao.select(page);
 		page = baljuDao.getPage();
 		mv.addObject("baljupage",page);
@@ -165,9 +162,11 @@ public class JstoreController {
 		mv.setViewName("store/store_index");
 		
 		List<JbaljuListVo> baljulist = baljuDao.selectList(page);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page);
 		page = baljuDao.getPage();
 		mv.addObject("baljupage2",page);
 		mv.addObject("baljulist2",baljulist);
+		mv.addObject("baljulist3",baljulist2);
 		mv.setViewName("store/store_index");
 		
 		return mv;
@@ -275,15 +274,17 @@ public class JstoreController {
 		return mv;
 	}
 	@RequestMapping("dropT")
-	public ModelAndView droptable(HttpServletRequest req) {
+	public ModelAndView droptable(com.jpro.jstore.Page page,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();		
-		String url = "../common/order_view.jsp";
+		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);	
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
 		baljuDao.droptable(tableName);;
-			
-		mv.addObject("baljupage2","");
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);
+		page = baljuDao.getPage();	
+		mv.addObject("page",page);
+		mv.addObject("baljulist",baljulist);//baljudetaillist
 		mv.addObject("baljulist2","");//addList
 		mv.addObject("baljulist3","");//sublist	
 		s.setAttribute("tableName", "");
