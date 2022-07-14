@@ -34,18 +34,23 @@
 	     
 	       <span class = 'foodInfo'>발사믹치킨</span>
 	       <span class = 'ea'>1개</span>
-	       <span class = ' menuEaPrice'>18500원</span><br/>
-	       <button type='button' class='callInfoBtn'>전화걸기</button>
-	       <hr/>
+	        <span class = ' menuEaPrice'>18500원</span><br/><br/>
+	       <button type='button' class='callInfoBtn'>☎ 전화걸기</button>
+	       
+	       <div id = 'totaPayInfo'>
+	          <div class = 'msg'>
 	       <span class = 'foodInfo'>발사믹치킨</span>
 	       <span class = 'ea'>1개</span>
 	       <span class = ' menuEaPrice'>18500원</span><br/>
 	       <label>배송 금액</label>
+	       <hr/>
 	       <span class = 'riderPrice'>2000원</span><br/>
 	       <span class = 'menuPrice'>총 결제금액 18500원</span><br/>
+	        </div>
+	       </div>
 	 </div>
 	 <div id='ridertime'>
-	       <h3>배송상태</h3>
+	        <div class='sub'>배송상태</div>
 	 
 	 </div>  
 	 <a href='endBtn'><button type='button' class='endBtn'>확인</button></a>
