@@ -32,7 +32,7 @@ public class JConsumerController {
 	public ModelAndView Jlogin() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("jconsumer/JsignUp");
+		mv.setViewName("jconsumer/consumer_input_form");
 		
 		return mv;
 	}
@@ -159,15 +159,6 @@ public class JConsumerController {
 		return mv;
 	}
 	
-	@RequestMapping("apiBtn")
-	public ModelAndView Jpayhistory3() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("jconsumer/JchangeAddress");
-		
-		return mv;
-	}
-	
 	//주문이후 페이지
 	@RequestMapping("endBtn")
 	public ModelAndView JpayAfter() {
@@ -203,9 +194,30 @@ public class JConsumerController {
 	public ModelAndView upload() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("upload/JReview");
-		
+		mv.setViewName("upload/JReview");		
+
 		return mv;
 	}	
+	
+	//업로드 -> 돌아가기
+	@RequestMapping("backBtn")
+	public ModelAndView upload_1() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("upload/JorderList");
+		
+		return mv;
+	}
+	
+	//주문 내역
+	@RequestMapping("reviewBtn")
+	public ModelAndView JorderList() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/upload");
+		
+		return mv;
+	}
+
 	
 }
