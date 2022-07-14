@@ -113,6 +113,9 @@ section .contentBx .formBx .inputBx input{
     outline:none;
     cursor:pointer;
 }
+section .contentBx .formBx .h5flex h5:hover{
+	cursor:pointer;
+}
 
 section .contentBx .formBx .inputBx #register{
     background:#4200f7;
