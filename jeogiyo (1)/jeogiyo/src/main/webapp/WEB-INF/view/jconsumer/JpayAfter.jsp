@@ -35,7 +35,7 @@
 	       <span class = 'foodInfo'>발사믹치킨</span>
 	       <span class = 'ea'>1개</span>
 	        <span class = ' menuEaPrice'>18500원</span><br/><br/>
-	       <button type='button' class='callInfoBtn'>☎ 전화걸기</button>
+	       <button type='button'onclick="javascript:callInfoBtn()" class='callInfoBtn'>☎ 전화걸기</button>
 	       
 	       <div id = 'totaPayInfo'>
 	          <div class = 'msg'>
@@ -56,4 +56,10 @@
 	 <a href='endBtn'><button type='button' class='endBtn'>확인</button></a>
 </div>
 </body>
+<script>
+  function callInfoBtn(){
+		alert("서울 강남점 : 02-1234-1234");
+	}
+
+</script>
 </html>

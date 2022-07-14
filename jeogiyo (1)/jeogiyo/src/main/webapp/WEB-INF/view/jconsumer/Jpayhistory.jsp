@@ -22,7 +22,7 @@
 	        <input type='text' class='phone'/><br/>
 	        <label>주소</label>
 	        <input type='text' class='address'/>
-	        <button type='button' class='apiBtn'>주소변경</button><br/>
+	       <a href='apiBtn'> <button type='button' class='apiBtn'>주소변경</button></a><br/>
 	        <label>상세주소</label>
 	        <input type='text' class='apiAddressDetail'/><br/>
 	        <label>요청사항</label>

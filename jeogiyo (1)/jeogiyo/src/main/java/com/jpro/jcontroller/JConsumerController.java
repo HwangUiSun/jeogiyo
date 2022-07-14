@@ -159,6 +159,15 @@ public class JConsumerController {
 		return mv;
 	}
 	
+	@RequestMapping("apiBtn")
+	public ModelAndView Jpayhistory3() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/JchangeAddress");
+		
+		return mv;
+	}
+	
 	//주문이후 페이지
 	@RequestMapping("endBtn")
 	public ModelAndView JpayAfter() {
