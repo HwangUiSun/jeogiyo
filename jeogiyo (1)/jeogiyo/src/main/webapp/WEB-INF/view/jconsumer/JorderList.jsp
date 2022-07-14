@@ -21,7 +21,7 @@
 		</div>
 		
 		<div class = 'btns'>
-			<button type = 'button' value = 'reivewBtn' name = 'reviewBtn'>리뷰 작성</button>
+			<button type = 'button' name = 'reviewBtn'>리뷰 작성</button>
 		</div>
 	</div>
 	<hr/>
