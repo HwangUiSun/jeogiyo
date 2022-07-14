@@ -32,7 +32,7 @@ public class JConsumerController {
 	public ModelAndView Jlogin() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("jconsumer/consumer_input_form");
+		mv.setViewName("jconsumer/JsignUp");
 		
 		return mv;
 	}
