@@ -154,7 +154,8 @@ public class JstoreController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
-		if(tableName==null) {
+		System.out.println(tableName);
+		if(tableName==null || tableName.equals("")) {
 			tableName= baljuDao.createTable("test");
 			s.setAttribute("tableName", tableName);			
 		}
@@ -239,6 +240,7 @@ public class JstoreController {
 		mv.setViewName("store/store_index");
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
+	
 		page.setTableName(tableName);	
 		baljuDao.updateEa(ea, sno, tableName);
 		List<JbaljuListVo> baljulist = baljuDao.selectList(page);
@@ -275,14 +277,16 @@ public class JstoreController {
 	@RequestMapping("dropT")
 	public ModelAndView droptable(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();		
-		String url = "../common/order_main2.jsp";
+		String url = "../common/order_view.jsp";
 		mv.addObject("inc",url);	
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
 		baljuDao.droptable(tableName);;
+			
 		mv.addObject("baljupage2","");
 		mv.addObject("baljulist2","");//addList
-		mv.addObject("baljulist3","");//sublist		
+		mv.addObject("baljulist3","");//sublist	
+		s.setAttribute("tableName", "");
 		mv.setViewName("store/store_index");		
 		return mv;
 	}

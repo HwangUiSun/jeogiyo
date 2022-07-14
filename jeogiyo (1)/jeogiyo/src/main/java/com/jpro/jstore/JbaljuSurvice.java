@@ -54,6 +54,7 @@ public class JbaljuSurvice {
 			page.setTotSize(totSize);
 			page.compute();	
 			list = mapper.selecSubtList(page);
+			System.out.println(list);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
