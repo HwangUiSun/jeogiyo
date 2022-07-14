@@ -189,27 +189,27 @@ public class JConsumerController {
 		return mv;
 	}
 	
-	//업로드 -> 리뷰 작성 리스트
+	//리뷰작성버튼 -> 리뷰 작성 리스트
 	@RequestMapping("writeBtn")
 	public ModelAndView upload() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("upload/JReview");		
+		mv.setViewName("jconsumer/JReview");		
 
 		return mv;
 	}	
 	
-	//업로드 -> 돌아가기
+	//리뷰작성 -> 돌아가기
 	@RequestMapping("backBtn")
 	public ModelAndView upload_1() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("upload/JorderList");
+		mv.setViewName("jconsumer/JorderList");
 		
 		return mv;
 	}
 	
-	//주문 내역
+	//주문 내역 -> 리뷰작성
 	@RequestMapping("reviewBtn")
 	public ModelAndView JorderList() {
 		ModelAndView mv = new ModelAndView();
