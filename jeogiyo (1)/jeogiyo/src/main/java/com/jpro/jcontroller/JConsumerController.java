@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class JConsumerController {
 
-	//메인페이지
+	//메인페이지 메인
 	@RequestMapping("consumer")
 	public ModelAndView order() {
 		ModelAndView mv = new ModelAndView();
