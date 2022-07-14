@@ -38,10 +38,10 @@
     <br/>
     
    <label>사용가능 포인트</label>
-   <input type='text' class='usePoint' value='2000p' readonly/>
+   <input type='text' class='usePoint' value='2000p' />
    <br/>
    <label>소멸예정 포인트</label>
-    <input type='text' class='havePoint' value='2000p' readonly/>
+    <input type='text' class='havePoint' value='2000p' />
     <br/>
   
   <label></label>
