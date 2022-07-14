@@ -22,7 +22,7 @@
 		
 		})
 }
-	let ea	
+		
 	function sub(sno){
 		var subForm = document.createElement('form');
 		// set attribute (form) 
@@ -45,7 +45,10 @@
 		subForm.submit();
 		}
 	function add(sno,eas){
-		ea = document.getElementById(eas)
+		let ea = document.getElementById(eas)
+		console.log(ea)
+		console.log(eas)
+		alert(ea.value)
 		/* Javascript */
 		// create element (form)
 		var newForm = document.createElement('form');

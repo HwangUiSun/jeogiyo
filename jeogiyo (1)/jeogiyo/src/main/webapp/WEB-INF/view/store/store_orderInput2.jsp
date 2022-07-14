@@ -27,8 +27,8 @@
 			<div class="items">
 				<span>${num}.</span>
 				<span id="productName">${v.productName }</span>
-				<span><input type="text" value="${v.ea}" name="ea" id="ea${num}"></span>
-				<span><button type="button" id="add" onclick="sub(${v.sno},'ea${num}')">취소</button></span>
+				<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
+				<span><button type="button" id="add" onclick="sub(${v.sno},'ea${v.sno}')">취소</button></span>
 				<input type="hidden" value="${v.sno}" name="sno" id="sno">
 			</div>
 			<c:set var='num' value='${num=num+1 }'/>
@@ -56,8 +56,8 @@
 				<div class="items ex${num}">
 					<span>${num}.</span>
 					<span id="productName">${v.productName }</span>
-					<span><input type="text" value="${v.ea}" name="ea" id="ea${num}"></span>
-					<span><button type="button" id="add" onclick="add(${v.sno},'ea${num}')">추가</button></span>
+					<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
+					<span><button type="button" id="add" onclick="add(${v.sno},'ea${v.sno}')">추가</button></span>
 					<input type="hidden" value="${v.sno}" name="sno" id="sno">
 				</div>
 				<c:set var='num' value='${num=num+1 }'/>
