@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jpro.common.J_notiVo;
-import com.jpro.common.Page;
 import com.jpro.jconsumer.JConsumerService;
 import com.jpro.jconsumer.JConsumerVo;
 
@@ -86,10 +84,10 @@ public class JConsumerController {
 		String url = "../jconsumer/JstoreSelect.jsp";
 
 		mv.addObject("inc",url);
-		/*List<JConsumerVo> conlist = dao.storeSelect(consumerpage); 
+		 List<JConsumerVo> conlist = dao.storeSelect(consumerpage); 
 		consumerpage = dao.getPage();
 		mv.addObject("storeSelectlist",conlist);
-		mv.addObject("storeSelectpage",consumerpage);*/
+		mv.addObject("storeSelectpage",consumerpage);
 
 		mv.setViewName("jconsumer/Jconsumer_index");		
 		return mv;
