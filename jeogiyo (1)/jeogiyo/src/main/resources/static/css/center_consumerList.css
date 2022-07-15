@@ -66,8 +66,7 @@
 	font-size:20px;
 }
 .paging button:hover{
-	cursor : pointer;
-	background-color : #999;	
+	cursor:pointer;
 }
  .items:hover{
  	color:#000;

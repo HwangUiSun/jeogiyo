@@ -11,7 +11,7 @@
 <div id='container'>
 	<header id="top_logo">
 		<h1>jeogiyo</h1>
-		<button type='button' id='center_logoutBtn' onclick="location.href='index'">로그아웃</button>
+		<button type='button' id='center_logoutBtn'>로그아웃</button>
 	</header>
 	
 	<div id="title_menu">

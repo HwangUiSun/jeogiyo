@@ -11,20 +11,11 @@
 <body>
 <div id="subject">발주</div>
 
+<a href='store_orderInput'>발주 작성 페이지</a>
+<a href='order_view'>발주리스트 상세보기</a>
+<a href='center_orderView'>(본사)발주리스트 상세보기</a>
 <a href='storeCenter'>Home</a>
-<div id='menuTitle'>
-	<button type='button' onclick="location.href='store_orderInput'">
-		발주 작성<br/>페이지
-	</button>
-	
-	<button type='button' onclick="location.href='order_view'">
-		발주 리스트<br/>상세보기
-	</button>
-	
-	<button type='button' onclick="location.href='center_orderView'">
-		(본사)발주 리스트<br/>상세보기
-	</button>
-</div>
+
 <div class='title' onclick="">
 		<span>NO</span>
 		<span>제목</span>

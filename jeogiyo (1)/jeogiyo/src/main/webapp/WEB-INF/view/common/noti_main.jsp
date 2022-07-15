@@ -11,15 +11,9 @@
 <body>
 <div id="subject">공지 사항</div>
 <div id='menuTitle'>
-	<button type='button' onclick="location.href='noti_view'">
-		공지사항<br/>상세보기
-	</button>
-	<button type='button' onclick="location.href='center_notiView'">
-		(본사)공지사항<br/>상세보기
-	</button>
-	<button type='button' onclick="location.href='center_notiInput'">
-		(본사)공지사항<br/>작성
-	</button>
+	<a href='noti_view'>공지사항 상세보기</a>
+	<a href='center_notiView'>(본사)공지사항 상세보기</a>
+	<a href='center_notiInput'>(본사)공지사항 작성</a>
 	<a href='storeCenter'>Home</a>
 </div>
 <div class='title' onclick="">
@@ -42,7 +36,7 @@
 	<div class='paging'>
 		
 			<c:if test="${notipage.startPage>1 }">
-				<button type='button' class='btnFirst'  onclick='movePage(1)' >맨첨</button>
+				<button type='button' class='btnFirst'  onclick='movePage(1)'  >맨첨</button>
 				<button type='button' class='btnPrev'   onclick='movePage(${notipage.startPage-1})' >이전</button>
 			</c:if>		
 			

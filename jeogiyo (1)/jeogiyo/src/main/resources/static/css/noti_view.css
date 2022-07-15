@@ -20,38 +20,38 @@
 }
 
 #noti_view .btns{
-	margin-left : 450px;
+	margin-left : 480px;
 }
 
 #noti_view .btns button[name = update]{
-	height : 50px;
-	width : 100px;
-	background-color : #9997;
+	background-color : #88f;
+	color : #fff;
+	font-weight : bold;
+	margin : 5px;
+	height : 30px;
+	width : 70px;
+	border-radius : 10px;
 	border : none;
-	border-radius : 15px;
-	font-size : 15px;
-	margin-top : 50px;
 }
 
 #noti_view .btns button[name = delete]{
-	height : 50px;
-	width : 100px;
-	background-color : #9997;
+	background-color : #88f;
+	color : #fff;
+	font-weight : bold;
+	margin : 5px;
+	height : 30px;
+	width : 70px;
+	border-radius : 10px;
 	border : none;
-	border-radius : 15px;
-	font-size : 15px;
 }
 
 #noti_view .btns button[name = back]{
-	height : 50px;
-	width : 100px;
-	background-color : #9997;
+	background-color : #88f;
+	color : #fff;
+	font-weight : bold;
+	margin : 5px;
+	height : 30px;
+	width : 70px;
+	border-radius : 10px;
 	border : none;
-	border-radius : 15px;
-	font-size : 15px;
-}
-
-#noti_view .btns button:hover{
-	cursor : pointer;
-	background-color : #999;
 }

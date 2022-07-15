@@ -34,12 +34,6 @@
 	border : none;
 }
 
-
-#center_notiInput .btns button:hover[name = input]{
-	background-color : #00f;
-	cursor : pointer;
-}
-
 #center_notiInput .btns button[name = back]{
 	background-color : #88f;
 	color : #fff;
@@ -49,9 +43,4 @@
 	width : 70px;
 	border-radius : 10px;
 	border : none;
-}
-
-#center_notiInput .btns button:hover[name = back]{
-	background-color : #00f;
-	cursor : pointer;
 }

@@ -8,7 +8,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 
-import com.jpro.jcenter.JcenterStoreVo;
+
 import com.jpro.jmybatis.JnotiMapper;
 
 
@@ -30,7 +30,7 @@ public class J_notiService {
 		return this.notipage;
 	}
 	
-	 
+	
 	
 	public List<J_notiVo> select(Page notipage) {
 		
@@ -51,6 +51,4 @@ public class J_notiService {
 		this.notipage = notipage;
 		return list;
 	}
-	
-
 }
