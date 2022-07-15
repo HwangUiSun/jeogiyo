@@ -235,16 +235,7 @@ public class JConsumerController {
 		mv.setViewName("jconsumer/Jconsumer_index");		
 		return mv;
 	}
-
 	
-	/*@RequestMapping("apiBtn")
-	public ModelAndView Jpayhistory3() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("jconsumer/JchangeAddress");
-		
-		return mv;
-	}*/
 	
 	//주문이후 페이지
 	
@@ -317,8 +308,7 @@ public class JConsumerController {
 		return mv;
 	}	
 	
-	//리뷰작성 -> 돌아가기
-	
+	//리뷰작성 -> 돌아가기	
 	@RequestMapping("backBtn")
 	public ModelAndView backBtn(com.jpro.jconsumer.Page consumerpage) {
 		ModelAndView mv = new ModelAndView();
@@ -342,28 +332,17 @@ public class JConsumerController {
 		
 
 		mv.setViewName("jconsumer/Jconsumer_index");		
-		return mv;
-	}
-
-	
-	/*//장바구니 -> FNQ 링크
-	
-	@RequestMapping("FAQ")
-	public ModelAndView FAQ() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("jconsumer/fnq");
-		
-		return mv;
-	}*/
-	//리뷰 작성 버튼
-	/*@RequestMapping("writeBtn")
-	public ModelAndView writeBtn() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("jconsumer/JReview");
 		
 		return mv;
 	}
-	*/
+	
+	//메뉴보기 -> 담기
+	@RequestMapping("addBtn")
+	public ModelAndView addBtn() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/Jbag");
+		
+		return mv;
+	}
 }
