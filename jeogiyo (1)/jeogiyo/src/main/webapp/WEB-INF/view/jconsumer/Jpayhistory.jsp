@@ -64,11 +64,11 @@
 	   <div id='point'>
 	          <div class='sub'>포인트사용</div>
 	          <div class='msg'>
+	        <label>보유포인트</label>
+	        <input type='text' class='havePoint' value='10000p' readonly/><br/>
 	         <label>포인트사용</label>
 	        <input type='text' class='usePoint'/>
 	        <button type='button' class='usePointBtn'>포인트 전액 사용</button><br/>
-	        <label>보유포인트</label>
-	        <input type='text' class='havePoint' value='10000p' readonly/><br/>
 	        </div>
 	   </div>
 	   
