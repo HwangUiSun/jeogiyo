@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jpro.common.J_loginService;
 import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.common.Page;
 import com.jpro.jstore.JbaljuListVo;
-import com.jpro.jstore.JbaljuSurvice;
+import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
+import com.jpro.jstore.JstoreVo;
 
 @RestController
 public class JstoreController {
@@ -28,7 +30,11 @@ public class JstoreController {
 	J_notiService notiDao;
 	
 	@Autowired
-	JbaljuSurvice baljuDao;
+	JbaljuService baljuDao;
+	
+	@Autowired
+	J_loginService loginDao;
+	
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
 		ModelAndView mv = new ModelAndView();
@@ -39,8 +45,12 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("store_login")
-	public ModelAndView store_login() {
+	public ModelAndView store_login(JstoreVo vo, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		
+		vo.setMid(req.getParameter("mId"));
+		vo.setPhone(req.getParameter("password"));
+		JstoreVo rVo = loginDao.login(vo, req);
 		
 		mv.setViewName("store/store_index");
 		
