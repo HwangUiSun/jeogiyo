@@ -6,49 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>noti_view</title>
-<link href="/css/noti.css" rel="stylesheet">
+<script src="./js/noti_view.js"></script>
+<link href="./css/noti_view.css" rel="stylesheet">
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
-<h1 id="subject">공지 사항</h1>
-<div class='title' onclick="">
-		<span>NO</span>
-		<span>제목</span>
-		<span>작성자</span>
-		<span>날짜</span>
-	</div>
-	<div class="itemsWrap">
-	<c:set var='num' value='${notipage.startNo }' />
-	<c:forEach var='v' items='${notilist}'>
-		<div class='items' onclick="">
-			<span >${num}</span>
-			<span>${v.subject}</span>
-			<span>본사</span>
-			<span>${v.nal}</span>
-		</div>
-	<c:set var='num' value='${num=num+1 }'/>
-	</c:forEach>
-	<div class='paging'>
-		
-			<c:if test="${notipage.startPage>1 }">
-				<button type='button' class='btnFirst'  onclick='movePage(1)'  >맨첨</button>
-				<button type='button' class='btnPrev'   onclick='movePage(${notipage.startPage-1})' >이전</button>
-			</c:if>		
-			
-			
-			<c:forEach var='i' begin='${notipage.startPage }' end='${notipage.endPage }'>
-				<button type='button' class='first'  onclick = 'movePage(${i})' >${i }</button>
-			</c:forEach>				
-
-
-			<c:if test="${notipage.endPage < notipage.totPage }">
-				<button type='button' class='btnNext'  onclick='movePage(${notipage.endPage+1})'>다음</button>
-				<button type='button' class='btnLast'  onclick='movePage(${notipage.totPage})'>맨끝</button>
-			</c:if>		
-		</div>	
-	</div>
-	<form name="frm_noti" method="post">
-		<input type="hidden" name="nowPage" value="${notipage.nowPage}">
+<div id = 'noti_view'>
+	<div id='subject'>공지사항 상세보기</div>
+	<form name = 'frm_noti_view' class = 'frm_noti_view' method = 'post'>
+		<label>제목</label>
+		<input type = 'text' name = 'subject'><br/>
+		<label>작성자</label>
+		<input type = 'text' name = 'mid' value = '본사' readonly><br/>
+		<label>날짜</label>
+		<input type = 'date' name = 'nal'><br/>
+		<label>내용</label>
+		<textarea name = 'doc' id = 'summernote'></textarea>
 	</form>
-<script src="./js/noti.js"></script>
+	<div class = 'btns'>
+		<button type = 'button' value = 'btn_input' name = 'update'>수정</button>
+		<button type = 'button' value = 'btn_delete' name = 'delete'>삭제</button>
+		<button type = 'button' value = 'btn_back' name = 'back'>돌아가기</button>
+	</div>
+</div>
+<script>
+noti_view.init();
+</script>
 </body>
 </html>
+

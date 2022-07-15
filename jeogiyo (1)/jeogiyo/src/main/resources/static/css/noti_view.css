@@ -1,0 +1,57 @@
+@charset "UTF-8";
+#noti_view {
+	width : 1200px;
+	margin : 20px auto;
+	line-height : 1.4em;
+}
+
+#noti_view #subject{
+	text-align : center;
+	font-size: 3em;
+    background-color : #9997;
+    height : 90px;
+    margin-bottom : 20px;
+    padding-top : 38px;
+}
+
+#noti_view .frm_noti_view label{
+	display : inline-block;
+	width : 45px;
+}
+
+#noti_view .btns{
+	margin-left : 450px;
+}
+
+#noti_view .btns button[name = update]{
+	height : 50px;
+	width : 100px;
+	background-color : #9997;
+	border : none;
+	border-radius : 15px;
+	font-size : 15px;
+	margin-top : 50px;
+}
+
+#noti_view .btns button[name = delete]{
+	height : 50px;
+	width : 100px;
+	background-color : #9997;
+	border : none;
+	border-radius : 15px;
+	font-size : 15px;
+}
+
+#noti_view .btns button[name = back]{
+	height : 50px;
+	width : 100px;
+	background-color : #9997;
+	border : none;
+	border-radius : 15px;
+	font-size : 15px;
+}
+
+#noti_view .btns button:hover{
+	cursor : pointer;
+	background-color : #999;
+}

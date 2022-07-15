@@ -10,16 +10,24 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.jcenter.JcenterMemberVo;
-import com.jpro.jcenter.JcenterMomberService;
+import com.jpro.jcenter.JcenterStoreVo;
+import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
 
 @RestController
 public class JcenterController {
 	@Autowired
-	JcenterMomberService dao;
+	JcenterMemberService dao;
 	@Autowired
 	J_notiService notiDao;
 	
+	
+	@RequestMapping("index")
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("index");
+		return mv;
+	}
 	
 	@RequestMapping("center_login")
 	public ModelAndView center_login() {
@@ -29,14 +37,15 @@ public class JcenterController {
 	}
 	
 	@RequestMapping("center_noti")
-	public ModelAndView centerNoti() {
+	public ModelAndView centerNoti(com.jpro.common.Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_main.jsp";
-		
-
 
 		mv.addObject("inc",url);
-		
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("notilist",notilist);
+		mv.addObject("notipage",notipage);
 
 		mv.setViewName("center/center_index");		
 		return mv;
@@ -47,10 +56,7 @@ public class JcenterController {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_view.jsp";
 		mv.addObject("inc",url);
-		List<J_notiVo> notilist = notiDao.select(notipage); 
-		notipage = notiDao.getPage();
-		mv.addObject("notilist",notilist);
-		mv.addObject("notipage",notipage);
+		
 		mv.setViewName("center/center_index");
 		
 		return mv;
@@ -68,10 +74,15 @@ public class JcenterController {
 	}
 	
 	@RequestMapping("center_order")
-	public ModelAndView centerOrder() {
+	public ModelAndView centerOrder(com.jpro.common.Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_main.jsp";
 		mv.addObject("inc",url);
+		
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("orderlist",notilist);
+		mv.addObject("orderpage",notipage);
 		mv.setViewName("center/center_index");
 		
 		return mv;
@@ -115,6 +126,18 @@ public class JcenterController {
 	public ModelAndView storeM() {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeM.jsp";
+		
+		mv.addObject("inc",url);
+
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_storeMview")
+	public ModelAndView center_storeMview() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeMview.jsp";
 		mv.addObject("inc",url);
 		
 		mv.setViewName("center/center_index");
@@ -149,14 +172,34 @@ public class JcenterController {
 	}
 	
 	@RequestMapping("center_storeDrop")
-	public ModelAndView center_storeDrop() {
+	public ModelAndView center_storeDrop(com.jpro.common.Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeDrop.jsp";
 		mv.addObject("inc",url);
+		
+		List<J_notiVo> notilist = notiDao.select(notipage);
+		
+		notipage = notiDao.getPage();
+		mv.addObject("notilist",notilist);
+		mv.addObject("notipage",notipage);
 		
 		mv.setViewName("center/center_index");
 		
 		return mv;
 	}
 	
+
+	
+
+	@RequestMapping("center_storeDropView")
+	public ModelAndView center_storeDropView() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeDrop_view.jsp";
+		
+		mv.addObject("inc", url);
+		
+		mv.setViewName("center/center_index");
+		return mv;
+	}
+
 }

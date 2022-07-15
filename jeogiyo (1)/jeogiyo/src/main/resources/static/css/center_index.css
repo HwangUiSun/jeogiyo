@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 /*
 	center css 07-12 JR
@@ -19,18 +19,6 @@
 	color : #f00;
 }
 
-#center_logoutBtn{
-	position : relative;
-	left : 1100px;
-	top : -50px;
-	width : 100px;
-	height : 40px;
-	border : none;
-	background-color : #999;
-	color : #fff;
-	font-size : 18px;
-}
-
 #title_menu{
 	float : right;
 }
@@ -48,14 +36,25 @@
 }
 
 #section{
-	margin-top : 80px;
+	width : 1200px;
+	margin-top : 100px;
 }
 
-#section #sub_menu{
-	text-align : center;
-	font-size: 4em;
+#center_logoutBtn{
+	height : 50px;
+	width : 100px;
 	background-color : #9997;
-	height : 90px;
+	border : none;
+	border-radius : 15px;
+	font-size : 17px;
+	font-weight : bold;
 	margin-bottom : 20px;
+	position : relative;
+	left : 1100px;
+	top : -50px;
 }
 
+#center_logoutBtn:hover{
+	cursor : pointer;
+	background-color : #999;
+}
