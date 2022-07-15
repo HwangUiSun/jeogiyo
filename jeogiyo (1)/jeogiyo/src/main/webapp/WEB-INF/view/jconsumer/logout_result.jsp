@@ -10,10 +10,10 @@
 <body>
 <%
 JConsumerService dao = new JConsumerService();
-	//String msg = dao.logout(request);
+	String msg = dao.logout(request);
 %>
 <script>
-	//alert('');
+	alert('<%=msg%>');
 	location.href = '../index.jsp';
 </script>
 </body>

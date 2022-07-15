@@ -2,17 +2,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
-<title>store_orderStatus</title>
-<link rel = 'stylesheet' href = './css/store_orderStatus.css'>
+<title>JorderList</title>
 </head>
 <body>
-<a href='storeCenter'>Home</a>
-<div id = 'subject'>주문 현황</div>
+<div id = 'subject'>주문 내역</div>
 <c:forEach var = 'status' begin = '1' end = '3'>
-	<div id = 'orderStatus'>
+	<div id = 'JorderList'>
 		<div class = 'time'>11 : 20</div>
 		<div class = 'info'>
 			<div class = 'amount'>총 금액 XX,XXX원</div>
@@ -20,9 +19,9 @@
 			<div class = 'menu'>자바치킨 1개 / 콜라 500ml 1개</div>
 			<div class = 'address'>서울시 관악구 남부순환로 1820 에그옐로우빌딩 14층</div>
 		</div>
+		
 		<div class = 'btns'>
-			<button type = 'button' value = '접수' name = 'accept'>접수</button>
-			<button type = 'button' value = '거부' name = 'deny'>거부</button>
+			<button type = 'button' name = 'reviewBtn'>리뷰 작성</button>
 		</div>
 	</div>
 	<hr/>
