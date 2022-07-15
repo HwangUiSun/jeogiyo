@@ -4,7 +4,9 @@ import java.net.http.HttpRequest;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -164,7 +166,8 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("store_orderInput")
-	public ModelAndView store_orderInput(com.jpro.jstore.Page page,HttpServletRequest req) {
+	public ModelAndView store_orderInput(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
 //		ModelAndView mv = new ModelAndView();
 //		String url = "../store/store_orderInput.jsp";
 //		mv.addObject("inc",url);
@@ -176,10 +179,24 @@ public class JstoreController {
 //		mv.setViewName("store/store_index");
 		ModelAndView mv = new ModelAndView();
 		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
+		String tableName = null;
+		if(s.getAttribute("tableName")==null) {
+			tableName=(String)s.getAttribute("tableName");
+		}else {
+			Cookie[] c = req.getCookies();
+			for(Cookie i : c) {
+				if(i.getName().equals("tableName")) {
+					tableName = i.getValue();
+				}
+			}
+		}
 		if(tableName==null || tableName.equals("")) {
 			tableName= baljuDao.createTable("test");
-			s.setAttribute("tableName", tableName);			
+			s.setAttribute("tableName", tableName);	
+			Cookie cookei = new Cookie("tableName", tableName);
+			cookei.setPath("/");
+			cookei.setMaxAge(60*60*3);
+			resp.addCookie(cookei);
 		}
 		page.setTableName(tableName);
 		String url = "../store/store_orderInput2.jsp";
@@ -299,7 +316,8 @@ public class JstoreController {
 		return mv;
 	}
 	@RequestMapping("dropT")
-	public ModelAndView droptable(com.jpro.jstore.Page page,HttpServletRequest req) {
+	public ModelAndView droptable(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
 		ModelAndView mv = new ModelAndView();		
 		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);	
@@ -313,6 +331,13 @@ public class JstoreController {
 		mv.addObject("baljulist2","");//addList
 		mv.addObject("baljulist3","");//sublist	
 		s.setAttribute("tableName", "");
+		Cookie[] c = req.getCookies();
+		for(Cookie i : c) {
+			i.setValue(null);
+			i.setMaxAge(0);
+			i.setPath("/");
+			resp.addCookie(i);
+		}
 		mv.setViewName("store/store_index");		
 		return mv;
 	}
