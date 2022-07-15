@@ -24,18 +24,18 @@ public class J_loginService {
 	
 	public JstoreVo login(JstoreVo vo, HttpServletRequest req) {
 		JstoreVo rVo = null;
+		String msg = "";
 		
 		HttpSession session = req.getSession();
 		try {
 			rVo = J_loginMapper.login(vo);
-			System.out.println(rVo.getMid());
 			
 			if(rVo != null) {
 				session.setAttribute("mid", rVo.getMid());
-				System.out.println("성공");
 			}else {
 				session.setAttribute("mid", null);
-				System.out.println("실패");
+				msg = "아이디나 비밀번호를 확인해주세요.";
+				session.setAttribute("msg", msg);
 			}
 		}catch(Exception ex) {
 			ex.printStackTrace();
