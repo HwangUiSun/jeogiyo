@@ -15,16 +15,28 @@
 	        <div id='subject'>주문하기</div>
 	   <div id='payInfo'>
 	        <div class='sub'>결제정보</div>
-	        <br/><label>수령인정보</label><br/>
+	        
+	        <br/><h2><label>수령인정보</label></h2><br/>
+	        
 	        <label>이름</label>
 	        <input type='text' class='name'/><br/>
+	        
 	        <label>연락처</label>
 	        <input type='text' class='phone'/><br/>
+	        
+		    <label>우편번호</label>
+		    <input type='text' id='zipcode' size='12'>
+		    
+		   	<button type='button' id='btnZipFind'>주소변경</button>
+			<br/>
+    
 	        <label>주소</label>
-	        <input type='text' class='address'/>
-	       <a href='apiBtn'> <button type='button' class='apiBtn'>주소변경</button></a><br/>
+	        <input type='text' id='address'/>
+	        <br/>
+	        	       
 	        <label>상세주소</label>
-	        <input type='text' class='apiAddressDetail'/><br/>
+	        <input type='text' id='apiAddressDetail'/><br/>
+	        
 	        <label>요청사항</label>
 	        <input type='text' class='request'/>
 	   </div>
@@ -84,6 +96,32 @@
 	   </div>
 	</div>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("btnZipFind").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+            	
+            var addr = '';
+            
+            if(data.userSelectedTyp === 'R'){
+            	addr = data.roadAddress;
+            }else{
+            	addr = data.jibunAddress;
+            }
+            
+                //document.getElementById("btnZipFind").value = data.zipcode; // 주소 넣기
+                document.getElementById("zipcode").value = data.zonecode;
+                document.getElementById("address").value = addr;
+                
+                document.getElementById("detailAddress").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
+</script>
 
 <script>
 $("input[type=radio]").click(function(){
