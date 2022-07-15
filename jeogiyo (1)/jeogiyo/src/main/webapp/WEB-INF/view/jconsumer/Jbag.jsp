@@ -14,18 +14,7 @@
 
 
 <div id='Jag'>
-	<div id='main'>
-	     <a href='homeBtn'><span  id='homeBtn' >HOME</span></a>
-	     <h1>저기요</h1>
-	</div>
-	<div id='top'>
-	          <ul>
-	             <a href='JstoreSelect'>주문하기</a>
-	             <a href='MyPage'>내정보</a>
-	             <a href='JorderList'>주문내역</a>
-	             <a href='FAQ'>FAQ</a>
-	          </ul>
-	</div>
+	
 	<div id= 'Jbeg_list'>
 	        <div id='subject'>장바구니</div>
 	   <div id='wrap'>
