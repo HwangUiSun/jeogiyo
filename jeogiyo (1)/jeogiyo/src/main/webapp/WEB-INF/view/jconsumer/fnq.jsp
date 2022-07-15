@@ -10,33 +10,59 @@
 <body>
 
 <h1>FAQ</h1>
-<div id = 'question'>자주하는 질문</div>
-<c:forEach var = 'status' begin = '1' end = '5'>
-	<div id = 'FAQList'>
-		  <div class = 'info'>
-	        <div class = 'list'>내용</div>
-	      </div>
-	      
-	   <input type="button" value="내용 접기" onclick=	
-		   "var target=document.querySelector('#data');
-		   if(this.value=='내용 접기'){
-	         target.style.display='none';
-	          this.value='내용 펼치기';
-	          }else{
-	            target.style.display='block';
-	            this.value='내용 접기';
-	            }
-		   ">
-	   
-	   <p id="data">설명</p>
-		  
-	    </div>
-	<hr/>
-</c:forEach>
+
+<div id=question>
+    <div id='subject'>배달 주문 팁</div>
+    <button id='btnToggle' onclick='Toggle()'>확인</button><br/>
+      <div id='Toggle' style='display:none'>배달 주문 팁은 2000원입니다.</div><br/>
+      <hr/>
+</div>
+
+<div id=question_1>
+    <div id='subject'>라이더는 언제오나요</div>
+    <button id='btnToggle_1' onclick='Toggle_1()'>확인</button><br/>
+      <div id='Toggle_1' style='display:none'>보통 60분 내로 도착합니다.</div><br/>
+      <hr/>
+</div>
+
+<div id=question_2>
+    <div id='subject'>리뷰는 어떻게 쓰나요</div>
+    <button id='btnToggle_2' onclick='Toggle_2()'>확인</button><br/>
+      <div id='Toggle_2' style='display:none'>리뷰작성 페이지에서 리뷰 작성 버튼을 클릭하세요</div><br/>
+      <hr/>
+</div>
+
+
 </body>
-
 <script>
-document.querySelector('#data')
+function Toggle(){
+	var Toggle = document.getElementById('Toggle');
+	
+	if(Toggle.style.display !== 'none'){
+		Toggle.style.display = 'none';
+	}else{
+		Toggle.style.display = 'block';
+	}
+}
 
+function Toggle_1(){
+	var Toggle_1 = document.getElementById('Toggle_1');
+	
+	if(Toggle_1.style.display !== 'none'){
+		Toggle_1.style.display = 'none';
+	}else{
+		Toggle_1.style.display = 'block';
+	}
+}
+
+function Toggle_2(){
+	var Toggle_2 = document.getElementById('Toggle_2');
+	
+	if(Toggle_2.style.display !== 'none'){
+		Toggle_2.style.display = 'none';
+	}else{
+		Toggle_2.style.display = 'block';
+	}
+}
 </script>
 </html>
