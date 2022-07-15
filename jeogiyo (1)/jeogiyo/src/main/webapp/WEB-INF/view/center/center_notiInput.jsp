@@ -26,10 +26,10 @@
 		<input type = 'date' name = 'nal'><br/>
 		<label>내용</label>
 		<textarea name = 'doc' id = 'summernote'></textarea>
-	</form>
+		</form>
 	<div class = 'btns'>
-		<button type = 'button' value = 'btn_input' name = 'input'>작성</button>
-		<button type = 'button' value = 'btn_back' name = 'back'>돌아가기</button>
+		<button type = 'button' name = 'input' onclick = 'btn.input()'>작성</button>
+		<button type = 'button' name = 'back' onclick = 'btn.back()'>돌아가기</button>
 	</div>
 </div>
 <script>
