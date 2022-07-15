@@ -8,14 +8,21 @@ public class Page {
 	int endNo; // 목록의 끝 위치
 	int listSize=15; // 목록의 행수
 	int totSize; // 검색된 전체 건수
-	int blockSize=7; // 표시될 페이지의  수
+	int blockSize=3; // 표시될 페이지의  수
 	int totPage; // 전체 페이지 수
   int startPage; // 페이지의 시작 위치
   int endPage; // 페이지의 끝 위치
   int nowPage=1; // 사용자자가 보고 있는 현재 페이지
   String findStr;
+  String tableName;
   
-  public Page() {
+ public String getTableName() {
+	return tableName;
+}
+public void setTableName(String tableName) {
+	this.tableName = tableName;
+}
+public Page() {
   	compute();
   }
   public Page(int totSize, int nowPage) {
