@@ -15,28 +15,19 @@
 
 
 </head>
-<script>
-var today = new Date();
 
-var year = today.getFullYear(); // 년도
-var month = today.getMonth() + 1;  // 월
-var date = today.getDate();  // 날짜
-var day = today.getDay();  // 요일
-
-var dateString = year + '-' + month + '-' + day;
-</script>
 
 <body>
 
 <div id='upload'>
-<h1>리뷰작성</h1>
+  <div id='uploadReview'><h1>리뷰작성</h1></div>
   <form name='upload' class='upload' method='post'>
     <label>제목</label>
     <input type='text' name='subject' size='14'/>
     <br>
   
     <label>아이디</label>
-    <input type='text' name='id' size='14'/>
+    <input type='text' name='id' size='14' readonly/>
     <br>
   
     <label>날짜</label>
@@ -44,18 +35,18 @@ var dateString = year + '-' + month + '-' + day;
     <br>
   
     <label>내용</label>
-    <div class='doc'>
-      <input type='text' name='doc'/>
-    </div>
+    <textarea name = 'doc' id='summernote'></textarea>
    <br>
-  
+   
+  <div class='btns'>
     <a href='writeBtn'><button type='button' id='writeBtn'>확인</button></a>
     <a href='backBtn'><button type='button' id='backBtn'>돌아가기</button></a>
+    </div>
   </form>
 </div>
-
 <script>
-var todayDate = document.getElemenetById("today");
+upload.init();
 </script>
+
 </body>
 </html>
