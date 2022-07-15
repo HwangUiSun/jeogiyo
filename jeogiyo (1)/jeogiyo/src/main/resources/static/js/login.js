@@ -12,3 +12,15 @@ login = function(frm){
 		alert("회원 정보를 입력해주세요")
 	}
 }
+
+function onKeyUp(){
+	if(window.event.keyCode == 13){
+		doEnter();
+	}
+}
+
+
+
+function doEnter(){
+	document.getElementById("logIntoData").click();
+}

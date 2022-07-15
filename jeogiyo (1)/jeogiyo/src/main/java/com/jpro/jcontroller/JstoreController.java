@@ -51,10 +51,26 @@ public class JstoreController {
 		ModelAndView mv = new ModelAndView();
 		
 		vo.setMid(req.getParameter("mId"));
-		vo.setPhone(req.getParameter("password"));
+		vo.setPwd(req.getParameter("password"));
 		JstoreVo rVo = loginDao.login(vo, req);
 		
-		mv.setViewName("store/store_index");
+		if(rVo != null) {
+			if(rVo.getMid().equals("root")) {
+				mv.setViewName("center/center_index");
+			}else{
+				mv.setViewName("store/store_index");
+			}
+		}
+		else {
+			mv.setViewName("common/SC_loginResult");
+		}
+		return mv;
+	}
+	
+	@RequestMapping("login_fail")
+	public ModelAndView login_fail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("common/SC_login");
 		
 		return mv;
 	}

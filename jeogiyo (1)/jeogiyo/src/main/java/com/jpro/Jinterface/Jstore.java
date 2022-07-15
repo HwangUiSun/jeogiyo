@@ -35,4 +35,6 @@ public interface Jstore {
 	// 가맹 탈퇴
 	public boolean dropSave(JstoreVo vo);	 // 가맹 탈퇴 작성 저장
 	public boolean dropCancle(JstoreVo vo);  // 가맹 탈퇴 신청 클릭
+	
+	public JstoreVo login(JstoreVo vo);
 }

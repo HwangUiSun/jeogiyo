@@ -27,10 +27,7 @@
 	                    </div>
 	                    <div class="inputBx">
 	                        <span>Password</span>
-	                        <input type='password' name="password" id='password'>
-	                    </div>
-	                    <div class="remember">
-	                        <label><input type="checkbox" name="">Remember me</label>
+	                        <input type='password' name="password" id='password' onkeyup="onKeyUp()">
 	                    </div>
 	                    <div class="inputBx">
 	                        <label><input type="button" value="Sign in" id="logIntoData" onclick='login(this.form)'></label>
@@ -53,4 +50,5 @@
 </body>
 <script src='./js/login.js'>
 </script>
+
 </html>
