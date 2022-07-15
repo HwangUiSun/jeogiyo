@@ -16,7 +16,7 @@
     <input type='text' name='id' size='15'><br/>
     
     <label>성명</label>
-    <input type='text' name='mName' size='12'><br/>
+    <input type='text' name='name' size='12'><br/>
     
     
     <label>비밀번호</label>
@@ -26,12 +26,16 @@
     <input type='text' name='phone' size='12'><br/>
     
     <label>우편번호</label>
-    <input type='text' name='zipcode'  size='12'>
-    <button type='button' id='btnZipFind' name='btnZipFind'>우편번호 검색</button>
+    <input type='text' id='zipcode'  size='12'>
+    
+    <button type='button' id='btnZipFind'>우편번호 검색</button>
     <br/>
     
     <label>주소</label>
-    <input type='text' name='address' size='40' autocomplete="none"><br/>
+    <input type='text' id='address' size='40'/><br/>
+    
+    <label>상세주소</label>
+    <input type='text' id='detailAddress' size='40'/><br/>
     
     <label>이메일</label>
     <input type='text' name='email' size='30'><br/>
@@ -60,8 +64,21 @@ window.onload = function(){
         //카카오 지도 발생
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
-                document.getElementById("btnZipFind").value = data.address; // 주소 넣기
-                document.querySelector("input[name=btnZipFind]").focus(); //상세입력 포커싱
+            	
+            var road_addr = '';
+            var jibun_addr = '';
+            
+            if(data.userSelectedTyp === 'R'){
+            	road_addr = data.roadAddress;
+            }else{
+            	jibun_addr = data.jibunAddress;
+            }
+            
+                //document.getElementById("btnZipFind").value = data.zipcode; // 주소 넣기
+                document.getElementById("zipcode").value = data.zonecode;
+                document.getElementById("address").value = jibun_addr;
+                
+                document.getElementById("detailAddress").focus(); //상세입력 포커싱
             }
         }).open();
     });
