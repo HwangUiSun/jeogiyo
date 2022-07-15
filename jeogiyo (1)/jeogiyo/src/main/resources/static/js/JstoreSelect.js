@@ -14,7 +14,7 @@ var citySelect;
 var find_Store;
 //도시 선택 후 지역출력 
 function cityFindChange(JstoreName){
-	var seoul=["강남구", "강서구", "강북구"];
+	var seoul=["강남구", "강동구", "강북구"];
 	var gyeonggi = ["수원시" , "평택시", "용인시"];
 	var pusan = ["수영구", "해운대구", "기장군"];
 	var target = document.getElementById("storeFindStr");	
