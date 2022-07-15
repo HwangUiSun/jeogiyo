@@ -20,8 +20,8 @@ public class JbaljuController {
 	@RequestMapping("cTable")
 	public ModelAndView createTable(HttpServletRequest req, HttpServletResponse resp) {
 		ModelAndView mv = new ModelAndView();	
-		//(실 사용 변수) String storeName = (String)req.getAttribute("storeName"); 
-		String storeName = "testStore"; //테스트할려고 넣은 변수이므로 주석처리나 삭제해도되욤
+		String storeName = (String)req.getAttribute("mid"); 
+		//String storeName = "testStore"; //테스트할려고 넣은 변수이므로 주석처리나 삭제해도되욤
 		dao.createTable(storeName);
 		mv.setViewName("center/center_index");		
 		return mv;

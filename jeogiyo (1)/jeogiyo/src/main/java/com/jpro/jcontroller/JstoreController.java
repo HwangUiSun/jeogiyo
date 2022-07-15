@@ -175,7 +175,7 @@ public class JstoreController {
 			}
 		}
 		if(tableName==null || tableName.equals("")) {
-			tableName= baljuDao.createTable("test");
+			tableName= baljuDao.createTable((String)s.getAttribute("mid"));
 			s.setAttribute("tableName", tableName);	
 			Cookie cookei = new Cookie("tableName", tableName);
 			cookei.setPath("/");
