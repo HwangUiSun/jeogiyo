@@ -1,4 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 	<div id= 'Jstore_list'>
 	       <div id = 'subject' >주문하기</div>
 	        <div id = 'sub'>매장찾기</div>
-			<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a>
+			
 		<form name='frm_Jstore' method='post' id='frm_Jstore'>
 	             
 	            
@@ -49,21 +49,24 @@
 			<span>전화번호</span>
 			
 		</div>
-		<div class='itemsWrap'>
-			<c:set var='num' value='${page.startNo }' />
-			<c:forEach var='v' items='${list }'>
-				<div class='items'>
-					<span class='no'     >${num }</span>
-					<span class='storeName'     >${v.Jname }</span>
-					<span class='storeaddress'  >${v.Jname}</span>
-					<span class='genstorecall' >${v.Jphone}</span>
-			<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기</button></a>
+		<c:forEach var = 'status' begin = '1' end = '5'>
+		<div id = 'itemsWrap'>
+		       <div class='items'>
+			        <span class='no'     >${num+1 }</span>
+					<span class='storeName'     >서울 강남${num+1 }호점</span>
+					<span class='storeaddress'  >서울 강남구 논현로 16길 5 </span>
+					<span class='genstorecall' >02-1234-1234&nbsp;&nbsp;
+			<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기&nbsp;&nbsp;</button></a>
+			<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a></span>
+			 </div>
+			</div>
+		
+		<hr/>
+		<c:set var='num' value='${num=num+1 }'/>
+	</c:forEach>
+		
 				
-				</div>
-				<c:set var='num' value='${num=num+1 }'/>
-			</c:forEach>
-			
-		</div>
+		
 		<div class= 'paging'>	
 	
 	<c:if test="${page.startPage>1}">
@@ -82,6 +85,7 @@
 		</c:if>
 	</div>
 	</div>
+	
 </div>
 
 </body>
