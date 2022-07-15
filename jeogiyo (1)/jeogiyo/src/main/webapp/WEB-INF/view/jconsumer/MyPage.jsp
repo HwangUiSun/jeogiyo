@@ -65,18 +65,17 @@ window.onload = function(){
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
             	
-            var road_addr = '';
-            var jibun_addr = '';
+            var addr = '';
             
             if(data.userSelectedTyp === 'R'){
-            	road_addr = data.roadAddress;
+            	addr = data.roadAddress;
             }else{
-            	jibun_addr = data.jibunAddress;
+            	addr = data.jibunAddress;
             }
             
                 //document.getElementById("btnZipFind").value = data.zipcode; // 주소 넣기
                 document.getElementById("zipcode").value = data.zonecode;
-                document.getElementById("address").value = jibun_addr;
+                document.getElementById("address").value = addr;
                 
                 document.getElementById("detailAddress").focus(); //상세입력 포커싱
             }
