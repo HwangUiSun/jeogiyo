@@ -31,8 +31,9 @@
     <input type='text' name='phone' size='14'/>
     <br>
     
-    <label>주소</label>
-    <input type='text' id='address' name='address' size='30'/>
+    <label>우편번호</label>
+    <input type='text' id='zipcode' name='zipcode' size='30'/>
+    <button type='button' id='btnZipFind' name='btnZipFind'>우편번호 검색</button>
     <br>
     
     <label>상세주소</label>
@@ -47,12 +48,12 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 window.onload = function(){
-    document.getElementById("address").addEventListener("click", function(){ //주소입력칸을 클릭하면
+    document.getElementById("btnZipFind").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //카카오 지도 발생
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
-                document.getElementById("address").value = data.address; // 주소 넣기
-                document.querySelector("input[name=address]").focus(); //상세입력 포커싱
+                document.getElementById("btnZipFind").value = data.address; // 주소 넣기
+                document.querySelector("input[name=btnZipFind]").focus(); //상세입력 포커싱
             }
         }).open();
     });

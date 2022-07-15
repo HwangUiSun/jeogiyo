@@ -27,7 +27,7 @@
     
     <label>우편번호</label>
     <input type='text' name='zipcode'  size='12'>
-    <button type='button' id='btnZipFind'>우편번호 검색</button>
+    <button type='button' id='btnZipFind' name='btnZipFind'>우편번호 검색</button>
     <br/>
     
     <label>주소</label>
@@ -45,13 +45,28 @@
     <br/>
   
   <label></label>
-  <a href ='change_1Btn'><button type='button' id='change_1Btn'>수정완료</button></a>
+  <a href ='change_1Btn'><button type='button' id='change_1Btn'>수정하기</button></a>
   <a href='joinOutBtn'><button type='button' id='joinOutBtn()'>회원탈퇴</button></a>
+  
   <input type='hidden' name='findStr' value='${param.findStr}'/>
   <input type='hidden' name='nowPage' value='${param.nowPage}'/>
   </form>
-<script src='js/member.js'></script>
 </div>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("btnZipFind").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("btnZipFind").value = data.address; // 주소 넣기
+                document.querySelector("input[name=btnZipFind]").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
+</script>
 
 <script>
   function joinOutBtn(){
