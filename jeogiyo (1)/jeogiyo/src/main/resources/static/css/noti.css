@@ -84,6 +84,22 @@
 	font-size:20px;
 }
 .paging button:hover{
-	cursor:pointer;
+	cursor : pointer;
+	background-color : #999;
+}
+
+#menuTitle button{
+	height : 50px;
+	width : 120px;
+	background-color : #9997;
+	border : none;
+	border-radius : 15px;
+	font-size : 15px;
+	margin-bottom : 20px;
+}
+
+#menuTitle button:hover{
+	cursor : pointer;
+	background-color : #999;
 }
 /*공지사항 리스트 CSS 끝*/
