@@ -42,19 +42,21 @@
 	   
 	   <form action="/status">
 	     <label class='paySelect'>결제방법
-		       <br/><input type='radio' name='radioSelect' id='meetPayBtn' value='1'/>만나서 결제
-		            <input type='radio' name='radioSelect' id='cardPayBtn' value='2' />카드 결제
-		 </label>	
+		       <br/>
+		         <input type='radio' name='radioSelect' id='meetPayBtn' value='1'/>만나서 결제
+		         <input type='radio' name='radioSelect' id='cardPayBtn' value='2' />카드 결제
+		       <br/>
+         </label>	
 	   </form>
 	   
 	   <div id='point'>
 	          <div class='sub'>포인트사용</div>
 	          <div class='msg'>
 	         <label>포인트사용</label>
-	        <input type='text' class='usePoint' value='2000p'/>
+	        <input type='text' class='usePoint'/>
 	        <button type='button' class='usePointBtn'>포인트 전액 사용</button><br/>
 	        <label>보유포인트</label>
-	        <input type='text' class='havePoint' readonly/><br/>
+	        <input type='text' class='havePoint' value='10000p' readonly/><br/>
 	        </div>
 	   </div>
 	   
@@ -88,5 +90,9 @@ $("input[type=radio]").click(function(){
 	$(this).prop("checked", true);
 	$("form").submit();
 })
+
+String radioSelect[] = request.getParameterValues("radioSelect");
+// X
+
 </script>
 </html>
