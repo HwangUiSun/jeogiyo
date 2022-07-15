@@ -83,14 +83,14 @@ public class JConsumerController {
 		return mv;
 	}
 	
-	@RequestMapping("FAQ")
+	/*@RequestMapping("FAQ")
 	public ModelAndView top5() {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("jconsumer/FAQ");
 		
 		return mv;
-	}
+	}*/
 	
 	//매장선택페이지
 	
@@ -238,6 +238,15 @@ public class JConsumerController {
 		return mv;
 	}
 	
+	//장바구니 -> FNQ 링크
+	@RequestMapping("FAQ")
+	public ModelAndView FAQ() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/fnq");
+		
+		return mv;
+	}
 	//리뷰 작성 버튼
 	/*@RequestMapping("writeBtn")
 	public ModelAndView writeBtn() {

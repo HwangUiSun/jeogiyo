@@ -17,6 +17,7 @@
 	     <a href='homeBtn'><span  id='homeBtn' >HOME</span></a>
 	     <h1>저기요</h1>
 	</div>
+	
 	<div id='top'>
 	          <ul>
 	             <a href='JstoreSelect'>주문하기</a>
@@ -25,7 +26,8 @@
 	             <a href='FAQ'>FAQ</a>
 	          </ul>
 	</div>
-	<div id= 'Jbeg_list'>
+	
+	<div id= 'Jbag_list'>
 	        <h1>장바구니</h1><br/>
 	    <div id='list'>	
 			<span class='sno'>No</span>
@@ -34,6 +36,7 @@
 			<span class='ea'>수량</span>
 			
 		</div>
+		
 		<div class='items'>
 			<c:set var='num' value='${page.startNo }' />
 			<c:forEach var='v' items='${list }'>
