@@ -20,19 +20,28 @@
 	<div id='subject'>공지사항 상세보기</div>
 	<form name = 'frm_noti_view' class = 'frm_noti_view' method = 'post'>
 		<label>제목</label>
-		<input type = 'text' name = 'subject'><br/>
+		<input type = 'text' name = 'subject' value="${vo.subject }" readonly><br/>
 		<label>작성자</label>
-		<input type = 'text' name = 'mid' value = '본사' readonly><br/>
+		<input type = 'text' name = 'mid' value = '${vo.mid }' readonly><br/>
 		<label>날짜</label>
-		<input type = 'date' name = 'nal'><br/>
-		<label>내용</label>
-		<textarea name = 'doc' id = 'summernote'></textarea>
-	</form>
+		<input type = 'text' name = 'nal' id="noti_nal" value ='${vo.nal }' readonly><br/>
+		<label id="doctext">내용</label>
+		<textarea name = 'doc' class="doc" id="summernote">${vo.doc }</textarea>
+	
 	<div class = 'btns'>
-		<button type = 'button' value = 'btn_input' name = 'update'>수정</button>
-		<button type = 'button' value = 'btn_delete' name = 'delete'>삭제</button>
-		<button type = 'button' value = 'btn_back' name = 'back'>돌아가기</button>
+		
+			<button type = 'button' value = 'btn_input' name = 'update' id="input" onclick="noti_view_updateview(this.form)">수정</button>
+			<button type = 'button' value = 'btn_delete' name = 'delete' id="delete" onclick="noti_view_delete(this.form)">삭제</button>
+		
+		<button type = 'button' value = 'btn_back' name = 'back' onclick="noti_view_back(this.form)">돌아가기</button>
 	</div>
+	
+	<input type="text" name="sno" value="${vo.sno }">
+	<input type="text" name="nowPage" value="${notipage.nowPage}" >
+	<input type="text" name="findStr" value="${notipage.findStr}" >
+	
+	
+	</form>
 </div>
 <script>
 noti_view.init();
