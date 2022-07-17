@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jpro.common.J_notiVo;
-import com.jpro.common.Page;
 import com.jpro.jconsumer.JConsumerService;
 import com.jpro.jconsumer.JConsumerVo;
 
@@ -86,10 +84,10 @@ public class JConsumerController {
 		String url = "../jconsumer/JstoreSelect.jsp";
 
 		mv.addObject("inc",url);
-		/*List<JConsumerVo> conlist = dao.storeSelect(consumerpage); 
+		 List<JConsumerVo> conlist = dao.storeSelect(consumerpage); 
 		consumerpage = dao.getPage();
 		mv.addObject("storeSelectlist",conlist);
-		mv.addObject("storeSelectpage",consumerpage);*/
+		mv.addObject("storeSelectpage",consumerpage);
 
 		mv.setViewName("jconsumer/Jconsumer_index");		
 		return mv;
@@ -235,16 +233,7 @@ public class JConsumerController {
 		mv.setViewName("jconsumer/Jconsumer_index");		
 		return mv;
 	}
-
 	
-	/*@RequestMapping("apiBtn")
-	public ModelAndView Jpayhistory3() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("jconsumer/JchangeAddress");
-		
-		return mv;
-	}*/
 	
 	//주문이후 페이지
 	
@@ -317,8 +306,7 @@ public class JConsumerController {
 		return mv;
 	}	
 	
-	//리뷰작성 -> 돌아가기
-	
+	//리뷰작성 -> 돌아가기	
 	@RequestMapping("backBtn")
 	public ModelAndView backBtn(com.jpro.jconsumer.Page consumerpage) {
 		ModelAndView mv = new ModelAndView();
@@ -342,28 +330,17 @@ public class JConsumerController {
 		
 
 		mv.setViewName("jconsumer/Jconsumer_index");		
-		return mv;
-	}
-
-	
-	/*//장바구니 -> FNQ 링크
-	
-	@RequestMapping("FAQ")
-	public ModelAndView FAQ() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("jconsumer/fnq");
-		
-		return mv;
-	}*/
-	//리뷰 작성 버튼
-	/*@RequestMapping("writeBtn")
-	public ModelAndView writeBtn() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("jconsumer/JReview");
 		
 		return mv;
 	}
-	*/
+	
+	//메뉴보기 -> 담기
+	@RequestMapping("addBtn")
+	public ModelAndView addBtn() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/Jbag");
+		
+		return mv;
+	}
 }
