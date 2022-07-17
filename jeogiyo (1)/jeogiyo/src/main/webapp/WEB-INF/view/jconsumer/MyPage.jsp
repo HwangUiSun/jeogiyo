@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MyPage</title>
-<link rel = 'stylesheet' type='text/css' href = './css/consumer.css'>
+<link rel = 'stylesheet' type='text/css' href = 'css/MyPage.css'>
 <script src = './js/consumer.js'></script>
 </head>
 <body>
