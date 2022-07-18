@@ -14,12 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.jcenter.JcenterMemberVo;
+import com.jpro.jcenter.JcenterStoreMService;
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
+import com.jpro.jstore.JstoreVo;
 
 @RestController
 public class JcenterController {
@@ -30,6 +32,9 @@ public class JcenterController {
 	
 	@Autowired
 	JbaljuService baljuDao;
+	
+	@Autowired
+	JcenterStoreMService storeMDao;
 	
 	
 	@RequestMapping("index")
@@ -218,11 +223,13 @@ public class JcenterController {
 	
 	
 	@RequestMapping("center_storeM")
-	public ModelAndView storeM() {
+	public ModelAndView storeM(Page page) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeM.jsp";
 		
 		mv.addObject("inc",url);
+		List<JstoreVo> list = storeMDao.storeSelect(page);
+		mv.addObject("list", list);
 
 		mv.setViewName("center/center_index");
 		

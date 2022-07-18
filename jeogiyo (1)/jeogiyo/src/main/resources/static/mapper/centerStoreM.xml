@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='com.jpro.jmybatis.JcenterStoreMMapper'>
+
+	<select id='totSize' parameterType='com.jpro.jcenter.Page' resultType='Integer'>
+		select count(mid) totSize
+		from jstorevo
+		where mainLocal = #{서울}
+	</select>
+	
+	<select id='select' parameterType='com.jpro.jcenter.Page' resultType='JstoreVo'>
+		select *
+		from jstorevo
+		where mainLocal = #{서울}
+		limit ${startNo-1}, ${listSize}
+	</select>
+
+</mapper>
