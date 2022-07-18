@@ -320,23 +320,7 @@ public class JstoreController {
 		ModelAndView mv = new ModelAndView();		
 		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);	
-		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
-		s.setAttribute("title", "");
-		baljuDao.droptable(tableName);;
-		Cookie[] dck = req.getCookies();
-		for(Cookie i : dck) {
-			if(i.getName().equals("tableName")) {
-				i.setMaxAge(0);
-				resp.addCookie(i);
-			}
-		}
-		for(Cookie i : dck) {
-			if(i.getName().equals("title")) {
-				i.setMaxAge(0);
-				resp.addCookie(i);
-			}
-		}
+		HttpSession s = req.getSession();		
 		baljuDao.selectOneDetail(0);
 		List<JbaljudetailsVo> baljulist = baljuDao.select(page);
 		page = baljuDao.getPage();	
@@ -356,7 +340,7 @@ public class JstoreController {
 			
 		if(b>0) {
 			ModelAndView mv = new ModelAndView();					
-			mv.setViewName("/store/store_index");
+			mv.setViewName("/center/center_index");
 		}else {
 			String title = (String)req.getParameter("titles");
 			JbaljudetailsVo vo = new JbaljudetailsVo();
@@ -366,7 +350,7 @@ public class JstoreController {
 		}	
 	
 		ModelAndView mv = new ModelAndView();					
-		mv.setViewName("/store/store_index");		
+		mv.setViewName("store/store_index");		
 		return mv;
 	}
 	
@@ -384,7 +368,7 @@ public class JstoreController {
 		mv.addObject("inc",url);
 		mv.addObject("title",title);
 		mv.addObject("baljulist",baljulist);
-		mv.setViewName("/store/store_index");		
+		mv.setViewName("store/store_index");		
 		return mv;
 	}
 	
@@ -402,9 +386,11 @@ public class JstoreController {
 		mv.addObject("inc",url);
 		mv.addObject("title",title);
 		mv.addObject("baljulist",baljulist);
-		mv.setViewName("/store/store_index");		
+		mv.setViewName("store/store_index");		
 		return mv;
 	}
+	
+	
 	
 	
 }

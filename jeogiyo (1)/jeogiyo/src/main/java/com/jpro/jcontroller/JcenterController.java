@@ -2,6 +2,9 @@ package com.jpro.jcontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import com.jpro.jcenter.JcenterMemberVo;
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
+import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
 
@@ -162,22 +166,28 @@ public class JcenterController {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);
-		mv.setViewName("store/store_index");
 		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
 		page = baljuDao.getPage();
 		mv.addObject("baljupage",page);
 		mv.addObject("baljulist",baljulist);
-		mv.setViewName("store/store_index");
+		mv.setViewName("/center/center_index");
 		return mv;
 	}
 	
 	@RequestMapping("center_orderView")
-	public ModelAndView centerOrder_view() {
+	public ModelAndView centerOrder_view(com.jpro.jstore.Page page,HttpServletRequest req) {
+		
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_view.jsp";
-		mv.addObject("inc",url);
-		
-		mv.setViewName("center/center_index");
+		//select(title)
+		HttpSession s = req.getSession();
+		String tableName =req.getParameter("title");
+		List<JbaljuListVo> selectSubOne = null;	
+		selectSubOne =baljuDao.selecSubtList(page,tableName);	
+		mv.addObject("selectSubOne",selectSubOne);
+		mv.addObject("inc",url);		
+		mv.setViewName("center/center_index");		
+
 		
 		return mv;
 	}
@@ -282,6 +292,42 @@ public class JcenterController {
 		mv.addObject("inc", url);
 		
 		mv.setViewName("center/center_index");
+		return mv;
+	}
+	
+	@RequestMapping("acceptOrderC")
+	public ModelAndView acceptOrderC(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
+		HttpSession s = req.getSession();
+		String title = req.getParameter("title");		
+		baljuDao.changeStatus(title);
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+		ModelAndView mv = new ModelAndView();			
+		String url = "../common/order_main2.jsp";
+		page = baljuDao.getPage();
+		mv.addObject("baljupage",page);
+		mv.addObject("inc",url);
+		mv.addObject("title",title);
+		mv.addObject("baljulist",baljulist);
+		mv.setViewName("/center/center_index");		
+		return mv;
+	}
+	
+	@RequestMapping("waitOrderC")
+	public ModelAndView waitOrderC(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
+		HttpSession s = req.getSession();
+		String title = req.getParameter("title");		
+		baljuDao.waitOrder(title);
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+		ModelAndView mv = new ModelAndView();			
+		String url = "../common/order_main2.jsp";
+		page = baljuDao.getPage();
+		mv.addObject("baljupage",page);
+		mv.addObject("inc",url);
+		mv.addObject("title",title);
+		mv.addObject("baljulist",baljulist);
+		mv.setViewName("/center/center_index");		
 		return mv;
 	}
 

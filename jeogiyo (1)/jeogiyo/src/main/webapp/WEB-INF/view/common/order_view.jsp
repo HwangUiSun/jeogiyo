@@ -15,7 +15,6 @@
 	<input type="hidden" id="title" value="${param.title}">
 	<div id="subject">발주 상세보기</div>
 	<!-- 
-	
 	<a href='store_orderUpdate'>저장</a>
 	<a href='store_orderDelete'>삭제</a>
 	<a href='store_orderCancel'>취소</a>
@@ -53,10 +52,49 @@
 	<c:if test ="${mid == 'root'}">
 		<button type = 'button' value = 'btn_delete' name = 'delete' onclick="accept('${param.title}')">주문승인</button>
 		<button type = 'button' value = 'btn_back' name = 'back' onclick="wait('${param.title}')">주문대기</button>
+		<button type = 'button' value = 'btn_back' name = 'back' onclick="location.href='acceptOrderC'">돌아가기</button>
 	</c:if>
+	<c:if test ="${mid != 'root'}">
 		<button type = 'button' value = 'btn_back' name = 'back' onclick="location.href='order'">돌아가기</button>
+		</c:if>
 	</div>
 	</div>
 
 </body>
+<script>
+function wait(title){
+	var waitForm = document.createElement('form');
+	waitForm.name = 'waitForm';
+	waitForm.method = 'post';
+	waitForm.action = '/waitOrderC';
+	let tableName = document.getElementById("tableName");
+	var titlesinput = document.createElement('input');
+	titlesinput.setAttribute("type", "hidden");
+	titlesinput.setAttribute("name", "title");
+	titlesinput.setAttribute("value", title);
+	waitForm.appendChild(titlesinput);
+	// append form (to body)
+	document.body.appendChild(waitForm);
+	// submit form
+	waitForm.submit();
+	
+}
+function accept(title){
+	var acceptForm = document.createElement('form');
+	acceptForm.name = 'acceptForm';
+	acceptForm.method = 'post';
+	acceptForm.action = '/acceptOrderC';
+	let tableName = document.getElementById("tableName");
+	var titlesinput = document.createElement('input');
+	titlesinput.setAttribute("type", "hidden");
+	titlesinput.setAttribute("name", "title");
+	titlesinput.setAttribute("value", title);
+	acceptForm.appendChild(titlesinput);
+	// append form (to body)
+	document.body.appendChild(acceptForm);
+	// submit form
+	acceptForm.submit();
+	
+}
+</script>
 </html>

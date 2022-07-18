@@ -145,7 +145,7 @@
 		// set attribute (form) 
 		dropForm.name = 'dropForm';
 		dropForm.method = 'post';
-		dropForm.action = '/dropT';
+		dropForm.action = '/order';
 		document.body.appendChild(dropForm);
 		dropForm.submit();
 	}

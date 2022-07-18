@@ -36,4 +36,15 @@
 		frm.submit();
 		
 	}
+	function orderViewC(sno){
+		let url = 'center_orderView';	
+
+		let frm =document.getElementById(sno);
+		console.log(frm)
+		frm.action = url;
+		frm.submit();
+		
+	}
+	
+	
  

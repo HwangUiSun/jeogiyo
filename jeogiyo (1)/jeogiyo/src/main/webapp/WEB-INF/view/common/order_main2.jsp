@@ -37,7 +37,13 @@
 				<input type="hidden" name="mid" value="${mid}">
 				<input type="hidden" name="nowPage" value="${baljupage.nowPage}">
 			</form>
-		<div class='items' onclick="orderView(${v.sno})">
+		
+		<c:if test="${mid == 'root' }">
+			<div class='items' onclick="orderViewC(${v.sno})">
+		</c:if>
+		<c:if test="${mid != 'root' }">
+			<div class='items' onclick="orderView(${v.sno})">
+		</c:if>
 			<span >${num}</span>
 			<span>${v.title}</span>
 			<span>${v.id}</span>
