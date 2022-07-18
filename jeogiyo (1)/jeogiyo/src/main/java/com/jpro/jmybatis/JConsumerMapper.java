@@ -4,18 +4,22 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.jpro.common.Page;
 import com.jpro.jconsumer.BoardAtt;
+import com.jpro.jconsumer.JConsumerVo;
 
 @Mapper
 @Repository
-@Primary
+@Qualifier("consumerMapper")
 public interface JConsumerMapper {
+	public int totSize(com.jpro.jconsumer.Page cosumerpage);
 	//매장 선택
-	//public Map<> storeSelect(Map<> map);
+	public List<JConsumerVo> storeSelect(com.jpro.jconsumer.Page cosumerpage);
 	
 	//메뉴 보기
 	public String JmenuSelect();

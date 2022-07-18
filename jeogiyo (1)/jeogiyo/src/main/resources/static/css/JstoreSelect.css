@@ -33,7 +33,7 @@
 	cursor:pointer;
 }
 #wrap{
-	width:1200px;
+	
 	margin:2px auto;
 }
 
@@ -46,11 +46,11 @@
 	background:#565656;
 	
 }
-
 .items{font-weight:200;}
 .items:nth-child(2n){
 	background:#353434;
 }
+
 .title span, .items span{
 	display:block;
 	box-sizing:border-box;

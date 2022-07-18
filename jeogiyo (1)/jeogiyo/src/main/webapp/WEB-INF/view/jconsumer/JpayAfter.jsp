@@ -10,21 +10,9 @@
 <title>JpayAfter</title>
 </head>
 <body>
-<h1>JpayAfter</h1>
 
 <div id='JpayAfter'>
-	<div id='main'>
-	     <a href='homeBtn'><span  id='homeBtn' >HOME</span></a>
-	     <h1>저기요</h1>
-	</div>
-	<div id='top'>
-	          <ul>
-	             <a href='JstoreSelect'>주문하기</a>
-	             <a href='MyPage'>내정보</a>
-	             <a href='JorderList'>주문내역</a>
-	             <a href='FAQ'>FAQ</a>   
-	          </ul>
-	</div>
+	
 	<div id= 'JpayAfter_list'>
 	        <div id='subject'>결제내역</div>
 	</div>

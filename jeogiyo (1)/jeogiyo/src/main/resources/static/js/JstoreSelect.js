@@ -1,10 +1,13 @@
 /**
  * 
  */
+ //document.addEventListener('DOMContentLoaded', () => {
+	
   function movePage(page){
-	let frm = document.frm_consumer;
+	let frm = document.frm_Jstore;
+	let url = 'JstoreSelect';
 	frm.nowPage.value = page;
-	frm.action = "JstoreSelect"
+	frm.action = url;
 	frm.submit();
 }
 
@@ -14,7 +17,7 @@ var citySelect;
 var find_Store;
 //도시 선택 후 지역출력 
 function cityFindChange(JstoreName){
-	var seoul=["강남구", "강서구", "강북구"];
+	var seoul=["강남구", "강동구", "강북구"];
 	var gyeonggi = ["수원시" , "평택시", "용인시"];
 	var pusan = ["수영구", "해운대구", "기장군"];
 	var target = document.getElementById("storeFindStr");	
