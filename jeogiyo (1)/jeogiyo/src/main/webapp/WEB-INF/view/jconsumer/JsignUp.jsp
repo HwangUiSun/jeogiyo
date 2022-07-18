@@ -5,8 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel='stylesheet' href='./css/member.css'>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 <div id='JsignUp'>
@@ -45,10 +43,7 @@
   <label></label>
   <a href ='signUpBtn'><button type='button' id='signUpBtn'>가입완료</button></a>
   
-  <input type='hidden' name='findStr' value='${param.findStr}'/>
-  <input type='hidden' name='nowPage' value='${param.nowPage}'/>
   </form>
-<script src='js/member.js'></script>
 </div>
 </body>
 

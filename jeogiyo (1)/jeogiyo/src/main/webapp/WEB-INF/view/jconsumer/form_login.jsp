@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel='stylesheet' type='text/css' href='./css/member.css'>
 <title>form_login.jsp</title>
 <style>
 
 </style>
 </head>
 <body>
-<form name ='frm_Login' id='frm_Login' method='post'>
+<form name ='' id='' method='post'>
  <h1>로그인</h1>
       <label>아 이 디 </label>
       <input type='text' name='id' size='14'/>
@@ -28,7 +27,6 @@
      <a href='JsignUp'>회원가입</a>
 
 </form>
- <script src='./js/member.js'></script>      
 
 </body>
 </html>
