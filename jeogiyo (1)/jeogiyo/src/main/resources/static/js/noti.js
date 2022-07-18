@@ -24,12 +24,19 @@ noti_view.view = function(sno){
 	
 }
 function movePage(page){
-		let url = 'center_noti';
-		let frm = document.frm_noti;
-		frm.nowPage.value = page;
-		console.log(page);
-		frm.action = url;
-		frm.submit();
+		let log = $("#ioginId").attr("value")
+		if(log=="root"){
+			let url = 'center_noti';
+			let frm = document.frm_noti;
+			frm.nowPage.value = page;
+			frm.action = url;
+			frm.submit();	
+		}else{
+			let frm = document.frm_noti;
+			frm.nowPage.value = page;
+			frm.action='noti';
+			frm.submit();	
+		}
 }
 
 noti_view.input = function(frm){
@@ -40,8 +47,14 @@ noti_view.input = function(frm){
 // 검색
 noti_view.find = function(frm){
 	frm.nowPage.value=1;
-	frm.action = "center_noti"
-	frm.submit();
+	let log = $("#ioginId").attr("value")
+		if(log=="root"){
+			frm.action = "center_noti"
+			frm.submit();	
+		}else{
+			frm.action='noti';
+			frm.submit();	
+		}
 }
 
 
