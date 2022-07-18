@@ -332,5 +332,31 @@ public class JcenterController {
 		mv.setViewName("/center/center_index");		
 		return mv;
 	}
+	
+	@RequestMapping("addsC")
+	public ModelAndView updateEa(com.jpro.jstore.Page page,HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		int ea = Integer.parseInt(req.getParameter("ea"));
+		int sno = Integer.parseInt(req.getParameter("sno"));
+		
+		String url = "../common/order_view.jsp";
+		mv.addObject("inc",url);
+		HttpSession s = req.getSession();
+		String tableName = (String)s.getAttribute("tableName");
+	
+		page.setTableName(tableName);	
+		baljuDao.updateEa(ea, sno, tableName);
+		
+
+		//select(title)
+		tableName =req.getParameter("title");
+		System.out.println(tableName);
+		List<JbaljuListVo> selectSubOne = null;	
+		selectSubOne =baljuDao.selecSubtList(page,tableName);	
+		mv.addObject("selectSubOne",selectSubOne);
+		mv.addObject("inc",url);		
+		mv.setViewName("center/center_index");		
+		return mv;
+	}
 
 }

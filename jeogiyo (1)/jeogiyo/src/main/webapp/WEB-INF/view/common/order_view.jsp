@@ -38,10 +38,10 @@
 			<c:forEach var='v' items='${selectSubOne}'>		
 			<div class="items " >
 					<span id="productName">${v.productName}</span>
-					<span>${param.id}</span>
+					<span class="rid">${param.id}</span>
 					<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
 					<c:if test ="${mid == 'root'}">
-					<span><button type="button"  onclick="add('${v.sno}', 'ea${v.sno}')">수정</button></span>
+					<span><button type="button"  onclick="add('${v.sno}', 'ea${v.sno}','${param.title}')">수정</button></span>
 					</c:if>
 					<input type="hidden" value="${v.sno}" name="sno" id="sno">
 				</div>
@@ -62,6 +62,48 @@
 
 </body>
 <script>
+let ids = [];
+function add(sno,eas,title){
+	let ea = document.getElementById(eas)
+	/* Javascript */
+	// create element (form)
+	var newForm = document.createElement('form');
+	// set attribute (form) 
+	newForm.name = 'newForm';
+	newForm.method = 'post';
+	newForm.action = '/addsC';	
+
+	// create element (input)
+	var eainput = document.createElement('input');
+	var snoinput = document.createElement('input');
+	var titleinput = document.createElement('input');
+	// set attribute (input)
+	eainput.setAttribute("type", "hidden");
+	eainput.setAttribute("name", "ea");
+	eainput.setAttribute("value", ea.value);
+	snoinput.setAttribute("type", "hidden");
+	snoinput.setAttribute("name", "sno");
+	snoinput.setAttribute("value", sno);
+	titleinput.setAttribute("type", "hidden");
+	titleinput.setAttribute("name", "title");
+	titleinput.setAttribute("value", title);
+	console.log(title)
+	alert("w")
+	// append input (to form)
+	newForm.appendChild(snoinput);
+	newForm.appendChild(eainput);
+	newForm.appendChild(titleinput);
+	
+	// append form (to body)
+	document.body.appendChild(newForm);
+
+	
+	
+	// submit form
+	newForm.submit();
+	
+}
+
 function wait(title){
 	var waitForm = document.createElement('form');
 	waitForm.name = 'waitForm';
@@ -95,6 +137,22 @@ function accept(title){
 	// submit form
 	acceptForm.submit();
 	
+	
+	
 }
+
+frm = document.frm_order_view;
+lastIndex = document.getElementById("title").value.length;	
+idIndex = lastIndex - 9;
+let sd = document.getElementById("title").value.slice(-9,lastIndex).split("_")
+let id = document.getElementById("title").value.slice(0,idIndex)
+let str = sd[0]+"-0"+sd[1]+"-"+sd[2]
+document.getElementById("nal").value=str;
+frm.jcenterName.value = id
+ids = document.getElementsByClassName("rid")
+for(let i = 0; i< ids.length;i++){
+	ids[i].innerText=id;
+}
+
 </script>
 </html>
