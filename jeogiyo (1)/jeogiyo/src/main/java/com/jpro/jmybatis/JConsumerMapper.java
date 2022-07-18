@@ -51,5 +51,6 @@ public interface JConsumerMapper {
 	
 	//FAQ(리스트)
 	public List<String> JFAQ(List<String> list);
+	public String findId(JConsumerVo vo);
 	
 }
