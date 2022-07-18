@@ -46,8 +46,15 @@ noti_view.init = function(){
 	frm.submit();
 }
  noti_view_back = function(frm){
-	frm.action="center_noti";
-	frm.submit();
+	let log = $("#ioginId").attr("value")
+	if(log=="root"){
+		frm.action="center_noti";
+		frm.submit();	
+	}else{
+		frm.action='noti';
+		frm.submit();	
+	}
+	
 	
 }
 
