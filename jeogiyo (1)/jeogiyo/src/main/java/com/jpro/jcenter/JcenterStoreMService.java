@@ -36,7 +36,7 @@ public class JcenterStoreMService implements Jcenter{
 			page.setTotSize(totSize);
 			page.compute();
 			list = mapper.storeSelect(page);
-			System.out.println(totSize);
+			System.out.println("sertoto"+totSize);
 			System.out.println(list);
 		}catch(Exception ex) {
 			ex.printStackTrace();

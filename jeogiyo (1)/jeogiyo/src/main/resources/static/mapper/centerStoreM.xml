@@ -7,14 +7,15 @@
 	<select id='totSize' parameterType='com.jpro.jcenter.Page' resultType='Integer'>
 		select count(mid) totSize
 		from jstorevo
-		where mainLocal = #{서울}
+		where mainLocal like '%${findStr}'
 	</select>
 	
-	<select id='select' parameterType='com.jpro.jcenter.Page' resultType='JstoreVo'>
+	<select id='storeSelect' parameterType='com.jpro.jcenter.Page' resultType='JstoreVo'>
 		select *
 		from jstorevo
-		where mainLocal = #{서울}
-		limit ${startNo-1}, ${listSize}
+		where mainLocal like '%${findStr}'
+		order by length(storeName) asc
+		limit ${startNo}, ${listSize}
 	</select>
 
 </mapper>
