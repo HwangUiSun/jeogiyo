@@ -17,7 +17,7 @@
  	<div class='right'>
  		<input type='hidden' name='tableName' value='${tableName}' id="tableName">
 		<label>가맹점명</label>
-		<input type='text' name='store' value='${tableName}'>${mid}</br>
+		<input type='text' name='store' value='${tableName}'></br>
 		<label>날짜</label>
 		<input type='date' name='today' id="today" readonly></br>
 		<label>발주 품목</label></br>
@@ -35,8 +35,10 @@
 			</c:forEach>
 		</div>	
 		<div class = 'btn'>
-			<button type='button' name='btnInsert'onclick="complete()">완료</button>
-			<button type='button' name='btnCancel' onclick="drop()">취소</button>
+
+			 <button type='button' name='btnInsert'onclick="complete()" id="comp">완료</button> 
+
+			<!--<button type='button' name='btnCancel' onclick="drop()">완료</button>-->
 		</div>
   </div>
 
@@ -65,7 +67,7 @@
 	</div>
 
 <input type="hidden" name="title" id="title" value="${param.title}">
-<input type="text" name="nal" id="nal" value="">
+<input type="hidden" name="nal" id="nal" value="">
 </div>
 
 

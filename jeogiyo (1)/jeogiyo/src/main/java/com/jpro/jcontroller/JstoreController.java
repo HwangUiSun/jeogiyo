@@ -342,19 +342,25 @@ public class JstoreController {
 	public ModelAndView insertba(com.jpro.jstore.Page page,HttpServletRequest req,
 			HttpServletResponse resp) {
 			
-		if(b>0) {
-			ModelAndView mv = new ModelAndView();					
-			mv.setViewName("/center/center_index");
-		}else {
-			String title = (String)req.getParameter("titles");
-			JbaljudetailsVo vo = new JbaljudetailsVo();
+		
+			ModelAndView mv = new ModelAndView();
+			String url = "../common/order_main2.jsp";
+			mv.addObject("inc",url);	
+			HttpSession s = req.getSession();
+			JbaljudetailsVo vo=null;
+			String msg="";
+			String title = req.getParameter("title");
+			mv.setViewName("store/store_index");
+			vo = new JbaljudetailsVo();
 			vo.setTitle(title);
-			HttpSession s = req.getSession();	
-			b = baljuDao.insertJbaljudetails(vo.getTitle(),(String)s.getAttribute("mid"));
-		}	
-	
-		ModelAndView mv = new ModelAndView();					
-		mv.setViewName("store/store_index");		
+			msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));	
+			List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+			page = baljuDao.getPage();
+			mv.addObject("baljupage",page);
+			mv.addObject("baljulist",baljulist);
+			s.setAttribute("msg", msg);
+			mv.addObject("msg",msg);					
+			mv.setViewName("store/store_index");		
 		return mv;
 	}
 	

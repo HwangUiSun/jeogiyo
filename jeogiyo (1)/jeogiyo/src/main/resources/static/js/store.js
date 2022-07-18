@@ -23,7 +23,8 @@
 		})
 }
 
-
+	let comp = document.getElementById("comp");
+	let cancle = document.getElementById("cancle");
 
 
 	//발주 하기 추가, 삭제 함수들..
@@ -71,15 +72,20 @@
 		cForm.action = '/insertba';
 		let tableName = document.getElementById("tableName");
 		let titles = tableName.value;
+		console.log(titles)
 		var titlesinput = document.createElement('input');
 		titlesinput.setAttribute("type", "hidden");
-		titlesinput.setAttribute("name", "titles");
+		titlesinput.setAttribute("name", "title");
 		titlesinput.setAttribute("value", titles);
 		cForm.appendChild(titlesinput);
 		// append form (to body)
 		document.body.appendChild(cForm);
 		// submit form
 		cForm.submit();
+		
+		
+		
+		
 		
 	}
 	
