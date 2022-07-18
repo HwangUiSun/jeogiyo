@@ -19,7 +19,7 @@
 		<label>가맹점명</label>
 		<input type='text' name='store' value='${tableName}'>${mid}</br>
 		<label>날짜</label>
-		<input type='date' name='today' readonly>${nal}</br>
+		<input type='date' name='today' id="today" readonly></br>
 		<label>발주 품목</label></br>
 		<div class='subList'>
 		<c:set var='num' value='1'/>
@@ -64,7 +64,8 @@
 				</c:forEach>
 	</div>
 
-
+<input type="hidden" name="title" id="title" value="${param.title}">
+<input type="text" name="nal" id="nal" value="">
 </div>
 
 

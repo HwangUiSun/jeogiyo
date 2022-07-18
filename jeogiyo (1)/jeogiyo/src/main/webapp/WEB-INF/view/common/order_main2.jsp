@@ -13,9 +13,13 @@
 
 <a href='storeCenter'>Home</a>
 <div id='menuTitle'>
+	<c:if test="${mid != 'root'  }">
 	<button type='submit' onclick="moveUrl()">
+	
 		발주 작성<br/>페이지
+
 	</button>
+	</c:if>
 </div>
 <div class='title' onclick="">
 		<span>NO</span>
@@ -71,7 +75,8 @@
 	</div>
 	<form name="frm_order" method="post">
 		<input type="hidden" name="nowPage" value="${baljupage.nowPage}">
-		
+		<input type="hidden" name="title" id="title" value="${param.title}">
+		<input type="hidden" name="nal" id="nal" value="">
 	</form>
 <script src="./js/order_main.js"></script>
 </body>

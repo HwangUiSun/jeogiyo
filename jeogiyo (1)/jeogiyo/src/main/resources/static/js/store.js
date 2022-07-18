@@ -109,9 +109,7 @@
 		}
 	function add(sno,eas){
 		let ea = document.getElementById(eas)
-		console.log(ea)
-		console.log(eas)
-		alert(ea.value)
+
 		/* Javascript */
 		// create element (form)
 		var newForm = document.createElement('form');
@@ -137,7 +135,7 @@
 	
 		// append form (to body)
 		document.body.appendChild(newForm);
-		console.log("여기까지왔니?")
+
 		// submit form
 		newForm.submit();
 	}
@@ -151,5 +149,11 @@
 		document.body.appendChild(dropForm);
 		dropForm.submit();
 	}
+	
+	frm = document.frm_order_view;
+	lastIndex = document.getElementById("title").value.length;	
+	let sd =document.getElementById("title").value.slice(-9,lastIndex).split("_")
+	let str = sd[0]+"-0"+sd[1]+"-"+sd[2]
+	document.getElementById("nal").value=str;
 
-
+  document.getElementById('today').value = new Date().toISOString().substring(0, 10);
