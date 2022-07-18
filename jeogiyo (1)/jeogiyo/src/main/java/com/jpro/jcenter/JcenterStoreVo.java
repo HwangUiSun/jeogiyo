@@ -9,4 +9,5 @@ public class JcenterStoreVo {
 	String storeStatus;
 	String inStatus;
 	String outStatus;
+
 }

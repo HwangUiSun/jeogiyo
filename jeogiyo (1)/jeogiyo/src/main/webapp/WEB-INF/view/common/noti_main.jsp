@@ -11,16 +11,19 @@
 <body>
 <div id="subject">공지 사항</div>
 <div id='menuTitle'>
-	<button type='button' onclick="location.href='noti_view'">
-		공지사항<br/>상세보기
-	</button>
-	<button type='button' onclick="location.href='center_notiView'">
-		(본사)공지사항<br/>상세보기
-	</button>
-	<button type='button' onclick="location.href='center_notiInput'">
-		(본사)공지사항<br/>작성
-	</button>
-	<a href='storeCenter'>Home</a>
+	
+	<form name="frm_noti" method="post">
+		<a href='storeCenter'>Home</a>
+		<div id="inputbutton">
+			<button type='button' onclick="noti_view.input(this.form)" >
+				(본사)공지사항<br/>작성하기
+			</button>
+		</div>	
+		<input type="text" name="sno" value="${vo.sno }">
+		<input type="text" name="nowPage" value="${notipage.nowPage}" >
+		<input type="text" name="findStr" value="${notipage.findStr}" >
+		<button type='button' onclick="noti_view.find(this.form)">검색</button>
+	</form>
 </div>
 <div class='title' onclick="">
 		<span>NO</span>
@@ -31,7 +34,7 @@
 	<div class="itemsWrap">
 	<c:set var='num' value='${notipage.startNo }' />
 	<c:forEach var='v' items='${notilist}'>
-		<div class='items' onclick="">
+		<div class='items' onclick="noti_view.view(${num})">
 			<span >${num}</span>
 			<span>${v.subject}</span>
 			<span>본사</span>
@@ -58,9 +61,7 @@
 			</c:if>		
 		</div>	
 	</div>
-	<form name="frm_noti" method="post">
-		<input type="hidden" name="nowPage" value="${notipage.nowPage}">
-	</form>
+	
 <script src='./js/noti.js'></script>
 </body>
 </html>

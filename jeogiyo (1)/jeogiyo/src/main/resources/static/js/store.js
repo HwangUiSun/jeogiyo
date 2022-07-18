@@ -22,7 +22,21 @@
 		
 		})
 }
-		
+
+
+
+
+	//발주 하기 추가, 삭제 함수들..
+	function complete(){
+		var cForm = document.createElement('form');
+		cForm.name = 'subForm';
+		cForm.method = 'post';
+		cForm.action = '/order';
+		let tableName = document.getElementById("tableName");
+		let title = tableName.value;
+	}
+	
+	
 	function sub(sno){
 		var subForm = document.createElement('form');
 		// set attribute (form) 

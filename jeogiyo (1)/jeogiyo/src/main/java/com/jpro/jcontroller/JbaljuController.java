@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jpro.jstore.JbaljuSurvice;
+import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljuListVo;
 
 @RestController
 public class JbaljuController {
 	@Autowired
-	JbaljuSurvice dao;
+	JbaljuService dao;
 	//테이블 복사 생성 (가맹 발주하기 페이지 갈때 테이블 생성)
 	@RequestMapping("cTable")
 	public ModelAndView createTable(HttpServletRequest req, HttpServletResponse resp) {
 		ModelAndView mv = new ModelAndView();	
-		//(실 사용 변수) String storeName = (String)req.getAttribute("storeName"); 
-		String storeName = "testStore"; //테스트할려고 넣은 변수이므로 주석처리나 삭제해도되욤
+		String storeName = (String)req.getAttribute("mid"); 
+		//String storeName = "testStore"; //테스트할려고 넣은 변수이므로 주석처리나 삭제해도되욤
 		dao.createTable(storeName);
 		mv.setViewName("center/center_index");		
 		return mv;

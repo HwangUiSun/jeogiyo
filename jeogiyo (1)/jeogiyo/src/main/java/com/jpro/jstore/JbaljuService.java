@@ -18,7 +18,7 @@ import com.jpro.jmybatis.JbaljuMapper;
 
 
 @Service
-public class JbaljuSurvice {
+public class JbaljuService {
 	@Autowired
 	@Qualifier("JbaljuMapper")
 	JbaljuMapper mapper;

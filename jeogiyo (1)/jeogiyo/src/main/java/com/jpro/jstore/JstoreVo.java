@@ -1,7 +1,23 @@
 package com.jpro.jstore;
 
 public class JstoreVo {
-	String mid, pwd, name, email, phone, address, zipcode, storeName;
+	String mid, pwd, name, email, phone, address, zipcode, storeName, mainLocal, subLocal;
+
+	public String getMainLocal() {
+		return mainLocal;
+	}
+
+	public void setMainLocal(String mainLocal) {
+		this.mainLocal = mainLocal;
+	}
+
+	public String getSubLocal() {
+		return subLocal;
+	}
+
+	public void setSubLocal(String subLocal) {
+		this.subLocal = subLocal;
+	}
 
 	public String getMid() {
 		return mid;

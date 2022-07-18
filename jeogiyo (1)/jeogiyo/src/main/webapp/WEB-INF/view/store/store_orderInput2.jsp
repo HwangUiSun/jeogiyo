@@ -35,7 +35,7 @@
 			</c:forEach>
 		</div>	
 		<div class = 'btn'>
-			<button type='button' name='btnInsert'>완료</button>
+			<button type='button' name='btnInsert'onclick="complete()">완료</button>
 			<button type='button' name='btnCancel' onclick="drop()">취소</button>
 		</div>
   </div>
@@ -51,7 +51,7 @@
 
 	<div class='orderInput_list'>
 	
-		<c:set var='num' value='${baljupage2.startNo+1}'/>
+		<c:set var='num' value='${baljupage2.startNo}'/>
 				<c:forEach var='v' items='${baljulist2}'>
 				<div class="items ex${num}">
 					<span>${num}.</span>

@@ -4,7 +4,9 @@ import java.net.http.HttpRequest;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -15,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jpro.common.J_loginService;
 import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.common.Page;
 import com.jpro.jstore.JbaljuListVo;
-import com.jpro.jstore.JbaljuSurvice;
+import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
+import com.jpro.jstore.JstoreVo;
 
 @RestController
 public class JstoreController {
@@ -28,7 +32,11 @@ public class JstoreController {
 	J_notiService notiDao;
 	
 	@Autowired
-	JbaljuSurvice baljuDao;
+	JbaljuService baljuDao;
+	
+	@Autowired
+	J_loginService loginDao;
+	
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
 		ModelAndView mv = new ModelAndView();
@@ -39,10 +47,30 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("store_login")
-	public ModelAndView store_login() {
+	public ModelAndView store_login(JstoreVo vo, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("store/store_index");
+		vo.setMid(req.getParameter("mId"));
+		vo.setPwd(req.getParameter("password"));
+		JstoreVo rVo = loginDao.login(vo, req);
+		
+		if(rVo != null) {
+			if(rVo.getMid().equals("root")) {
+				mv.setViewName("center/center_index");
+			}else{
+				mv.setViewName("store/store_index");
+			}
+		}
+		else {
+			mv.setViewName("common/SC_loginResult");
+		}
+		return mv;
+	}
+	
+	@RequestMapping("login_fail")
+	public ModelAndView login_fail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("common/SC_login");
 		
 		return mv;
 	}
@@ -138,7 +166,8 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("store_orderInput")
-	public ModelAndView store_orderInput(com.jpro.jstore.Page page,HttpServletRequest req) {
+	public ModelAndView store_orderInput(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
 //		ModelAndView mv = new ModelAndView();
 //		String url = "../store/store_orderInput.jsp";
 //		mv.addObject("inc",url);
@@ -150,10 +179,24 @@ public class JstoreController {
 //		mv.setViewName("store/store_index");
 		ModelAndView mv = new ModelAndView();
 		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
+		String tableName = null;
+		if(s.getAttribute("tableName")==null) {
+			tableName=(String)s.getAttribute("tableName");
+		}else {
+			Cookie[] c = req.getCookies();
+			for(Cookie i : c) {
+				if(i.getName().equals("tableName")) {
+					tableName = i.getValue();
+				}
+			}
+		}
 		if(tableName==null || tableName.equals("")) {
-			tableName= baljuDao.createTable("test");
-			s.setAttribute("tableName", tableName);			
+			tableName= baljuDao.createTable((String)s.getAttribute("mid"));
+			s.setAttribute("tableName", tableName);	
+			Cookie cookei = new Cookie("tableName", tableName);
+			cookei.setPath("/");
+			cookei.setMaxAge(60*60*3);
+			resp.addCookie(cookei);
 		}
 		page.setTableName(tableName);
 		String url = "../store/store_orderInput2.jsp";
@@ -273,7 +316,8 @@ public class JstoreController {
 		return mv;
 	}
 	@RequestMapping("dropT")
-	public ModelAndView droptable(com.jpro.jstore.Page page,HttpServletRequest req) {
+	public ModelAndView droptable(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
 		ModelAndView mv = new ModelAndView();		
 		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);	
@@ -287,6 +331,13 @@ public class JstoreController {
 		mv.addObject("baljulist2","");//addList
 		mv.addObject("baljulist3","");//sublist	
 		s.setAttribute("tableName", "");
+		Cookie[] c = req.getCookies();
+		for(Cookie i : c) {
+			i.setValue(null);
+			i.setMaxAge(0);
+			i.setPath("/");
+			resp.addCookie(i);
+		}
 		mv.setViewName("store/store_index");		
 		return mv;
 	}
