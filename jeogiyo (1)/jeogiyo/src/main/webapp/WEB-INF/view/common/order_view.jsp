@@ -38,21 +38,22 @@
 					<span id="productName">${v.productName}</span>
 					<span>${param.id}</span>
 					<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
-					
+					<c:if test ="${mid == 'root'}">
 					<span><button type="button"  onclick="add('${v.sno}', 'ea${v.sno}')">수정</button></span>
-					
+					</c:if>
 					<input type="hidden" value="${v.sno}" name="sno" id="sno">
 				</div>
 			</c:forEach>
 		</div> 
 	</form>
 	<div class = 'btns'>
-	
-		<button type = 'button' value = 'btn_delete' name = 'delete' onclick="accept('${param.title}')">주문접수</button>
-
+	<c:if test ="${mid == 'root'}">
+		<button type = 'button' value = 'btn_delete' name = 'delete' onclick="accept('${param.title}')">주문승인</button>
+		<button type = 'button' value = 'btn_back' name = 'back' onclick="wait('${param.title}')">주문대기</button>
+	</c:if>
 		<button type = 'button' value = 'btn_back' name = 'back' onclick="location.href='order'">돌아가기</button>
 	</div>
-</div>
+	</div>
 <script src="js/store.js"></script>
 </body>
 </html>

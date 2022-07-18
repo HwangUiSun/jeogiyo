@@ -386,5 +386,23 @@ public class JstoreController {
 		return mv;
 	}
 	
+	@RequestMapping("waitOrder")
+	public ModelAndView waitOrder(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
+		HttpSession s = req.getSession();
+		String title = req.getParameter("title");		
+		baljuDao.waitOrder(title);
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+		ModelAndView mv = new ModelAndView();			
+		String url = "../common/order_main2.jsp";
+		page = baljuDao.getPage();
+		mv.addObject("baljupage",page);
+		mv.addObject("inc",url);
+		mv.addObject("title",title);
+		mv.addObject("baljulist",baljulist);
+		mv.setViewName("/store/store_index");		
+		return mv;
+	}
+	
 	
 }

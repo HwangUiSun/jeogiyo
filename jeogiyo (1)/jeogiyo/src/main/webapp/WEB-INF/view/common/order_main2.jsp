@@ -30,6 +30,7 @@
 				<input type="hidden" name="sno" value="${v.sno}">
 				<input type="hidden" name="title" value="${v.title}">
 				<input type="hidden" name="id" value="${v.id}">
+				<input type="hidden" name="mid" value="${mid}">
 				<input type="hidden" name="nowPage" value="${baljupage.nowPage}">
 			</form>
 		<div class='items' onclick="orderView(${v.sno})">

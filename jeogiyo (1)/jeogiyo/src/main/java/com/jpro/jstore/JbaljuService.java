@@ -104,6 +104,13 @@ public class JbaljuService {
 			ex.printStackTrace();
 		}
 	}
+	public void waitOrder(String title) {
+		try {					
+			mapper.waitOrder(title);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 	
 	public List<JbaljudetailsVo> select(Page mpage) {
 		List<JbaljudetailsVo> list = new ArrayList<JbaljudetailsVo>();

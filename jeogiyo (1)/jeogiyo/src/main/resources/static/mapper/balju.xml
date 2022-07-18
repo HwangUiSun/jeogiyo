@@ -41,6 +41,10 @@
 		update jbaljudetails set status = true where title = #{title};
 	</update>
 	
+	<update id="waitOrder" parameterType="String">
+		update jbaljudetails set status = false where title = #{title};
+	</update>
+	
 	<update id="updateStatusTrue" parameterType="map">
 		${updateStatusTrue}
 	</update>

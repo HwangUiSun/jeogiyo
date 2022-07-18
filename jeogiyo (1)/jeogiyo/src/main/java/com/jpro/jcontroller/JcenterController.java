@@ -14,6 +14,8 @@ import com.jpro.jcenter.JcenterMemberVo;
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
+import com.jpro.jstore.JbaljuService;
+import com.jpro.jstore.JbaljudetailsVo;
 
 @RestController
 public class JcenterController {
@@ -21,6 +23,9 @@ public class JcenterController {
 	JcenterMemberService dao;
 	@Autowired
 	J_notiService notiDao;
+	
+	@Autowired
+	JbaljuService baljuDao;
 	
 	
 	@RequestMapping("index")
@@ -142,17 +147,27 @@ public class JcenterController {
 	
 	
 	@RequestMapping("center_order")
-	public ModelAndView centerOrder(com.jpro.common.Page notipage) {
+	public ModelAndView centerOrder(com.jpro.jstore.Page page) {
+//		ModelAndView mv = new ModelAndView();
+//		String url = "../common/order_main.jsp";
+//		mv.addObject("inc",url);
+//		
+//		List<J_notiVo> notilist = notiDao.select(notipage); 
+//		notipage = notiDao.getPage();
+//		mv.addObject("orderlist",notilist);
+//		mv.addObject("orderpage",notipage);
+//		mv.setViewName("center/center_index");
+//		
+//		return mv;
 		ModelAndView mv = new ModelAndView();
-		String url = "../common/order_main.jsp";
+		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);
-		
-		List<J_notiVo> notilist = notiDao.select(notipage); 
-		notipage = notiDao.getPage();
-		mv.addObject("orderlist",notilist);
-		mv.addObject("orderpage",notipage);
-		mv.setViewName("center/center_index");
-		
+		mv.setViewName("store/store_index");
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+		page = baljuDao.getPage();
+		mv.addObject("baljupage",page);
+		mv.addObject("baljulist",baljulist);
+		mv.setViewName("store/store_index");
 		return mv;
 	}
 	

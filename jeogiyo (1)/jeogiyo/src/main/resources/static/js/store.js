@@ -27,6 +27,23 @@
 
 
 	//발주 하기 추가, 삭제 함수들..
+	function wait(title){
+		var waitForm = document.createElement('form');
+		waitForm.name = 'waitForm';
+		waitForm.method = 'post';
+		waitForm.action = '/waitOrder';
+		let tableName = document.getElementById("tableName");
+		var titlesinput = document.createElement('input');
+		titlesinput.setAttribute("type", "hidden");
+		titlesinput.setAttribute("name", "title");
+		titlesinput.setAttribute("value", title);
+		waitForm.appendChild(titlesinput);
+		// append form (to body)
+		document.body.appendChild(waitForm);
+		// submit form
+		waitForm.submit();
+		
+	}
 	function accept(title){
 		var acceptForm = document.createElement('form');
 		acceptForm.name = 'acceptForm';
