@@ -52,7 +52,7 @@ public class JstoreController {
 	@RequestMapping("store_login")
 	public ModelAndView store_login(JstoreVo vo, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
+		HttpSession session =req.getSession();
 		vo.setMid(req.getParameter("mId"));
 		vo.setPwd(req.getParameter("password"));
 		JstoreVo rVo = loginDao.login(vo, req);
@@ -60,8 +60,10 @@ public class JstoreController {
 		HttpSession s = req.getSession();
 		if(rVo != null) {
 			if(rVo.getMid().equals("root")) {
+				session.setAttribute("id", rVo.getMid());
 				mv.setViewName("center/center_index");
 			}else{
+				session.setAttribute("id", rVo.getMid());
 				mv.setViewName("store/store_index");
 				tableName = baljuDao.createTable((String)s.getAttribute("mid"));
 				s.setAttribute("tableName", tableName);

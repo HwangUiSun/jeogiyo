@@ -13,6 +13,7 @@
 <div id='container'>
 	<header id="top_logo">
 		<h1>jeogiyo</h1>
+		<div id="loginIdprint">★ ${sessionScope.id}님 ★</div>
 		<button type='button' id='store_logoutBtn' onclick="location.href='index'">로그아웃</button>
 	</header>
 	
