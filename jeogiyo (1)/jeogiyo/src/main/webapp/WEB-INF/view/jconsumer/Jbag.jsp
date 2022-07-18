@@ -15,7 +15,7 @@
 
 <div id='Jag'>
 	
-	<div id= 'Jbeg_list'>
+	<div id= 'Jbag_list'>
 	        <div id='subject'>장바구니</div>
 	   <div id='wrap'>
 		<div class='title'>

@@ -60,13 +60,12 @@ window.onload = function(){
             	
             var addr = '';
             
-            if(data.userSelectedTyp === 'R'){
+            if(data.userSelectedType === 'R'){
             	addr = data.roadAddress;
             }else{
             	addr = data.jibunAddress;
             }
             
-                //document.getElementById("btnZipFind").value = data.zipcode; // 주소 넣기
                 document.getElementById("zipcode").value = data.zonecode;
                 document.getElementById("address").value = addr;
                 
