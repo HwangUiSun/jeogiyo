@@ -10,8 +10,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 
-import com.jpro.common.J_notiVo;
-import com.jpro.common.Page;
+
+
 import com.jpro.jmybatis.JConsumerMapper;
 
 @Service

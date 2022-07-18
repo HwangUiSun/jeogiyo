@@ -1,10 +1,13 @@
 /**
  * 
  */
+ //document.addEventListener('DOMContentLoaded', () => {
+	
   function movePage(page){
-	let frm = document.frm_consumer;
+	let frm = document.frm_Jstore;
+	let url = 'JstoreSelect';
 	frm.nowPage.value = page;
-	frm.action = "JstoreSelect"
+	frm.action = url;
 	frm.submit();
 }
 

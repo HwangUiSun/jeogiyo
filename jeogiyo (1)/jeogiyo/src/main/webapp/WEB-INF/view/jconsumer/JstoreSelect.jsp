@@ -22,6 +22,7 @@
 	            
 				<select class='mapFind' id='mapFindStr' name='mapFindStr' onchange='cityFindChange(this)'>
 				
+				<option>선택해주세요</option>
 				<option value='seoul'>서울</option>
 				<option value='gyeonggi'>경기</option>
 				<option value='pusan'>부산</option>
@@ -49,13 +50,14 @@
 			<span>전화번호</span>
 			
 		</div>
-		<c:forEach var = 'status' begin = '1' end = '5'>
 		<div id = 'itemsWrap'>
-		       <div class='items'>
+		<c:set var='num' value='${consumerpage.startNo }' />
+		<c:forEach var='v' items='${storeSelectlist}'>
+		       <div class='items'onclick="">
 			        <span class='no'     >${num+1 }</span>
-					<span class='storeName'     >서울 강남${num+1 }호점</span>
-					<span class='storeaddress'  >서울 강남구 논현로 16길 5 </span>
-					<span class='genstorecall' >02-1234-1234&nbsp;&nbsp;
+					<span class='storeName'     >${v.sotreName} }</span>
+					<span class='storeaddress'  >${v.address } </span>
+					<span class='genstorecall' >${v.phone} &nbsp;&nbsp;
 			<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기&nbsp;&nbsp;</button></a>
 			<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a></span>
 			 </div>
@@ -69,19 +71,19 @@
 		
 		<div class= 'paging'>	
 	
-	<c:if test="${page.startPage>1}">
+	<c:if test="${consumerpage.startPage>1}">
 		<button type= 'button' class= 'btnFirst' onclick='movePage(1)'>맨처음</button>
-		<button type= 'button' class= 'btnPrev' onclick='movePage(${page.startPage-1})'>이전</button>
+		<button type= 'button' class= 'btnPrev' onclick='movePage(${consumerpage.startPage-1})'>이전</button>
 	</c:if>
 		
 
-		<c:forEach var='i' begin='${page.startPage}' end='${page.endPage}'>
+		<c:forEach var='i' begin='${consumerpage.startPage}' end='${consumerpage.endPage}'>
 		<button type= 'button' class= 'first' onclick ='movePage(${i})'>${i}</button>
 		</c:forEach>
 
-		<c:if test ="${page.endPage<page.totPage}">
-		<button type= 'button' class= 'btnNext' onclick = 'movePage(${page.endPage+1})'>다음</button>
-		<button type= 'button' class= 'btnLast' onclick = 'movePage(${page.totPage})'>맨끝</button>
+		<c:if test ="${consumerpage.endPage<consumerpage.totPage}">
+		<button type= 'button' class= 'btnNext' onclick = 'movePage(${consumerpage.endPage+1})'>다음</button>
+		<button type= 'button' class= 'btnLast' onclick = 'movePage(${consumerpage.totPage})'>맨끝</button>
 		</c:if>
 	</div>
 	</div>
