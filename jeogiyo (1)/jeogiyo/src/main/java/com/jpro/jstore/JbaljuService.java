@@ -288,18 +288,19 @@ public class JbaljuService {
 		ex.printStackTrace();
 	}}
 	
-	public Integer insertJbaljudetails(String title,String id) {
-		int b = 0;
-		String sql = "insert into jbaljudetails(title, id) values(\""+title+"\", \""+id+"\")";
+	public String insertJbaljudetails(String title,String id) {
+	
+		String sql = "insert into jbaljudetails(title, id,status) values(\""+title+"\", \""+id+"\", false)";
+		String msg="";
 		try {
 			status = transaction.getTransaction(new DefaultTransactionDefinition());
 			mapper.insertBalsulistTitle(sql);
 			transaction.commit(status);
-			b = 1;
+			msg="등록성공";
 		}catch(Exception ex) {
-			ex.printStackTrace();
+			msg ="이미 있습니다";
 		}
-		return b;
+		return msg;
 	}
 	
 }
