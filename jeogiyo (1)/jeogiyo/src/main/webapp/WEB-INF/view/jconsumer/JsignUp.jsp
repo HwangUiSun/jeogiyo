@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JsignUp</title>
 </head>
 <body>
+
 <div id='JsignUp'>
   <h1>회원가입</h1>
-  <form name='JsignUp' method='post' id='JsignUp'>
+  <div id='main'>
+  <!--form name='JsignUp' method='post' id='JsignUp'  -->
     <label>아이디</label>
     <input type='text' name='id' size='15'><br/>
     
@@ -21,16 +23,16 @@
     <input type='password' name='pwd' maxlength='10' autocomplete="none"><br/>
     
     <label>연락처</label>
-    <input type='text' name='phone' size='12'><br/>
+    <input type='text' name='phone' size='12'/><br/>
     
     <label>우편번호</label>
-    <input type='text' name='zipcode'  size='12'>
+    <input type='text' name='zipcode'  size='12'/>
     
     <button type='button' id='btnZipFind'>우편번호 검색</button>
     <br/>
     
     <label>주소</label>
-    <input type='text' name='address' size='40'><br/>
+    <input type='text' name='address' size='40'/><br/>
     
     <label>상세주소</label>
     <input type='text' id='apiAddressDetail' size='40'/>
@@ -40,10 +42,11 @@
     <input type='text' name='email' size='30'><br/>
     <br/>
   
+  
   <label></label>
   <a href ='signUpBtn'><button type='button' id='signUpBtn'>가입완료</button></a>
   
-  </form>
+  </div>
 </div>
 </body>
 
@@ -57,7 +60,7 @@ window.onload = function(){
             	
             var addr = '';
             
-            if(data.userSelectedTyp === 'R'){
+            if(data.userSelectedType === 'R'){
             	addr = data.roadAddress;
             }else{
             	addr = data.jibunAddress;
@@ -69,7 +72,7 @@ window.onload = function(){
                 document.getElementById("apiAddressDetail").focus(); //상세입력 포커싱
             }
         }).open();
-    });
-}
+    })
+};
 </script>
 </html>
