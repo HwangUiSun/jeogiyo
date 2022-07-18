@@ -88,7 +88,6 @@ function add(sno,eas,title){
 	titleinput.setAttribute("name", "title");
 	titleinput.setAttribute("value", title);
 	console.log(title)
-	alert("w")
 	// append input (to form)
 	newForm.appendChild(snoinput);
 	newForm.appendChild(eainput);

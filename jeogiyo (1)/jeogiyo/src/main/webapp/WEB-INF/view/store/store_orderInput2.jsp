@@ -36,9 +36,9 @@
 		</div>	
 		<div class = 'btn'>
 
-			<!-- <button type='button' name='btnInsert'onclick="complete()" id="comp">완료</button> -->
+			 <button type='button' name='btnInsert'onclick="complete()" id="comp">완료</button> 
 
-			<button type='button' name='btnCancel' onclick="drop()">완료</button>
+			<!--<button type='button' name='btnCancel' onclick="drop()">완료</button>-->
 		</div>
   </div>
 
