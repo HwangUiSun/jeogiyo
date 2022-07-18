@@ -28,6 +28,9 @@
 	<div id="section">
 		<jsp:include page="${inc}"></jsp:include>
 	</div>
+	<form>
+		<input type="hidden" name="mid" value="${mid}"/>
+	</form>
 
 </div>
 </body>

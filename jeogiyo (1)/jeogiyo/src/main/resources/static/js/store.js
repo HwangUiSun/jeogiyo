@@ -3,7 +3,7 @@
  *   07-11 JR
  */
  
- let store = {};
+
 
  //var noti =document.getElementById("noti");
  
@@ -27,13 +27,43 @@
 
 
 	//발주 하기 추가, 삭제 함수들..
+	function accept(title){
+		var acceptForm = document.createElement('form');
+		acceptForm.name = 'acceptForm';
+		acceptForm.method = 'post';
+		acceptForm.action = '/acceptOrder';
+		let tableName = document.getElementById("tableName");
+		var titlesinput = document.createElement('input');
+		titlesinput.setAttribute("type", "hidden");
+		titlesinput.setAttribute("name", "title");
+		titlesinput.setAttribute("value", title);
+		acceptForm.appendChild(titlesinput);
+		// append form (to body)
+		document.body.appendChild(acceptForm);
+		// submit form
+		acceptForm.submit();
+		
+	}
+	
+	
+	
 	function complete(){
 		var cForm = document.createElement('form');
-		cForm.name = 'subForm';
+		cForm.name = 'cForm';
 		cForm.method = 'post';
-		cForm.action = '/order';
+		cForm.action = '/insertba';
 		let tableName = document.getElementById("tableName");
-		let title = tableName.value;
+		let titles = tableName.value;
+		var titlesinput = document.createElement('input');
+		titlesinput.setAttribute("type", "hidden");
+		titlesinput.setAttribute("name", "titles");
+		titlesinput.setAttribute("value", titles);
+		cForm.appendChild(titlesinput);
+		// append form (to body)
+		document.body.appendChild(cForm);
+		// submit form
+		cForm.submit();
+		
 	}
 	
 	
@@ -57,6 +87,8 @@
 		document.body.appendChild(subForm);
 		// submit form
 		subForm.submit();
+		
+		
 		}
 	function add(sno,eas){
 		let ea = document.getElementById(eas)

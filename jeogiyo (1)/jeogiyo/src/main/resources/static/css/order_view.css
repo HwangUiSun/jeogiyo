@@ -51,18 +51,53 @@
 	font-size : 15px;
 }
 
-#order_view .frm_order_view #orderlist{
+#orderlist{
 	margin-top : 10px;
 	margin-bottom : 10px;
 	width: 1100px;
 	height: 400px;
 	font-weight : bold;
 	font-size: 1.2em;
+	overflow:scroll;
 }
 
 #order_view .btns button:hover{
 	cursor : pointer;
 	background-color : #999;
+}
+.items{
+	width:80%;
+	display:flex;
+	flex-direction: row;
+}
+
+.items span{
+	display:block;
+	text-align:center;
+	height:42px;
+	box-sizing:border-box;
+	padding: 10px 5px;
+	line-height:21px;
+}
+.items span input{
+	width:70px;
+	text-align:center;
+}
+.items span:nth-child(1){
+	width:30%;
+ 
+ }
+.items span:nth-child(2){ 
+	width:30%;
+ 
+}
+.items span:nth-child(3){ 
+	width:10%;
+
+}
+.items span:nth-child(3){ 
+	width:30%;
+
 }
 
 

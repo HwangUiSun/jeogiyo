@@ -9,17 +9,23 @@
 		where title like "%${findStr}%"
 	</select>
 	
+	<select id="selectOneDetail" parameterType="Integer" resultType="JbaljudetailsVo">
+		select * from jbaljudetails
+		where sno = ${sno}
+	</select>
+	
 	<select id="select" parameterType="mPage" resultType="JbaljudetailsVo">
 		select * from jbaljudetails
 		where title like "%${findStr}%"
+		order by sno desc
 		limit ${startNo-1}, ${listSize}
 	</select>
 	
-	<select id="selectList" parameterType="mPage" resultType="JbaljuListVo">
-		select * from ${tableName} where ea = 0
+	<select id="selectList" parameterType="String" resultType="JbaljuListVo">
+		${tableName} 
 	</select>
-	<select id="selecSubtList" parameterType="mPage" resultType="JbaljuListVo">
-		select * from ${tableName} where ea > 0
+	<select id="selecSubtList" parameterType="String" resultType="JbaljuListVo">
+		${tableName} 
 	</select>
 	
 	
@@ -29,6 +35,10 @@
 
 	<update id="update" parameterType="map">
 		${insertTable}
+	</update>
+	
+	<update id="changeStatus" parameterType="String">
+		update jbaljudetails set status = true where title = #{title};
 	</update>
 	
 	<update id="updateStatusTrue" parameterType="map">
@@ -50,5 +60,9 @@
 	
 	<insert id="insertVO" parameterType="map">
 		${insert}  
+	</insert>
+	
+	<insert id="insertBalsulistTitle" parameterType="String">
+		${title}
 	</insert>
 </mapper> 

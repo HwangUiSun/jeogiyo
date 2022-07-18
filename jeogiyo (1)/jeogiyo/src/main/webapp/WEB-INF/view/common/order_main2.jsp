@@ -13,16 +13,8 @@
 
 <a href='storeCenter'>Home</a>
 <div id='menuTitle'>
-	<button type='button' onclick="location.href='store_orderInput'">
+	<button type='submit' onclick="moveUrl()">
 		발주 작성<br/>페이지
-	</button>
-	
-	<button type='button' onclick="location.href='order_view'">
-		발주 리스트<br/>상세보기
-	</button>
-	
-	<button type='button' onclick="location.href='center_orderView'">
-		(본사)발주 리스트<br/>상세보기
 	</button>
 </div>
 <div class='title' onclick="">
@@ -34,11 +26,26 @@
 	<div class="itemsWrap">
 	<c:set var='num' value='${baljupage.startNo }' />
 	<c:forEach var='v' items='${baljulist}'>
-		<div class='items' onclick="">
+			<form name="frm_sno" method="post" id="${v.sno}">
+				<input type="hidden" name="sno" value="${v.sno}">
+				<input type="hidden" name="title" value="${v.title}">
+				<input type="hidden" name="id" value="${v.id}">
+				<input type="hidden" name="nowPage" value="${baljupage.nowPage}">
+			</form>
+		<div class='items' onclick="orderView(${v.sno})">
 			<span >${num}</span>
 			<span>${v.title}</span>
-			<span>본사</span>
-			<span>${v.status}</span>
+			<span>${v.id}</span>
+			<span>
+			<c:set var = "status" scope = "session" value = "${v.status}"/>
+			 <c:choose>
+         		<c:when test = "${status == true}">
+           		 승인
+        		</c:when>
+         		<c:when test = "${status == false}">
+          		 대기
+        		</c:when>
+     		 </c:choose></span>			
 		</div>
 	<c:set var='num' value='${num=num+1 }'/>
 	</c:forEach> 
@@ -63,6 +70,7 @@
 	</div>
 	<form name="frm_order" method="post">
 		<input type="hidden" name="nowPage" value="${baljupage.nowPage}">
+		
 	</form>
 <script src="./js/order_main.js"></script>
 </body>

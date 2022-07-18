@@ -1,3 +1,4 @@
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,6 +7,7 @@
 <meta charset="UTF-8">
 <title>order_view</title>
 <link href="/css/order_view.css" rel="stylesheet">
+
 </head>
 <body>
 <div id="order_view">
@@ -20,18 +22,37 @@
 	<a href='storeCenter'>Home</a>
 	<form name = 'frm_order_view' class = 'frm_order_view' method = 'post'>
 		<label>가맹점명</label>
-		<input type = 'text' name = 'jcenterName' value = '서울대입구역점' readonly><br/>
+		<input type = 'text' name = 'jcenterName' value = '${param.id}점' readonly><br/>
 		<label>날짜</label>
 		<input type = 'date' name = 'nal' readonly><br/>
 		<label>발주품목</label>
-		<input type='text' id='orderlist' name='jcenterOrder' value=' 닭 0' readonly>
+		
+		<div class="itemsWrap" id="orderlist">	
+			<div class='items'>		
+				<span>제품이름</span>
+				<span>발주 가맹점</span>
+				<span>수량</span>
+			</div>
+			<c:forEach var='v' items='${selectSubOne}'>		
+			<div class="items " >
+					<span id="productName">${v.productName}</span>
+					<span>${param.id}</span>
+					<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
+					
+					<span><button type="button"  onclick="add('${v.sno}', 'ea${v.sno}')">수정</button></span>
+					
+					<input type="hidden" value="${v.sno}" name="sno" id="sno">
+				</div>
+			</c:forEach>
+		</div> 
 	</form>
 	<div class = 'btns'>
-		<button type = 'button' value = 'btn_input' name = 'update'>수정</button>
-		<button type = 'button' value = 'btn_delete' name = 'delete'>삭제</button>
-		<button type = 'button' value = 'btn_back' name = 'back'>돌아가기</button>
-	</div>
+	
+		<button type = 'button' value = 'btn_delete' name = 'delete' onclick="accept('${param.title}')">주문접수</button>
 
+		<button type = 'button' value = 'btn_back' name = 'back' onclick="location.href='order'">돌아가기</button>
+	</div>
 </div>
+<script src="js/store.js"></script>
 </body>
 </html>

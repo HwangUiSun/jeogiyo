@@ -21,6 +21,7 @@ import com.jpro.common.J_loginService;
 import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.common.Page;
+import com.jpro.common.TableVo;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
@@ -28,6 +29,8 @@ import com.jpro.jstore.JstoreVo;
 
 @RestController
 public class JstoreController {
+	int b=0;
+	
 	@Autowired
 	J_notiService notiDao;
 	
@@ -53,12 +56,15 @@ public class JstoreController {
 		vo.setMid(req.getParameter("mId"));
 		vo.setPwd(req.getParameter("password"));
 		JstoreVo rVo = loginDao.login(vo, req);
-		
+		String tableName ="";
+		HttpSession s = req.getSession();
 		if(rVo != null) {
 			if(rVo.getMid().equals("root")) {
 				mv.setViewName("center/center_index");
 			}else{
 				mv.setViewName("store/store_index");
+				tableName = baljuDao.createTable((String)s.getAttribute("mid"));
+				s.setAttribute("tableName", tableName);
 			}
 		}
 		else {
@@ -131,7 +137,7 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("order")
-	public ModelAndView order(com.jpro.jstore.Page page) {
+	public ModelAndView order(com.jpro.jstore.Page page,HttpServletRequest req) {
 //		ModelAndView mv = new ModelAndView();
 //		String url = "../common/order_main.jsp";
 //		mv.addObject("inc",url);
@@ -142,11 +148,12 @@ public class JstoreController {
 //		mv.addObject("orderlist",notilist);
 //		mv.addObject("orderpage",notipage);
 //		mv.setViewName("store/store_index");
+		
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);
 		mv.setViewName("store/store_index");
-		List<JbaljudetailsVo> baljulist = baljuDao.select(page);
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
 		page = baljuDao.getPage();
 		mv.addObject("baljupage",page);
 		mv.addObject("baljulist",baljulist);
@@ -155,13 +162,17 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("order_view")
-	public ModelAndView order_view() {
+	public ModelAndView order_view(com.jpro.jstore.Page page,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_view.jsp";
 		mv.addObject("inc",url);
-		
 		mv.setViewName("store/store_index");
-		
+		//select(title)
+		HttpSession s = req.getSession();
+		String tableName =req.getParameter("title");
+		List<JbaljuListVo> selectSubOne = null;	
+		selectSubOne =baljuDao.selecSubtList(page,tableName);	
+		mv.addObject("selectSubOne",selectSubOne);
 		return mv;
 	}
 	
@@ -177,38 +188,24 @@ public class JstoreController {
 //		mv.addObject("orderlist",notilist);
 //		mv.addObject("orderpage",notipage);
 //		mv.setViewName("store/store_index");
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView();	
 		HttpSession s = req.getSession();
-		String tableName = null;
-		if(s.getAttribute("tableName")==null) {
-			tableName=(String)s.getAttribute("tableName");
+		String tableName="";
+		if((String)s.getAttribute("tableName")!=null) {
+			tableName = (String)s.getAttribute("tableName");
 		}else {
-			Cookie[] c = req.getCookies();
-			for(Cookie i : c) {
-				if(i.getName().equals("tableName")) {
-					tableName = i.getValue();
-				}
-			}
+			tableName = "jbaljulist";
 		}
-		if(tableName==null || tableName.equals("")) {
-			tableName= baljuDao.createTable((String)s.getAttribute("mid"));
-			s.setAttribute("tableName", tableName);	
-			Cookie cookei = new Cookie("tableName", tableName);
-			cookei.setPath("/");
-			cookei.setMaxAge(60*60*3);
-			resp.addCookie(cookei);
-		}
-		page.setTableName(tableName);
-		String url = "../store/store_orderInput2.jsp";
-		mv.addObject("inc",url);
-		mv.setViewName("store/store_index");
 		
-		List<JbaljuListVo> baljulist = baljuDao.selectList(page);
-		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page);
+		String url = "../store/store_orderInput2.jsp";		
+		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page,tableName);		
 		page = baljuDao.getPage();
+		
+		mv.addObject("inc",url);
 		mv.addObject("baljupage2",page);
 		mv.addObject("baljulist2",baljulist);
-		mv.addObject("baljulist3",baljulist2);
+		mv.addObject("baljulist3",baljulist2);		
 		mv.setViewName("store/store_index");
 		
 		return mv;
@@ -284,8 +281,8 @@ public class JstoreController {
 	
 		page.setTableName(tableName);	
 		baljuDao.updateEa(ea, sno, tableName);
-		List<JbaljuListVo> baljulist = baljuDao.selectList(page);
-		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page);
+		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page,tableName);
 		page = baljuDao.getPage();
 		mv.addObject("baljupage2",page);
 		mv.addObject("baljulist2",baljulist);//addList
@@ -301,13 +298,13 @@ public class JstoreController {
 		String url = "../store/store_orderInput2.jsp";
 		mv.addObject("inc",url);
 		mv.setViewName("store/store_index");
-		
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
+	
 		page.setTableName(tableName);	
 		baljuDao.updateToZoro(sno, tableName);
-		List<JbaljuListVo> baljulist = baljuDao.selectList(page);
-		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page);
+		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page,tableName);
 		page = baljuDao.getPage();
 		mv.addObject("baljupage2",page);
 		mv.addObject("baljulist2",baljulist);//addList
@@ -323,7 +320,22 @@ public class JstoreController {
 		mv.addObject("inc",url);	
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
+		s.setAttribute("title", "");
 		baljuDao.droptable(tableName);;
+		Cookie[] dck = req.getCookies();
+		for(Cookie i : dck) {
+			if(i.getName().equals("tableName")) {
+				i.setMaxAge(0);
+				resp.addCookie(i);
+			}
+		}
+		for(Cookie i : dck) {
+			if(i.getName().equals("title")) {
+				i.setMaxAge(0);
+				resp.addCookie(i);
+			}
+		}
+		baljuDao.selectOneDetail(0);
 		List<JbaljudetailsVo> baljulist = baljuDao.select(page);
 		page = baljuDao.getPage();	
 		mv.addObject("page",page);
@@ -331,17 +343,48 @@ public class JstoreController {
 		mv.addObject("baljulist2","");//addList
 		mv.addObject("baljulist3","");//sublist	
 		s.setAttribute("tableName", "");
-		Cookie[] c = req.getCookies();
-		for(Cookie i : c) {
-			i.setValue(null);
-			i.setMaxAge(0);
-			i.setPath("/");
-			resp.addCookie(i);
-		}
 		mv.setViewName("store/store_index");		
 		return mv;
 	}
 	
+	
+	@RequestMapping("insertba")
+	public ModelAndView insertba(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
+			
+		if(b>0) {
+			ModelAndView mv = new ModelAndView();					
+			mv.setViewName("/store/store_index");
+		}else {
+			String title = (String)req.getParameter("titles");
+			JbaljudetailsVo vo = new JbaljudetailsVo();
+			vo.setTitle(title);
+			HttpSession s = req.getSession();	
+			b = baljuDao.insertJbaljudetails(vo.getTitle(),(String)s.getAttribute("mid"));
+		}	
+	
+		ModelAndView mv = new ModelAndView();					
+		mv.setViewName("/store/store_index");		
+		return mv;
+	}
+	
+	@RequestMapping("acceptOrder")
+	public ModelAndView acceptOrder(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
+		HttpSession s = req.getSession();
+		String title = req.getParameter("title");		
+		baljuDao.changeStatus(title);
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+		ModelAndView mv = new ModelAndView();			
+		String url = "../common/order_main2.jsp";
+		page = baljuDao.getPage();
+		mv.addObject("baljupage",page);
+		mv.addObject("inc",url);
+		mv.addObject("title",title);
+		mv.addObject("baljulist",baljulist);
+		mv.setViewName("/store/store_index");		
+		return mv;
+	}
 	
 	
 }

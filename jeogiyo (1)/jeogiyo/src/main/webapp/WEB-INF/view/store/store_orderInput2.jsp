@@ -15,7 +15,7 @@
 <a href='storeCenter'>Home</a>
 <div id='Input'>
  	<div class='right'>
- 		<input type='hidden' name='tableName' value='${tableName}'>
+ 		<input type='hidden' name='tableName' value='${tableName}' id="tableName">
 		<label>가맹점명</label>
 		<input type='text' name='store' value='${tableName}'>${mid}</br>
 		<label>날짜</label>
