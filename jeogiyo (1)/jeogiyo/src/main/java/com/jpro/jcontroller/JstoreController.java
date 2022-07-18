@@ -128,9 +128,13 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("noti_view")
-	public ModelAndView noti_view(Page notipage) {
+	public ModelAndView noti_view(Page notipage, int sno) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_view.jsp";
+		J_notiVo vo = new J_notiVo();
+		vo = notiDao.selectOne(sno);
+		mv.addObject("vo", vo);
+		mv.addObject("notipage",notipage);
 		mv.addObject("inc",url);
 		
 		mv.setViewName("store/store_index");

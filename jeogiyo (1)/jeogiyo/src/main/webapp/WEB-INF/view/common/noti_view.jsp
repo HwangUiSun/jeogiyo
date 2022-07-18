@@ -29,11 +29,14 @@
 		<textarea name = 'doc' class="doc" id="summernote">${vo.doc }</textarea>
 	
 	<div class = 'btns'>
-		
+			
+		<div id="backbox">
+			<button type = 'button' value = 'btn_back' name = 'back' onclick="noti_view_back(this.form)">돌아가기</button>
+		</div>
+		<div id="upade">
 			<button type = 'button' value = 'btn_input' name = 'update' id="input" onclick="noti_view_updateview(this.form)">수정</button>
 			<button type = 'button' value = 'btn_delete' name = 'delete' id="delete" onclick="noti_view_delete(this.form)">삭제</button>
-		
-		<button type = 'button' value = 'btn_back' name = 'back' onclick="noti_view_back(this.form)">돌아가기</button>
+		</div>	
 	</div>
 	
 	<input type="hidden" name="sno" value="${vo.sno }">

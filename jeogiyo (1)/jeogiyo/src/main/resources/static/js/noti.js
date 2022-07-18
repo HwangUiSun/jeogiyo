@@ -12,9 +12,16 @@ let noti_view = {};
 noti_view.view = function(sno){
 	//let frm = $("#frm_noti_main")[0];
 	let frm = document.frm_noti;
+	let log = $("#ioginId").attr("value")
 	frm.sno.value=sno;
-	frm.action='center_notiView';
-	frm.submit();
+	if(log=="root"){
+		frm.action='center_notiView';
+		frm.submit();	
+	}else{
+		frm.action='noti_view';
+		frm.submit();	
+	}
+	
 }
 function movePage(page){
 		let url = 'center_noti';
