@@ -16,4 +16,13 @@ import com.jpro.common.Page;
 public interface JnotiMapper{
 	public int totSize(Page page);
 	public List<J_notiVo> select(Page page);
+	public J_notiVo selectOne(int sno); // sno 값 주고 데이터에서 알맞은 상세보기 가져오기 
+	
+	public int update(J_notiVo vo);  
+	public int delete(int sno);  
+	public int insert(J_notiVo vo);  
+	
+	
+	
+	
 }

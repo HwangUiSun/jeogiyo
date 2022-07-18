@@ -2,6 +2,7 @@ package com.jpro.jcontroller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,26 +36,40 @@ public class JcenterController {
 		mv.setViewName("center/center_index");		
 		return mv;
 	}
-	
+	// 공지사항~~~~~~~~~~~~~~~~~
 	@RequestMapping("center_noti")
 	public ModelAndView centerNoti(com.jpro.common.Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_main.jsp";
-
-		mv.addObject("inc",url);
+		
+		
+		if(notipage.getFindStr() ==null) {
+			notipage =  new com.jpro.common.Page();
+			notipage.setNowPage(1);
+			notipage.setFindStr("");
+			
+		}
+	
+		
 		List<J_notiVo> notilist = notiDao.select(notipage); 
-		notipage = notiDao.getPage();
+		notipage =  notiDao.getPage();
+		
+		mv.addObject("inc",url);
 		mv.addObject("notilist",notilist);
 		mv.addObject("notipage",notipage);
 
-		mv.setViewName("center/center_index");		
+		mv.setViewName("center/center_index");
 		return mv;
 	}
 	
 	@RequestMapping("center_notiView")
-	public ModelAndView center_notiView(com.jpro.common.Page notipage) {
+	public ModelAndView center_notiView(com.jpro.common.Page notipage, int sno) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_view.jsp";
+		J_notiVo vo = new J_notiVo();
+		vo = notiDao.selectOne(sno);
+		mv.addObject("vo", vo);
+		mv.addObject("notipage",notipage);
 		mv.addObject("inc",url);
 		
 		mv.setViewName("center/center_index");
@@ -62,16 +77,69 @@ public class JcenterController {
 		return mv;
 	}
 	
-	@RequestMapping("center_notiInput")
-	public ModelAndView center_notiInput() {
+	@RequestMapping("center_notiInput") // 공지 작성 페이지 이동
+	public ModelAndView center_notiInput(com.jpro.common.Page notipage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_notiInput.jsp";
+	
+		mv.addObject("inc",url);
+		mv.addObject("notipage",notipage);
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	@RequestMapping("center_notiInputR") // 공지 작성 후
+	public ModelAndView center_notiInputR(com.jpro.common.Page notipage, J_notiVo vo) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("con sno"+vo.getSno());
+		System.out.println("con sub"+vo.getSubject());
+		notiDao.insert(vo);
+		mv =centerNoti(notipage);
+		return mv;
+	}
+	
+	@RequestMapping("center_notiUpdate") // 공지 수정 상세보기( summernote로 수정이 가능)
+	public ModelAndView center_notiupdate(com.jpro.common.Page notipage, int sno) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_notiInput.jsp";
+		J_notiVo vo = new J_notiVo();
+		vo=notiDao.selectOne(sno);
+		
+		mv.addObject("vo",vo);
+		mv.addObject("notipage",notipage);
 		mv.addObject("inc",url);
 		
 		mv.setViewName("center/center_index");
 		
 		return mv;
 	}
+	
+	@RequestMapping("center_notiUpdateR") 
+	public ModelAndView center_notiupdateR(com.jpro.common.Page notipage, J_notiVo vo) {
+		ModelAndView mv = new ModelAndView();
+		// 수정 먼저 하고 리스트 호출
+		notiDao.update(vo);
+		
+		mv=centerNoti(notipage);
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_notiDelete")
+	public ModelAndView center_notiDelete(com.jpro.common.Page notipage, int sno) {
+		ModelAndView mv = new ModelAndView();
+		notiDao.delete(sno);
+		mv= centerNoti(notipage);
+		return mv;
+	}
+	
+
+	
+	
+	
+	
+//----------------------------------------------------	
+	
 	
 	@RequestMapping("center_order")
 	public ModelAndView centerOrder(com.jpro.common.Page notipage) {

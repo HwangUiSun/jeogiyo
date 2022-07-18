@@ -14,9 +14,32 @@
 		select * from j_notivo
 		where subject like '%${findStr}%'
 		or    doc     like '%${findStr}%'
-		order by sno desc
+		order by sno asc
 		limit ${startNo-1}, ${listSize}
 	</select>
+	<select id="selectOne" parameterType="Integer" resultType="J_notiVo">
+		select * from j_notivo where sno=${_parameter}
+	
+	</select>
+ 	<update id="update" parameterType="J_notiVo">
+ 		update j_notivo set subject=#{subject}, nal=#{nal}, doc=#{doc} where sno=#{sno}
+ 	
+ 	</update>
+ 	<delete id="delete" parameterType="Integer">
+ 		delete from j_notivo where sno= #{_parameter}
+ 	
+ 	</delete>
+ 	<insert id="insert" parameterType="J_notiVo">
+ 		insert into j_notivo (mid, subject, nal, doc) 
+ 		values  (#{mid}, #{subject}, #{nal}, #{doc})
+ 	
+ 	</insert>
 
+ 
+ 
+ 
+ 
+ 
+ 
  
 </mapper> 
