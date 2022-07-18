@@ -31,14 +31,12 @@ ul.tabs li.current{
 
 .tab-content{
     display: none;
-	background: #e0e0e0;
 	padding: 12px;
 }
 
 .tab-content.current{
     display : inherit;
 }
-
 
 </style>
 <body>
@@ -54,39 +52,85 @@ ul.tabs li.current{
 	   </ul>
 	          
 		<div id="tab-1" class="tab-content current">
-		  <br/>
-	       <a>발사믹치킨</a><br/>
+          <img src='../img/chicken1.png' width='240px' height='240px'/>
+	       <div class='subject'><a>발사믹치킨</a><br/></div>
 	       <a>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</a><br/>
 	       <a>소비자가격 : 18500원</a><br/>
 		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
 	    </div>
 	    
 		<div id="tab-2" class="tab-content">
-	       <a>달콤 치킨</a><br/>
-	       <a>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</a><br/>
-	       <a>소비자가격 : 18500원</a><br/>
+          <img src='../img/original.png' width='240px' height='240px'/>
+	       <a>달콤허니 오리지날</a><br/>
+	       <a>달콤한 허니소스에 쫄깃한 날개와 담백한 다리가 만난 메뉴</a><br/>
+	       <a>소비자가격 : 20000원</a><br/>
 		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <hr/>
+		   
+          <img src='../img/honey combo.png' width='240px' height='240px'/>
+	       <a>달콤허니콤보</a><br/>
+	       <a>달콤바삭한 맛이 일품인 한 마리 치킨</a><br/>
+	       <a>소비자가격 : 16000원</a><br/>
+		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <hr/>
+		   
 	    </div>
 	    
 		<div id="tab-3" class="tab-content">
-	       <a>매콤 치킨</a><br/>
-	       <a>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</a><br/>
-	       <a>소비자가격 : 18500원</a><br/>
+          <img src='../img/red original.png' width='240px' height='240px'/>
+	       <a>매콤레드 오리지날</a><br/>
+	       <a>국내산 청양 홍고추의 매콤함이 일품인 매콤레드 오리지날</a><br/>
+	       <a>소비자가격 : 17000원</a><br/>
 		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <br/>
+		   <hr/>
+		   
+          <img src='../img/red wing.png' width='240px' height='240px'/>
+	       <a>매콤레드 윙</a><br/>
+	       <a>국내산 청양 홍고추의 매콤함이 골고루 밴 쫄깃한 날개와 봉의 만남</a><br/>
+	       <a>소비자가격 : 20000원</a><br/>
+		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <br/>
+		   <hr/>
 	    </div>
 	    
 		<div id="tab-4" class="tab-content">
+		  <img src='../img/cheese stick.jfif' width='240px' height='240px'/>
 	       <a>치즈스틱</a><br/>
-	       <a>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</a><br/>
-	       <a>소비자가격 : 18500원</a><br/>
+	       <a>소비자가격 :2500원</a><br/>
 		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <br/>
+		   <hr/>
+		   
+		  <img src='../img/cheese ball.jfif' width='240px' height='240px'/>
+	       <a>치즈볼</a><br/>
+	       <a>소비자가격 : 3000원</a><br/>
+		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <br/>
+		   <hr/>
 	    </div>
 	    
 		<div id="tab-5" class="tab-content">
+		  <img src='../img/coke.jfif' width='240px' height='240px'/>
 	       <a>콜라</a><br/>
-	       <a>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</a><br/>
-	       <a>소비자가격 : 18500원</a><br/>
+	       <a>소비자가격 : 2000원</a><br/>
 		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <br/>
+		   <hr/>
+		   
+		   <img src='../img/cider.jfif' width='240px' height='240px'/>
+	       <a>사이다</a><br/>
+	       <a>소비자가격 : 2000원</a><br/>
+		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <br/>
+		   <hr/>
+		   
+		   <img src='../img/fanta.jfif' width='240px' height='240px'/>
+	       <a>환타</a><br/>
+	       <a>소비자가격 : 2000원</a><br/>
+		   <a href='addBtn'><input type='button' class='addBtn' value='담기' /></a>
+		   <br/>
+		   <hr/>
 	    </div>	 
 	             
 	  </div>
