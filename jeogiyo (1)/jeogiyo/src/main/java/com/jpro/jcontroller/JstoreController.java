@@ -1,5 +1,8 @@
 package com.jpro.jcontroller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.http.HttpRequest;
 import java.util.List;
 
@@ -353,7 +356,30 @@ public class JstoreController {
 			mv.setViewName("store/store_index");
 			vo = new JbaljudetailsVo();
 			vo.setTitle(title);
-			msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));	
+			try(
+				FileReader rw = new FileReader("C:/Temp/lists.txt");
+	            BufferedReader br = new BufferedReader( rw );
+	           ){
+	            
+	           //읽을 라인이 없을 경우 br은 null을 리턴한다.
+	           String readLine = null ;
+	           while( ( readLine =  br.readLine()) != null ){
+	              if(title.contains(readLine)) {
+	            	System.out.println("있다");
+	            	List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+	    			page = baljuDao.getPage();
+	    			mv.addObject("baljupage",page);
+	    			mv.addObject("baljulist",baljulist);
+	    			s.setAttribute("msg", msg);
+	    			mv.addObject("msg",msg);					
+	    			mv.setViewName("store/store_index");
+	              }else {
+	               	msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));	
+	              }
+	            }
+	        }catch ( IOException e ) {
+	            System.out.println(e);
+	        }			
 			List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
 			page = baljuDao.getPage();
 			mv.addObject("baljupage",page);
