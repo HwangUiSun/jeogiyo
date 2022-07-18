@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MyPageChange</title>
+<link rel = 'stylesheet' type='text/css' href = 'css/MyPageChange.css'>
 </head>
 <body>
 <h1>내 정보 수정</h1>
@@ -43,8 +44,8 @@
     <label>상세주소</label>
     <input type='text' id='apiAddressDetail' size='40'/>
     <br>
-    
-    <a href='change_2Btn'><button type='button' name='change_2Btn'>수정</button></a>
+    <!-- css 접근을 위해 버튼 id 생성 -->
+    <a href='change_2Btn'><button type='button' name='change_2Btn' id='change_2Btn'>수정</button></a>
   </div>
 </div>
 
