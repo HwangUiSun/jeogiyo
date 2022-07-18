@@ -286,8 +286,8 @@ public class JstoreController {
 		mv.addObject("inc",url);
 		mv.setViewName("store/store_index");
 		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
-	
+		String tableName = req.getParameter("title");
+
 		page.setTableName(tableName);	
 		baljuDao.updateEa(ea, sno, tableName);
 		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
@@ -309,7 +309,7 @@ public class JstoreController {
 		mv.setViewName("store/store_index");
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
-	
+		
 		page.setTableName(tableName);	
 		baljuDao.updateToZoro(sno, tableName);
 		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);

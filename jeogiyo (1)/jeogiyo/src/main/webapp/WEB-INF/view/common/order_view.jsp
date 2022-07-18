@@ -41,7 +41,7 @@
 					<span class="rid">${param.id}</span>
 					<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
 					<c:if test ="${mid == 'root'}">
-					<span><button type="button"  onclick="add('${v.sno}', 'ea${v.sno}','${param.title}')">수정</button></span>
+					<span><button type="button"  onclick="addC('${v.sno}', 'ea${v.sno}','${param.title}')">수정</button></span>
 					</c:if>
 					<input type="hidden" value="${v.sno}" name="sno" id="sno">
 				</div>
@@ -63,7 +63,7 @@
 </body>
 <script>
 let ids = [];
-function add(sno,eas,title){
+function addC(sno,eas,title){
 	let ea = document.getElementById(eas)
 	/* Javascript */
 	// create element (form)

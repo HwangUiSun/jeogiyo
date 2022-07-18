@@ -349,8 +349,8 @@ public class JcenterController {
 		String url = "../common/order_view.jsp";
 		mv.addObject("inc",url);
 		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
-	
+		String tableName = req.getParameter("title");
+		System.out.println("addc"+tableName);
 		page.setTableName(tableName);	
 		baljuDao.updateEa(ea, sno, tableName);
 		
