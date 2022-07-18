@@ -7,22 +7,25 @@
 <meta charset="UTF-8">
 <title>noti_main</title>
 <link href="/css/noti.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 <div id="subject">공지 사항</div>
+
 <div id='menuTitle'>
 	
-	<form name="frm_noti" method="post">
-		<a href='storeCenter'>Home</a>
+	<form name="frm_noti" id="frm_noti" method="post">
+		
+		<div id="findbox">
+			<input type="text" name="findStr" id="findStr" value="${notipage.findStr}" >
+			<button type='button' onclick="noti_view.find(this.form)">검색</button>
+		</div>
 		<div id="inputbutton">
-			<button type='button' onclick="noti_view.input(this.form)" >
-				(본사)공지사항<br/>작성하기
-			</button>
-		</div>	
-		<input type="text" name="sno" value="${vo.sno }">
-		<input type="text" name="nowPage" value="${notipage.nowPage}" >
-		<input type="text" name="findStr" value="${notipage.findStr}" >
-		<button type='button' onclick="noti_view.find(this.form)">검색</button>
+			<button type='button' onclick="noti_view.input(this.form)"  >공지사항작성</button>	
+		</div>		
+		<input type="hidden" name="sno" value="${vo.sno }">
+		<input type="hidden" name="nowPage" value="${notipage.nowPage}" >
+		<input type="hidden" name="ioginId" id="ioginId" value="${sessionScope.id }" >
 	</form>
 </div>
 <div class='title' onclick="">
@@ -63,5 +66,8 @@
 	</div>
 	
 <script src='./js/noti.js'></script>
+<script>
+	button()
+</script>
 </body>
 </html>

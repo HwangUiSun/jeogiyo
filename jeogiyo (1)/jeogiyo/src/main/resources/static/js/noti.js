@@ -3,13 +3,10 @@
  */
  
 let noti_view = {};
-document.addEventListener('DOMContentLoaded', () => {
-	//if( id가 root가 아니면  ){
-	//	$('#inputbutton').hide();
-	//}
+//document.addEventListener('DOMContentLoaded', () => {
+
 	
-	
-});
+//});
 					
 
 noti_view.view = function(sno){
@@ -39,4 +36,13 @@ noti_view.find = function(frm){
 	frm.action = "center_noti"
 	frm.submit();
 }
+
+
+// 작성 버튼 히든으로 하기
+function button(){
+	let log = $("#ioginId").attr('value')
+	if(log != "root"){
+		$('#inputbutton').hide();
+	}
 	
+}

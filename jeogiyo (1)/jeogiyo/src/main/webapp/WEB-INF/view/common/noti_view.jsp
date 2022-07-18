@@ -36,9 +36,10 @@
 		<button type = 'button' value = 'btn_back' name = 'back' onclick="noti_view_back(this.form)">돌아가기</button>
 	</div>
 	
-	<input type="text" name="sno" value="${vo.sno }">
-	<input type="text" name="nowPage" value="${notipage.nowPage}" >
-	<input type="text" name="findStr" value="${notipage.findStr}" >
+	<input type="hidden" name="sno" value="${vo.sno }">
+	<input type="hidden" name="nowPage" value="${notipage.nowPage}" >
+	<input type="hidden" name="findStr" value="${notipage.findStr}" >
+	<input type="hidden" name="ioginId" id="ioginId" value="${sessionScope.id }" >
 	
 	
 	</form>
