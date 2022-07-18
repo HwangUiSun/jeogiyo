@@ -13,14 +13,14 @@
 <button type='button' id='go_storeDropBtn' onclick="location.href='center_storeDrop'">탈퇴신청 현황</button>
 <a href='storeCenter'>Home</a>
 <div id='center_storeM'>
-	<div id='select1'>서울</div>
+	<div id='select1' onclick='center_storeM'>서울</div>
 	<div id='select2'>경기</div>
 	<div id='select3'>인천</div>
 </div>
 <br/><br/><br/><br/><hr/>
-<c:forEach var='list' begin='1' end='3'>
+<c:forEach var='list' items='${list }' begin='1' end='3'>
 		<div id='storeName'>
-			서울대입구<br/>1호점
+			${list.storeName }
 		</div>
 		
 		<div id='storeAddressPhone'>

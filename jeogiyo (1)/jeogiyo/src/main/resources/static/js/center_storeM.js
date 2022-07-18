@@ -1,10 +1,10 @@
 /**
- *  storeM 07-13 JR
+ *  storeM 07-18 JR
  */
  
  let center = {};
  
- center.storeMview = function(){
+ center.localView = function(){
 	
 }
  
