@@ -167,7 +167,7 @@ public class JcenterController {
 		page = baljuDao.getPage();
 		mv.addObject("baljupage",page);
 		mv.addObject("baljulist",baljulist);
-		mv.setViewName("store/store_index");
+		mv.setViewName("center/center_index");
 		return mv;
 	}
 	
