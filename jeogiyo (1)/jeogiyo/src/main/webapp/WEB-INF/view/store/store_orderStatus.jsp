@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>store_orderStatus</title>
 <link rel = 'stylesheet' href = './css/store_orderStatus.css'>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src = './js/store_orderStatus.js'></script>
 </head>
 <body>
 <a href='storeCenter'>Home</a>
@@ -21,9 +23,11 @@
 			<div class = 'address'>서울시 관악구 남부순환로 1820 에그옐로우빌딩 14층</div>
 		</div>
 		<div class = 'btns'>
-			<button type = 'button' value = '접수' name = 'accept'>접수</button>
-			<button type = 'button' value = '거부' name = 'deny'>거부</button>
+			<button type = 'button' name = 'accept' onclick = 'btnAccept()'>접수</button>
+			<button type = 'button' name = 'deny' onclick = 'btnDeny()'>거부</button>
 		</div>
+		<div class = 'order_expected_time'><h1></h1><br/><h3></h3></div>
+		<div class = 'end_time'>배달 완료!</div>
 	</div>
 	<hr/>
 </c:forEach>

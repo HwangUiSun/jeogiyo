@@ -1,9 +1,12 @@
 @charset "UTF-8";
-
+*{
+	border : 1px solid #000;
+}
 #orderStatus{
 	padding : 0;
 	margin-top : 20px;
 	width : 1200px;
+	max-height : 210px;
 	line-height : 2em;
 }
 
@@ -89,4 +92,27 @@
 #orderStatus .btns button:hover[name = deny]{
 	background-color : #f00;
 	cursor : pointer;
+}
+
+#orderStatus .order_expected_time{
+	border : 1px solid #000;
+	display : inline-block;
+	visibility : hidden;
+	position : relative;
+	text-align : center;
+	bottom : 180px;
+	left : 725px;
+	width : 350px;
+}
+
+#orderStatus .end_time	{
+	border : 1px solid #000;
+	display : inline-block;
+	visibility : hidden;
+	position : relative;
+	text-align : center;
+	bottom : 200px;
+	left : 280px;
+	padding : 50px;
+	width : 350px;
 }
