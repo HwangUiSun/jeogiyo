@@ -15,23 +15,23 @@
 	
 	
 	<div id='left_area'>
-		<div id='storeName'>서울대입구 1호점</div>
+		<div id='storeName' name="storeName">${stn }</div>
 		<div id='left_area_dateSales'>
 			<label>판매 기간</label><br/>
-			<input type='text' readonly value=''><br/>~<br/>
-			<input type='text' readonly value=''><br/>
+			<input type='text' readonly value='${date1}' id="startdate"><br/>~<br/>
+			<input type='text' readonly value='${date2}' id="enddate"><br/>
 			<div id='left_area_dateSales_down'>
-				<label>총 판매건수</label>&nbsp;&nbsp;: <br/>
-				<label>총 매출</label>&nbsp;&nbsp;:
+				<label>총 판매건수</label>&nbsp;&nbsp;: ${hit }건<br/>
+				<label>총 매출</label>&nbsp;&nbsp;: ${tot }₩
 			</div>
 		</div>	
 	</div>
 	
 	<div id='right_area'>
 		<form method='post' name='frm_store_sale' id='frm_store_sale'>
-			<input type='date'></input>~
-			<input type='date'></input>
-			<button type = 'button' value = 'btn_lookUp' name = 'lookUp'>조회</button><br/>
+			<input type='date' id="startnal" name="date1" onchange="startday()" value="${date1 }"></input>~
+			<input type='date' id="endnal"  name="date2"onchange="endday()" value="${date2 }"></input>
+			<button type = 'button' value = 'btn_lookUp' name = 'lookUp' onclick="find(this.form)">조회</button><br/>
 		</form>
 		
 		
@@ -39,15 +39,22 @@
 		<div id='wrap'>
 			<div class="title">
 				<span>No.</span>
-				<span>매출</span>
+				<span>매출일자</span>
+				<span>₩</span>
 			</div>
 			<div class='itemsWrap'>
-				<c:forEach var='num' begin="1" end="10">
+				<c:set var='num' value='${page.startNo}'/>
+				<c:forEach var='l' items="${list}" >
+			
 						<div class="items">
 							<span>${num}.</span>
-							<span>매출</span>
+							<span>${l.nal}날 매출</span>
+							<span>${l.harutotal}₩</span>
+								
 						</div>
-						
+				
+				<c:set var='num' value='${num=num+1}'/>	
+
 				</c:forEach>
 			
 				<div class='paging'>		
@@ -57,7 +64,7 @@
 					</c:if>		
 					
 					
-					<c:forEach var='i' begin='1' end='5'>
+					<c:forEach var='i' begin='${page.startPage }' end='${page.endPage }'>
 						<button type='button' class='first'  onclick = 'movePage(${i})' >${i }</button>
 					</c:forEach>				
 		
@@ -69,10 +76,15 @@
 				</div>	
 			</div>
 		</div>
-	
+		<form method="post" id="frm_store_sale" name="frm_store_sale">
+			<input type="hidden" id="nowPage">
+			<input type="hidden" id="mid" value="">
+		
+		</form>
 	
 	</div>
 </div>
 </body>
-<script src="/js/center_consumerList.js"></script>
+<script src="/js/store_sale.js"></script>
+<script></script>
 </html>

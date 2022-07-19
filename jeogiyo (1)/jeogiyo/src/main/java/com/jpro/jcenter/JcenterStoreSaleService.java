@@ -25,7 +25,106 @@ public class JcenterStoreSaleService implements Jcenter{
 	@Autowired
 	DataSourceTransactionManager transaction;
 	TransactionStatus status;
+	
+	
+// 스토어 네임 추출
+	public String StoreName(String mid) {
+		String stn = ""; 
+		try {
+			stn=mapper.selectStoreName(mid);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return stn;
+	}
+	
+	// 가맹에서 매출관리 눌렀을때
+		public List<JpayAfterVo> selectOne(String mid, com.jpro.common.Page page) {
+			List<JpayAfterVo> list =  null;
+			try {
+				// 스토어 네임
+				String stn=mapper.selectStoreName(mid);
+				System.out.println(stn);
+				// totsize 
+				int totSize = mapper.StoreNametotSize(stn);
+				page.setTotSize(totSize);
+				page.setStoreName(stn);
+				page.compute();
+				System.out.println("tot"+page.getTotSize());
+				
+				list=mapper.selectSale(page);
 
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			
+			return list;
+		}
+		
+		// 설정된 기간 리스트 출력
+		public List<JpayAfterVo> selectSaleday(String mid, JpayAfterVo vo, com.jpro.common.Page page){
+			List<JpayAfterVo> list = null;
+			int total = 0;
+			try {
+	
+				// totsize 
+				int totSize = mapper.selectSaledaytotSize(vo);
+				System.out.println(totSize);
+				page.setTotSize(totSize);
+				page.setStoreName(vo.getStoreName());
+				page.compute();
+				list=mapper.selectSaleday(vo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+			return list;
+		}
+		
+		
+		// 설정된 기간 총 금액 출력
+		public int selectSaledayAll(JpayAfterVo vo) {
+			int a = 0;
+			try {
+				a = mapper.selectSaledayAll(vo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return a;
+		}
+		
+		
+		// 설정된 기간 총 판매 건수 출력
+		public int selectSaledayAllHit(JpayAfterVo vo) {
+			int b = 0;
+			try {
+				b = mapper.selectSaledayAllHit(vo);
+			} catch (Exception e) {
+			}
+			
+			return b;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	@Override
 	public List<JcenterVo> centerSelect(Page page) {
 		// TODO Auto-generated method stub
