@@ -436,13 +436,18 @@ public class JstoreController {
 			mv.setViewName("store/store_index");
 			System.out.println("있다");
 			List<JbaljudetailsVo> list=baljuDao.selectTitle();
+			int b = 0;
 			for(JbaljudetailsVo v : list) {
 				if(v.getTitle().equals(title)) {
 					System.out.println("있습니다 있는겁니다");
+					b=0;
 					return mv;
 				}else {
-					msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));	
+					b=1;
 				}
+			}
+			if(b>0) {
+				msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));
 			}
 			
 	       	
