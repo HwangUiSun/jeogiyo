@@ -29,12 +29,12 @@ import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
-<<<<<<< Updated upstream
+
 import com.jpro.jstore.JstoreOrderStatusService;
 import com.jpro.jstore.JstoreOrderStatusVo;
-=======
+
 import com.jpro.jstore.JpayAfterVo;
->>>>>>> Stashed changes
+
 import com.jpro.jstore.JstoreVo;
 import com.jpro.jstore.statusPage;
 
@@ -52,11 +52,11 @@ public class JstoreController {
 	J_loginService loginDao;
 	
 	@Autowired
-<<<<<<< Updated upstream
 	JstoreOrderStatusService orderStatusDao;
-=======
+	
+	@Autowired
 	JcenterStoreSaleService saleDao;
->>>>>>> Stashed changes
+
 	
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
