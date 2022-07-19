@@ -1,6 +1,7 @@
 package com.jpro.jmybatis;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,4 +28,18 @@ public interface JcenterStoreMMapper {
 	public boolean banWait(JstoreVo vo);
 	
 	public int totSize(com.jpro.jcenter.Page page);
+	
+/*-----------------------------------------------------------------------------*/
+	//가맹관리
+	public List<JstoreVo> selectCenterStore(Page page);
+
+	public Integer selectCenterStoreCount();
+	
+	public List<JstoreVo> selectCenterStoreBylocal(Map<String,Object> ParamPageAndlocal);
+
+	public Integer selectCenterStoreBylocalCount(String local);
+	
+	public List<String> selectCenterSotreMainLocal();
+/*--------------------------------------------------------------------------------*/
+	
 }

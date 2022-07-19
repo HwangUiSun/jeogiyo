@@ -299,8 +299,8 @@ public class JstoreController {
 		mv.addObject("inc",url);
 		mv.setViewName("store/store_index");
 		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
-	
+		String tableName = req.getParameter("title");
+
 		page.setTableName(tableName);	
 		baljuDao.updateEa(ea, sno, tableName);
 		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
@@ -322,7 +322,7 @@ public class JstoreController {
 		mv.setViewName("store/store_index");
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
-	
+		
 		page.setTableName(tableName);	
 		baljuDao.updateToZoro(sno, tableName);
 		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
@@ -369,6 +369,13 @@ public class JstoreController {
 			mv.setViewName("store/store_index");
 			vo = new JbaljudetailsVo();
 			vo.setTitle(title);
+			List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+			page = baljuDao.getPage();
+			mv.addObject("baljupage",page);
+			mv.addObject("baljulist",baljulist);
+			s.setAttribute("msg", msg);
+			mv.addObject("msg",msg);					
+			mv.setViewName("store/store_index");
 			try(
 				FileReader rw = new FileReader("C:/Temp/lists.txt");
 	            BufferedReader br = new BufferedReader( rw );
@@ -379,27 +386,15 @@ public class JstoreController {
 	           while( ( readLine =  br.readLine()) != null ){
 	              if(title.contains(readLine)) {
 	            	System.out.println("있다");
-	            	List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
-	    			page = baljuDao.getPage();
-	    			mv.addObject("baljupage",page);
-	    			mv.addObject("baljulist",baljulist);
-	    			s.setAttribute("msg", msg);
-	    			mv.addObject("msg",msg);					
-	    			mv.setViewName("store/store_index");
+	            	
+	    			return mv;
 	              }else {
 	               	msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));	
 	              }
 	            }
 	        }catch ( IOException e ) {
 	            System.out.println(e);
-	        }			
-			List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
-			page = baljuDao.getPage();
-			mv.addObject("baljupage",page);
-			mv.addObject("baljulist",baljulist);
-			s.setAttribute("msg", msg);
-			mv.addObject("msg",msg);					
-			mv.setViewName("store/store_index");		
+	        }	
 		return mv;
 	}
 	

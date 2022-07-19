@@ -20,10 +20,7 @@
 	<input type='date' name='today' readonly>${nal}</br>
 	<label>발주 품목</label></br>
 	<textarea rows="30" cols="60" name='doc'>
-		닭                           1
-		소스                         3
-		파                           2
-		양파                         5
+
 		
 	</textarea>
 

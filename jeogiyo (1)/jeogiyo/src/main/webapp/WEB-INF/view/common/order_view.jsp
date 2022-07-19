@@ -31,9 +31,12 @@
 		
 		<div class="itemsWrap" id="orderlist">	
 			<div class='items'>		
-				<span>제품이름</span>
-				<span>발주 가맹점</span>
-				<span>수량</span>
+				<span class="titles">제품이름</span>
+				<span class="titles">발주 가맹점</span>
+				<span class="titles">수량</span>
+				<c:if test ="${mid == 'root'}">
+				<span class="titles">수정</span>
+				</c:if>
 			</div>
 			<c:forEach var='v' items='${selectSubOne}'>		
 			<div class="items " >
@@ -41,7 +44,7 @@
 					<span class="rid">${param.id}</span>
 					<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
 					<c:if test ="${mid == 'root'}">
-					<span><button type="button"  onclick="add('${v.sno}', 'ea${v.sno}','${param.title}')">수정</button></span>
+					<span><button type="button"  onclick="addC('${v.sno}', 'ea${v.sno}','${param.title}')">수정</button></span>
 					</c:if>
 					<input type="hidden" value="${v.sno}" name="sno" id="sno">
 				</div>
@@ -63,7 +66,7 @@
 </body>
 <script>
 let ids = [];
-function add(sno,eas,title){
+function addC(sno,eas,title){
 	let ea = document.getElementById(eas)
 	/* Javascript */
 	// create element (form)

@@ -1,6 +1,8 @@
 package com.jpro.jcenter;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,6 +12,7 @@ import org.springframework.transaction.TransactionStatus;
 
 import com.jpro.Jinterface.Jcenter;
 import com.jpro.jmybatis.JcenterStoreMMapper;
+import com.jpro.jstore.JpayAfterVo;
 import com.jpro.jstore.JstoreVo;
 
 @Service
@@ -20,6 +23,12 @@ public class JcenterStoreMService implements Jcenter{
 	JcenterStoreMMapper mapper;
 	Page page;
 	
+	@Override
+	public Integer JsaleFind3(JpayAfterVo vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Autowired
 	DataSourceTransactionManager transaction;
 	TransactionStatus status;
@@ -32,7 +41,6 @@ public class JcenterStoreMService implements Jcenter{
 	public List<JstoreVo> storeSelect(Page page) {
 		List<JstoreVo> list = null;
 		try {
-			page.setFindStr("서울");
 			int totSize = mapper.totSize(page);
 			page.setTotSize(totSize);
 			page.compute();
@@ -47,6 +55,63 @@ public class JcenterStoreMService implements Jcenter{
 		return list;
 	}
 
+/*------------------------------------------------------------------*/	
+	// 가맹관리
+	public Map<String,Object> selectCenterStoreM(Integer startNo) {
+		Integer totalCount = mapper.selectCenterStoreCount();
+	
+		Page page = new Page(totalCount, startNo);
+		
+		List<JstoreVo> list =  mapper.selectCenterStore(page); 
+		System.out.println("성공1");
+	
+		
+		// 메인 지역을 가져오기
+		List<String> locallist = mapper.selectCenterSotreMainLocal();
+		
+		Map<String,Object> resultMap  = new HashMap<String,Object>();
+		System.out.println();
+		resultMap.put("list", list);
+		resultMap.put("page", page);
+		resultMap.put("localList", locallist);
+		
+		return resultMap;
+	}
+	
+//가맹관리
+	public Map<String,Object> selectCenterStoreMBylocal(Integer startNo, String local) {
+		
+		Integer totalCount = mapper.selectCenterStoreBylocalCount(local);
+		
+		System.out.println("성공2");
+		Page page = new Page(totalCount, startNo);
+		
+		Map<String,Object> ParamPageAndlocal = new HashMap<String,Object>();
+		
+		ParamPageAndlocal.put("local", local);
+		ParamPageAndlocal.put("startNo", page.getStartNo());
+		ParamPageAndlocal.put("listSize", page.getListSize());
+	
+		List<JstoreVo> list = mapper.selectCenterStoreBylocal(ParamPageAndlocal);
+		
+		// 메인 지역을 가져오기
+		List<String> locallist = mapper.selectCenterSotreMainLocal();
+
+		Map<String,Object> resultMap  = new HashMap<String,Object>();
+		
+		resultMap.put("list", list);
+		resultMap.put("page", page);
+		resultMap.put("localList", locallist);
+		
+		return resultMap;
+	}
+	
+/*-----------------------------------------------------------------------------*/	
+	
+	
+	
+	
+	
 	@Override
 	public JstoreVo JsaleFind2(String date1, String date2) {
 		// TODO Auto-generated method stub
@@ -60,7 +125,7 @@ public class JcenterStoreMService implements Jcenter{
 	}
 
 	@Override
-	public List<JstoreVo> selectStoreList(Page page, String district) {
+	public List<JpayAfterVo> selectStoreList(JpayAfterVo vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -133,11 +198,6 @@ public class JcenterStoreMService implements Jcenter{
 		return false;
 	}
 
-	@Override
-	public JstoreVo JsaleFind3(String date1, String date2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public JstoreVo dropSelectOne(int sno) {

@@ -127,6 +127,8 @@
 		// create element (input)
 		var eainput = document.createElement('input');
 		var snoinput = document.createElement('input');
+		var titleinput = document.createElement('input');
+		var title = document.getElementById('store').value
 		// set attribute (input)
 		eainput.setAttribute("type", "hidden");
 		eainput.setAttribute("name", "ea");
@@ -134,10 +136,14 @@
 		snoinput.setAttribute("type", "hidden");
 		snoinput.setAttribute("name", "sno");
 		snoinput.setAttribute("value", sno);
+		titleinput.setAttribute("type", "hidden");
+		titleinput.setAttribute("name", "title");
+		titleinput.setAttribute("value", title);
 	
 		// append input (to form)
 		newForm.appendChild(snoinput);
 		newForm.appendChild(eainput);
+		newForm.appendChild(titleinput);
 	
 		// append form (to body)
 		document.body.appendChild(newForm);

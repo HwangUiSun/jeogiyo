@@ -1,6 +1,7 @@
 package com.jpro.jcontroller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,12 +17,14 @@ import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.jcenter.JcenterMemberVo;
 import com.jpro.jcenter.JcenterStoreMService;
+import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
+import com.jpro.jstore.JpayAfterVo;
 import com.jpro.jstore.JstoreVo;
 
 @RestController
@@ -35,6 +39,9 @@ public class JcenterController {
 	
 	@Autowired
 	JcenterStoreMService storeMDao;
+	
+	@Autowired
+	JcenterStoreSaleService saleDao;
 	
 	
 	@RequestMapping("index")
@@ -221,18 +228,52 @@ public class JcenterController {
 		return mv;
 	}
 	
-	
+	/**
+	 * 설명 : 최초의 화면조회
+	 * @return
+	 */
 	@RequestMapping("center_storeM")
-	public ModelAndView storeM(Page page) {
+	public ModelAndView storeM(Integer startNo) {
+		if(startNo == null) {
+			startNo =1;
+		}
+		System.out.println("center_storeMController OK...............");
+		// 서비스
+		Map<String,Object> result =  storeMDao.selectCenterStoreM(startNo);
+		
 		ModelAndView mv = new ModelAndView();
-		String url = "../center/center_storeM.jsp";
-		
-		mv.addObject("inc",url);
-		List<JstoreVo> list = storeMDao.storeSelect(page);
-		mv.addObject("list", list);
-
 		mv.setViewName("center/center_index");
-		
+		mv.addObject("inc", "../center/center_storeM.jsp");
+		mv.addObject("storeList", result.get("list"));
+		mv.addObject("page", result.get("page"));
+		mv.addObject("localList", result.get("localList"));
+		return mv;
+	}
+	/**
+	 * 설명 : 각 지역별 가맹점 조회
+	 *  
+	 * http://localhost:4321/center_storeM?startNo=1&local='서울'
+	 * local : 서울, 경기 , 인천
+	 * @return
+	 */
+	
+	
+	@RequestMapping("center_storeM_local")
+	public ModelAndView storeM(Integer startNo, @RequestParam String local, HttpServletRequest req) {
+		if(startNo == null) {
+			startNo =1;
+		}
+		// 서비스
+		Map<String,Object> result =  storeMDao.selectCenterStoreMBylocal(startNo, local);
+		ModelAndView mv = new ModelAndView();
+		HttpSession ht = req.getSession();
+		ht.getAttribute("mainlocal");
+		mv.setViewName("center/center_index");
+		mv.addObject("inc", "../center/center_storeM.jsp");
+		mv.addObject("storeList", result.get("list"));
+		mv.addObject("page", result.get("page"));
+		mv.addObject("localList", result.get("localList"));
+ 		mv.addObject("selectLocal", local);
 		return mv;
 	}
 	
@@ -252,6 +293,30 @@ public class JcenterController {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeSale.jsp";
 		mv.addObject("inc",url);
+		
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_storeSaleFind")
+	public ModelAndView storeSaleFind(JpayAfterVo vo, HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeSale.jsp";
+		mv.addObject("inc",url);
+		vo.setAddress(req.getParameter("address"));
+		vo.setDate1(req.getParameter("date1"));
+		vo.setDate2(req.getParameter("date2"));
+		
+		Integer totSale = saleDao.JsaleFind3(vo);
+		Integer totHit = saleDao.totHit(vo);
+		List<JpayAfterVo> list = saleDao.selectStoreList(vo);
+		mv.addObject("totSale", totSale);
+		mv.addObject("totHit", totHit);
+		mv.addObject("list", list);
+		mv.addObject("address", vo.getAddress());
+		mv.addObject("date1", vo.getDate1());
+		mv.addObject("date2", vo.getDate2());
 		
 		mv.setViewName("center/center_index");
 		
@@ -349,8 +414,8 @@ public class JcenterController {
 		String url = "../common/order_view.jsp";
 		mv.addObject("inc",url);
 		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
-	
+		String tableName = req.getParameter("title");
+		System.out.println("addc"+tableName);
 		page.setTableName(tableName);	
 		baljuDao.updateEa(ea, sno, tableName);
 		
