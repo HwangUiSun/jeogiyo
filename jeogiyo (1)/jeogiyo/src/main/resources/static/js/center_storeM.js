@@ -48,3 +48,4 @@ center_storeM.movePage = function(page){
 		location.href='center_storeM_local?startNo='+page+'&local=' + selectLocalValue		
 	}
 }
+

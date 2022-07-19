@@ -19,6 +19,7 @@ import com.jpro.jcenter.JcenterMemberVo;
 import com.jpro.jcenter.JcenterStoreMService;
 import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jcenter.JcenterStoreVo;
+import com.jpro.jcenter.JcenterstoreDropService;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
 import com.jpro.jstore.JbaljuListVo;
@@ -43,6 +44,8 @@ public class JcenterController {
 	@Autowired
 	JcenterStoreSaleService saleDao;
 	
+	@Autowired
+	JcenterstoreDropService dropDao;
 	
 	@RequestMapping("index")
 	public ModelAndView index() {
@@ -337,18 +340,24 @@ public class JcenterController {
 		
 		return mv;
 	}
-	
+
 	@RequestMapping("center_storeDrop")
-	public ModelAndView center_storeDrop(com.jpro.common.Page notipage) {
+	public ModelAndView center_storeDrop(com.jpro.jcenter.Page storepage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeDrop.jsp";
 		mv.addObject("inc",url);
+		if(storepage.getFindStr() ==null) {
+			storepage =  new com.jpro.jcenter.Page();
+			storepage.setNowPage(1);
+			storepage.setFindStr("");
+			
+		}
 		
-		List<J_notiVo> notilist = notiDao.select(notipage);
+		List<JstoreVo> storelist = dropDao.storeDrop(storepage);
 		
-		notipage = notiDao.getPage();
-		mv.addObject("notilist",notilist);
-		mv.addObject("notipage",notipage);
+		storepage = dropDao.getPage();
+		mv.addObject("storelist",storelist);
+		mv.addObject("storepage",storepage);
 		
 		mv.setViewName("center/center_index");
 		
@@ -356,6 +365,32 @@ public class JcenterController {
 	}
 	
 
+	@RequestMapping("cemter_storefindstr")
+	public ModelAndView centerStoreFindstr(com.jpro.jcenter.Page storepage) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeDrop.jsp";
+		
+		
+		if(storepage.getFindStr() ==null) {
+			storepage =  new com.jpro.jcenter.Page();
+			storepage.setNowPage(1);
+			storepage.setFindStr("");
+			
+		}
+	
+		
+		List<JstoreVo> storelist = dropDao.storeDrop(storepage); 
+		storepage =  dropDao.getPage();
+		
+		mv.addObject("inc",url);
+		mv.addObject("storelist",storelist);
+		mv.addObject("storepage",storepage);
+
+		mv.setViewName("center/center_index");
+		return mv;
+	}
+	
+	
 	
 
 	@RequestMapping("center_storeDropView")

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>center_storeM</title>
 <link href="/css/store_Drop.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 center_storeM<br/>
@@ -16,50 +17,51 @@ center_storeM<br/>
 <a href='storeCenter'>Home</a>
 </div>
 <div id='Drop'>
-	<input type = 'text' name='finStr' value=''>
-	<input type = 'text' name='nowPage' value=''>
-	<button type= 'button' name='btnDrop'>조회</button>
+<form name='frm_Drop' class='frm_Drop' method='post'>
+	<input type = 'text' name='findStr' value='${storepage.findStr}'>
+	<input type = 'hidden' name='nowPage' value='${page.nowPage}'>
+	<button type= 'button' onclick ='btnDrop(this.form)'>조회</button>
+</form>
 </div>
-<div class='title' onclick="">
+
+<div class='title'>
 	<span>NO</span>
 		<span>제목</span>
 		<span>작성자</span>
 		<span>상태</span>
 </div>	
 
+
 	<div class="center_Drop">
-	<c:set var='num' value='${notipage.startNo }' />
-	<c:forEach var='v' items='${notilist}'>
-		<div class='items' onclick="">
-			<span >${num}</span>
+	<c:set var='num' value='${page.startNo }' />
+	<c:forEach var='v' items='${storelist}'>
+		<div class='items' onclick="center_storeView(${num})"><!-- 완료 -->
+			<span>${num}</span>
 			<span>${v.subject}</span>
-			<span>본사</span>
+			<span>${v.storeName }</span>
 			<span>${v.nal}</span>
 		</div>
 	<c:set var='num' value='${num=num+1 }'/>
 	</c:forEach>
 	<div class='paging'>
 		
-			<c:if test="${notipage.startPage>1 }">
-				<button type='button' class='btnFirst'  onclick='movePage(1)' >맨첨</button>
-				<button type='button' class='btnPrev'   onclick='movePage(${notipage.startPage-1})' >이전</button>
+			<c:if test="${storepage.startPage>1 }">
+				<button type='button' class='btnFirst'  onclick='movePage(1)'>맨첨</button>
+				<button type='button' class='btnPrev'   onclick='movePage(${storepage.startPage-1})' >이전</button>
 			</c:if>		
 			
 			
-			<c:forEach var='i' begin='${notipage.startPage }' end='${notipage.endPage }'>
-				<button type='button' class='first'  onclick = 'movePage(${i})' >${i }</button>
+			<c:forEach var='i' begin='${storepage.startPage }' end='${storepage.endPage }'>
+				<button type='button' class='first'  onclick = 'movePage(${i})' >${i}</button>
 			</c:forEach>				
 
 
-			<c:if test="${notipage.endPage < notipage.totPage }">
-				<button type='button' class='btnNext'  onclick='movePage(${notipage.endPage+1})'>다음</button>
-				<button type='button' class='btnLast'  onclick='movePage(${notipage.totPage})'>맨끝</button>
+			<c:if test="${storepage.endPage < storepage.totPage }">
+				<button type='button' class='btnNext'  onclick='movePage(${storepage.endPage+1})'>다음</button>
+				<button type='button' class='btnLast'  onclick='movePage(${storepage.totPage})'>맨끝</button>
 			</c:if>		
 		</div>	
 	</div>
-	<form name="frm_noti" method="post">
-		<input type="hidden" name="nowPage" value="${notipage.nowPage}">
-	</form>
-<script src='./js/noti.js'></script>
+<script src='./js/centerstoreDrop.js'></script>
 </body>
 </html>
