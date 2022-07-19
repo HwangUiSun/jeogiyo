@@ -14,7 +14,7 @@
 		select *
 		from jstorevo
 		where mainLocal like '%${findStr}'
-		order by length(storeName) asc
+		order by binary(storeName)
 		limit ${startNo}, ${listSize}
 	</select>
 
