@@ -373,6 +373,7 @@ public class JstoreController {
 	    			s.setAttribute("msg", msg);
 	    			mv.addObject("msg",msg);					
 	    			mv.setViewName("store/store_index");
+	    			return mv;
 	              }else {
 	               	msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));	
 	              }
