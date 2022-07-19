@@ -31,5 +31,6 @@ public interface JbaljuMapper {
 	public void insertBalsulistTitle(String title); //Jbaljudetail insert 함수
 	public void changeStatus(String title);
 	public void waitOrder(String title);
+	public List<JbaljudetailsVo> selectTitle();
 
 }

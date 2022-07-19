@@ -277,6 +277,18 @@ public class JbaljuService {
 		ex.printStackTrace();
 	}}
 	
+	public List<JbaljudetailsVo> selectTitle() {
+		List<JbaljudetailsVo> list = null;
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			list = mapper.selectTitle();
+			transaction.commit(status);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return list;
+	}
+	
 	public void updateStatusFalse(int sno, String mstoreName){
 		String storeName=mstoreName;
 		String updateStatusFalse = "update "+ storeName +" set status = false where sno = "+sno;

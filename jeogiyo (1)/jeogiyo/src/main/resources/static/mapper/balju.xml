@@ -21,6 +21,10 @@
 		limit ${startNo-1}, ${listSize}
 	</select>
 	
+	<select id="selectTitle" resultType="JbaljudetailsVo">
+		select title from jbaljudetails
+	</select>
+	
 	<select id="selectList" parameterType="String" resultType="JbaljuListVo">
 		${tableName} 
 	</select>
