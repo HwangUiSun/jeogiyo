@@ -377,7 +377,7 @@ public class JstoreController {
 			mv.addObject("msg",msg);					
 			mv.setViewName("store/store_index");
 			try(
-				FileReader rw = new FileReader("C:/Temp/lists.txt");
+				FileReader rw = new FileReader("C:/lists.txt");
 	            BufferedReader br = new BufferedReader( rw );
 	           ){
 	            

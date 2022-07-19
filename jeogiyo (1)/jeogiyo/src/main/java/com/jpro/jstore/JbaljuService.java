@@ -301,7 +301,7 @@ public class JbaljuService {
 			msg="등록성공";
 			 try( //요기서 객체를 생성하면 try종료 후 자동으로 close처리됨
 		                //true : 기존 파일에 이어서 작성 (default는 false임)
-		                FileWriter fw = new FileWriter( "c:/lists.txt" ,true);
+		                FileWriter fw = new FileWriter( "C:/lists.txt" ,true);
 		                BufferedWriter bw = new BufferedWriter( fw );
 		                )
 		        {
