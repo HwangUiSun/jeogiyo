@@ -1,8 +1,10 @@
 package com.jpro.jstore;
 
 public class JpayAfterVo {
+
 	String address, apiAddressDetail, nal, storeName, mainLocal, date1, date2;
 	int harutotal;
+
 	
 	public String getAddress() {
 		return address;
@@ -46,10 +48,12 @@ public class JpayAfterVo {
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
 	}
+
 	public int getHarutotal() {
 		return harutotal;
 	}
 	public void setHarutotal(int harutotal) {
 		this.harutotal = harutotal;
 	}
+	
 }
