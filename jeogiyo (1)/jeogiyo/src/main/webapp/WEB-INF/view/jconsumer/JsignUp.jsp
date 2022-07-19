@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>JsignUp</title>
+<link rel = 'stylesheet' type='text/css' href = 'css/JsignUp.css'>
 </head>
 <body>
 

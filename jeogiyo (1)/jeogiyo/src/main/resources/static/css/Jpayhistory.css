@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 #subject{
 	
    text-align : center;
@@ -9,12 +9,18 @@
    padding-top : 20px;
 }
 #payInfo{
-	text-align :left;
+	
 	border-top: 3px solid #999;
 	margin-bottom : 20px;
 	margin-top : 50px;
 	
 }
+.fieldlabel{
+	float:left;
+	width:120px;
+	text-align:right;
+	padding-right:10px;
+	}
 .sub{
     font: 200;
 	text-align : center;
