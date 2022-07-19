@@ -31,9 +31,12 @@
 		
 		<div class="itemsWrap" id="orderlist">	
 			<div class='items'>		
-				<span>제품이름</span>
-				<span>발주 가맹점</span>
-				<span>수량</span>
+				<span class="titles">제품이름</span>
+				<span class="titles">발주 가맹점</span>
+				<span class="titles">수량</span>
+				<c:if test ="${mid == 'root'}">
+				<span class="titles">수정</span>
+				</c:if>
 			</div>
 			<c:forEach var='v' items='${selectSubOne}'>		
 			<div class="items " >
