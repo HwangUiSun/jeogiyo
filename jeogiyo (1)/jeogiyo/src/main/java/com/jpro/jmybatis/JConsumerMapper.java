@@ -1,7 +1,6 @@
 package com.jpro.jmybatis;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,17 +8,20 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.jpro.common.Page;
 import com.jpro.jconsumer.BoardAtt;
 import com.jpro.jconsumer.JConsumerVo;
+
+import com.jpro.jconsumer.JconsumerVo2;
+import com.jpro.jconsumer.Page;
 
 @Mapper
 @Repository
 @Qualifier("consumerMapper")
 public interface JConsumerMapper {
-	public int totSize(com.jpro.jconsumer.Page cosumerpage);
+	public int totSize(Page page);
+	
 	//매장 선택
-	public List<JConsumerVo> storeSelect(com.jpro.jconsumer.Page cosumerpage);
+	public List<JconsumerVo2> storeSelect(Page page);
 	
 	//메뉴 보기
 	public String JmenuSelect();

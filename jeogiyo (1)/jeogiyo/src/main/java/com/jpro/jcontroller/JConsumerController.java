@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jpro.jconsumer.JConsumerService;
-import com.jpro.jconsumer.JConsumerVo;
+import com.jpro.jconsumer.JconsumerVo2;
+import com.jpro.jconsumer.Page;
 
 
 @RestController
@@ -98,24 +99,23 @@ public class JConsumerController {
 		
 		return mv;
 	}*/
-	/* @RequestMapping("findIdBtn")
+	@RequestMapping("findIdBtn")
 	public ModelAndView findIdBtn() {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("jconsumer/Jlogin");
 		
 		return mv;
-	}*/
-	 @RequestMapping("findIdR")
+	}
+	/*@RequestMapping("findIdR")
 	public ModelAndView findIdR(JConsumerVo vo) {
-		 System.out.println("111");
 		ModelAndView mv = new ModelAndView();
 		String mId = dao.findId(vo);
 		
 		mv.addObject("msg", mId);
 		mv.setViewName("jconsumer/find_id_result");
 		return mv;
-	}
+	}*/
 	
 	//비밀번호 찾기
 	@RequestMapping("findPwdBtn")
@@ -160,17 +160,19 @@ public class JConsumerController {
 	}
 	
 	@RequestMapping("JstoreSelect")
-	public ModelAndView JstoreSelect(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView JstoreSelect(Page page) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JstoreSelect.jsp";
 
 		mv.addObject("inc",url);
-		 List<JConsumerVo> conlist = dao.storeSelect(consumerpage); 
-		consumerpage = dao.getPage();
+		
+		System.out.println("111");
+		List<JconsumerVo2> conlist = dao.storeSelect(page); 
+		System.out.println(conlist);
+		page = dao.getPage();
 		mv.addObject("storeSelectlist",conlist);
-		mv.addObject("storeSelectpage",consumerpage);
-
-		mv.setViewName("jconsumer/Jconsumer_index");		
+		mv.addObject("storeSelectpage",page);
+		mv.setViewName("jconsumer/Jconsumer_index");	
 		return mv;
 	}
 	

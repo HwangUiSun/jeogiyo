@@ -33,9 +33,9 @@ public class JConsumerService implements JConsumerInterface {
 		return this.consumerpage;
 	}
 	
-	public List<JConsumerVo> storeSelect(com.jpro.jconsumer.Page cosumerpage) {
+	public List<JconsumerVo2> storeSelect(com.jpro.jconsumer.Page cosumerpage) {
 		
-		List<JConsumerVo> list = null;
+		List<JconsumerVo2> list = null;
 		try {			
 			int totSize = mapper.totSize(cosumerpage);			
 			cosumerpage.setTotSize(totSize);
