@@ -113,9 +113,9 @@ public class JcenterStoreSaleService implements Jcenter{
 	@Override
 	public JpayAfterVo JsaleFind3(String mainLocal, String date1, String date2) {
 		JpayAfterVo vo = null;
+		System.out.println("Sale Service OK...");
 		try {
-			
-			
+			vo = mapper.JsaleFind3(mainLocal, date1, date2);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
