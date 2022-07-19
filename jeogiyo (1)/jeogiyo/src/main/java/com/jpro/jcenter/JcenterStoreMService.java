@@ -32,11 +32,12 @@ public class JcenterStoreMService implements Jcenter{
 	public List<JstoreVo> storeSelect(Page page) {
 		List<JstoreVo> list = null;
 		try {
+			page.setFindStr("서울");
 			int totSize = mapper.totSize(page);
 			page.setTotSize(totSize);
 			page.compute();
 			list = mapper.storeSelect(page);
-			System.out.println(totSize);
+			System.out.println("sertoto"+totSize);
 			System.out.println(list);
 		}catch(Exception ex) {
 			ex.printStackTrace();

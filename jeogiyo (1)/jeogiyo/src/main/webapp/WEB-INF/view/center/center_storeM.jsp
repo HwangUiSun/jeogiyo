@@ -25,10 +25,10 @@
 		
 		<div id='storeAddressPhone'>
 			<label>주소</label>
-			<span>힘들어 힘들어 힘들어 힘들어</span>
+			<span>${list.mainLocal }</span>
 			<br/><br/>
 			<label>연락처</label>
-			<span>010-0000-0000</span>
+			<span>${list.phone }</span>
 		</div>
 		
 		<div id='store_view' onclick="location.href='center_storeMview'"></div>
