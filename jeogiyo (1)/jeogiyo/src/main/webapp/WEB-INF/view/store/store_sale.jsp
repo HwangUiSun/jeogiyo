@@ -48,7 +48,7 @@
 			
 						<div class="items">
 							<span>${num}.</span>
-							<span>${l.nal}날 매출</span>
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;${l.nal}</span>
 							<span>${l.harutotal}₩</span>
 								
 						</div>
