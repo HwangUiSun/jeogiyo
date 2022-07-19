@@ -31,7 +31,7 @@ public class J_notiService {
 		return this.notipage;
 	}
 	
-	 
+	
 	
 	public List<J_notiVo> select(Page notipage) {
 		

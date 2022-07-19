@@ -28,7 +28,10 @@ import com.jpro.common.TableVo;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
+import com.jpro.jstore.JstoreOrderStatusService;
+import com.jpro.jstore.JstoreOrderStatusVo;
 import com.jpro.jstore.JstoreVo;
+import com.jpro.jstore.statusPage;
 
 @RestController
 public class JstoreController {
@@ -42,6 +45,9 @@ public class JstoreController {
 	
 	@Autowired
 	J_loginService loginDao;
+	
+	@Autowired
+	JstoreOrderStatusService orderStatusDao;
 	
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
@@ -265,11 +271,18 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("store_orderStatus")
-	public ModelAndView store_orderStatus() {
+	public ModelAndView store_orderStatus(com.jpro.jstore.statusPage statusPage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../store/store_orderStatus.jsp";
-		mv.addObject("inc",url);
+		statusPage = new com.jpro.jstore.statusPage();
+		statusPage.setNowPage(1);
 		
+		List<JstoreOrderStatusVo> statuslist = orderStatusDao.select(statusPage);
+		statusPage = orderStatusDao.getStatusPage();
+		
+		mv.addObject("inc",url);
+		mv.addObject("statuslist", statuslist);
+		mv.addObject("statusPage", statusPage);
 		mv.setViewName("store/store_index");
 		
 		return mv;
@@ -425,8 +438,6 @@ public class JstoreController {
 		mv.setViewName("store/store_index");		
 		return mv;
 	}
-	
-	
 	
 	
 }
