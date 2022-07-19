@@ -6,11 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <link rel="stylesheet" type="text/css" href="css/JfindId.css">
-  <script src="/js/Jlogin.js"></script>
 </head>
 <body>
 <form action="doJoin" method="POST" class="joinForm" 
-        id='frm_findid' name='frm_findid'onsubmit="DoJoinForm__submit(this); return false;">
+        id='frm_findid' name='frm_findid'>
                                                                                                
       <h2>아이디찾기</h2>
       
@@ -23,7 +22,8 @@
       </div>
       
       </div>
-      <input type="submit" class="findIdBtn" value="아이디찾기"/>
+      <input type="button" id='findIdBtn' class="findIdBtn" value="아이디찾기"/>
     </form>
     </body>
+  <script src="/js/Jlogin.js"></script>
 </html>

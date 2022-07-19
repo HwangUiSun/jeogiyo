@@ -98,23 +98,24 @@ public class JConsumerController {
 		
 		return mv;
 	}*/
-	@RequestMapping("findIdBtn")
+	/* @RequestMapping("findIdBtn")
 	public ModelAndView findIdBtn() {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("jconsumer/Jlogin");
 		
 		return mv;
-	}
-	/*@RequestMapping("findIdR")
+	}*/
+	 @RequestMapping("findIdR")
 	public ModelAndView findIdR(JConsumerVo vo) {
+		 System.out.println("111");
 		ModelAndView mv = new ModelAndView();
 		String mId = dao.findId(vo);
 		
 		mv.addObject("msg", mId);
 		mv.setViewName("jconsumer/find_id_result");
 		return mv;
-	}*/
+	}
 	
 	//비밀번호 찾기
 	@RequestMapping("findPwdBtn")
