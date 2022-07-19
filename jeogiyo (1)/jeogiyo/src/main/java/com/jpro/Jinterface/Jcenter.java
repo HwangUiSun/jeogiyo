@@ -33,7 +33,7 @@ public interface Jcenter {
 	public boolean storeBan(JstoreVo vo);		  // 가맹 해지 (본사 입장 )
 	
 	// 지역별 매출 현황
-	public JpayAfterVo JsaleFind3(String mainLocal, String date1, String date2);
+	public Integer JsaleFind3(JpayAfterVo vo);
 	public List<JstoreVo> selectStoreList(Page page, String district);
 	// TOP3 가맹점 리스트 가져오기, 가맹 관리에서 지역별 가맹점 리스트 가져오기
 	

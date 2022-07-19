@@ -24,7 +24,7 @@ public class JcenterStoreMService implements Jcenter{
 	Page page;
 	
 	@Override
-	public JpayAfterVo JsaleFind3(String address, String date1, String date2) {
+	public Integer JsaleFind3(JpayAfterVo vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,11 +1,23 @@
 package com.jpro.jstore;
 
 public class JpayAfterVo {
-	String address, apiAddressDetail, nal, storeName, mainLocal;
+	String address, apiAddressDetail, nal, storeName, mainLocal, date1, date2;
 	int J_totalPrice;
 	
 	public String getAddress() {
 		return address;
+	}
+	public String getDate1() {
+		return date1;
+	}
+	public void setDate1(String date1) {
+		this.date1 = date1;
+	}
+	public String getDate2() {
+		return date2;
+	}
+	public void setDate2(String date2) {
+		this.date2 = date2;
 	}
 	public void setAddress(String address) {
 		this.address = address;

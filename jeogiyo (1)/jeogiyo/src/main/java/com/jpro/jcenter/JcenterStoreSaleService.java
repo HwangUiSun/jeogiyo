@@ -111,16 +111,21 @@ public class JcenterStoreSaleService implements Jcenter{
 
 
 	@Override
-	public JpayAfterVo JsaleFind3(String mainLocal, String date1, String date2) {
-		JpayAfterVo vo = null;
+	public Integer JsaleFind3(JpayAfterVo vo) {
 		System.out.println("Sale Service OK...");
+		Integer totSale = 0;
+		System.out.println(vo.getAddress());
+		System.out.println(vo.getDate1());
+		System.out.println(vo.getDate2());
+		String main = vo.getMainLocal();
 		try {
-			vo = mapper.JsaleFind3(mainLocal, date1, date2);
+			totSale = mapper.JsaleFind3(main);
+			System.out.println("try 성공");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 		
-		return vo;
+		return totSale;
 	}
 
 	@Override

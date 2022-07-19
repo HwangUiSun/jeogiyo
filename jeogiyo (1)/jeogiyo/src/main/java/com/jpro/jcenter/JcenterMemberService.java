@@ -145,7 +145,7 @@ public class JcenterMemberService implements Jcenter {
 	}
 
 	@Override
-	public JpayAfterVo JsaleFind3(String address, String date1, String date2) {
+	public Integer JsaleFind3(JpayAfterVo vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

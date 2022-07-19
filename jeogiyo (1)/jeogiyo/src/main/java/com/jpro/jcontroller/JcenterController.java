@@ -300,16 +300,16 @@ public class JcenterController {
 	}
 	
 	@RequestMapping("center_storeSaleFind")
-	public ModelAndView storeSaleFind(JstoreVo vo, HttpServletRequest req) {
+	public ModelAndView storeSaleFind(JpayAfterVo vo, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeSale.jsp";
 		mv.addObject("inc",url);
 		vo.setAddress(req.getParameter("address"));
+		vo.setDate1(req.getParameter("date1"));
+		vo.setDate2(req.getParameter("date2"));
 		
-		JpayAfterVo rVo = saleDao.JsaleFind3(vo.getAddress(),
-										req.getParameter("date1"),
-										req.getParameter("date2"));
-		
+		Integer totSale = saleDao.JsaleFind3(vo);
+		System.out.println(totSale);
 		mv.setViewName("center/center_index");
 		
 		return mv;
