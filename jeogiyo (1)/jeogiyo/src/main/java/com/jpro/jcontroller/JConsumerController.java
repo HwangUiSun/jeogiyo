@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jpro.jconsumer.JConsumerService;
+import com.jpro.jconsumer.JConsumerVo;
 import com.jpro.jconsumer.JconsumerVo2;
 import com.jpro.jconsumer.Page;
 
@@ -99,15 +100,15 @@ public class JConsumerController {
 		
 		return mv;
 	}*/
-	@RequestMapping("findIdBtn")
+	/*@RequestMapping("findIdBtn")
 	public ModelAndView findIdBtn() {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("jconsumer/Jlogin");
 		
 		return mv;
-	}
-	/*@RequestMapping("findIdR")
+	}*/
+	@RequestMapping("findIdR")
 	public ModelAndView findIdR(JConsumerVo vo) {
 		ModelAndView mv = new ModelAndView();
 		String mId = dao.findId(vo);
@@ -115,7 +116,7 @@ public class JConsumerController {
 		mv.addObject("msg", mId);
 		mv.setViewName("jconsumer/find_id_result");
 		return mv;
-	}*/
+	}
 	
 	//비밀번호 찾기
 	@RequestMapping("findPwdBtn")
