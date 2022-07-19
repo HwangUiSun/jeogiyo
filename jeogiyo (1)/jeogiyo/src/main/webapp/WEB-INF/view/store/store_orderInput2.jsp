@@ -17,7 +17,7 @@
  	<div class='right'>
  		<input type='hidden' name='tableName' value='${tableName}' id="tableName">
 		<label>가맹점명</label>
-		<input type='text' name='store' value='${tableName}'></br>
+		<input type='text' name='store' value='${tableName}' id="store"></br>
 		<label>날짜</label>
 		<input type='date' name='today' id="today" readonly></br>
 		<label>발주 품목</label></br>
