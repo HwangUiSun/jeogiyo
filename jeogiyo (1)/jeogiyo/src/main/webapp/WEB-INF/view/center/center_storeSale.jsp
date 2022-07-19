@@ -1,3 +1,4 @@
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,14 +19,14 @@
 </div>
 <form method='post' name='frm_center_storeSale'>
 	<div id='sale_date'>	
-		<input type='date' name='date1'>~
-		<input type='date' name='date2'>
+		<input type='date' name='date1' value='${date1 }'>~
+		<input type='date' name='date2' value='${date2 }'>
 		<button type='button' name='btndata' onclick='findSale(this.form)'>조회</button>
 	</div>
 	
 	<div id ='sale_section'>
 		<select name='address' size='4' multiple>
-			<option value=''>전지역</option>
+			<option value='전지역'>전지역</option>
 			<option value='서울'>서울</option>
 			<option value='인천'>인천</option>
 			<option value='경기'>경기</option>
@@ -34,10 +35,9 @@
 </form>
 	
 <div id='sale_doc'>
-	<textarea rows="15" cols="40">
-		설정 기간 별 매출 현황
-	 	총 배달 건수
-	</textarea>
+		<h3>${date1} ~ ${date2}<br/>
+		${address} 매출 현황</h3> ${totSale } 원<br/>
+		<h3>총 판매 건수 </h3> ${totHit } 건
 </div>
 
 <div id='top_list'>
@@ -47,29 +47,30 @@
 	
 	<div id='top1'>
 		<h1>
-			★1위 가맹점★</br>
-			서울대 입구 1호점
+			★1위 가맹점★<br/><br/>
+			${list[0].storeName}<br/>
+			${list[0].harutotal} 원
 		</h1>
 		<br/><br/>
-		매출액 XX,XXX,XXX원
 	</div>
+		
 	
 	<div id='top2'>
 		<h2>
-			★2위 가맹점★</br>
-			서울대 입구 2호점
+			★2위 가맹점★<br/><br/>
+			${list[1].storeName}<br/>
+			${list[1].harutotal} 원
 		</h2>
 		<br/><br/>
-		매출액 XX,XXX,XXX원
 	</div>
 	
 	<div id='top3'>
 		<h3>
-			★3위 가맹점★</br>
-			서울대 입구 3호점
+			★3위 가맹점★<br/><br/>
+			${list[2].storeName}<br/>
+			${list[2].harutotal} 원
 		</h3>
 		<br/><br/>
-		매출액 XX,XXX,XXX원
 	</div>
 </div>
 <script src='./js/center_storeSale.js'></script>

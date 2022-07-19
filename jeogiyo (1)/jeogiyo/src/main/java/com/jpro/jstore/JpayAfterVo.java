@@ -2,7 +2,7 @@ package com.jpro.jstore;
 
 public class JpayAfterVo {
 	String address, apiAddressDetail, nal, storeName, mainLocal, date1, date2;
-	int J_totalPrice;
+	int harutotal;
 	
 	public String getAddress() {
 		return address;
@@ -46,10 +46,10 @@ public class JpayAfterVo {
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
 	}
-	public int getJ_totalPrice() {
-		return J_totalPrice;
+	public int getHarutotal() {
+		return harutotal;
 	}
-	public void setJ_totalPrice(int j_totalPrice) {
-		J_totalPrice = j_totalPrice;
+	public void setHarutotal(int harutotal) {
+		this.harutotal = harutotal;
 	}
 }

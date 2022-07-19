@@ -309,7 +309,15 @@ public class JcenterController {
 		vo.setDate2(req.getParameter("date2"));
 		
 		Integer totSale = saleDao.JsaleFind3(vo);
-		System.out.println(totSale);
+		Integer totHit = saleDao.totHit(vo);
+		List<JpayAfterVo> list = saleDao.selectStoreList(vo);
+		mv.addObject("totSale", totSale);
+		mv.addObject("totHit", totHit);
+		mv.addObject("list", list);
+		mv.addObject("address", vo.getAddress());
+		mv.addObject("date1", vo.getDate1());
+		mv.addObject("date2", vo.getDate2());
+		
 		mv.setViewName("center/center_index");
 		
 		return mv;

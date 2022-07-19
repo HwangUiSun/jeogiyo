@@ -34,7 +34,7 @@ public interface Jcenter {
 	
 	// 지역별 매출 현황
 	public Integer JsaleFind3(JpayAfterVo vo);
-	public List<JstoreVo> selectStoreList(Page page, String district);
+	public List<JpayAfterVo> selectStoreList(JpayAfterVo vo);
 	// TOP3 가맹점 리스트 가져오기, 가맹 관리에서 지역별 가맹점 리스트 가져오기
 	
 	// 가맹 탈퇴 게시판

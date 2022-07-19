@@ -125,7 +125,7 @@ public class JcenterStoreMService implements Jcenter{
 	}
 
 	@Override
-	public List<JstoreVo> selectStoreList(Page page, String district) {
+	public List<JpayAfterVo> selectStoreList(JpayAfterVo vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

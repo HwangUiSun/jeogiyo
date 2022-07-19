@@ -14,6 +14,10 @@ import com.jpro.jstore.JstoreVo;
 @Repository
 @Qualifier("JcenterStoreSaleMapper")
 public interface JcenterStoreSaleMapper {
-	public Integer JsaleFind3(String mainLocal);
-	public List<JstoreVo> selectStoreList(Page page, String district);
+	public Integer JsaleFind3(JpayAfterVo vo);
+	public Integer totHit(JpayAfterVo vo);
+	public Integer JsaleFind3_all(JpayAfterVo vo);
+	public Integer totHit_all(JpayAfterVo vo);
+	public List<JpayAfterVo> storeSaleList(JpayAfterVo vo);
+	public List<JpayAfterVo> storeSaleList_all(JpayAfterVo vo);
 }

@@ -1,6 +1,8 @@
 package com.jpro.jcenter;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -117,21 +119,54 @@ public class JcenterStoreSaleService implements Jcenter{
 		System.out.println(vo.getAddress());
 		System.out.println(vo.getDate1());
 		System.out.println(vo.getDate2());
-		String main = vo.getMainLocal();
 		try {
-			totSale = mapper.JsaleFind3(main);
-			System.out.println("try 성공");
+			if(vo.getAddress().equals("전지역")) {
+				totSale = mapper.JsaleFind3_all(vo);
+			}else {
+				totSale = mapper.JsaleFind3(vo);
+			}
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 		
 		return totSale;
 	}
+	
+	public Integer totHit(JpayAfterVo vo) {
+		Integer totHit = 0;
+		
+		try {
+			if(vo.getAddress().equals("전지역")) {
+				totHit = mapper.totHit_all(vo);
+			}else {
+				totHit = mapper.totHit(vo);
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return totHit;
+	}
 
 	@Override
-	public List<JstoreVo> selectStoreList(Page page, String district) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<JpayAfterVo> selectStoreList(JpayAfterVo vo) {
+		List<JpayAfterVo> list = null;
+		
+		try {
+			if(vo.getAddress().equals("전지역")) {
+				list = mapper.storeSaleList_all(vo);
+				System.out.println("전지역" + list);
+			}else {
+				list = mapper.storeSaleList(vo);
+				System.out.println("전지역말고" + list);
+				System.out.println(list.get(0).getStoreName());
+				System.out.println(list.get(0).getHarutotal());
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+			
+		return list;
 	}
 
 	@Override
