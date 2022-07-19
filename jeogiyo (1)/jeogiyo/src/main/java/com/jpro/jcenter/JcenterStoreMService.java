@@ -32,6 +32,7 @@ public class JcenterStoreMService implements Jcenter{
 	public List<JstoreVo> storeSelect(Page page) {
 		List<JstoreVo> list = null;
 		try {
+			page.setFindStr("서울");
 			int totSize = mapper.totSize(page);
 			page.setTotSize(totSize);
 			page.compute();

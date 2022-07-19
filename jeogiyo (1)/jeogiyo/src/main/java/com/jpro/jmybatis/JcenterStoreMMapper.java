@@ -13,7 +13,7 @@ import com.jpro.jstore.JstoreVo;
 @Repository
 @Qualifier("JcenterStoreM")
 public interface JcenterStoreMMapper {
-	public List<JstoreVo> storeSelect(Page page);
+	public List<JstoreVo> storeSelect(com.jpro.jcenter.Page page);
 	public JstoreVo JsaleFind2(String date1, String date2);
 	public boolean storeBan(JstoreVo vo);
 	
@@ -26,5 +26,5 @@ public interface JcenterStoreMMapper {
 	public boolean banOk(JstoreVo vo);
 	public boolean banWait(JstoreVo vo);
 	
-	public int totSize(Page page);
+	public int totSize(com.jpro.jcenter.Page page);
 }
