@@ -1,6 +1,7 @@
 package com.jpro.jcontroller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -221,18 +223,52 @@ public class JcenterController {
 		return mv;
 	}
 	
-	
+	/**
+	 * 설명 : 최초의 화면조회
+	 * @return
+	 */
 	@RequestMapping("center_storeM")
-	public ModelAndView storeM(Page page) {
+	public ModelAndView storeM(Integer startNo) {
+		if(startNo == null) {
+			startNo =1;
+		}
+		System.out.println("center_storeMController OK...............");
+		// 서비스
+		Map<String,Object> result =  storeMDao.selectCenterStoreM(startNo);
+		
 		ModelAndView mv = new ModelAndView();
-		String url = "../center/center_storeM.jsp";
-		
-		mv.addObject("inc",url);
-		List<JstoreVo> list = storeMDao.storeSelect(page);
-		mv.addObject("list", list);
-
 		mv.setViewName("center/center_index");
-		
+		mv.addObject("inc", "../center/center_storeM.jsp");
+		mv.addObject("storeList", result.get("list"));
+		mv.addObject("page", result.get("page"));
+		mv.addObject("localList", result.get("localList"));
+		return mv;
+	}
+	/**
+	 * 설명 : 각 지역별 가맹점 조회
+	 *  
+	 * http://localhost:4321/center_storeM?startNo=1&local='서울'
+	 * local : 서울, 경기 , 인천
+	 * @return
+	 */
+	
+	
+	@RequestMapping("center_storeM_local")
+	public ModelAndView storeM(Integer startNo, @RequestParam String local, HttpServletRequest req) {
+		if(startNo == null) {
+			startNo =1;
+		}
+		// 서비스
+		Map<String,Object> result =  storeMDao.selectCenterStoreMBylocal(startNo, local);
+		ModelAndView mv = new ModelAndView();
+		HttpSession ht = req.getSession();
+		ht.getAttribute("mainlocal");
+		mv.setViewName("center/center_index");
+		mv.addObject("inc", "../center/center_storeM.jsp");
+		mv.addObject("storeList", result.get("list"));
+		mv.addObject("page", result.get("page"));
+		mv.addObject("localList", result.get("localList"));
+ 		mv.addObject("selectLocal", local);
 		return mv;
 	}
 	

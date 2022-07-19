@@ -18,4 +18,41 @@
 		limit ${startNo}, ${listSize}
 	</select>
 
+<!-- /**********************************************************************************/ -->
+
+	<select id='selectCenterStore' resultType="JstoreVo">
+		SELECT * 
+		FROM jstoreVo	
+	 	limit ${startNo-1} , ${listSize}
+	</select>
+	
+	<select id='selectCenterStoreCount' resultType="Integer">
+		SELECT count(1) 
+		FROM jstoreVo
+	</select>
+	
+	
+	<select id='selectCenterStoreBylocal' parameterType='Map' resultType="JstoreVo">
+		SELECT * 
+		FROM jstoreVo
+		WHERE mainLocal LIKE CONCAT(#{local}, '%')
+	 	limit ${startNo-1} , ${listSize}
+	</select>
+	
+	<select id='selectCenterStoreBylocalCount' resultType="Integer">
+		SELECT count(1) 
+		FROM jstoreVo
+		WHERE mainLocal LIKE CONCAT(#{local}, '%')
+	</select>
+	
+	<select id='selectCenterSotreMainLocal' resultType="String">
+		SELECT mainLocal  
+		FROM jstorevo
+		GROUP BY mainlocal
+	</select>
+
+<!-- ****************************************************************************************** -->
+
+
+
 </mapper>

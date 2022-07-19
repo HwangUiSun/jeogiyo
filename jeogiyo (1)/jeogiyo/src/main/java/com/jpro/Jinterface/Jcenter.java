@@ -33,7 +33,8 @@ public interface Jcenter {
 	
 	// 지역별 매출 현황
 	public JstoreVo JsaleFind3(String date1, String date2);
-	public List<JstoreVo> selectStoreList(Page page, String district);  // TOP3 가맹점 리스트 가져오기, 가맹 관리에서 지역별 가맹점 리스트 가져오기
+	public List<JstoreVo> selectStoreList(Page page, String district);
+	// TOP3 가맹점 리스트 가져오기, 가맹 관리에서 지역별 가맹점 리스트 가져오기
 	
 	// 가맹 탈퇴 게시판
 	public JstoreVo dropSelectOne(int sno); 	  // 가맹 탈퇴 상세보기
