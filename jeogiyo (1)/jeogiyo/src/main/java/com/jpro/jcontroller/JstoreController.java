@@ -25,11 +25,16 @@ import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.common.Page;
 import com.jpro.common.TableVo;
+import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
+
 import com.jpro.jstore.JstoreOrderStatusService;
 import com.jpro.jstore.JstoreOrderStatusVo;
+
+import com.jpro.jstore.JpayAfterVo;
+
 import com.jpro.jstore.JstoreVo;
 import com.jpro.jstore.statusPage;
 
@@ -48,6 +53,10 @@ public class JstoreController {
 	
 	@Autowired
 	JstoreOrderStatusService orderStatusDao;
+	
+	@Autowired
+	JcenterStoreSaleService saleDao;
+
 	
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
@@ -258,17 +267,66 @@ public class JstoreController {
 		
 		return mv;
 	}
-	
+	// ---------------------------------------------------------------------------
 	@RequestMapping("store_sale")
-	public ModelAndView store_sale() {
+	public ModelAndView store_sale(HttpServletRequest req, Page page) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../store/store_sale.jsp";
-		mv.addObject("inc",url);
+		HttpSession session = req.getSession();
+		String mid = (String)session.getAttribute("mid");
+		List<JpayAfterVo> list =  null;
 		
+		String stn = saleDao.StoreName(mid);
+		list=saleDao.selectOne(mid,page);
+		
+		
+		mv.addObject("inc",url);
+		mv.addObject("stn",stn);
+		mv.addObject("list",list);
 		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
+	@RequestMapping("store_sale_find")
+	public ModelAndView store_sale_find(HttpServletRequest req, Page page, JpayAfterVo vo) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_sale.jsp";
+		List<JpayAfterVo> list =  null;
+		HttpSession session = req.getSession();
+		int a = 0;
+		
+		
+		String mid = (String)session.getAttribute("mid");
+		String stn = saleDao.StoreName(mid);
+		vo.setStoreName(stn);
+		vo.setDate1(req.getParameter("date1"));
+		vo.setDate2(req.getParameter("date2"));
+		
+		
+		
+		
+		list=saleDao.selectSaleday(mid,vo,page);
+		a=saleDao.selectSaledayAll(vo);
+		b=saleDao.selectSaledayAllHit(vo);
+		mv.addObject("date1", vo.getDate1());
+		mv.addObject("date2", vo.getDate2());
+		mv.addObject("inc",url);
+		mv.addObject("stn",stn);
+		mv.addObject("hit",b);
+		mv.addObject("tot",a);
+		mv.addObject("list",list);
+		mv.setViewName("store/store_index");
+		
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("store_orderStatus")
 	public ModelAndView store_orderStatus(com.jpro.jstore.statusPage statusPage) {
@@ -377,7 +435,7 @@ public class JstoreController {
 			mv.addObject("msg",msg);					
 			mv.setViewName("store/store_index");
 			try(
-				FileReader rw = new FileReader("C:/Temp/lists.txt");
+				FileReader rw = new FileReader("C:/lists.txt");
 	            BufferedReader br = new BufferedReader( rw );
 	           ){
 	            
