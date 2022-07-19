@@ -10,7 +10,7 @@
 </style>
 </head>
 <body>
-<form name ='' id='' method='post'>
+<form name ='form_login' id='form_login' method='post'>
  <h1>로그인</h1>
       <label>아 이 디 </label>
       <input type='text' name='id' size='14'/>
