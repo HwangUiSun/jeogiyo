@@ -12,6 +12,7 @@ import org.springframework.transaction.TransactionStatus;
 
 import com.jpro.Jinterface.Jcenter;
 import com.jpro.jmybatis.JcenterStoreMMapper;
+import com.jpro.jstore.JpayAfterVo;
 import com.jpro.jstore.JstoreVo;
 
 @Service
@@ -22,6 +23,12 @@ public class JcenterStoreMService implements Jcenter{
 	JcenterStoreMMapper mapper;
 	Page page;
 	
+	@Override
+	public JpayAfterVo JsaleFind3(String address, String date1, String date2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Autowired
 	DataSourceTransactionManager transaction;
 	TransactionStatus status;
@@ -192,11 +199,6 @@ public class JcenterStoreMService implements Jcenter{
 		return false;
 	}
 
-	@Override
-	public JstoreVo JsaleFind3(String date1, String date2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public JstoreVo dropSelectOne(int sno) {

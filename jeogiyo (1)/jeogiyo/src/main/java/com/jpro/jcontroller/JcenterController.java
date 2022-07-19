@@ -17,12 +17,14 @@ import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.jcenter.JcenterMemberVo;
 import com.jpro.jcenter.JcenterStoreMService;
+import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
+import com.jpro.jstore.JpayAfterVo;
 import com.jpro.jstore.JstoreVo;
 
 @RestController
@@ -37,6 +39,9 @@ public class JcenterController {
 	
 	@Autowired
 	JcenterStoreMService storeMDao;
+	
+	@Autowired
+	JcenterStoreSaleService saleDao;
 	
 	
 	@RequestMapping("index")
@@ -288,6 +293,22 @@ public class JcenterController {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeSale.jsp";
 		mv.addObject("inc",url);
+		
+		mv.setViewName("center/center_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("center_storeSaleFind")
+	public ModelAndView storeSaleFind(JstoreVo vo, HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_storeSale.jsp";
+		mv.addObject("inc",url);
+		vo.setAddress(req.getParameter("address"));
+		
+		JpayAfterVo rVo = saleDao.JsaleFind3(vo.getAddress(),
+										req.getParameter("date1"),
+										req.getParameter("date2"));
 		
 		mv.setViewName("center/center_index");
 		
