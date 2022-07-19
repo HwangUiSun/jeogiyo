@@ -311,21 +311,7 @@ public class JbaljuService {
 			mapper.insertBalsulistTitle(sql);
 			transaction.commit(status);
 			msg="등록성공";
-			 try( //요기서 객체를 생성하면 try종료 후 자동으로 close처리됨
-		                //true : 기존 파일에 이어서 작성 (default는 false임)
-		                FileWriter fw = new FileWriter( "C:/lists.txt" ,true);
-		                BufferedWriter bw = new BufferedWriter( fw );
-		                )
-		        {
-		            bw.write(title); //버퍼에 데이터 입력
-		            bw.newLine(); //버퍼에 개행 삽입
-		            bw.flush(); //버퍼의 내용을 파일에 쓰기
-		        }catch ( IOException e ) {
-		            System.out.println(e);
-		        }
-
-
-			
+					
 		}catch(Exception ex) {
 			msg ="이미 있습니다";
 		}

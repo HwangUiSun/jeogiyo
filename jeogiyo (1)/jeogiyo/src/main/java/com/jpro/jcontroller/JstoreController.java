@@ -434,25 +434,18 @@ public class JstoreController {
 			s.setAttribute("msg", msg);
 			mv.addObject("msg",msg);					
 			mv.setViewName("store/store_index");
-			try(
-				FileReader rw = new FileReader("C:/lists.txt");
-	            BufferedReader br = new BufferedReader( rw );
-	           ){
-	            
-	           //읽을 라인이 없을 경우 br은 null을 리턴한다.
-	           String readLine = null ;
-	           while( ( readLine =  br.readLine()) != null ){
-	              if(title.contains(readLine)) {
-	            	System.out.println("있다");
-	            	
-	    			return mv;
-	              }else {
-	               	msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));	
-	              }
-	            }
-	        }catch ( IOException e ) {
-	            System.out.println(e);
-	        }	
+			System.out.println("있다");
+			List<JbaljudetailsVo> list=baljuDao.selectTitle();
+			for(JbaljudetailsVo v : list) {
+				if(v.getTitle().equals(title)) {
+					System.out.println("있습니다 있는겁니다");
+					return mv;
+				}else {
+					msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));	
+				}
+			}
+			
+	       	
 		return mv;
 	}
 	
