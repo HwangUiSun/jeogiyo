@@ -9,51 +9,34 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 
 import com.jpro.Jinterface.Jcenter;
-import com.jpro.jmybatis.JcenterMemberMapper;
+import com.jpro.jmybatis.JcenterStoreSaleMapper;
 import com.jpro.jstore.JpayAfterVo;
 import com.jpro.jstore.JstoreVo;
 
 @Service
-public class JcenterMemberService implements Jcenter {
+public class JcenterStoreSaleService implements Jcenter{
+
 	@Autowired
-	@Qualifier("mCenterMember")
-	JcenterMemberMapper mapper;
-	Page page;
+	@Qualifier("JcenterStoreSaleMapper")
+	JcenterStoreSaleMapper mapper;
 	
 	@Autowired
 	DataSourceTransactionManager transaction;
 	TransactionStatus status;
-	
-	public Page getPage() {
-		return this.page;
-	}
-	
-	//회원목록 전체가져오기
-	public List<JcenterMemberVo> memberSelect(Page page) {
-		List<JcenterMemberVo> list = null;
-		try {			
-			int totSize = mapper.totSize(page);			
-			page.setTotSize(totSize);
-			page.compute();
-			list = mapper.select(page);
-			System.out.println(totSize);
-			System.out.println(list);
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		
-		this.page = page;
-		return list;
 
-	}
-	
 	@Override
 	public List<JcenterVo> centerSelect(Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
+	@Override
+	public boolean storeBan(JstoreVo vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 	@Override
 	public List<JstoreVo> storeSelect(Page page) {
 		// TODO Auto-generated method stub
@@ -126,10 +109,18 @@ public class JcenterMemberService implements Jcenter {
 		return null;
 	}
 
+
 	@Override
-	public boolean storeBan(JstoreVo vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public JpayAfterVo JsaleFind3(String mainLocal, String date1, String date2) {
+		JpayAfterVo vo = null;
+		System.out.println("Sale Service OK...");
+		try {
+			vo = mapper.JsaleFind3(mainLocal, date1, date2);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return vo;
 	}
 
 	@Override
@@ -145,12 +136,6 @@ public class JcenterMemberService implements Jcenter {
 	}
 
 	@Override
-	public JpayAfterVo JsaleFind3(String address, String date1, String date2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean banOk(JstoreVo vo) {
 		// TODO Auto-generated method stub
 		return false;
@@ -161,5 +146,5 @@ public class JcenterMemberService implements Jcenter {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 }

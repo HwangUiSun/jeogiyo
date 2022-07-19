@@ -16,21 +16,22 @@
 <div id='sale_find'>
 	매출 조회
 </div>
-
-<div id='sale_date'>	
-	<input type='date' name='data1'>~
-	<input type='date' name='date2'>
-	<button type='button' name='btndata'>조회</button>
-</div>
-
-<div id ='sale_section'>
-	<select name='address' size='3' multiple>
-		<option value='whole_area'>전지역</option>
-		<option value='Seoul'>서울</option>
-		<option value='incheon'>인천</option>
-		<option value='gyeong-gido'>경기도</option>
-	</select>
-</div>
+<form method='post' name='frm_center_storeSale'>
+	<div id='sale_date'>	
+		<input type='date' name='date1'>~
+		<input type='date' name='date2'>
+		<button type='button' name='btndata' onclick='findSale(this.form)'>조회</button>
+	</div>
+	
+	<div id ='sale_section'>
+		<select name='address' size='4' multiple>
+			<option value=''>전지역</option>
+			<option value='서울'>서울</option>
+			<option value='인천'>인천</option>
+			<option value='경기'>경기</option>
+		</select>
+	</div>
+</form>
 	
 <div id='sale_doc'>
 	<textarea rows="15" cols="40">
@@ -71,9 +72,6 @@
 		매출액 XX,XXX,XXX원
 	</div>
 </div>
-
-
-<button type='button' id='cancelBtn'>돌아가기</button>
-
+<script src='./js/center_storeSale.js'></script>
 </body>
 </html>
