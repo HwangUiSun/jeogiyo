@@ -35,15 +35,13 @@
 		<span>날짜</span>
 	</div>
 	<div class="itemsWrap">
-	<c:set var='num' value='${notipage.startNo }' />
 	<c:forEach var='v' items='${notilist}'>
-		<div class='items' onclick="noti_view.view(${num})">
-			<span >${num}</span>
+		<div class='items' onclick="noti_view.view(${v.sno})">
+			<span >${v.sno}</span>
 			<span>${v.subject}</span>
 			<span>본사</span>
 			<span>${v.nal}</span>
 		</div>
-	<c:set var='num' value='${num=num+1 }'/>
 	</c:forEach>
 	<div class='paging'>
 		

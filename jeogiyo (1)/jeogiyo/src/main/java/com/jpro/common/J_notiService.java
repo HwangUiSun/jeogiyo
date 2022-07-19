@@ -65,6 +65,7 @@ public class J_notiService {
 			transaction.commit(status);
 		}catch (Exception e) {
 			e.printStackTrace();
+			transaction.rollback(status);
 		}
 		return vo;
 	}
