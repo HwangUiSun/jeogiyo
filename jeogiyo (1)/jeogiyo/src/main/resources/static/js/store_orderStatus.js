@@ -1,14 +1,14 @@
 /**
  * 
  */
- btnAccept = function(){
+ btnAccept = function(sno){
 	
 	$('.btns').css('visibility', 'hidden');
 	$('.order_expected_time').css('visibility', 'visible');
 	
 	$('.order_expected_time h1').css('text-align', 'center');
 	
-	var time = 24 * 60 * 60;
+	var time = 60 * 60;
 	var timeOrigin = time;
 	var hour = parseInt(timeOrigin / 3600);
 	
@@ -41,16 +41,11 @@
 	})
 }
 
-$(function(){
-	var timer;
-	
-	$('').click(function(){
-		timer = setTimeout(function(){
-			window.alert(new Date());
-		},5000);
-	});
-	
-	$('#stop').click(function(){
-		clearTimeout(timer);
-	});
-});
+movePage = function(page){
+		let url = 'store_orderStatus';
+		let frm = document.frm_orderStatus;
+		frm.nowPage.value = page;
+		frm.action = url;
+		frm.submit();
+}
+

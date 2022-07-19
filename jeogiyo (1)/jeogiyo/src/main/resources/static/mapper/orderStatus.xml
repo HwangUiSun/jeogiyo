@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = 'com.jpro.jmybatis.JstoreOrderStatusMapper'>
+	
+	<select id = 'totSize' parameterType = 'mPage' resultType = 'Integer'>
+		select count(sno) totSize from orders
+	</select>
+	
+	<select id = 'select' parameterType = 'mPage' resultType = 'JstoreOrderStatusVo'>
+		select * from orders
+		limit ${startNo-1}, ${listSize}
+	</select>
+</mapper>
