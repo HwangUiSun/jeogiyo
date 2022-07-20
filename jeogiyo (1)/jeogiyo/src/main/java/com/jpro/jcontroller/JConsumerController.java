@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jpro.jconsumer.JConsumerService;
 import com.jpro.jconsumer.JConsumerVo;
+import com.jpro.jconsumer.JConsumerVo3;
 import com.jpro.jconsumer.JconsumerVo2;
 import com.jpro.jconsumer.Page;
 
@@ -190,11 +191,17 @@ public class JConsumerController {
 	}
 	
 	@RequestMapping("JorderList")
-	public ModelAndView MyPJorderListage(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView MyPJorderListage(Page page) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JorderList.jsp";
 
 		mv.addObject("inc",url);
+		System.out.println("222");
+		List<JConsumerVo3> conlist = dao.Jorderlist(page); 
+		System.out.println(conlist);
+		page = dao.getPage();
+		mv.addObject("orderlist",conlist);
+		mv.addObject("orderlistpage",page);
 		
 
 		mv.setViewName("jconsumer/Jconsumer_index");		
