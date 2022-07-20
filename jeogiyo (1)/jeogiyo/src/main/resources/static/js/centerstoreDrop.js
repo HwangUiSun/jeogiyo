@@ -24,7 +24,7 @@ btnDrop = function(frm){//조회버튼
 
 center_storeView = function(){//상세보기
 	let frm = $('.frm_Drop')[0];
-	frm.action = 'center_storeMview';  //스프링 타입
+	frm.action = 'center_storeDropView';  //스프링 타입
 	frm.submit();
 }
   

@@ -14,8 +14,6 @@
 	<form name = 'frm_storeDrop_view' class = 'frm_storeDrop_view' method = 'post'>
 		<label>아이디</label>
 		<input type = 'text' name = 'mid'><br/>
-		<label>비밀번호</label>
-		<input type = 'password' name = 'pwd'><br/>
 		<label>성명</label>
 		<input type = 'text' name ='name'><br/>
 		<label>가맹점명</label>

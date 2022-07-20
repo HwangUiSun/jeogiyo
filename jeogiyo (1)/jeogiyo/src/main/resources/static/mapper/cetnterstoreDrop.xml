@@ -5,17 +5,27 @@
 <mapper namespace='com.jpro.jmybatis.JcenterStoreDropMapper'>
 
 	<select id='storeDrop' parameterType='cpage' resultType='Integer'>
-		select count(mid) totSize from jstorevo
+		select count(mid) totSize from jdroplist
 		where subject like '%${findStr}%'
-		or    nal     like '%${findStr}%'
+		or storeName like '%${findStr}%'
 	</select>
 
 	
 	<select id='storeDropM' parameterType='cpage' resultType='JstoreVo'>
-		select * from jstorevo
+		select * from jdroplist
 		where subject like '%${findStr}%'
 		or storeName like '%${findStr}%'
-		limit ${startNo}, ${listSize} 
+		limit ${startNo-1}, ${listSize} 
 	</select>
-
+	
+	<insert id='drop_insert' parameterType='JstoreVo'>
+		insert into jdroplist (mid, pwd, name, storeName, phone, doc, subject, status)
+		values(#{mid}, #{pwd}, #{name}, #{storeName}, #{phone}, #{doc}, #{subject}, '대기')
+	</insert>
+	
+	<select id='drop_view' parameterType='String' resultType='JcenterDropListVo'>
+		select *
+		from jdroplist
+		where mid = #{_parameter}
+	</select>
 </mapper>

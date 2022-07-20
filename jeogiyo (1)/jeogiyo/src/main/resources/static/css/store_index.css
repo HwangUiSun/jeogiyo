@@ -41,7 +41,7 @@
 	height : 22px;
 	text-align : center;
 	position : relative;
-	left : 990px;
+	left : 989px;
 	top : 59px;
 }
 
@@ -79,14 +79,5 @@
 	left : 930px;
 }
 
-.store_drop{
-	color : #000;
-	text-decoration : none;
-	border : 2px solid #000;
-	width : 120px;
-	height : 22px;
-	border-radius : 10px;
-	text-align : center;
-}
 
 

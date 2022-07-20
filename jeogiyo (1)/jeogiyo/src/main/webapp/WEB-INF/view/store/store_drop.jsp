@@ -5,13 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>store_drop</title>
+<link rel='stylesheet' type='text/css' href='/css/store_drop.css'>
 </head>
 <body>
 <div id="register_agree">
+	<div id = 'subject'>탈퇴 신청</div>
+	<br/><br/>
 	<h3>약관 동의</h3>
 
     
-    <form  name="fregister" id="fregister" action="http://moden939.gabia.io/bbs/register_form2.php" onsubmit="return fregister_submit(this);" method="POST" autocomplete="off">
 
     <!-- <p style="margin: 10px 0;">회원가입약관 및 개인정보처리방침안내의 내용에 동의하셔야 회원가입 하실 수 있습니다.</p> -->
     <div id="fregister_chkall" class="checks2">
@@ -20,10 +22,10 @@
     </div>
 
     <section id="fregister_term">
-		<div class="fregister_agree2 checks2">            
+		<fieldset class="fregister_agree2 checks2">            
             <input type="checkbox" name="agree" value="1" id="agree11">
 			<label for="agree11">이용약관 동의<span>(필수)</span></label>
-        </div>
+        </fieldset>
         
         <textarea readonly>제1조(목적) 이 약관은 업체 회사(전자상거래 사업자)가 운영하는 업체 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
  
@@ -408,31 +410,34 @@
 1) 공고일자 : 2018년 05월 01일
 2) 시행일자 : 2018년 05월 01일 </textarea>
     </section>
+	<form name = 'frm_storeDrop_view' class = 'frm_storeDrop_view' method = 'post'>
+		<br/>
+		<h3>&nbsp;&nbsp;&nbsp;&nbsp;정보 입력</h3>
+		<br/>
+		<label>제목</label>
+		<input type = 'text' name = 'subject'/><br/>
+		<label>아이디</label>
+		<input type = 'text' name = 'mid'/><br/>
+		<label>비밀번호</label>
+		<input type = 'password' name = 'pwd'/><br/>
+		<label>성명</label>
+		<input type = 'text' name ='name'/><br/>
+		<label>가맹점명</label>
+		<input type = 'text' name = 'storeName'/><br/>
+		<label>연락처</label>
+		<input type = 'text' name = 'phone'/><br/>
+		<label name='doc_r'>탈퇴 사유</label>		
+		<input type='text' class = 'doc' name='doc'/>
+		
+	    <div class="btn_confirm">
+	        <input type="button" class="btn_submit" value="작성" id="btn_submit" onclick="drop_insert(this.form)">
+			<input type='button' class='btn_cancel' value="취소" onclick="location.href='noti'"/>
+	    </div>
+	</form>
 
-    <div class="btn_confirm">
-		<a href="http://moden939.gabia.io" class="btn_cancel">CANCEL</a>
-        <input type="submit" class="btn_submit" value="JOIN" id="btn_submit">
-    </div>
-
-    </form>
 
     <script>
-    function fregister_submit(f)
-    {
-        if (!f.agree.checked) {
-            alert("회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
-            f.agree.focus();
-            return false;
-        }
-
-        if (!f.agree2.checked) {
-            alert("개인정보처리방침안내의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
-            f.agree2.focus();
-            return false;
-        }
-
-        return true;
-    }
+  
     
     jQuery(function($){
         // 모두선택
@@ -444,10 +449,22 @@
             }
         });
     });
-
+    
+    
+    drop_insert = function(frm){
+    	if($('#agree11').prop("checked") && $('#agree21').prop("checked") == true){
+    		let url ='drop_insertR';
+    		frm.action = url;
+    		frm.submit();
+    		
+    	}else{
+    		alert("약관에 동의해주세요.");
+    	}
+    	    	
+    }
+    
     </script>
 </div>
-<!-- } 회원가입 약관 동의 끝 -->
 
 
 </body>

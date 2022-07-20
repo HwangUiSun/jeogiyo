@@ -20,12 +20,14 @@ import com.jpro.jcenter.JcenterStoreMService;
 import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterstoreDropService;
+import com.jpro.jcenter.JcenterDropListVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
 import com.jpro.jstore.JpayAfterVo;
+import com.jpro.jstore.JstoreDropService;
 import com.jpro.jstore.JstoreVo;
 
 @RestController
@@ -46,6 +48,9 @@ public class JcenterController {
 	
 	@Autowired
 	JcenterstoreDropService dropDao;
+	
+	@Autowired
+	JstoreDropService dropDao2;
 	
 	@RequestMapping("index")
 	public ModelAndView index() {
@@ -396,11 +401,14 @@ public class JcenterController {
 	
 
 	@RequestMapping("center_storeDropView")
-	public ModelAndView center_storeDropView() {
+	public ModelAndView center_storeDropView(JcenterDropListVo vo) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeDrop_view.jsp";
 		
 		mv.addObject("inc", url);
+		System.out.println(vo.getStoreName());
+		JcenterDropListVo rVo = dropDao2.drop_view(vo.getMid());
+		mv.addObject("vo", rVo);
 		
 		mv.setViewName("center/center_index");
 		return mv;

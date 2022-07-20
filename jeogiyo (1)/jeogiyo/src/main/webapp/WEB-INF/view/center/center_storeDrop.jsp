@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>center_storeM</title>
-<link href="/css/store_Drop.css" rel="stylesheet">
+<link href="/css/center_storeDrop.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
@@ -21,8 +21,7 @@ center_storeM<br/>
 	<input type = 'text' name='findStr' value='${storepage.findStr}'>
 	<input type = 'hidden' name='nowPage' value='${page.nowPage}'>
 	<button type= 'button' onclick ='btnDrop(this.form)'>조회</button>
-</form>
-</div>
+
 
 <div class='title'>
 	<span>NO</span>
@@ -39,7 +38,7 @@ center_storeM<br/>
 			<span>${num}</span>
 			<span>${v.subject}</span>
 			<span>${v.storeName }</span>
-			<span>${v.nal}</span>
+			<span>${v.status }</span>
 		</div>
 	<c:set var='num' value='${num=num+1 }'/>
 	</c:forEach>
@@ -62,6 +61,8 @@ center_storeM<br/>
 			</c:if>		
 		</div>	
 	</div>
+</form>
+</div>
 <script src='./js/centerstoreDrop.js'></script>
 </body>
 </html>

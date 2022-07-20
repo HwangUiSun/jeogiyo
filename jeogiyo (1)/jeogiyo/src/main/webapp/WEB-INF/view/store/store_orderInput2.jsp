@@ -10,9 +10,7 @@
 <title>store_orderInput</title>
 </head>
 <body>
-<a href='order'>완료</a>
-<a href='order'>취소</a>
-<a href='storeCenter'>Home</a>
+<div id = 'subject'>발주 작성</div>
 <div id='Input'>
  	<div class='right'>
  		<input type='hidden' name='tableName' value='${tableName}' id="tableName">

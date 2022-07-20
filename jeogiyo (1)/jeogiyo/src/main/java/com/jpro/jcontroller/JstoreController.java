@@ -34,7 +34,7 @@ import com.jpro.jstore.JstoreOrderStatusService;
 import com.jpro.jstore.JstoreOrderStatusVo;
 
 import com.jpro.jstore.JpayAfterVo;
-
+import com.jpro.jstore.JstoreDropService;
 import com.jpro.jstore.JstoreVo;
 import com.jpro.jstore.statusPage;
 
@@ -56,7 +56,9 @@ public class JstoreController {
 	
 	@Autowired
 	JcenterStoreSaleService saleDao;
-
+	
+	@Autowired
+	JstoreDropService dropDao;
 	
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
@@ -501,8 +503,26 @@ public class JstoreController {
 	@RequestMapping("store_drop")
 	public ModelAndView store_drop() {
 		ModelAndView mv = new ModelAndView();
-		String url = "../store/store_drop";
+		String url = "../store/store_drop.jsp";
 		mv.addObject("inc", url);
+		
+		mv.setViewName("store/store_index");
+				
+		return mv;
+	}
+	
+	@RequestMapping("drop_insertR")
+	public ModelAndView drop_insertR(Page notipage, JstoreVo vo) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../common/noti_main.jsp";
+		mv.addObject("inc", url);
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("notilist",notilist);
+		mv.addObject("notipage",notipage);
+		
+		int b = dropDao.drop_insert(vo);
+		
 		
 		mv.setViewName("store/store_index");
 				
