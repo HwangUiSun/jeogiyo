@@ -81,6 +81,12 @@ function addC(sno,eas,title){
 	var eainput = document.createElement('input');
 	var snoinput = document.createElement('input');
 	var titleinput = document.createElement('input');
+	let nowPage = document.getElementById("nowPage").value;
+	var nowPageinput = document.createElement('input');
+	nowPageinput.setAttribute("type", "hidden");
+	nowPageinput.setAttribute("name", "nowPage");
+	nowPageinput.setAttribute("value", nowPage);
+	newForm.appendChild(nowPageinput);
 	// set attribute (input)
 	eainput.setAttribute("type", "hidden");
 	eainput.setAttribute("name", "ea");

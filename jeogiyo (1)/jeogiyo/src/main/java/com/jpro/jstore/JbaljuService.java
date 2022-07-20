@@ -189,8 +189,7 @@ public class JbaljuService {
 		map.put("insertTable",insertTable);
 		try {			
 				mapper.update(map);
-				status = transaction.getTransaction(new DefaultTransactionDefinition());
-				transaction.commit(status);
+				status = transaction.getTransaction(new DefaultTransactionDefinition());				transaction.commit(status);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

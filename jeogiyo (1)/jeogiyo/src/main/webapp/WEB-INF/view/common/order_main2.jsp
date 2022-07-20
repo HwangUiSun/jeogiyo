@@ -11,7 +11,7 @@
 <body>
 <div id="subject">발주</div>
 <c:if  test="${mid == 'root' }">
-<a href='storeCenter'>발주관리</a>
+<a href='/baljuM'>발주관리</a>
 </c:if>
 <div id='menuTitle'>
 	<c:if test="${mid != 'root'  }">

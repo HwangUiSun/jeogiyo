@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+
+.wrap{
+	width:1200px;
+	margin:0 auto;
+}
+.wrap:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+#left,#right{
+	float:left;
+}
+
+#baljuList{
+	width:500px;
+	overflow:scroller;
+	height:500px;
+	background:#fac;
+	
+}
