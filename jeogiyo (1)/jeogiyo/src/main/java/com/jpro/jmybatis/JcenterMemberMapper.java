@@ -15,4 +15,7 @@ import com.jpro.jcenter.Page;
 public interface JcenterMemberMapper {
 	public int totSize(Page page);
 	public List<JcenterMemberVo> select(Page page);
+
+
+//-----
 }

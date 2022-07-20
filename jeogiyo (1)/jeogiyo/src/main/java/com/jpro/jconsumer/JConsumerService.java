@@ -1,25 +1,56 @@
 package com.jpro.jconsumer;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.http.HttpRequest;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-public class JConsumerService extends HttpServlet {
+import java.util.List;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionStatus;
+
+
+
+import com.jpro.jmybatis.JConsumerMapper;
+
+@Service
+public class JConsumerService {
+	@Autowired
+	@Qualifier("consumerMapper")
+	JConsumerMapper mapper;
+	com.jpro.jconsumer.Page consumerpage;
+	
+	@Autowired
+	DataSourceTransactionManager transaction;
+	TransactionStatus status;
+	
+	public JConsumerService() {
+		System.out.println("JConsumerService......");
 	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
+	public com.jpro.jconsumer.Page getPage() {
+		return this.consumerpage;
 	}
 	
+	public List<JConsumerVo> storeSelect(com.jpro.jconsumer.Page cosumerpage) {
+		
+		List<JConsumerVo> list = null;
+		try {			
+			int totSize = mapper.totSize(cosumerpage);			
+			cosumerpage.setTotSize(totSize);
+			cosumerpage.compute();
+			list = mapper.storeSelect(cosumerpage);
+			System.out.println(list);
+			System.out.println(totSize);
+			
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		this.consumerpage = cosumerpage;
+		return list;
+
 }
+}
+

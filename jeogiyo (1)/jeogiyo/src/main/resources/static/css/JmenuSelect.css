@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#subject{
+   text-align : center;
+   font-size: 3em;
+   background-color : #9997;
+   height : 90px;
+   margin-bottom : 20px;
+   padding-top : 20px;
+}
+#itemsWrap{
+	display : inline-block;
+	text-align: center;
+}
+.bagBtn{
+	position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+	margin:5px;
+	padding:5px 10px;
+	text-align : center;
+	width:100px;
+	height:30px;
+	background-color:#ff0000;
+	border-radius: 10px;
+	outline: 0;
+	border: 0;
+	color : #fff;
+	 font-size: medium;
+	
+}
+.bagBtn:hover {
+	cursor:pointer;
+}
+.addBtn{
+	
+	margin:5px;
+	padding:5px 10px;
+	text-align : center;
+	width:100px;
+	height:30px;
+	background-color:#0080ff;
+	border-radius: 10px;
+	outline: 0;
+	border: 0;
+	color : #fff;
+	 font-size: medium;
+	
+}
+ .addBtn:hover {
+	cursor:pointer;
+}
