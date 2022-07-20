@@ -415,8 +415,6 @@ public class JstoreController {
 	@RequestMapping("insertba")
 	public ModelAndView insertba(com.jpro.jstore.Page page,HttpServletRequest req,
 			HttpServletResponse resp) {
-			
-		
 			ModelAndView mv = new ModelAndView();
 			String url = "../common/order_main2.jsp";
 			mv.addObject("inc",url);	
@@ -424,23 +422,24 @@ public class JstoreController {
 			JbaljudetailsVo vo=null;
 			String msg="";
 			String title = req.getParameter("title");
-			mv.setViewName("store/store_index");
 			vo = new JbaljudetailsVo();
 			vo.setTitle(title);
-			List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
-			page = baljuDao.getPage();
-			mv.addObject("baljupage",page);
-			mv.addObject("baljulist",baljulist);
-			s.setAttribute("msg", msg);
-			mv.addObject("msg",msg);					
-			mv.setViewName("store/store_index");
-			System.out.println("있다");
+			List<JbaljudetailsVo> baljulist = null;
 			List<JbaljudetailsVo> list=baljuDao.selectTitle();
 			int b = 0;
 			for(JbaljudetailsVo v : list) {
 				if(v.getTitle().equals(title)) {
 					System.out.println("있습니다 있는겁니다");
 					b=0;
+					page = baljuDao.getPage();
+					mv.setViewName("store/store_index");
+					mv.addObject("baljupage",page);
+					baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+					mv.addObject("baljulist",baljulist);
+					s.setAttribute("msg", msg);
+					mv.addObject("msg",msg);					
+					mv.setViewName("store/store_index");
+					
 					return mv;
 				}else {
 					b=1;
@@ -450,6 +449,15 @@ public class JstoreController {
 				msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));
 			}
 			
+			
+			baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+			page = baljuDao.getPage();
+			mv.setViewName("store/store_index");
+			mv.addObject("baljupage",page);
+			mv.addObject("baljulist",baljulist);
+			s.setAttribute("msg", msg);
+			mv.addObject("msg",msg);					
+			mv.setViewName("store/store_index");
 	       	
 		return mv;
 	}
