@@ -498,5 +498,16 @@ public class JstoreController {
 		return mv;
 	}
 	
+	@RequestMapping("store_drop")
+	public ModelAndView store_drop() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_drop";
+		mv.addObject("inc", url);
+		
+		mv.setViewName("store/store_index");
+				
+		return mv;
+	}
+	
 	
 }
