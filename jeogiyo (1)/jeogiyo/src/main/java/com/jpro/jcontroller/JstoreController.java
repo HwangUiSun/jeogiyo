@@ -332,9 +332,7 @@ public class JstoreController {
 	public ModelAndView store_orderStatus(com.jpro.jstore.statusPage statusPage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../store/store_orderStatus.jsp";
-		statusPage = new com.jpro.jstore.statusPage();
-		statusPage.setNowPage(1);
-		
+		System.out.println(statusPage.getNowPage());
 		List<JstoreOrderStatusVo> statuslist = orderStatusDao.select(statusPage);
 		statusPage = orderStatusDao.getStatusPage();
 		

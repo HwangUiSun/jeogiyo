@@ -14,29 +14,38 @@
 <a href='storeCenter'>Home</a>
 <div id = 'subject'>주문 현황</div>
 <form name = 'frm_orderStatus' id = 'frm_orderStatus' method = 'post'>
-	<input type="hidden" name="sno" value="${vo.sno }">
-	<input type="hidden" name="nowPage" value="${statusPage.nowPage}" >
+	<input type="text" name="nowPage" value="${statusPage.nowPage}" >
 </form>
 <c:set var = 'num' value = '${statusPage.startNo }'/>
 <c:forEach var = 'status' items= '${statuslist}'>
 	<div id = 'orderStatus'>
 		<div class = 'time'>${status.ordertime}</div>
 		<div class = 'info'>
-			<div class ='num'>${statusPage.startNo }</div>
+			<div class ='sno' value = '${status.sno }'>${status.sno }</div>
 			<div class = 'amount'>총 금액 ${status.totalprice}</div>
 			<div class = 'method'>${status.howtopay }</div>
 			<div class = 'menu'>${status.ordermenu }</div>
 			<div class = 'address'>${status.address }</div>
 		</div>
-		<div class = 'btns'>
-			<button type = 'button' name = 'accept' onclick = 'btnAccept(${num})'>접수</button>
-			<button type = 'button' name = 'deny' onclick = 'btnDeny(${num})'>거부</button>
+		<div class = 'btns'	>
+			<div class = '${status.sno}' value = '${status.sno}'>
+				<button type = 'button' name = 'accept' onclick = 'btnAccept(${status.sno})'>접수</button>
+				<button type = 'button' name = 'deny' onclick = 'btnDeny(${status.sno})'>거부</button>						
+			</div>
 		</div>
-		<div class = 'order_expected_time'><h1></h1><br/><h3></h3></div>
-		<div class = 'end_time'>배달 완료!</div>
+		<div class = 'order_expected_time'>
+			<div class = 'start'>
+				<h1></h1><br/><h3></h3>			
+			</div>
+		</div>
+		<div class = 'end_time'>
+			<div class = 'end'>
+				<h1>배달 완료!</h1>	
+			</div>
+		</div>
 	</div>
 	<hr/>
-<c:set var = 'num' value = '${num=num+1}'/>
+<c:set var = 'num' value = '${num=num+1}'/>	
 </c:forEach>
 <!-- 
 <c:forEach var = 'status' begin = '1' end = '3'>
