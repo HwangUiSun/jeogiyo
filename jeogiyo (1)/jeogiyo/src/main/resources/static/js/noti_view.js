@@ -46,19 +46,26 @@ noti_view.init = function(){
 	frm.submit();
 }
  noti_view_back = function(frm){
-	frm.action="center_noti";
-	frm.submit();
+	let log = $("#ioginId").attr("value")
+	if(log=="root"){
+		frm.action="center_noti";
+		frm.submit();	
+	}else{
+		frm.action='noti';
+		frm.submit();	
+	}
+	
 	
 }
 
 
 function hideIU(){
 		// 수정 작성 버튼 보이게 안보이게
-		// mid.value != "root" 본사만 작성 수정 삭제 가능 키
-//	if( 넘어오는 id값이 본사아이디(root)가 아니면 ){
-//		$("#input").hide();
-//		$("#delete").hide();
-//	}
+	let log = $("#ioginId").attr('value')
+	if(log != "root"){
+		$("#input").hide();
+		$("#delete").hide();
+	}
 }
 
 

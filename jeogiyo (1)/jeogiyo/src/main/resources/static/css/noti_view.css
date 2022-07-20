@@ -62,10 +62,16 @@
 	width: 1150px;
 	height: 300px;
 }
-#noti_view #doctext{
+
+#backbox{
 	position: relative;
-	top : -150px;
+	left:100px;
 }
 
-
+#upade{
+	position: relative;
+	left: 47px;
+	top : -45px;
+	height: 10px;
+}
 

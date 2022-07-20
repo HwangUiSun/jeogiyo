@@ -14,7 +14,7 @@ public class Page {
   int endPage; // 페이지의 끝 위치
   int nowPage=1; // 사용자자가 보고 있는 현재 페이지
   String findStr="";
-  
+  String storeName="";
   public Page() {
   	compute();
   }
@@ -106,7 +106,13 @@ public class Page {
 	public void setFindStr(String findStr) {
 		this.findStr = findStr;
 	}
-
+	public String getStoreName() {
+		return storeName;
+	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
+	
   
   
   

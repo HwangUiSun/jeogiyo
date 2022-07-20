@@ -29,7 +29,7 @@ public class J_loginService {
 		HttpSession session = req.getSession();
 		try {
 			rVo = J_loginMapper.login(vo);
-			
+
 			if(rVo != null) {
 				session.setAttribute("mid", rVo.getMid());
 			}else {

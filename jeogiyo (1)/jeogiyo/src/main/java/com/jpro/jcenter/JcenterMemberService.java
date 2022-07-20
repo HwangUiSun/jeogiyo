@@ -10,6 +10,7 @@ import org.springframework.transaction.TransactionStatus;
 
 import com.jpro.Jinterface.Jcenter;
 import com.jpro.jmybatis.JcenterMemberMapper;
+import com.jpro.jstore.JpayAfterVo;
 import com.jpro.jstore.JstoreVo;
 
 @Service
@@ -132,19 +133,19 @@ public class JcenterMemberService implements Jcenter {
 	}
 
 	@Override
-	public JstoreVo JsaleFind3(String date1, String date2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<JstoreVo> selectStoreList(Page page, String district) {
+	public List<JpayAfterVo> selectStoreList(JpayAfterVo vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public JstoreVo dropSelectOne(int sno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer JsaleFind3(JpayAfterVo vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

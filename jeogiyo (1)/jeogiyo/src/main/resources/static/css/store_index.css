@@ -33,6 +33,18 @@
 	top : -50px;
 }
 
+.store_drop{
+	color : #000;
+	text-decoration : none;
+	border : 2px solid #000;
+	width : 120px;
+	height : 22px;
+	text-align : center;
+	position : relative;
+	left : 989px;
+	top : 59px;
+}
+
 #store_logoutBtn:hover{
 	cursor : pointer;
 	background-color : #999;
@@ -58,4 +70,14 @@
 	width : 1200px;
 	margin-top : 100px;
 }
+
+
+#loginIdprint{
+	font-size: 0.6cm;
+	font-family: sans-serif;
+	position: relative;
+	left : 930px;
+}
+
+
 

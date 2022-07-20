@@ -1,5 +1,8 @@
 package com.jpro.jcontroller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.http.HttpRequest;
 import java.util.List;
 
@@ -21,13 +24,24 @@ import com.jpro.common.J_loginService;
 import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.common.Page;
+import com.jpro.common.TableVo;
+import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
+
+import com.jpro.jstore.JstoreOrderStatusService;
+import com.jpro.jstore.JstoreOrderStatusVo;
+
+import com.jpro.jstore.JpayAfterVo;
+import com.jpro.jstore.JstoreDropService;
 import com.jpro.jstore.JstoreVo;
+import com.jpro.jstore.statusPage;
 
 @RestController
 public class JstoreController {
+	int b=0;
+	
 	@Autowired
 	J_notiService notiDao;
 	
@@ -36,6 +50,15 @@ public class JstoreController {
 	
 	@Autowired
 	J_loginService loginDao;
+	
+	@Autowired
+	JstoreOrderStatusService orderStatusDao;
+	
+	@Autowired
+	JcenterStoreSaleService saleDao;
+	
+	@Autowired
+	JstoreDropService dropDao;
 	
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
@@ -49,16 +72,21 @@ public class JstoreController {
 	@RequestMapping("store_login")
 	public ModelAndView store_login(JstoreVo vo, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
+		HttpSession session =req.getSession();
 		vo.setMid(req.getParameter("mId"));
 		vo.setPwd(req.getParameter("password"));
 		JstoreVo rVo = loginDao.login(vo, req);
-		
+		String tableName ="";
+		HttpSession s = req.getSession();
 		if(rVo != null) {
 			if(rVo.getMid().equals("root")) {
+				session.setAttribute("id", rVo.getMid());
 				mv.setViewName("center/center_index");
 			}else{
+				session.setAttribute("id", rVo.getMid());
 				mv.setViewName("store/store_index");
+				tableName = baljuDao.createTable((String)s.getAttribute("mid"));
+				s.setAttribute("tableName", tableName);
 			}
 		}
 		else {
@@ -120,9 +148,13 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("noti_view")
-	public ModelAndView noti_view(Page notipage) {
+	public ModelAndView noti_view(Page notipage, int sno) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/noti_view.jsp";
+		J_notiVo vo = new J_notiVo();
+		vo = notiDao.selectOne(sno);
+		mv.addObject("vo", vo);
+		mv.addObject("notipage",notipage);
 		mv.addObject("inc",url);
 		
 		mv.setViewName("store/store_index");
@@ -131,7 +163,7 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("order")
-	public ModelAndView order(com.jpro.jstore.Page page) {
+	public ModelAndView order(com.jpro.jstore.Page page,HttpServletRequest req) {
 //		ModelAndView mv = new ModelAndView();
 //		String url = "../common/order_main.jsp";
 //		mv.addObject("inc",url);
@@ -142,11 +174,12 @@ public class JstoreController {
 //		mv.addObject("orderlist",notilist);
 //		mv.addObject("orderpage",notipage);
 //		mv.setViewName("store/store_index");
+		
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);
 		mv.setViewName("store/store_index");
-		List<JbaljudetailsVo> baljulist = baljuDao.select(page);
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
 		page = baljuDao.getPage();
 		mv.addObject("baljupage",page);
 		mv.addObject("baljulist",baljulist);
@@ -155,13 +188,17 @@ public class JstoreController {
 	}
 	
 	@RequestMapping("order_view")
-	public ModelAndView order_view() {
+	public ModelAndView order_view(com.jpro.jstore.Page page,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_view.jsp";
 		mv.addObject("inc",url);
-		
 		mv.setViewName("store/store_index");
-		
+		//select(title)
+		HttpSession s = req.getSession();
+		String tableName =req.getParameter("title");
+		List<JbaljuListVo> selectSubOne = null;	
+		selectSubOne =baljuDao.selecSubtList(page,tableName);	
+		mv.addObject("selectSubOne",selectSubOne);
 		return mv;
 	}
 	
@@ -177,38 +214,24 @@ public class JstoreController {
 //		mv.addObject("orderlist",notilist);
 //		mv.addObject("orderpage",notipage);
 //		mv.setViewName("store/store_index");
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView();	
 		HttpSession s = req.getSession();
-		String tableName = null;
-		if(s.getAttribute("tableName")==null) {
-			tableName=(String)s.getAttribute("tableName");
+		String tableName="";
+		if((String)s.getAttribute("tableName")!=null) {
+			tableName = (String)s.getAttribute("tableName");
 		}else {
-			Cookie[] c = req.getCookies();
-			for(Cookie i : c) {
-				if(i.getName().equals("tableName")) {
-					tableName = i.getValue();
-				}
-			}
+			tableName = "jbaljulist";
 		}
-		if(tableName==null || tableName.equals("")) {
-			tableName= baljuDao.createTable((String)s.getAttribute("mid"));
-			s.setAttribute("tableName", tableName);	
-			Cookie cookei = new Cookie("tableName", tableName);
-			cookei.setPath("/");
-			cookei.setMaxAge(60*60*3);
-			resp.addCookie(cookei);
-		}
-		page.setTableName(tableName);
-		String url = "../store/store_orderInput2.jsp";
-		mv.addObject("inc",url);
-		mv.setViewName("store/store_index");
 		
-		List<JbaljuListVo> baljulist = baljuDao.selectList(page);
-		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page);
+		String url = "../store/store_orderInput2.jsp";		
+		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page,tableName);		
 		page = baljuDao.getPage();
+		
+		mv.addObject("inc",url);
 		mv.addObject("baljupage2",page);
 		mv.addObject("baljulist2",baljulist);
-		mv.addObject("baljulist3",baljulist2);
+		mv.addObject("baljulist3",baljulist2);		
 		mv.setViewName("store/store_index");
 		
 		return mv;
@@ -246,24 +269,78 @@ public class JstoreController {
 		
 		return mv;
 	}
-	
+	// ---------------------------------------------------------------------------
 	@RequestMapping("store_sale")
-	public ModelAndView store_sale() {
+	public ModelAndView store_sale(HttpServletRequest req, Page page) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../store/store_sale.jsp";
-		mv.addObject("inc",url);
+		HttpSession session = req.getSession();
+		String mid = (String)session.getAttribute("mid");
+		List<JpayAfterVo> list =  null;
 		
+		String stn = saleDao.StoreName(mid);
+		list=saleDao.selectOne(mid,page);
+		
+		
+		mv.addObject("inc",url);
+		mv.addObject("stn",stn);
+		mv.addObject("list",list);
+		mv.setViewName("store/store_index");
+		
+		return mv;
+	}
+	@RequestMapping("store_sale_find")
+	public ModelAndView store_sale_find(HttpServletRequest req, Page page, JpayAfterVo vo) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_sale.jsp";
+		List<JpayAfterVo> list =  null;
+		HttpSession session = req.getSession();
+		int a = 0;
+		
+		
+		String mid = (String)session.getAttribute("mid");
+		String stn = saleDao.StoreName(mid);
+		vo.setStoreName(stn);
+		vo.setDate1(req.getParameter("date1"));
+		vo.setDate2(req.getParameter("date2"));
+		
+		
+		
+		
+		list=saleDao.selectSaleday(mid,vo,page);
+		a=saleDao.selectSaledayAll(vo);
+		b=saleDao.selectSaledayAllHit(vo);
+		mv.addObject("date1", vo.getDate1());
+		mv.addObject("date2", vo.getDate2());
+		mv.addObject("inc",url);
+		mv.addObject("stn",stn);
+		mv.addObject("hit",b);
+		mv.addObject("tot",a);
+		mv.addObject("list",list);
 		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("store_orderStatus")
-	public ModelAndView store_orderStatus() {
+	public ModelAndView store_orderStatus(com.jpro.jstore.statusPage statusPage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../store/store_orderStatus.jsp";
-		mv.addObject("inc",url);
+		System.out.println(statusPage.getNowPage());
+		List<JstoreOrderStatusVo> statuslist = orderStatusDao.select(statusPage);
+		statusPage = orderStatusDao.getStatusPage();
 		
+		mv.addObject("inc",url);
+		mv.addObject("statuslist", statuslist);
+		mv.addObject("statusPage", statusPage);
 		mv.setViewName("store/store_index");
 		
 		return mv;
@@ -280,12 +357,12 @@ public class JstoreController {
 		mv.addObject("inc",url);
 		mv.setViewName("store/store_index");
 		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
-	
+		String tableName = req.getParameter("title");
+
 		page.setTableName(tableName);	
 		baljuDao.updateEa(ea, sno, tableName);
-		List<JbaljuListVo> baljulist = baljuDao.selectList(page);
-		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page);
+		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page,tableName);
 		page = baljuDao.getPage();
 		mv.addObject("baljupage2",page);
 		mv.addObject("baljulist2",baljulist);//addList
@@ -301,13 +378,13 @@ public class JstoreController {
 		String url = "../store/store_orderInput2.jsp";
 		mv.addObject("inc",url);
 		mv.setViewName("store/store_index");
-		
 		HttpSession s = req.getSession();
 		String tableName = (String)s.getAttribute("tableName");
+		
 		page.setTableName(tableName);	
 		baljuDao.updateToZoro(sno, tableName);
-		List<JbaljuListVo> baljulist = baljuDao.selectList(page);
-		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page);
+		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page,tableName);
 		page = baljuDao.getPage();
 		mv.addObject("baljupage2",page);
 		mv.addObject("baljulist2",baljulist);//addList
@@ -321,9 +398,8 @@ public class JstoreController {
 		ModelAndView mv = new ModelAndView();		
 		String url = "../common/order_main2.jsp";
 		mv.addObject("inc",url);	
-		HttpSession s = req.getSession();
-		String tableName = (String)s.getAttribute("tableName");
-		baljuDao.droptable(tableName);;
+		HttpSession s = req.getSession();		
+		baljuDao.selectOneDetail(0);
 		List<JbaljudetailsVo> baljulist = baljuDao.select(page);
 		page = baljuDao.getPage();	
 		mv.addObject("page",page);
@@ -331,17 +407,125 @@ public class JstoreController {
 		mv.addObject("baljulist2","");//addList
 		mv.addObject("baljulist3","");//sublist	
 		s.setAttribute("tableName", "");
-		Cookie[] c = req.getCookies();
-		for(Cookie i : c) {
-			i.setValue(null);
-			i.setMaxAge(0);
-			i.setPath("/");
-			resp.addCookie(i);
-		}
 		mv.setViewName("store/store_index");		
 		return mv;
 	}
 	
+	
+	@RequestMapping("insertba")
+	public ModelAndView insertba(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
+			ModelAndView mv = new ModelAndView();
+			String url = "../common/order_main2.jsp";
+			mv.addObject("inc",url);	
+			HttpSession s = req.getSession();
+			JbaljudetailsVo vo=null;
+			String msg="";
+			String title = req.getParameter("title");
+			vo = new JbaljudetailsVo();
+			vo.setTitle(title);
+			List<JbaljudetailsVo> baljulist = null;
+			List<JbaljudetailsVo> list=baljuDao.selectTitle();
+			int b = 0;
+			for(JbaljudetailsVo v : list) {
+				if(v.getTitle().equals(title)) {
+					System.out.println("있습니다 있는겁니다");
+					b=0;
+					page = baljuDao.getPage();
+					mv.setViewName("store/store_index");
+					mv.addObject("baljupage",page);
+					baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+					mv.addObject("baljulist",baljulist);
+					s.setAttribute("msg", msg);
+					mv.addObject("msg",msg);					
+					mv.setViewName("store/store_index");
+					
+					return mv;
+				}else {
+					b=1;
+				}
+			}
+			if(b>0) {
+				msg=baljuDao.insertJbaljudetails(title,(String)s.getAttribute("mid"));
+			}
+			
+			
+			baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+			page = baljuDao.getPage();
+			mv.setViewName("store/store_index");
+			mv.addObject("baljupage",page);
+			mv.addObject("baljulist",baljulist);
+			s.setAttribute("msg", msg);
+			mv.addObject("msg",msg);					
+			mv.setViewName("store/store_index");
+	       	
+		return mv;
+	}
+	
+	@RequestMapping("acceptOrder")
+	public ModelAndView acceptOrder(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
+		HttpSession s = req.getSession();
+		String title = req.getParameter("title");		
+		baljuDao.changeStatus(title);
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+		ModelAndView mv = new ModelAndView();			
+		String url = "../common/order_main2.jsp";
+		page = baljuDao.getPage();
+		mv.addObject("baljupage",page);
+		mv.addObject("inc",url);
+		mv.addObject("title",title);
+		mv.addObject("baljulist",baljulist);
+		mv.setViewName("store/store_index");		
+		return mv;
+	}
+	
+	@RequestMapping("waitOrder")
+	public ModelAndView waitOrder(com.jpro.jstore.Page page,HttpServletRequest req,
+			HttpServletResponse resp) {
+		HttpSession s = req.getSession();
+		String title = req.getParameter("title");		
+		baljuDao.waitOrder(title);
+		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
+		ModelAndView mv = new ModelAndView();			
+		String url = "../common/order_main2.jsp";
+		page = baljuDao.getPage();
+		mv.addObject("baljupage",page);
+		mv.addObject("inc",url);
+		mv.addObject("title",title);
+		mv.addObject("baljulist",baljulist);
+		mv.setViewName("store/store_index");		
+		return mv;
+	}
+	
+	@RequestMapping("store_drop")
+	public ModelAndView store_drop() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_drop.jsp";
+		mv.addObject("inc", url);
+		
+		mv.setViewName("store/store_index");
+				
+		return mv;
+	}
+	
+	@RequestMapping("drop_insertR")
+	public ModelAndView drop_insertR(Page notipage, JstoreVo vo) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../common/noti_main.jsp";
+		mv.addObject("inc", url);
+		List<J_notiVo> notilist = notiDao.select(notipage); 
+		notipage = notiDao.getPage();
+		mv.addObject("notilist",notilist);
+		mv.addObject("notipage",notipage);
+		
+		int b = dropDao.drop_insert(vo);
+		
+		
+		mv.setViewName("store/store_index");
+				
+		return mv;
+	}
 	
 	
 }

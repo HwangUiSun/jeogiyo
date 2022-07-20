@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='com.jpro.jmybatis.JcenterStoreMMapper'>
+
+	<select id='totSize' parameterType='com.jpro.jcenter.Page' resultType='Integer'>
+		select count(mid) totSize
+		from jstorevo
+		where mainLocal like '%${findStr}'
+	</select>
+	
+	<select id='storeSelect' parameterType='com.jpro.jcenter.Page' resultType='JstoreVo'>
+		select *
+		from jstorevo
+		where mainLocal like '%${findStr}'
+		order by binary(storeName)
+		limit ${startNo}, ${listSize}
+	</select>
+
+<!-- /**********************************************************************************/ -->
+
+	<select id='selectCenterStore' resultType="JstoreVo">
+		SELECT * 
+		FROM jstoreVo	
+	 	limit ${startNo-1} , ${listSize}
+	</select>
+	
+	<select id='selectCenterStoreCount' resultType="Integer">
+		SELECT count(1) 
+		FROM jstoreVo
+	</select>
+	
+	
+	<select id='selectCenterStoreBylocal' parameterType='Map' resultType="JstoreVo">
+		SELECT * 
+		FROM jstoreVo
+		WHERE mainLocal LIKE CONCAT(#{local}, '%')
+	 	limit ${startNo-1} , ${listSize}
+	</select>
+	
+	<select id='selectCenterStoreBylocalCount' resultType="Integer">
+		SELECT count(1) 
+		FROM jstoreVo
+		WHERE mainLocal LIKE CONCAT(#{local}, '%')
+	</select>
+	
+	<select id='selectCenterSotreMainLocal' resultType="String">
+		SELECT mainLocal  
+		FROM jstorevo
+		GROUP BY mainlocal
+	</select>
+
+<!-- ****************************************************************************************** -->
+
+
+
+
+</mapper>

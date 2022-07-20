@@ -31,7 +31,7 @@ public class J_notiService {
 		return this.notipage;
 	}
 	
-	 
+	
 	
 	public List<J_notiVo> select(Page notipage) {
 		
@@ -65,6 +65,7 @@ public class J_notiService {
 			transaction.commit(status);
 		}catch (Exception e) {
 			e.printStackTrace();
+			transaction.rollback(status);
 		}
 		return vo;
 	}
