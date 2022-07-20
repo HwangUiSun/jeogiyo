@@ -1,6 +1,8 @@
 package com.jpro.jcenter;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,8 +27,6 @@ public class JbaljuManageService {
 			page.setTotSize(totSize);
 			page.compute();
 			list = mapper.select(page);
-			System.out.println(totSize);
-			System.out.println(list);
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -34,6 +34,56 @@ public class JbaljuManageService {
 		
 		this.page = page;
 		return list;
+
+	}
+	
+	
+	public boolean changeStatus(String rsno, String rbool) {
+		boolean b = false;
+		String sno = rsno;
+		String bool = rbool;
+		Map<String, String> map = new HashMap<String, String>();
+		try {
+			map.put("sno", sno);
+			map.put("bool", bool);
+			mapper.changeStatus(map);
+			
+			b=true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return b;
+
+	}
+	
+	public boolean add(String str) {
+		boolean b = false;
+		String productName = str;		
+
+		try {
+			mapper.add(productName);			
+			b=true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return b;
+
+	}
+	
+	public boolean sub(String rsno) {
+		boolean b = false;
+		String sno = rsno;
+	
+		try {
+			mapper.sub(sno);			
+			b=true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return b;
 
 	}
 }

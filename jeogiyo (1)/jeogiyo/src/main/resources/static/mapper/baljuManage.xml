@@ -6,11 +6,22 @@
 
 	<select id="selectTotoSize" parameterType="cPage" resultType="Integer">
 		select count(sno) from jbaljulist
-		where title like "%${findStr}%"
 	</select>
 	
 	<select id="select" parameterType="Integer" resultType="JbaljuManageVo">
 		select * from jbaljulist
 	</select>
+	
+	<update id="changeStatus" parameterType="map">
+		update jbaljulist set status = ${bool} where sno = ${sno}
+	</update>
+	
+	<insert id="add" parameterType="String">
+		insert into jbaljulist(category, productName, ea, status) values("신상품", '${productName}', 0, false)
+	</insert>
+	
+	<delete id="sub" parameterType="String">
+		delete from jbaljulist where sno = ${sno}
+	</delete>
 	
 </mapper> 

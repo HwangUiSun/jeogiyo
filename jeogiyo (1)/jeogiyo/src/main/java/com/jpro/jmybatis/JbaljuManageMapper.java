@@ -1,6 +1,7 @@
 package com.jpro.jmybatis;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,5 +16,8 @@ import com.jpro.jcenter.Page;
 public interface JbaljuManageMapper {
 	public int selectTotoSize(Page page);
 	public List<JbaljuManageVo> select(Page page);
+	public void changeStatus(Map<String, String> map);
+	public void add(String productName);
+	public void sub(String sno);
 	
 }
