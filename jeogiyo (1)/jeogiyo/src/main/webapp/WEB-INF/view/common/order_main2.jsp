@@ -63,19 +63,19 @@
 	<div class='paging'>
 		
 			<c:if test="${baljupage.startPage>1 }">
-				<button type='button' class='btnFirst'  onclick='movePage(1)'  >맨첨</button>
-				<button type='button' class='btnPrev'   onclick='movePage(${baljupage.startPage-1})' >이전</button>
+				<button type='button' class='btnFirst'  onclick='movePage(1,"${mid}")'  >맨첨</button>
+				<button type='button' class='btnPrev'   onclick='movePage(${baljupage.startPage-1},"${mid}")' >이전</button>
 			</c:if>		
 			
 			
 			<c:forEach var='i' begin='${baljupage.startPage }' end='${baljupage.endPage }'>
-				<button type='button' class='first'  onclick = 'movePage(${i})' >${i }</button>
+				<button type='button' class='first'  onclick = 'movePage(${i},"${mid}")' >${i }</button>
 			</c:forEach>				
 
 
 			<c:if test="${baljupage.endPage < baljupage.totPage }">
-				<button type='button' class='btnNext'  onclick='movePage(${baljupage.endPage+1})'>다음</button>
-				<button type='button' class='btnLast'  onclick='movePage(${baljupage.totPage})'>맨끝</button>
+				<button type='button' class='btnNext'  onclick='movePage(${baljupage.endPage+1},"${mid}")'>다음</button>
+				<button type='button' class='btnLast'  onclick='movePage(${baljupage.totPage},"${mid}")'>맨끝</button>
 			</c:if>		
 		</div>	
 	</div>

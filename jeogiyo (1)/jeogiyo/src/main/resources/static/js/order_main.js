@@ -18,9 +18,12 @@
 		mainform.submit();	
 }
  
-  function movePage(page){
+  function movePage(page,mid){
 	console.log("movePage")
 	let url = 'order';
+	if(mid=='root'){
+		url ='center_order'
+	}
 	let frm = document.frm_order;
 	frm.nowPage.value = page;
 	frm.action = url;
