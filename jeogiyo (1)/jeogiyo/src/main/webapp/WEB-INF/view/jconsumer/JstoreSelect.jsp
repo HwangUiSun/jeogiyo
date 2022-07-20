@@ -29,8 +29,6 @@
 				<option value='pusan'>부산</option>
 				</select>
 				
-			<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a></span>
-				
 				<select class='mapFindcity' id='storeFindStr' name='storeFindStr' onchange='mapFindChange(this)' >
 				<option>선택해주세요</option>
 				
@@ -61,6 +59,7 @@
 					<span class='storeaddress'  >${v.address } </span>
 					<span class='genstorecall' >${v.phone} &nbsp;&nbsp;
 					<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기&nbsp;&nbsp;</button></a>
+					<a href='orderBtn'><button type='button' class='orderBtn'>주문하기&nbsp;&nbsp;</button></a>
 			 	</div>
 				
 		<hr/>
