@@ -2,6 +2,8 @@
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jpro.jconsumer.JConsumerService;
 import com.jpro.jconsumer.JConsumerVo;
+import com.jpro.jconsumer.JConsumerVo3;
+import com.jpro.jconsumer.JconsumerVo2;
+import com.jpro.jconsumer.Page;
 
 
 @RestController
@@ -23,13 +28,14 @@ public class JConsumerController {
 	public ModelAndView order() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("jconsumer/form_login");
+		mv.setViewName("jconsumer/Jlogin");
 		
 		return mv;
 	}
 	//로그인페이지
 	
 	@RequestMapping("loginBtn")
+	
 	public ModelAndView loginBtn(com.jpro.jconsumer.Page consumerpage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JstoreSelect.jsp";
@@ -41,6 +47,20 @@ public class JConsumerController {
 		return mv;
 	}
 	
+/*	@RequestMapping("loginR")
+	public ModelAndView loginR(JConsumerVo vo , HttpServletRequest req) {
+				//service에서 로그인 할때 vo, req를 보내왔기때문에 매개변수로 잡음
+		ModelAndView mv = new ModelAndView();
+		JConsumerVo rVo = dao.login(vo,req);
+		String url = "../jconsumer/JstoreSelect.jsp";
+
+		mv.addObject("inc",url);
+		
+				
+		mv.setViewName("jconsumer/Jconsumer_index");
+		return mv;
+	}*/
+	
 	
 	@RequestMapping("JsignUp")
 	public ModelAndView Jlogin() {
@@ -50,6 +70,69 @@ public class JConsumerController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("JfindId")
+	public ModelAndView JfindId() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/JfindId");
+		
+		return mv;
+	}
+	
+	@RequestMapping("JfindPwd")
+	public ModelAndView JfindPwd() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/JfindPwd");
+		
+		return mv;
+	}
+	
+	//아이디찾기
+	/*@RequestMapping("findIdBtn")
+	public ModelAndView findIdBtn(JConsumerVo vo) {
+		ModelAndView mv = new ModelAndView();
+		String id = dao.findId(vo);
+				
+		mv.addObject("msg", id);
+		
+		mv.setViewName("jconsumer/find_id_result");
+		
+		return mv;
+	}*/
+	/*@RequestMapping("findIdBtn")
+	public ModelAndView findIdBtn() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/Jlogin");
+		
+		return mv;
+	}*/
+	@RequestMapping("findIdR")
+	public ModelAndView findIdR(JConsumerVo vo) {
+		ModelAndView mv = new ModelAndView();
+		String mId = dao.findId(vo);
+		
+		mv.addObject("msg", mId);
+		mv.setViewName("jconsumer/find_id_result");
+		return mv;
+	}
+	
+	//비밀번호 찾기
+	@RequestMapping("findPwdBtn")
+	public ModelAndView findPwdBtn() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("jconsumer/Jlogin");
+		
+		return mv;
+	}
+	
+	
+	
+	
+	
 	//회원가입페이지
 	
 	@RequestMapping("signUpBtn")
@@ -79,17 +162,19 @@ public class JConsumerController {
 	}
 	
 	@RequestMapping("JstoreSelect")
-	public ModelAndView JstoreSelect(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView JstoreSelect(Page page) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JstoreSelect.jsp";
 
 		mv.addObject("inc",url);
-		 List<JConsumerVo> conlist = dao.storeSelect(consumerpage); 
-		consumerpage = dao.getPage();
+		
+		System.out.println("111");
+		List<JconsumerVo2> conlist = dao.storeSelect(page); 
+		System.out.println(conlist);
+		page = dao.getPage();
 		mv.addObject("storeSelectlist",conlist);
-		mv.addObject("storeSelectpage",consumerpage);
-
-		mv.setViewName("jconsumer/Jconsumer_index");		
+		mv.addObject("storeSelectpage",page);
+		mv.setViewName("jconsumer/Jconsumer_index");	
 		return mv;
 	}
 	
@@ -106,11 +191,17 @@ public class JConsumerController {
 	}
 	
 	@RequestMapping("JorderList")
-	public ModelAndView MyPJorderListage(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView MyPJorderListage(Page page) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JorderList.jsp";
 
 		mv.addObject("inc",url);
+		System.out.println("222");
+		List<JConsumerVo3> conlist = dao.Jorderlist(page); 
+		System.out.println(conlist);
+		page = dao.getPage();
+		mv.addObject("orderlist",conlist);
+		mv.addObject("orderlistpage",page);
 		
 
 		mv.setViewName("jconsumer/Jconsumer_index");		

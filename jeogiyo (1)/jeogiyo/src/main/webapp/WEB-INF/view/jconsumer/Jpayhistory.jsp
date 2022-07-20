@@ -7,7 +7,7 @@
 <link href="css/Jpayhistory.css" rel="stylesheet">
 <script src="/js/Jpayhistory.js"></script>
 <title>Jpayhistory</title>
-
+<link rel = 'stylesheet' type='text/css' href = 'css/Jpayhistory.css'>
 </head>
 <body>
 
@@ -15,31 +15,32 @@
 	        <div id='subject'>주문하기</div>
 	   <div id='payInfo'>
 	        <div class='sub'>결제정보</div>
-	        
+	         
 	        <br/><h2><label>수령인정보</label></h2><br/>
+	  </div>
 	        
-	        <label>이름</label>
+	        <div class="fieldlabel"><label>이름</label></div>
 	        <input type='text' class='name'/><br/>
 	        
-	        <label>연락처</label>
+	        <div class="fieldlabel"><label>연락처</label></div>
 	        <input type='text' class='phone'/><br/>
 	        
-		    <label>우편번호</label>
+		    <div class="fieldlabel"><label>우편번호</label></div>
 		    <input type='text' id='zipcode' size='12'>
 		    
 		   	<button type='button' id='btnZipFind'>주소변경</button>
 			<br/>
     
-	        <label>주소</label>
+	       <div class="fieldlabel"><label>주소</label></div>
 	        <input type='text' id='address'/>
 	        <br/>
 	        	       
-	        <label>상세주소</label>
+	        <div class="fieldlabel"><label>상세주소</label></div>
 	        <input type='text' id='apiAddressDetail'/><br/>
 	        
-	        <label>요청사항</label>
+	        <div class="fieldlabel"><label>요청사항</label></div>
 	        <input type='text' class='request'/>
-	   </div>
+	  
 	   
 	   <div id='priceInfo'>
 	        <div class='sub'>주문내역</div>
