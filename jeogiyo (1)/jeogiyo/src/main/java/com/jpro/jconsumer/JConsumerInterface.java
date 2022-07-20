@@ -29,7 +29,8 @@ public interface JConsumerInterface {
 	public String JMyPageChange(String mId, String name, String email, int phone, int zipcode, String address);
 	
 	//주문 내역(보류, 이유 : 매개변수로 받아야 할 변수가 너무 많음)
-	public List<String> JOrderList (List<String> list);
+	
+	public List<JConsumerVo3> Jorderlist(Page page);
 	
 	//리뷰 작성 페이지(보류)
 	public List<com.jpro.jconsumer.BoardAtt> upload(List<MultipartFile> multi);
@@ -39,4 +40,8 @@ public interface JConsumerInterface {
 	
 	//FAQ(리스트)
 	public List<String> JFAQ(List<String> list);
+
+
+
+	
 }

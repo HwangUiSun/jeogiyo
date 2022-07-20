@@ -14,6 +14,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jpro.jmybatis.JConsumerMapper;
+import com.jpro.jmybatis.JorderlistMapper;
 
 @Service
 public class JConsumerService implements JConsumerInterface {
@@ -23,8 +24,14 @@ public class JConsumerService implements JConsumerInterface {
 	com.jpro.jconsumer.Page consumerpage;
 	
 	@Autowired
+	@Qualifier("JorderlistMapper")
+	JorderlistMapper amapper;
+	Page apage;
+	
+	@Autowired
 	DataSourceTransactionManager transaction;
 	TransactionStatus status;
+	private Page page;
 	
 	public JConsumerService() {
 		System.out.println("JConsumerService......");
@@ -100,11 +107,27 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
-	public List<String> JOrderList(List<String> list) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<JConsumerVo3> Jorderlist(Page apage) {		
+		List<JConsumerVo3> list = null;
+		try {			
+			int totSize = amapper.totSize(apage);			
+			apage.setTotSize(totSize);
+			apage.compute();
+			list = amapper.Jorderlist(apage);
+			System.out.println(list);
+			System.out.println(totSize);
+			
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		this.apage = apage;
+		return list;
+
+}
 	@Override
 	public List<BoardAtt> upload(List<MultipartFile> multi) {
 		// TODO Auto-generated method stub
@@ -120,5 +143,6 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }
 

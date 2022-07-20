@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jpro.jconsumer.BoardAtt;
 import com.jpro.jconsumer.JConsumerVo;
-
+import com.jpro.jconsumer.JConsumerVo3;
 import com.jpro.jconsumer.JconsumerVo2;
 import com.jpro.jconsumer.Page;
 
@@ -43,7 +43,8 @@ public interface JConsumerMapper {
 	public String JMyPageChange(String mId, String name, String email, int phone, int zipcode, String address);
 	
 	//주문 내역
-	public List<String> JOrderList (List<String> list);
+	
+	//public List<JConsumerVo3> Jorderlist(Page cosumerpage);
 	
 	//리뷰 작성 페이지
 	public List<com.jpro.jconsumer.BoardAtt> upload(List<MultipartFile> multi);
@@ -54,5 +55,6 @@ public interface JConsumerMapper {
 	//FAQ(리스트)
 	public List<String> JFAQ(List<String> list);
 	public String findId(JConsumerVo vo);
+
 	
 }
