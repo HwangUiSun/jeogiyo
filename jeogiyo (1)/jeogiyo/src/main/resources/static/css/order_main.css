@@ -32,9 +32,7 @@
 	background:#565656;
 	
 }
-.itemsWrap .items:nth-child(2n){
-	background:#353434;
-}
+
 .itemsWrap .items span, .title span{
 	display:block;
 	text-align:center;
@@ -42,6 +40,10 @@
 	box-sizing:border-box;
 	padding: 10px 5px;
 	line-height:21px;
+}
+
+.itemsWrap .items:nth-child(2n-1){
+	background:#353434;
 }
 .itemsWrap .items span:nth-child(1), .title span:nth-child(1){
 	width:10%;
