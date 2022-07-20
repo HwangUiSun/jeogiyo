@@ -8,7 +8,7 @@
 <link rel = 'stylesheet' type='text/css' href = 'css/MyPageChange.css'>
 </head>
 <body>
-<h1>내 정보 수정</h1>
+<div id='subject'>내 정보 수정</div>
 
 <div id='MyPageChange'>
   <div id='main'>
