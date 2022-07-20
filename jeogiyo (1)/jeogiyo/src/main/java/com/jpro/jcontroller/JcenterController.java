@@ -196,12 +196,14 @@ public class JcenterController {
 		
 		ModelAndView mv = new ModelAndView();
 		String url = "../common/order_view.jsp";
-		//select(title)
+		int nowPage =Integer.parseInt(req.getParameter("nowPage"));
+		//select(title)		
 		HttpSession s = req.getSession();
 		String tableName =req.getParameter("title");
 		List<JbaljuListVo> selectSubOne = null;	
 		selectSubOne =baljuDao.selecSubtList(page,tableName);	
 		mv.addObject("selectSubOne",selectSubOne);
+		mv.addObject("nowPage",nowPage);
 		mv.addObject("inc",url);		
 		mv.setViewName("center/center_index");		
 
@@ -413,7 +415,7 @@ public class JcenterController {
 		List<JbaljudetailsVo> baljulist = baljuDao.select(page);//발주리스트 가져오는함수
 		ModelAndView mv = new ModelAndView();			
 		String url = "../common/order_main2.jsp";
-		page = baljuDao.getPage();
+		page = baljuDao.getPage();		
 		mv.addObject("baljupage",page);
 		mv.addObject("inc",url);
 		mv.addObject("title",title);

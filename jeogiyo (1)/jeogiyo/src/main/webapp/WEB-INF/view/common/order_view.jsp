@@ -55,13 +55,14 @@
 	<c:if test ="${mid == 'root'}">
 		<button type = 'button' value = 'btn_delete' name = 'delete' onclick="accept('${param.title}')">주문승인</button>
 		<button type = 'button' value = 'btn_back' name = 'back' onclick="wait('${param.title}')">주문대기</button>
-		<button type = 'button' value = 'btn_back' name = 'back' onclick="location.href='acceptOrderC'">돌아가기</button>
+		<button type = 'button' value = 'btn_back' name = 'back' onclick="acceptOrderC()">돌아가기</button>
 	</c:if>
 	<c:if test ="${mid != 'root'}">
 		<button type = 'button' value = 'btn_back' name = 'back' onclick="location.href='order'">돌아가기</button>
 		</c:if>
 	</div>
 	</div>
+	<input type="hidden" value="${nowPage}" name="nowPage" id="nowPage">
 
 </body>
 <script>
@@ -105,6 +106,21 @@ function addC(sno,eas,title){
 	newForm.submit();
 	
 }
+function acceptOrderC(){
+	var acceptOrderCForm = document.createElement('form');
+	acceptOrderCForm.name = 'acceptOrderC';
+	acceptOrderCForm.method = 'post';
+	acceptOrderCForm.action = 'acceptOrderC';
+	let nowPage = document.getElementById("nowPage").value;
+	var nowPageinput = document.createElement('input');
+	nowPageinput.setAttribute("type", "hidden");
+	nowPageinput.setAttribute("name", "nowPage");
+	nowPageinput.setAttribute("value", nowPage);
+	acceptOrderCForm.appendChild(nowPageinput);
+	document.body.appendChild(acceptOrderCForm);
+	// submit form
+	acceptOrderCForm.submit();
+}
 
 function wait(title){
 	var waitForm = document.createElement('form');
@@ -116,6 +132,12 @@ function wait(title){
 	titlesinput.setAttribute("type", "hidden");
 	titlesinput.setAttribute("name", "title");
 	titlesinput.setAttribute("value", title);
+	let nowPage = document.getElementById("nowPage").value;
+	var nowPageinput = document.createElement('input');
+	nowPageinput.setAttribute("type", "hidden");
+	nowPageinput.setAttribute("name", "nowPage");
+	nowPageinput.setAttribute("value", nowPage);
+	waitForm.appendChild(nowPageinput);
 	waitForm.appendChild(titlesinput);
 	// append form (to body)
 	document.body.appendChild(waitForm);
@@ -129,11 +151,19 @@ function accept(title){
 	acceptForm.method = 'post';
 	acceptForm.action = '/acceptOrderC';
 	let tableName = document.getElementById("tableName");
+	console.log(tableName)
 	var titlesinput = document.createElement('input');
 	titlesinput.setAttribute("type", "hidden");
 	titlesinput.setAttribute("name", "title");
 	titlesinput.setAttribute("value", title);
+	let nowPage = document.getElementById("nowPage").value;
+	var nowPageinput = document.createElement('input');
+	nowPageinput.setAttribute("type", "hidden");
+	nowPageinput.setAttribute("name", "nowPage");
+	nowPageinput.setAttribute("value", nowPage);
+	acceptForm.appendChild(nowPageinput);
 	acceptForm.appendChild(titlesinput);
+	
 	// append form (to body)
 	document.body.appendChild(acceptForm);
 	// submit form
