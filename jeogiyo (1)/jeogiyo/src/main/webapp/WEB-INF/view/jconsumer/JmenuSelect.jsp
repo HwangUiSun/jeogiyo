@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <link href="css/JmenuSelect.css" rel="stylesheet">
 <title>JmenuSelect</title>
-
+<link rel = 'stylesheet' type='text/css' href = 'css/JmenuSelect.css'>
 </head>
 <style>
 ul.tabs{
@@ -42,7 +42,7 @@ ul.tabs li.current{
 <body>
 	
 	<div class= "container">
-	  <h2>메뉴보기</h2>
+	 <div id='subject'>메뉴보기</div>
 	   <ul class= "tabs">
 	         <li class="tab-link current" data-tab="category_1">신메뉴</li>
 	         <li class="tab-link"         data-tab="category_2">달콤메뉴</li>
