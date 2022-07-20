@@ -3,6 +3,15 @@
  */
  btnAccept = function(sno){
 	
+	
+	var a = $('.sno').attr('value');
+	if(sno == $('.sno').attr('value')){
+		
+	}
+	console.log(a);
+	var b = $('.a').attr('value');
+	console.log(b);	
+	$('.btn').val();
 	$('.btns').css('visibility', 'hidden');
 	$('.order_expected_time').css('visibility', 'visible');
 	
@@ -41,11 +50,11 @@
 	})
 }
 
-movePage = function(page){
-		let url = 'store_orderStatus';
-		let frm = document.frm_orderStatus;
-		frm.nowPage.value = page;
-		frm.action = url;
-		frm.submit();
+function movePage(page){
+	let url = 'store_orderStatus';
+	let frm = document.frm_orderStatus;
+	frm.nowPage.value = page;
+	frm.action = url;
+	frm.submit();
 }
 

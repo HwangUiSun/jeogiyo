@@ -43,7 +43,7 @@ public List<JstoreOrderStatusVo> select(statusPage statusPage) {
 			list = mapper.select(statusPage);
 			System.out.println(list);
 			System.out.println(totSize);
-			
+			System.out.println(statusPage.getNowPage());
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
