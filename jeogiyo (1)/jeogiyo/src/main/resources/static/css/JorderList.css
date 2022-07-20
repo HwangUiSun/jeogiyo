@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "EUC-KR";
 #subject{
     text-align : center;
     font-size: 3em;
@@ -6,10 +6,4 @@
     height : 90px;
     margin-bottom : 20px;
     padding-top : 20px;
-}
-
-label{
-    
-      width: 120px;
-      text-align: right;
 }

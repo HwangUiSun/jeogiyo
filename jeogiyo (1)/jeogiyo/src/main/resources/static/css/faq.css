@@ -1,0 +1,20 @@
+@charset "EUC-KR";
+#subject_title{
+    text-align : center;
+    font-size: 3em;
+    background-color : #9997;
+    height : 90px;
+    margin-bottom : 20px;
+    padding-top : 20px;
+}
+#subject{
+	font-weight:bold;
+	
+}
+
+#Toggle, #Toggle_1, #Toggle_2, #Toggle_3,
+#Toggle_4, #Toggle_5, #Toggle_6, #Toggle_7,
+#Toggle_8{
+	color:red;
+	font-style: italic;
+}

@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>JorderList</title>
+<link rel = 'stylesheet' type='text/css' href = 'css/JorderList.css'>
 </head>
 <body>
 <div id = 'subject'>주문 내역</div>

@@ -9,9 +9,11 @@
 <script src = './js/consumer.js'></script>
 </head>
 <body>
+<div id = 'subject'>내정보 </div>
 <div id='MyPage'>
-  <h1>내정보</h1>
+ 
   <form name='frm_member' method='post' id='frm_member'>
+  
     <label>아이디</label>
     <input type='text' name='id' size='15'><br/>
     

@@ -6,10 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ</title>
+<link rel = 'stylesheet' type='text/css' href = 'css/faq.css'>
 </head>
 <body>
 
-<h1>자주묻는 질문(FAQ)</h1>
+<div id = 'subject_title'>자주묻는 질문(FAQ)</div>
 
 <div id=question>
     <div id='subject'>Q.주문은 어디서 할 수 있나요?
