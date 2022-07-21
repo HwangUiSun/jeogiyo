@@ -138,12 +138,15 @@ ul.tabs li.current{
 		   <br/>
 		   <hr/>
 		   
-		   <img src='../img/fanta.jfif' width='240px' height='240px'/>
-	       <div class='subject' id='productName5_3'><a>환타</a></div><br/>
-	       <div class='price' id='price5_3'>소비자가격 : 2000원</div><br/>
-		   <input type='checkbox' name='check' value='환타'/>선택 
-		   <br/>
-		   <hr/>
+		   <div id="testdiv" onclick="check()">
+		     <img src='../img/fanta.jfif' width='240px' height='240px'/>
+	      	 <div class='subject' id='productName5_3'><a>환타</a></div><br/>
+	      	 <div class='price' id='price5_3'>소비자가격 : 2000원</div><br/>
+		  	 <input type='checkbox' name='check' value='환타'/>선택 
+		   	 <br/>
+		   	 <hr/>
+		   </div>
+		 
 	    </div>
 	    </div>
 	    </form>
@@ -157,13 +160,17 @@ ul.tabs li.current{
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 <script>
+
+
+
+/*
 if (typeof window === 'object') {
 	// Check if document is finally loaded
 	   document.addEventListener("DOMContentLoaded", function () {
 	       alert('Finished loading')
 	     });
 	  }
-	  
+*/	  
 $(document).ready(function(){
 	
 	$('ul.tabs li').click(function(){
@@ -196,14 +203,39 @@ function test(){
 		}	
 	}
 */
+function check(){
+	let div = document.getElementById('testdiv').children
+	console.log(div)
+	
+	div.check.checked="true"
+	test();
+}
+
 
 function test(){
 	var value = document.getElementsByName("check");
-	for(var i=0; i<value.length; i++){
-		if(value[i].checked){
-			console.log(value[i].value);
+	var valueOfvalue =[]
+	for(let i =0 ; i< value.length;i++){
+		if(value[i].checked == true){
+			valueOfvalue[i]= value[i].value	
 		}
+		 
 	}
+
+	let form = document.createElement('form')
+	form.action ="bagBtn"
+	form.name="jmenu"
+	form.method="post"
+	
+	let valueinput = document.createElement('input')
+	valueinput.setAttribute("name","values")
+	valueinput.setAttribute("type","hidden")
+	valueinput.setAttribute("value",valueOfvalue)
+	
+	form.appendChild(valueinput);
+    document.body.appendChild(form);
+    
+    form.submit();
 }
 
 

@@ -270,10 +270,11 @@ public class JConsumerController {
 	
 	//메뉴선택
 	@RequestMapping("bagBtn")
-	public ModelAndView bagBtn(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView bagBtn(com.jpro.jconsumer.Page consumerpage, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/Jbag.jsp";
-
+		String str = req.getParameter("values");
+		System.out.println(str);
 		mv.addObject("inc",url);
 		
 
