@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>upload</title>
-
+<link rel = 'stylesheet' type='text/css' href = 'css/upload.css'>
 <!-- summernote를 위한 라이브러리 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -18,9 +18,10 @@
 
 
 <body>
-
+<div id = 'subject'>리뷰작성</div>
 <div id='upload'>
-  <div id='uploadReview'><h1>리뷰작성</h1></div>
+  <div id='uploadReview'>
+  </div>
   <form name='upload' class='upload' method='post'>
     <label>제목</label>
     <input type='text' name='subject' size='14'/>
