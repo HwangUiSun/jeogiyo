@@ -64,11 +64,21 @@ public class JstoreController {
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
 		ModelAndView mv = new ModelAndView();
-		
+			
 		mv.setViewName("common/SC_login");
 		
 		return mv;
 	}
+	@RequestMapping("store_home")
+	public ModelAndView store_home() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_main.jsp";
+		mv.addObject("inc", url);
+		mv.setViewName("store/store_index");
+		
+		return mv;
+	}
+	
 	
 	@RequestMapping("store_login")
 	public ModelAndView store_login(JstoreVo vo, HttpServletRequest req) {

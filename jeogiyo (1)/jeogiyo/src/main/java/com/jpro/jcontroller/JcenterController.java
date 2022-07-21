@@ -58,6 +58,14 @@ public class JcenterController {
 		mv.setViewName("index");
 		return mv;
 	}
+	@RequestMapping("Center_home")
+	public ModelAndView Center() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_main.jsp";
+		mv.addObject("inc", url);
+		mv.setViewName("center/center_index");
+		return mv;
+	}
 	
 	@RequestMapping("center_login")
 	public ModelAndView center_login() {

@@ -8,6 +8,9 @@
 <title>noti_main</title>
 <link href="/css/noti.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+</style>
 </head>
 <body>
 <div id="subject">공지 사항</div>

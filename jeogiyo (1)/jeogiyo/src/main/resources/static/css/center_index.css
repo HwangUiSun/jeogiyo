@@ -3,7 +3,10 @@
 /*
 	center css 07-12 JR
 */
-
+*{
+		font-family: 'Poor Story', cursive;
+		font-size: 1.04em;
+}
 #container{
 	width : 1200px;
 	margin : 0 auto;
@@ -39,6 +42,9 @@
 	display : inline-block;
 	padding : 8px 10px;
 	font-size : 1.1em;
+	color: #606a44;
+	font-weight: bold;
+	font-family: 'Poor Story', cursive;
 }
 
 #section{
@@ -94,4 +100,7 @@
 	left : 125px;
 	top : -1100px;
 	background-size: contain;
+}
+#Logo{
+	cursor : pointer;
 }
