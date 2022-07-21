@@ -12,10 +12,9 @@
 <body>
 <div id='container'>
 	<header id="top_logo">
-		<h1>jeogiyo</h1>
+		<div id="Logo"></div>
 		<div id="loginIdprint">● : ${sessionScope.id}님</div>
 		<button type='button' id='store_logoutBtn' onclick="location.href='index'">로그아웃</button>
-		<a href='store_drop' class='store_drop'>가맹탈퇴 신청</a>
 	</header>
 	
 	<div id='title_menu'>
@@ -23,7 +22,8 @@
 			<a href='noti'><li>공지사항&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li></a>
 			<a href='order'><li>발주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li></a>
 			<a href='store_sale'><li>매출관리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li></a>
-			<a href='store_orderStatus'><li>주문현황</li></a>
+			<a href='store_orderStatus'><li>주문현황&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li></a>
+			<a href='store_drop'><li>탈퇴신청</li></a>
 		</ul>
 	</div>
 	

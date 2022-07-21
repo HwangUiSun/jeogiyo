@@ -82,9 +82,14 @@ public class JstoreController {
 		if(rVo != null) {
 			if(rVo.getMid().equals("root")) {
 				session.setAttribute("id", rVo.getMid());
+				String url = "../center/center_main.jsp";
+				mv.addObject("inc", url);
 				mv.setViewName("center/center_index");
 			}else{
 				session.setAttribute("id", rVo.getMid());
+				String url = "../store/store_main.jsp";
+				mv.addObject("inc", url);
+				
 				mv.setViewName("store/store_index");
 				tableName = baljuDao.createTable((String)s.getAttribute("mid"));
 				s.setAttribute("tableName", tableName);
