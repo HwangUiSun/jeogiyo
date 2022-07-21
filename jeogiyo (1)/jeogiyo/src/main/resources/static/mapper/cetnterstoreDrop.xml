@@ -11,14 +11,14 @@
 	</select>
 
 	
-	<select id='storeDropM' parameterType='cpage' resultType='JstoreVo'>
+	<select id='storeDropM' parameterType='cpage' resultType='JcenterDropListVo'>
 		select * from jdroplist
 		where subject like '%${findStr}%'
 		or storeName like '%${findStr}%'
 		limit ${startNo-1}, ${listSize} 
 	</select>
 	
-	<insert id='drop_insert' parameterType='JstoreVo'>
+	<insert id='drop_insert' parameterType='JcenterDropListVo'>
 		insert into jdroplist (mid, pwd, name, storeName, phone, doc, subject, status)
 		values(#{mid}, #{pwd}, #{name}, #{storeName}, #{phone}, #{doc}, #{subject}, '대기')
 	</insert>
@@ -26,6 +26,6 @@
 	<select id='drop_view' parameterType='String' resultType='JcenterDropListVo'>
 		select *
 		from jdroplist
-		where mid = #{_parameter}
+		where storeName = #{_parameter}
 	</select>
 </mapper>

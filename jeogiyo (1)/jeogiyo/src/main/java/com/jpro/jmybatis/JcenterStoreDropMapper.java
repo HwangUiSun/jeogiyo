@@ -17,9 +17,9 @@ import com.jpro.jstore.JstoreVo;
 public interface JcenterStoreDropMapper {
 	// 본사
 	public Integer storeDrop(Page page);
-	public List<JstoreVo> storeDropM(Page page);
-	public List<JstoreVo> centerStoreFindstr(Page page);
-	public JcenterDropListVo drop_view(String mid);
+	public List<JcenterDropListVo> storeDropM(Page page);
+	public List<JcenterDropListVo> centerStoreFindstr(Page page);
+	public JcenterDropListVo drop_view(String storeName);
 	
 	// 가맹
 	public int drop_insert(JstoreVo vo);

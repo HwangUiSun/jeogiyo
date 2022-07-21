@@ -10,16 +10,13 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-center_storeM<br/>
 <div id = "subject">가맹 탈퇴신청 현황</div>
-<div id ='center_Drop'>
-<a href='center_storeDropView'>가맹 탈퇴 상세보기</a>
-<a href='storeCenter'>Home</a>
-</div>
 <div id='Drop'>
 <form name='frm_Drop' class='frm_Drop' method='post'>
-	<input type = 'text' name='findStr' value='${storepage.findStr}'>
+	<input type = 'hidden' name='findStr' value='${storepage.findStr}'>
 	<input type = 'hidden' name='nowPage' value='${page.nowPage}'>
+	<input type = 'hidden' name='storeName' value=''>
+	
 	<button type= 'button' onclick ='btnDrop(this.form)'>조회</button>
 
 
@@ -32,16 +29,16 @@ center_storeM<br/>
 
 
 	<div class="center_Drop">
-	<c:set var='num' value='${page.startNo }' />
-	<c:forEach var='v' items='${storelist}'>
-		<div class='items' onclick="center_storeView(${num})"><!-- 완료 -->
-			<span>${num}</span>
-			<span>${v.subject}</span>
-			<span>${v.storeName }</span>
-			<span>${v.status }</span>
-		</div>
-	<c:set var='num' value='${num=num+1 }'/>
-	</c:forEach>
+		<c:set var='num' value='${page.startNo }' />
+		<c:forEach var='v' items='${storelist}'>
+			<div class='items' onclick="dropView('${v.storeName}')"> <!-- 완료 -->
+				<span>${num}</span>
+				<span>${v.subject}</span>
+				<span>${v.storeName }</span>
+				<span>${v.status }</span>
+			</div>
+		<c:set var='num' value='${num=num+1 }'/>
+		</c:forEach>
 	<div class='paging'>
 		
 			<c:if test="${storepage.startPage>1 }">

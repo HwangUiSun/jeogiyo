@@ -29,13 +29,13 @@ public class JstoreDropService implements JcenterStoreDropMapper{
 	}
 
 	@Override
-	public List<JstoreVo> storeDropM(Page page) {
+	public List<JcenterDropListVo> storeDropM(Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JstoreVo> centerStoreFindstr(Page page) {
+	public List<JcenterDropListVo> centerStoreFindstr(Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -60,11 +60,11 @@ public class JstoreDropService implements JcenterStoreDropMapper{
 	}
 
 	@Override
-	public JcenterDropListVo drop_view(String mid) {
+	public JcenterDropListVo drop_view(String storeName) {
 		JcenterDropListVo vo = null;
 		
 		try {
-			vo = mapper.drop_view(mid);
+			vo = mapper.drop_view(storeName);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
