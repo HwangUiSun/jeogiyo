@@ -8,6 +8,8 @@
    height : 90px;
    margin-bottom : 20px;
    padding-top : 20px;
+   border:4px solid #666; 
+   border-radius: 10px;
 }
 #sub{
    text-align : center;
