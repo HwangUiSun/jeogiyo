@@ -15,4 +15,5 @@ import com.jpro.jstore.statusPage;
 public interface JstoreOrderStatusMapper {
 	public int totSize(statusPage page);
 	public List<JstoreOrderStatusVo> select(statusPage page);
+	public int delete(int sno);
 }

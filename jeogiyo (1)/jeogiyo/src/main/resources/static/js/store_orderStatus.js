@@ -1,55 +1,49 @@
 /**
  * 
  */
- btnAccept = function(sno){
+ btn = document.getElementsByClassName('btns'); //추가한거
+start = document.getElementsByClassName('order_expected_time');
+end = document.getElementsByClassName('end_time');
+ document.addEventListener('DOMContentLoaded', (event) => { 
+    
+    btnAccept = function(sno){
 	
 	
-	var a = $('.sno').attr('value');
-	if(sno == $('.sno').attr('value')){
-		
-	}
-	console.log(a);
-	var b = $('.a').attr('value');
-	console.log(b);	
-	$('.btn').val();
-	$('.btns').css('visibility', 'hidden');
-	$('.order_expected_time').css('visibility', 'visible');
-	
-	$('.order_expected_time h1').css('text-align', 'center');
-	
+	btn[sno].style.visibility ="hidden";//추가한거
+	start[sno].style.visibility = "visible";
 	var time = 60 * 60;
 	var timeOrigin = time;
-	var hour = parseInt(timeOrigin / 3600);
+	var min = parseInt(timeOrigin / 3600);
 	
 	timeOrigin = timeOrigin % 3600;
-	var min = parseInt(timeOrigin / 60);
-	var second = timeOrigin % 60;
+	var sec = parseInt(timeOrigin / 60);
 	
 	$('.order_expected_time h1').empty();	
-	$('.order_expected_time h1').text(hour + ":" + min);
-	$('.order_expected_time h3').text("배달 중");
+	start[sno].innerHTML = "<h1>min + ':' + sec</h1><br/><h3>배달 중</h3>";
 	
 	var timer = setInterval(function(){
 		time--;
 		var timeOrigin = time;
-		var hour = parseInt(timeOrigin / 3600);	
+		var min = parseInt(timeOrigin / 3600);	
 		timeOrigin = timeOrigin % 3600;
-		var min = parseInt(timeOrigin / 60);
-		var second = timeOrigin % 60;
-		$('.order_expected_time h1').empty();
-		$('.order_expected_time h1').text(hour + ":" + min	);
+		var sec = parseInt(timeOrigin / 60);
+		start[sno].innerHTML = "<h1>" + min + ':' + sec + "</h1>";
 		if(time == 0){
-			$('.order_expected_time').css('visibility', 'hidden');
-			$('.end_time').css('visibility', 'visible');
-		}else{
-			skip = function(){
-				$('.order_expected_time').css('visibility', 'hidden');
-			$('.end_time').css('visibility', 'visible');
-			}
+			start[sno].style.visibility = "hidden";
+			end[sno].style.visibility = "visible";
 		}
 	})
 }
 
+})
+ 
+function btnDeny(sno){
+	let url = 'store_orderStatus_Drop';
+	let frm = document.frm_orderStatus;
+	frm.sno.value = sno;
+	frm.action = url;
+	frm.submit();
+}
 function movePage(page){
 	let url = 'store_orderStatus';
 	let frm = document.frm_orderStatus;

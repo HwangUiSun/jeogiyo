@@ -352,6 +352,15 @@ public class JstoreController {
 		return mv;
 	}
 	
+	@RequestMapping("store_orderStatus_Drop")
+	public ModelAndView store_orderStatus_Drop(com.jpro.jstore.statusPage statusPage, int sno) {
+		ModelAndView mv = new ModelAndView();
+		
+		orderStatusDao.delete(sno);
+		mv = store_orderStatus(statusPage);
+		return mv;
+	}
+	
 	//update 발주리스트
 	@RequestMapping("adds")
 	public ModelAndView updateEa(com.jpro.jstore.Page page,HttpServletRequest req) {

@@ -18,8 +18,6 @@ for(let i = 0 ; i<imposible.length;i++){
 	form.action = "changS"
 	form.name="statusForm"
 	form.method = "post"
-		
-	
 	
 	let boolInput = document.createElement('input')
 	let snoInput = document.createElement('input')
