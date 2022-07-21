@@ -1,4 +1,4 @@
-@c@charset "UTF-8";
+@charset "UTF-8";
 
 
 #subject{
@@ -80,7 +80,7 @@
 	background : #B2B2B2;
 }
 .paging button{
-	background : #B2B2B2;
+	--background : #B2B2B2;
 	display:block;
 	border:0px;
 	text-align:center;
