@@ -57,7 +57,7 @@ ul.tabs li.current{
 	       <div class='subject' id='productName1_1'><a>발사믹 치킨</a><br/></div>
 	       <div class='menuInfo' id='menuInfo1_1'>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</div><br/>
 	       <div class='price' id='price1_1'>소비자가격 : 18500원</div><br/>
-	       <input type='checkbox' name='menuBar1_1' value='발사믹 치킨'/>선택 
+	       <input type='checkbox' name='check' value='menu1_1'/>선택 
 	       <hr/>
 	    </div>
 	    
@@ -66,14 +66,14 @@ ul.tabs li.current{
 	       <div class='subject' id='productName2_1'><a>달콤허니 오리지날</a><br/></div>
 	       <div class='menuInfo' id='menuInfo2_1'>달콤한 허니소스에 쫄깃한 날개와 담백한 다리가 만난 메뉴</div><br/>
 	       <div class='price' id='price2_1'>소비자가격 : 20000원</div><br/>
-	       <input type='checkbox' name='menuBar2_1' value='달콤허니 오리지날'/>선택 
+	       <input type='checkbox' name='check' value='menu2_1'/>선택 
 		   <hr/>
 		   
           <img src='../img/honey combo.png' width='240px' height='240px'/>
 	       <div class='subject' id='productName2_2'><a>달콤허니콤보</a><br/></div>
 	       <div class='menuInfo' id='menuInfo2_2'>달콤바삭한 맛이 일품인 한 마리 치킨</div><br/>
 	       <div class='price' id='price2_2'>소비자가격 : 16000원</div><br/>
-	       <input type='checkbox' name='menuBar2_2' value='달콤허니콤보'/>선택 
+	       <input type='checkbox' name='check' value='menu2_2'/>선택 
      	   <hr/>
 		   
 	    </div>
@@ -83,7 +83,7 @@ ul.tabs li.current{
 	       <div class='subject' id='productName3_1'><a>매콤레드 오리지날</a><br/></div>
 	       <div class='menuInfo' id='menuInfo3_1'>국내산 청양 홍고추의 매콤함이 일품인 매콤레드 오리지날</div><br/>
 	       <div class='price' id='price3_1'>소비자가격 : 17000원</div><br/>
-		   <input type='checkbox' name='menuBar3_1' value='매콤레드 오리지날'/>선택 
+		   <input type='checkbox' name='check' value='menu3_1'/>선택 
 		   <br/>
 		   <hr/>
 		   
@@ -91,7 +91,7 @@ ul.tabs li.current{
 	       <div class='subject' id='productName3_2'><a>매콤레드 윙</a><br/></div>
 	       <div class='menuInfo' id='menuInfo3_2'>국내산 청양 홍고추의 매콤함이 골고루 밴 쫄깃한 날개와 봉의 만남</div><br/>
 	       <div class='price' id='menuInfo3_2'>소비자가격 : 20000원</div><br/>
-		   <input type='checkbox' name='menuBar3_2' value='매콤레드 윙'/>선택 
+		   <input type='checkbox' name='check' value='menu3_2'/>선택 
 		   <br/>
 		   <hr/>
 	    </div>
@@ -101,14 +101,14 @@ ul.tabs li.current{
 		  <img src='../img/cheese stick.jfif' width='240px' height='240px'/>
 	       <div class='subject' id='productName4_1'><a>치즈스틱</a></div><br/>
 	       <div class='price' id='price4_1'>소비자가격 :2500원</div><br/>
-		   <input type='checkbox' name='menuBar4_1' value='치즈스틱'/>선택 
+		   <input type='checkbox' name='check' value='menu4_1'/>선택 
 		   <br/>
 		   <hr/>
 		   
 		  <img src='../img/cheese ball.jfif' width='240px' height='240px'/>
 	       <div class='subject' id='productName4_2'><a>치즈볼</a></div><br/>
 	       <div class='price' id='price4_2'>소비자가격 : 3000원</div><br/>
-		   <input type='checkbox' name='menuBar4_2' value='치즈볼'/>선택 
+		   <input type='checkbox' name='check' value='menu4_2'/>선택 
 		   <br/>
 		   <hr/>
 	    </div>
@@ -117,21 +117,21 @@ ul.tabs li.current{
 		  <img src='../img/coke.jfif' width='240px' height='240px'/>
 	       <div class='subject' id='productName5_1'><a>콜라</a></div><br/>
 	       <div class='price' id='price5_1'>소비자가격 : 2000원</div><br/>
-		   <input type='checkbox' name='menuBar5_1' value='콜라'/>선택 
+		   <input type='checkbox' name='check' value='menu5_1'/>선택 
 		   <br/>
 		   <hr/>
 		   
 		   <img src='../img/cider.jfif' width='240px' height='240px'/>
 	       <div class='subject' id='productName5_2'><a>사이다</a></div><br/>
 	       <div class='price' id='price5_2'>소비자가격 : 2000원</div><br/>
-		   <input type='checkbox' name='menuBar5_2' value='사이다'/>선택 
+		   <input type='checkbox' name='check' value='menu5_2'/>선택 
 		   <br/>
 		   <hr/>
 		   
 		   <img src='../img/fanta.jfif' width='240px' height='240px'/>
 	       <div class='subject' id='productName5_3'><a>환타</a></div><br/>
 	       <div class='price' id='price5_3'>소비자가격 : 2000원</div><br/>
-		   <input type='checkbox' name='menuBar5_3' value='환타'/>선택 
+		   <input type='checkbox' name='check' value='menu5_3'/>선택 
 		   <br/>
 		   <hr/>
 	    </div>
@@ -167,8 +167,9 @@ $(document).ready(function(){
 	});
 });
 
-function test()
-
+function test(){
+	var value 
+}
 
 </script>
 </html>
