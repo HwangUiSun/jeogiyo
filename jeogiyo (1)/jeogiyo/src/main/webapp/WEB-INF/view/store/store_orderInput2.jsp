@@ -68,11 +68,11 @@
 				<c:set var='num' value='${num=num+1 }'/>
 				</c:forEach>
 	</div>
-
+	
 <input type="hidden" name="title" id="title" value="${param.title}">
 <input type="hidden" name="nal" id="nal" value="">
 </div>
-
+<a href="updateTable">업데이트</a>
 
 </body>
 </html>

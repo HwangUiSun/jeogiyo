@@ -59,6 +59,8 @@ public class JbaljuController {
 		return mv;
 	}
 	
+	
+	
 	@RequestMapping("addsub")
 	public ModelAndView addsub(Page page, HttpServletRequest req, HttpServletResponse resp) {
 		ModelAndView mv = new ModelAndView();	

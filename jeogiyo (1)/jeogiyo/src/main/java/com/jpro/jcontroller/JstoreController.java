@@ -25,6 +25,7 @@ import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.common.Page;
 import com.jpro.common.TableVo;
+import com.jpro.jcenter.JbaljuManageVo;
 import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
@@ -527,5 +528,30 @@ public class JstoreController {
 		return mv;
 	}
 	
+	@RequestMapping("updateTable")
+	public ModelAndView updateTable(com.jpro.jstore.Page page, HttpServletRequest req, HttpServletResponse resp) {
+		ModelAndView mv = new ModelAndView();	
+		HttpSession s = req.getSession();
+		String tableName="";
+		if((String)s.getAttribute("tableName")!=null) {
+			tableName = (String)s.getAttribute("tableName");
+		}else {
+			tableName = "jbaljulist";
+		}
+		String url = "../store/store_orderInput2.jsp";		
+		boolean b  = baljuDao.updateTable(tableName);
+		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page,tableName);	
+		mv.addObject("inc",url);
+		mv.addObject("baljupage2",page);
+		mv.addObject("baljulist2",baljulist);
+		mv.addObject("baljulist3",baljulist2);
+		mv.setViewName("store/store_index");		
+		
+		
+		
+		
+		return mv;
+	}
 	
 }

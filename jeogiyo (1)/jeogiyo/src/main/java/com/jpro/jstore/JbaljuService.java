@@ -274,4 +274,18 @@ public class JbaljuService {
 		return msg;
 	}
 	
+	public boolean updateTable(String tableName) {
+		boolean b = false;
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			mapper.updateTable(tableName);
+			transaction.commit(status);
+			b=true;					
+		}catch(Exception ex) {
+			
+		}
+
+		return b;
+	}
+	
 }
