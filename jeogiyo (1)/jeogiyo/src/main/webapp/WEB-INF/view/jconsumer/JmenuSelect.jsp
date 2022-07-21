@@ -40,8 +40,9 @@ ul.tabs li.current{
 
 </style>
 <body>
-	
+	<form action='' method='post'>
 	<div class= "container">
+	
 	 <div id='subject'>메뉴보기</div>
 	   <ul class= "tabs">
 	         <li class="tab-link current" data-tab="category_1">신메뉴</li>
@@ -134,11 +135,13 @@ ul.tabs li.current{
 		   <br/>
 		   <hr/>
 	    </div>
-
+	    </div>
+	    </form>
 	    <a href='bagBtn'><button type='button' class='bagBtn'>장바구니</button></a>
 
 
 </body>
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
@@ -164,9 +167,7 @@ $(document).ready(function(){
 	});
 });
 
-</script>
-
-<script>
+function test()
 
 
 </script>
