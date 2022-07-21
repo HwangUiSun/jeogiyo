@@ -19,8 +19,8 @@
 }
 
 #go_storeDropBtn:hover{
+	background-color : #5ad226;
 	cursor : pointer;
-	background-color : #999;
 }
 
 .select_local {
@@ -38,8 +38,8 @@
 }
 
 .select_local:hover {
+	background-color : #5ad226;
 	cursor : pointer;
-	background-color : #999;
 }
 
 .storeName{
@@ -95,6 +95,6 @@
 }
 
 #pageBtn:hover{
-	cursor : pointer;
-	background-color : #999;	
+	background-color : #5ad226;
+	cursor : pointer;	
 }
