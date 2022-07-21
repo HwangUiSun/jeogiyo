@@ -31,7 +31,7 @@ document.addEventListener('click',clickEffect);
 		<form name='frm_Jstore' method='post' id='frm_Jstore' action="JstoreSelect">
 	             
 	            
-				<select class='mapFind' id='mapFindStr' name='mapFindStr' onchange='storeSelect(this)'>
+				<select class='mapFind' id='mapFindStr' name='mapFindStr' onchange='cityFindChange(this)'>
 				
 				<option>선택해주세요</option>
 				<option value='seoul'>서울</option>

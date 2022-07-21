@@ -190,21 +190,22 @@ function test(){
 		for(var i=0; i<check_arr.length; i++){
 				check_data.push(check_arr[i].value);
 			}
-		}	
 		for(var j=0; j<check_data.length; j++){
 			console.log(check_data[j]);
 			}
+		}	
 	}
+*/
 
 function test(){
 	var value = document.getElementsByName("check");
 	for(var i=0; i<value.length; i++){
 		if(value[i].checked){
-			alert(value[i].value);
+			console.log(value[i].value);
 		}
 	}
 }
-*/
+
 
 </script>
 </html>
