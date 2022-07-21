@@ -8,6 +8,16 @@
 <script src="/js/Jpayhistory.js"></script>
 <title>Jpayhistory</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/Jpayhistory.css'>
+ <script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
 

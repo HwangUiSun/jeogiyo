@@ -6,6 +6,16 @@
 <meta charset="UTF-8">
 <title>MyPageChange</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/MyPageChange.css'>
+<script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
 <div id='subject'>내 정보 수정</div>

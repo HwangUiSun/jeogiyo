@@ -7,6 +7,16 @@
 <title>MyPage</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/MyPage.css'>
 <script src = './js/consumer.js'></script>
+<script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
 <div id = 'subject'>내정보 </div>

@@ -8,6 +8,16 @@
 <link href="css/JmenuSelect.css" rel="stylesheet">
 <title>JmenuSelect</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/JmenuSelect.css'>
+ <script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <style>
 ul.tabs{
