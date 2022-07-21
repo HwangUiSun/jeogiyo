@@ -20,12 +20,13 @@ document.addEventListener('click',clickEffect);
 </script>
 </head>
 <body>
+<div id='JorderList'>
 <div id = 'subject'>주문 내역</div>
 
 <div id='wrap'>
 		<form name='frm_JorderList' method='post' id='frm_JorderList' action="JorderList">
 		<div id = 'itemsWrap'>
-			<c:set var='num' value='${consumerpage.startNo}' />
+			
 			<c:forEach var='v' items='${orderlist}'>
 		       <div class='items'onclick="">
 			      
@@ -39,28 +40,34 @@ document.addEventListener('click',clickEffect);
 		</c:forEach>
 		  </div>
 		</form>
-		</div>
+		
 		
 				
 		
 		<div class= 'paging'>	
 	
-	<c:if test="${consumerpage.startPage>1}">
+	<c:if test="${orderlistpage.startPage>1}">
 		<button type= 'button' class= 'btnFirst' onclick='movePage(1)'>맨처음</button>
-		<button type= 'button' class= 'btnPrev' onclick='movePage(${consumerpage.startPage-1})'>이전</button>
+		<button type= 'button' class= 'btnPrev' onclick='movePage(${orderlistpage.startPage-1})'>이전</button>
 	</c:if>
 		
 
-		<c:forEach var='i' begin='${consumerpage.startPage}' end='${consumerpage.endPage}'>
+		<c:forEach var='i' begin='${orderlistpage.startPage}' end='${orderlistpage.endPage}'>
 		<button type= 'button' class= 'first' onclick ='movePage(${i})'>${i}</button>
 		</c:forEach>
 
-		<c:if test ="${consumerpage.endPage<consumerpage.totPage}">
-		<button type= 'button' class= 'btnNext' onclick = 'movePage(${consumerpage.endPage+1})'>다음</button>
-		<button type= 'button' class= 'btnLast' onclick = 'movePage(${consumerpage.totPage})'>맨끝</button>
+		<c:if test ="${orderlistpage.endPage<orderlistpage.totPage}">
+		<button type= 'button' class= 'btnNext' onclick = 'movePage(${orderlistpage.endPage+1})'>다음</button>
+		<button type= 'button' class= 'btnLast' onclick = 'movePage(${orderlistpage.totPage})'>맨끝</button>
 		</c:if>
+		
 	</div>
 	</div>
+	<form name="frm_Jorder" method="post">
+		<input type="hidden" name="nowPage" value="${orderlistpage.nowPage}">
+	</form>
+	</div>
+     
 </body>
 <script src="/js/Jorderlist.js"></script>
 </html>

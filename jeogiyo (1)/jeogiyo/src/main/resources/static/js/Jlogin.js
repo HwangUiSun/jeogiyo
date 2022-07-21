@@ -7,7 +7,7 @@ var consumer = document.getElementById('consumer');  //메인 페이지에서 �
 var loginBtn = document.getElementById('loginBtn'); //로그인 버튼을 눌렀으떄 로그인 창이뜨는 버튼
 //var btnLogout = document.getElementById('btnLogout'); //로그아웃 버튼
 var findIdBtn = document.getElementById("findIdBtn"); // 아이디찾기 버튼
-var btnFindPwd = document.getElementById('btnFindPwd'); //암호찾기 버튼
+var findPwdBtn = document.getElementById('findPwdBtn'); //암호찾기 버튼
 
 
 //index에서 로그인 버튼이 클릭된 경우
@@ -54,9 +54,9 @@ if(findIdBtn != null){
 	}
 }
 
-if(btnFindPwd != null){
-	btnFindPwd.onclick = function(){
-		let frm = document.frm_find_pwd;
+if(findPwdBtn != null){
+	findPwdBtn.onclick = function(){
+		let frm = document.frm_findpwd;
 		let url = 'findPwdR';
 		frm.action = url;
 		frm.submit();

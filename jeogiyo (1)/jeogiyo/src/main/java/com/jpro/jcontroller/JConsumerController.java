@@ -120,12 +120,22 @@ public class JConsumerController {
 	}
 	
 	//비밀번호 찾기
-	@RequestMapping("findPwdBtn")
+	/*@RequestMapping("findPwdBtn")
 	public ModelAndView findPwdBtn() {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("jconsumer/Jlogin");
 		
+		return mv;
+	}*/
+	
+	@RequestMapping("findPwdR")
+	public ModelAndView findPwdR(JConsumerVo vo) {
+		ModelAndView mv = new ModelAndView();
+		String pwd = dao.findpwd(vo);
+		
+		mv.addObject("msg", pwd);
+		mv.setViewName("jconsumer/find_pwd_result");
 		return mv;
 	}
 	
@@ -173,7 +183,7 @@ public class JConsumerController {
 		System.out.println(conlist);
 		page = dao.getPage();
 		mv.addObject("storeSelectlist",conlist);
-		mv.addObject("storeSelectpage",page);
+		mv.addObject("consumerpage",page);
 		mv.setViewName("jconsumer/Jconsumer_index");	
 		return mv;
 	}

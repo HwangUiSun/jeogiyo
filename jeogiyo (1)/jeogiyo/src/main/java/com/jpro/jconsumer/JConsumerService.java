@@ -77,6 +77,19 @@ public class JConsumerService implements JConsumerInterface {
 		return mId;
 		
 	}
+	public String findpwd(JConsumerVo vo) {
+	String pwd ="";
+		
+		try {
+			pwd=mapper.findpwd(vo);
+	
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			
+		}
+		return pwd;
+		
+	}
 	@Override
 	public String JmenuSelect() {
 		// TODO Auto-generated method stub
