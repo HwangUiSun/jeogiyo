@@ -29,7 +29,7 @@
 		</div>
 		<div class = 'btns'	>
 			<div class = '${status.sno}' value = '${status.sno}'>
-				<button type = 'button' name = 'accept' onclick = 'btnAccept(${status.sno})'>접수</button>
+				<button type = 'button' name = 'accept' onclick = 'btnAccept("${(num-1)%3}")'>접수</button>
 				<button type = 'button' name = 'deny' onclick = 'btnDeny(${status.sno})'>거부</button>						
 			</div>
 		</div>

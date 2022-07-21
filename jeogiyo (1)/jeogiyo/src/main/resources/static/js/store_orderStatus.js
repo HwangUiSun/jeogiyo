@@ -1,18 +1,25 @@
 /**
  * 
  */
- btnAccept = function(sno){
+ asdf = document.getElementsByClassName('btns'); //추가한거
+
+ document.addEventListener('DOMContentLoaded', (event) => {
+   
+   
+    
+    btnAccept = function(sno){
 	
 	
 	var a = $('.sno').attr('value');
-	if(sno == $('.sno').attr('value')){
-		
-	}
+ 	
+ 	
 	console.log(a);
 	var b = $('.a').attr('value');
 	console.log(b);	
 	$('.btn').val();
-	$('.btns').css('visibility', 'hidden');
+	
+	asdf[sno].style.visibility ="hidden"//추가한거
+	console.log($('.btns'))
 	$('.order_expected_time').css('visibility', 'visible');
 	
 	$('.order_expected_time h1').css('text-align', 'center');
@@ -49,6 +56,9 @@
 		}
 	})
 }
+
+})
+ 
 
 function movePage(page){
 	let url = 'store_orderStatus';

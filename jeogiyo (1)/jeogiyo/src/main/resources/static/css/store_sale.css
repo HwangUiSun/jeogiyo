@@ -55,14 +55,15 @@
 	justify-content : center;
 }
 .paging button{
-	background-color : #9997;
-	font-weight : bold;
 	margin : 5px;
-	margin-top : 30px;
 	height : 30px;
-	width : 60px;
-	border-radius : 10px;
+	width : 80px;
+	background-color : #a5ea89;
 	border : none;
+	border-radius : 10px;
+	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
 }
 .paging button:hover{
 	cursor:pointer;
@@ -73,23 +74,26 @@
  	background : #fff;
  }
 #frm_store_sale button[name = lookUp]{
-	background-color : #9997;
-	font-weight : bold;
+
 	margin : 5px;
 	height : 30px;
-	width : 60px;
-	border-radius : 10px;
+	width : 80px;
+	background-color : #a5ea89;
 	border : none;
+	border-radius : 10px;
+	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
 }
 
 #frm_store_sale button[name = lookUp]:hover{
+	background-color : #5ad226;
 	cursor : pointer;
-	background-color : #999;
 }
  
  .paging button:hover{
- 	cursor : pointer;
-	background-color : #999;
+	background-color : #5ad226;
+	cursor : pointer;
  }
  
  #left_area{

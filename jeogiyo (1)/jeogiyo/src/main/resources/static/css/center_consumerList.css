@@ -55,19 +55,31 @@
 	flex-direction: row;
 	justify-content : center;
 	background : #B2B2B2;
+	
+	
 }
 .paging button{
-	background : #B2B2B2;
+	--background : #B2B2B2;
 	display:block;
 	border:0px;
 	text-align:center;
 	margin:5px;
 	padding:5px 10px;
 	font-size:20px;
+	
+	margin : 5px;
+	height : 30px;
+	width : 80px;
+	background-color : #a5ea89;
+	border : none;
+	border-radius : 10px;
+	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
 }
 .paging button:hover{
-	cursor : pointer;
-	background-color : #999;	
+	background-color : #5ad226;
+	cursor : pointer;	
 }
  .items:hover{
  	color:#000;

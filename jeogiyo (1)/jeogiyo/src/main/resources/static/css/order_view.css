@@ -24,31 +24,38 @@
 }
 
 #order_view .btns button[name = update]{
-	height : 50px;
-	width : 100px;
-	background-color : #9997;
+	margin : 5px;
+	height : 30px;
+	width : 80px;
+	background-color : #a5ea89;
 	border : none;
-	border-radius : 15px;
+	border-radius : 10px;
 	font-size : 15px;
-	margin-top : 50px;
+	color : #666666;
+	font-weight : bold;
 }
 
 #order_view .btns button[name = delete]{
-	height : 50px;
-	width : 100px;
-	background-color : #9997;
+	
+	height : 30px;
+	width : 80px;
+	background-color : #a5ea89;
 	border : none;
-	border-radius : 15px;
+	border-radius : 10px;
 	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
 }
 
 #order_view .btns button[name = back]{
-	height : 50px;
-	width : 100px;
-	background-color : #9997;
+	height : 30px;
+	width : 80px;
+	background-color : #a5ea89;
 	border : none;
-	border-radius : 15px;
+	border-radius : 10px;
 	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
 }
 
 #orderlist{
@@ -62,8 +69,8 @@
 }
 
 #order_view .btns button:hover{
+	background-color : #5ad226;
 	cursor : pointer;
-	background-color : #999;
 }
 
 .titles {

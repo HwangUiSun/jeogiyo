@@ -357,10 +357,8 @@ public class JcenterController {
 			storepage =  new com.jpro.jcenter.Page();
 			storepage.setNowPage(1);
 			storepage.setFindStr("");
-			
 		}
-		
-		List<JstoreVo> storelist = dropDao.storeDrop(storepage);
+		List<JcenterDropListVo> storelist = dropDao.storeDrop(storepage);
 		
 		storepage = dropDao.getPage();
 		mv.addObject("storelist",storelist);
@@ -384,9 +382,8 @@ public class JcenterController {
 			storepage.setFindStr("");
 			
 		}
-	
 		
-		List<JstoreVo> storelist = dropDao.storeDrop(storepage); 
+		List<JcenterDropListVo> storelist = dropDao.storeDrop(storepage); 
 		storepage =  dropDao.getPage();
 		
 		mv.addObject("inc",url);
@@ -401,14 +398,38 @@ public class JcenterController {
 	
 
 	@RequestMapping("center_storeDropView")
-	public ModelAndView center_storeDropView(JcenterDropListVo vo) {
+	public ModelAndView center_storeDropView(com.jpro.jcenter.Page page, String storeName) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeDrop_view.jsp";
-		
 		mv.addObject("inc", url);
-		System.out.println(vo.getStoreName());
-		JcenterDropListVo rVo = dropDao2.drop_view(vo.getMid());
+		System.out.println("상세보기의 가맹점명" + storeName);
+		JcenterDropListVo rVo = dropDao2.drop_view(storeName);
+		System.out.println("MID 값은?" + rVo.getMid());
 		mv.addObject("vo", rVo);
+		
+		mv.setViewName("center/center_index");
+		return mv;
+	}
+	
+	@RequestMapping("center_storeDropOK")
+	public ModelAndView center_storeDropOK(com.jpro.jcenter.Page storepage, String storeName) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("Drop OK" + storeName);
+		dropDao2.drop_OK(storeName);
+		
+		String url = "../center/center_storeDrop.jsp";
+		mv.addObject("inc", url);
+		
+		if(storepage.getFindStr() ==null) {
+			storepage =  new com.jpro.jcenter.Page();
+			storepage.setNowPage(1);
+			storepage.setFindStr("");
+		}
+		List<JcenterDropListVo> storelist = dropDao.storeDrop(storepage);
+		
+		storepage = dropDao.getPage();
+		mv.addObject("storelist",storelist);
+		mv.addObject("storepage",storepage);
 		
 		mv.setViewName("center/center_index");
 		return mv;
