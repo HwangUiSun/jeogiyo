@@ -25,6 +25,7 @@
 
 #noti_view .btns button[name = update]{
 	margin : 5px;
+	margin-bottom : 20px;
 	height : 30px;
 	width : 80px;
 	background-color : #a5ea89;
@@ -78,8 +79,8 @@
 
 #upade{
 	position: relative;
-	left: 47px;
-	top : -45px;
+	left: 53px;
+	top : 10px;
 	height: 10px;
 }
 
