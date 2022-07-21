@@ -12,4 +12,8 @@
 		select * from orders
 		limit ${startNo-1}, ${listSize}
 	</select>
+	
+	<delete id = 'delete' parameterType = 'Integer'>
+		delete from orders where sno = #{_parameter}
+	</delete>
 </mapper>
