@@ -13,8 +13,8 @@
 <div id = "subject">가맹 탈퇴신청 현황</div>
 <div id='Drop'>
 <form name='frm_Drop' class='frm_Drop' method='post'>
-	<input type = 'hidden' name='findStr' value='${storepage.findStr}'>
-	<input type = 'hidden' name='nowPage' value='${page.nowPage}'>
+	<input type = 'text' name='findStr' value='${storepage.findStr}'>
+	<input type = 'text' name='nowPage' value='${page.nowPage}'>
 	<input type = 'hidden' name='storeName' value=''>
 	
 	<button type= 'button' onclick ='btnDrop(this.form)'>조회</button>

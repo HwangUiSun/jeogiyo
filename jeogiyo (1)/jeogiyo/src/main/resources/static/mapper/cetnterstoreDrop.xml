@@ -28,4 +28,9 @@
 		from jdroplist
 		where storeName = #{_parameter}
 	</select>
+	
+	<update id='drop_OK' parameterType='String'>
+		update jdroplist set status='승인'
+		where storeName = #{_parameter}
+	</update>
 </mapper>

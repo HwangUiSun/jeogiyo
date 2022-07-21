@@ -70,6 +70,26 @@ public class JstoreDropService implements JcenterStoreDropMapper{
 		}
 		return vo;
 	}
+
+	@Override
+	public int drop_OK(String storeName) {
+		int b = 0;
+		status = transaction.getTransaction(new DefaultTransactionDefinition());
+		
+		try {
+			b = mapper.drop_OK(storeName);
+			if(b>0) {
+				transaction.commit(status);
+				System.out.println("승인 성공");
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			transaction.rollback(status);
+			System.out.println("승인 실패");
+		}
+		
+		return b;
+	}
 	
 	
 	

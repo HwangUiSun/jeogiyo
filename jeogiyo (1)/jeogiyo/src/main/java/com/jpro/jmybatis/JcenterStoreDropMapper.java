@@ -20,6 +20,7 @@ public interface JcenterStoreDropMapper {
 	public List<JcenterDropListVo> storeDropM(Page page);
 	public List<JcenterDropListVo> centerStoreFindstr(Page page);
 	public JcenterDropListVo drop_view(String storeName);
+	public int drop_OK(String storeName);
 	
 	// 가맹
 	public int drop_insert(JstoreVo vo);

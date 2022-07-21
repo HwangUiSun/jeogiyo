@@ -411,6 +411,30 @@ public class JcenterController {
 		return mv;
 	}
 	
+	@RequestMapping("center_storeDropOK")
+	public ModelAndView center_storeDropOK(com.jpro.jcenter.Page storepage, String storeName) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("Drop OK" + storeName);
+		dropDao2.drop_OK(storeName);
+		
+		String url = "../center/center_storeDrop.jsp";
+		mv.addObject("inc", url);
+		
+		if(storepage.getFindStr() ==null) {
+			storepage =  new com.jpro.jcenter.Page();
+			storepage.setNowPage(1);
+			storepage.setFindStr("");
+		}
+		List<JcenterDropListVo> storelist = dropDao.storeDrop(storepage);
+		
+		storepage = dropDao.getPage();
+		mv.addObject("storelist",storelist);
+		mv.addObject("storepage",storepage);
+		
+		mv.setViewName("center/center_index");
+		return mv;
+	}
+	
 	@RequestMapping("acceptOrderC")
 	public ModelAndView acceptOrderC(com.jpro.jstore.Page page,HttpServletRequest req,
 			HttpServletResponse resp) {
