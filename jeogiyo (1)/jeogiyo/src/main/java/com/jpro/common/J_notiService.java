@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jmybatis.JnotiMapper;
@@ -30,13 +31,16 @@ public class J_notiService {
 		return this.notipage;
 	}
 	
-	 
+	
 	
 	public List<J_notiVo> select(Page notipage) {
 		
 		List<J_notiVo> list = null;
-		try {			
-			int totSize = mapper.totSize(notipage);			
+		this.notipage = notipage;
+		try {	
+			System.out.println(notipage);
+			int totSize = mapper.totSize(notipage);	
+			
 			notipage.setTotSize(totSize);
 			notipage.compute();
 			list = mapper.select(notipage);
@@ -48,9 +52,81 @@ public class J_notiService {
 			ex.printStackTrace();
 		}
 		
-		this.notipage = notipage;
 		return list;
 	}
 	
-
+	
+	
+	public J_notiVo selectOne(int sno) {
+		J_notiVo vo = null;
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			vo = mapper.selectOne(sno);
+			transaction.commit(status);
+		}catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback(status);
+		}
+		return vo;
+	}
+	
+	
+	
+	
+	public boolean update(J_notiVo vo) {
+		boolean b = false;
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			int cnt = mapper.update(vo);
+			if(cnt>0) {
+				transaction.commit(status);
+				b=true;
+			}else {
+				transaction.rollback(status);
+				
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return b;
+	}  
+	
+	
+	public boolean delete(int sno) {
+		boolean b = false;
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			int cnt=mapper.delete(sno);
+			if(cnt>0) {
+				transaction.commit(status);
+				b = true;
+			}else {
+				transaction.rollback(status);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return b;
+	}  
+	
+	public boolean insert(J_notiVo vo) {
+		boolean b = false;
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			int cnt = mapper.insert(vo);
+			
+			if(cnt>0) {
+				transaction.commit(status);
+				b = true;
+			}else {
+				transaction.rollback(status);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return b;
+	} 
+	
 }

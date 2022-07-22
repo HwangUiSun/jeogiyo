@@ -1,5 +1,10 @@
 package com.jpro.jstore;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,12 +18,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-
+import com.jpro.common.TableVo;
 import com.jpro.jmybatis.JbaljuMapper;
 
 
 @Service
-public class JbaljuSurvice {
+public class JbaljuService {
 	@Autowired
 	@Qualifier("JbaljuMapper")
 	JbaljuMapper mapper;
@@ -30,35 +35,83 @@ public class JbaljuSurvice {
 	
 	public Page getPage() {
 		return this.page;
+	}	
+
+	
+	public List<JbaljuListVo> selectList(Page page, String storeName){
+		List<JbaljuListVo> list =new ArrayList<JbaljuListVo>();
+		int totSize = 0;
+		String sql = "select * from "+storeName+ " where ea = 0";
+		try {
+			totSize = mapper.totSize(page);		
+			page.setTotSize(totSize);
+			page.compute();	
+			list = mapper.selectList(sql);
+		}catch(Exception ex) {
+			String msg = ex.getMessage();
+			try {
+				 // 1. 파일 객체 생성            
+				File file = new File("C:/Temp/writeFile.txt");             
+				// 2. 파일 존재여부 체크 및 생성            
+				if (!file.exists()) {                file.createNewFile()  ;          }             
+				// 3. Writer 생성            
+				FileWriter fw = new FileWriter(file);            
+				PrintWriter writer = new PrintWriter(fw,true);             
+				// 4. 파일에 쓰기            
+				writer.write(msg);   
+				// 5. PrintWriter close          
+				writer.close();	
+			}catch(Exception ex2) {
+				ex2.printStackTrace();
+			}			
+		}
+		
+		return list;
+	}
+	public List<JbaljuListVo> selecSubtList(Page page,String storeName){
+		List<JbaljuListVo> list =new ArrayList<JbaljuListVo>();
+		String sql = "select * from "+storeName+ " where ea > 0";
+		int totSize = 0;
+		try {
+			totSize = mapper.totSize(page);		
+			page.setTotSize(totSize);
+			page.compute();	
+			list = mapper.selecSubtList(sql);			
+		}catch(Exception ex) {
+			String msg = ex.getMessage();
+			try {
+				 // 1. 파일 객체 생성            
+				File file = new File("C:/Temp/writeFile.txt");             
+				// 2. 파일 존재여부 체크 및 생성            
+				if (!file.exists()) {                file.createNewFile();            }             
+				// 3. Writer 생성            
+				FileWriter fw = new FileWriter(file);            
+				PrintWriter writer = new PrintWriter(fw,true);             
+				// 4. 파일에 쓰기            
+				writer.write(msg);   
+				// 5. PrintWriter close          
+				writer.close();	
+			}catch(Exception ex2) {
+				ex2.printStackTrace();
+			}
+		}
+		
+		return list;
 	}
 	
-	public List<JbaljuListVo> selectList(Page page){
-		List<JbaljuListVo> list =new ArrayList<JbaljuListVo>();
-		int totSize = 0;
-		try {
-			totSize = mapper.totSize(page);		
-			page.setTotSize(totSize);
-			page.compute();	
-			list = mapper.selectList(page);
+	public void changeStatus(String title) {
+		try {					
+			mapper.changeStatus(title);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
-		
-		return list;
 	}
-	public List<JbaljuListVo> selecSubtList(Page page){
-		List<JbaljuListVo> list =new ArrayList<JbaljuListVo>();
-		int totSize = 0;
-		try {
-			totSize = mapper.totSize(page);		
-			page.setTotSize(totSize);
-			page.compute();	
-			list = mapper.selecSubtList(page);
+	public void waitOrder(String title) {
+		try {					
+			mapper.waitOrder(title);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
-		
-		return list;
 	}
 	
 	public List<JbaljudetailsVo> select(Page mpage) {
@@ -77,6 +130,17 @@ public class JbaljuSurvice {
 		return list;
 	}
 	
+	public JbaljudetailsVo selectOneDetail(int sno) {
+		
+		JbaljudetailsVo vo = new JbaljudetailsVo();
+		try {
+			vo = mapper.selectOneDetail(sno);		
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return vo;
+	}
 	
 	public String createTable(String mstoreName) {
 
@@ -96,7 +160,22 @@ public class JbaljuSurvice {
 			mapper.createTable(map);
 			transaction.commit(status);
 		}catch(Exception ex) {
-			ex.printStackTrace();
+			String msg = ex.getMessage();
+			try {
+				 // 1. 파일 객체 생성            
+				File file = new File("C:/Temp/writeFile.txt");             
+				// 2. 파일 존재여부 체크 및 생성            
+				if (!file.exists()) {                file.createNewFile()  ;          }             
+				// 3. Writer 생성            
+				FileWriter fw = new FileWriter(file,true);            
+				PrintWriter writer = new PrintWriter(fw);             
+				// 4. 파일에 쓰기            
+				writer.write(msg);   
+				// 5. PrintWriter close          
+				writer.close();	
+			}catch(Exception ex2) {
+				ex2.printStackTrace();
+			}		
 		}
 		
 		return storeName+days;
@@ -119,7 +198,7 @@ public class JbaljuSurvice {
 	//row 한줄 ea값 0로 변경
 	public void updateToZoro(int sno, String mstoreName) {
 		String storeName=mstoreName ;
-		String insertTable = "update "+storeName+" set ea = "+ "0" +" where sno = "+ sno ;
+		String insertTable = "update "+storeName+" set ea = 0 where sno = "+ sno ;
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("insertTable",insertTable);
 		try {			
@@ -131,16 +210,8 @@ public class JbaljuSurvice {
 		}
 	}
 	//  테이블 완전 삭제
-	public void droptable(String mstoreName) {
-		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)        
-		LocalDate now = LocalDate.now();         
-		// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)        
-		int year = now.getYear();
-		int monthValue = now.getMonthValue();        
-		int dayOfMonth = now.getDayOfMonth();  
-		String days = year+"_"+monthValue+"_"+dayOfMonth;
-		String storeName=mstoreName ;
-		String drop_table = "drop table "+storeName;
+	public void droptable(String mstoreName) {		
+		String drop_table = "drop table "+mstoreName;
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("drop_table",drop_table);
 		try {
@@ -206,6 +277,18 @@ public class JbaljuSurvice {
 		ex.printStackTrace();
 	}}
 	
+	public List<JbaljudetailsVo> selectTitle() {
+		List<JbaljudetailsVo> list = null;
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			list = mapper.selectTitle();
+			transaction.commit(status);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return list;
+	}
+	
 	public void updateStatusFalse(int sno, String mstoreName){
 		String storeName=mstoreName;
 		String updateStatusFalse = "update "+ storeName +" set status = false where sno = "+sno;
@@ -218,5 +301,21 @@ public class JbaljuSurvice {
 	}catch(Exception ex) {
 		ex.printStackTrace();
 	}}
+	
+	public String insertJbaljudetails(String title,String id) {
+	
+		String sql = "insert into jbaljudetails(title, id,status) values(\""+title+"\", \""+id+"\", false)";
+		String msg="";
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			mapper.insertBalsulistTitle(sql);
+			transaction.commit(status);
+			msg="등록성공";
+					
+		}catch(Exception ex) {
+			msg ="이미 있습니다";
+		}
+		return msg;
+	}
 	
 }

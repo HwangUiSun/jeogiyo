@@ -55,3 +55,23 @@
 	cursor : pointer;
 	background-color : #999;
 }
+
+
+#noti_view .doc{
+	position: relative;
+	width: 1150px;
+	height: 300px;
+}
+
+#backbox{
+	position: relative;
+	left:100px;
+}
+
+#upade{
+	position: relative;
+	left: 47px;
+	top : -45px;
+	height: 10px;
+}
+

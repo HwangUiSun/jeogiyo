@@ -10,16 +10,14 @@
 <title>store_orderInput</title>
 </head>
 <body>
-<a href='order'>완료</a>
-<a href='order'>취소</a>
-<a href='storeCenter'>Home</a>
+<div id = 'subject'>발주 작성</div>
 <div id='Input'>
  	<div class='right'>
- 		<input type='hidden' name='tableName' value='${tableName}'>
+ 		<input type='hidden' name='tableName' value='${tableName}' id="tableName">
 		<label>가맹점명</label>
-		<input type='text' name='store' value='${tableName}'>${mid}</br>
+		<input type='text' name='store' value='${tableName}' id="store"></br>
 		<label>날짜</label>
-		<input type='date' name='today' readonly>${nal}</br>
+		<input type='date' name='today' id="today" readonly></br>
 		<label>발주 품목</label></br>
 		<div class='subList'>
 		<c:set var='num' value='1'/>
@@ -35,8 +33,10 @@
 			</c:forEach>
 		</div>	
 		<div class = 'btn'>
-			<button type='button' name='btnInsert'>완료</button>
-			<button type='button' name='btnCancel' onclick="drop()">취소</button>
+
+			 <button type='button' name='btnInsert'onclick="complete()" id="comp">완료</button> 
+
+			<!--<button type='button' name='btnCancel' onclick="drop()">완료</button>-->
 		</div>
   </div>
 
@@ -51,7 +51,7 @@
 
 	<div class='orderInput_list'>
 	
-		<c:set var='num' value='${baljupage2.startNo+1}'/>
+		<c:set var='num' value='${baljupage2.startNo}'/>
 				<c:forEach var='v' items='${baljulist2}'>
 				<div class="items ex${num}">
 					<span>${num}.</span>
@@ -64,7 +64,8 @@
 				</c:forEach>
 	</div>
 
-
+<input type="hidden" name="title" id="title" value="${param.title}">
+<input type="hidden" name="nal" id="nal" value="">
 </div>
 
 

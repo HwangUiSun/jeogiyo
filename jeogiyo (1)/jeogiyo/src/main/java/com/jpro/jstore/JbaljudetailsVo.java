@@ -4,8 +4,15 @@ public class JbaljudetailsVo {
 	int sno;
 	String title;
 	boolean status;
+	String id;
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getSno() {
 		return sno;
 	}

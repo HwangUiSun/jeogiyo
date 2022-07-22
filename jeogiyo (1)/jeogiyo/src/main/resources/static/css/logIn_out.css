@@ -107,12 +107,6 @@ section .contentBx .formBx .inputBx input{
     outline:none;
     cursor:pointer;
 }
-#logIntoData2{
-	background:#4200f7;
-    color:#fff;
-    outline:none;
-    cursor:pointer;
-}
 section .contentBx .formBx .h5flex h5:hover{
 	cursor:pointer;
 }

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace='com.jpro.jmybatis.JcenterStoreSaleMapper'>
+	<select id='JsaleFind3' parameterType='JpayAfterVo' resultType='Integer'>
+		select sum(harutotal)
+		from jpayafter2
+		where mainLocal=#{address}
+		and DATE(nal) between #{date1}
+		and #{date2}
+	</select>
+	
+		<select id='JsaleFind3_all' parameterType='JpayAfterVo' resultType='Integer'>
+		select sum(harutotal)
+		from jpayafter2
+		where DATE(nal)
+			  between #{date1}
+			  and #{date2}
+	</select>
+	
+	<select id='totHit' parameterType='JpayAfterVo' resultType='Integer'>
+		select count(mainLocal)
+		from jpayafter2
+		where mainLocal=#{address} 
+		and DATE(nal) between #{date1}
+		and #{date2}
+	</select>
+	
+	<select id='totHit_all' parameterType='JpayAfterVo' resultType='Integer'>
+		select count(mainLocal)
+		from jpayafter2
+		where DATE(nal)
+			  between #{date1}
+		      and #{date2}
+	</select>
+	
+	<select id='storeSaleList' parameterType='JpayAfterVo' resultType='JpayAfterVo'>
+		select storeName, sum(harutotal)
+		AS harutotal
+		from jpayafter2
+		where mainLocal = #{address}
+		and DATE(nal) between #{date1}
+		and #{date2}
+		group by storeName
+		order by harutotal desc limit 3;
+	</select>
+	
+	<select id='storeSaleList_all' parameterType='JpayAfterVo' resultType='JpayAfterVo'>
+		select storeName, sum(harutotal)
+		AS harutotal
+		from jpayafter2
+		where
+		DATE(nal) between #{date1}
+		and #{date2}
+		group by storeName
+		order by harutotal desc limit 3;
+	</select>
+	
+	<select id="selectStoreName" parameterType="String" resultType="String">
+		select distinct(storeName) from jpayafter2 j where mid=#{_parameter}
+		
+	</select>
+	<select id="StoreNametotSize" parameterType="String" resultType="Integer">
+		select count(sno) from jpayafter2 where storeName = #{_parameter}
+	</select>
+	
+	<select id="selectSale" parameterType="com.jpro.common.Page" resultType="JpayAfterVo">
+		select * from jpayafter2
+		where nal like '%${findStr}' and
+		storeName=#{storeName}
+		order by nal asc
+		limit ${startNo-1}, ${listSize}
+	</select>
+	
+	<select id="selectSaledaytotSize" parameterType='JpayAfterVo' resultType='Integer'>
+		select count(sno)
+		from jpayafter2
+		where storeName =#{storeName}
+		and DATE(nal) between #{date1}
+		and #{date2}
+	</select>
+	
+	<select id="selectSaleday" parameterType='JpayAfterVo' resultType='JpayAfterVo'>
+		select *
+		from jpayafter2
+		where storeName =#{storeName}
+		and DATE(nal) between #{date1}
+		and #{date2}
+	</select>
+	
+	<select id="selectSaledayAll" parameterType='JpayAfterVo' resultType='Integer'>
+		select sum(harutotal)
+		from jpayafter2
+		where storeName =#{storeName}
+		and DATE(nal) between #{date1}
+		and #{date2}
+	</select>
+	<select id="selectSaledayAllHit" parameterType='JpayAfterVo' resultType='Integer'>
+		select count(sno)
+		from jpayafter2
+		where storeName =#{storeName}
+		and DATE(nal) between #{date1}
+		and #{date2}
+	</select>
+	
+	
+	
+</mapper>
