@@ -31,6 +31,7 @@ document.addEventListener('click',clickEffect);
 		       <div class='items'onclick="">
 			      
 					<span class='ordertime'>${v.ordertime}</span>
+					<br/>
 					<span class='totalprice'  >총금액  ${v.totalprice}원 ${v.howtopay}<br/>${v.ordermenu}<br/>${v.address} </span>					
 					<a href='reviewBtn'><button type = 'button' name = 'reviewBtn'>리뷰 작성</button></a>
 			 	</div>

@@ -59,11 +59,11 @@ document.addEventListener('click',clickEffect);
    <label>소멸예정 포인트</label>
     <input type='text' class='havePoint' value='2000p' readonly/>
     <br/>
+    <br/>
   
   <label></label>
   <a href ='change_1Btn'><button type='button' id='change_1Btn'>수정하기</button></a>
   <a href='joinOutBtn'><button type='button' id='joinOutBtn' onclick='joinOutBtn()'>회원탈퇴</button></a>
-  
   <input type='hidden' name='findStr' value='${param.findStr}'/>
   <input type='hidden' name='nowPage' value='${param.nowPage}'/>
   </form>

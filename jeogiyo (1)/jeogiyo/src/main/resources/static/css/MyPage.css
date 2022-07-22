@@ -7,6 +7,8 @@
     height : 90px;
     margin-bottom : 20px;
     padding-top : 20px;
+    border:4px solid #666; 
+    border-radius: 10px;
 }
 
 label{
@@ -41,4 +43,39 @@ div.clickEffect{
 		margin:-5em;
 		border-width:0.01em;
 	}
+}
+#frm_member {
+
+    padding:10px 15px 15px 15px; 
+    border:4px solid #4ea0d8; 
+    border-radius: 10px;
+}
+
+#frm_member label {
+    font-weight: bold;
+
+}
+
+#frm_member input[type='text']{
+
+    border:#ccc 1px solid;
+
+}
+#change_1Btn, #joinOutBtn, #btnZipFind {
+  left:40%;
+  
+  height:20px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+#change_1Btn:hover, #joinOutBtn:hover, #btnZipFind:hover{
+  background-position: right;
 }

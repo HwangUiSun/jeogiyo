@@ -21,7 +21,7 @@ document.addEventListener('click',clickEffect);
 <body>
 
 <div id = 'subject_title'>자주묻는 질문(FAQ)</div>
-
+<div id = faq_line>
 <div id=question>
     <div id='subject'>Q.주문은 어디서 할 수 있나요?
     <button id='btnToggle' onclick='Toggle()'>확인</button></div><br/>
@@ -96,7 +96,7 @@ document.addEventListener('click',clickEffect);
       </div><br/>
       <hr/>
 </div>
-
+</div>
 </body>
 <script>
 function Toggle(){
