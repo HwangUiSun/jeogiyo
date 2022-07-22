@@ -347,27 +347,46 @@ public class JstoreController {
 	
 	
 	@RequestMapping("store_orderStatus")
-	public ModelAndView store_orderStatus(com.jpro.jstore.statusPage statusPage) {
+	public ModelAndView store_orderStatus(com.jpro.jstore.statusPage statusPage, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../store/store_orderStatus.jsp";
 		System.out.println(statusPage.getNowPage());
 		List<JstoreOrderStatusVo> statuslist = orderStatusDao.select(statusPage);
 		statusPage = orderStatusDao.getStatusPage();
+		String min = orderStatusDao.orderTimeMin(req);
+		String sec = orderStatusDao.orderTimeSec(req);
+		
 		
 		mv.addObject("inc",url);
 		mv.addObject("statuslist", statuslist);
 		mv.addObject("statusPage", statusPage);
+		mv.addObject("min", min);
+		mv.addObject("sec", sec);
+		mv.setViewName("store/store_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("store_orderStatus2")
+	public ModelAndView store_orderStatus2(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_orderStatus2.jsp";
+		String min = orderStatusDao.orderTimeMin(req);
+		
+		System.out.println(min);
+		mv.addObject("inc", url);
+		mv.addObject("min", min);
 		mv.setViewName("store/store_index");
 		
 		return mv;
 	}
 	
 	@RequestMapping("store_orderStatus_Drop")
-	public ModelAndView store_orderStatus_Drop(com.jpro.jstore.statusPage statusPage, int sno) {
+	public ModelAndView store_orderStatus_Drop(com.jpro.jstore.statusPage statusPage, HttpServletRequest req, int sno) {
 		ModelAndView mv = new ModelAndView();
 		
 		orderStatusDao.delete(sno);
-		mv = store_orderStatus(statusPage);
+		mv = store_orderStatus(statusPage, req);
 		return mv;
 	}
 	

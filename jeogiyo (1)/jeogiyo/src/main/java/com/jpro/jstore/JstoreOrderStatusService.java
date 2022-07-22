@@ -2,6 +2,9 @@ package com.jpro.jstore;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -32,8 +35,8 @@ public class JstoreOrderStatusService {
 	}
 	
 public List<JstoreOrderStatusVo> select(statusPage statusPage) {
-		
 		List<JstoreOrderStatusVo> list = null;
+		
 		this.statusPage = statusPage;
 		try {	
 			System.out.println(statusPage);
@@ -53,7 +56,23 @@ public List<JstoreOrderStatusVo> select(statusPage statusPage) {
 		return list;
 	}
 
-	public boolean delete(int sno) {
+public String orderTimeMin(HttpServletRequest req) {
+	HttpSession session = req.getSession();
+	String min = "hi";
+	session.setAttribute("min", min);
+	return min;
+	
+}
+
+public String orderTimeSec(HttpServletRequest req) {
+	HttpSession session = req.getSession();
+	String sec = null;
+	session.setAttribute("sec", sec);
+	return sec;
+	
+}
+	
+public boolean delete(int sno) {
 		boolean b = false;
 		try {
 			status = transaction.getTransaction(new DefaultTransactionDefinition());
