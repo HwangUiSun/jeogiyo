@@ -45,7 +45,7 @@
 
 <div id='top_list'>
 	<div id= 'top_title'>
-		<h1>매출 TOP3 가맹점</h1>
+		<h1>【매출 TOP3 가맹점】</h1>
 	</div>
 	
 	<div id='top1'>

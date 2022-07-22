@@ -58,7 +58,7 @@
 #top_title{
 	position : relative;
 	font-size : 3em;
-	left : 35px;
+	left : 330px;
 }
 
 #top1{
@@ -116,10 +116,11 @@
 	bottom : 200px;
 	background-size: contain;
 	display: inline-block;
+	margin-top: 28px;
 }
 #top_list{
 	position: relative;
-	top : -800px;
+	top : -740px;
 }
 
 
