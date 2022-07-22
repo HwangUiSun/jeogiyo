@@ -6,31 +6,34 @@
 <meta charset="UTF-8">
 <title>MyPageChange</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/MyPageChange.css'>
+<script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
-<h1>내 정보 수정</h1>
+<div id='subject'>내 정보 수정</div>
 
 <div id='MyPageChange'>
   <div id='main'>
     <label>아이디</label>
-    <input type='text' name='id' size='14' readonly/>
-    <br>
-    
-    <label>비밀번호</label>
-    <input type='password' name='pwd' size='14'/>
-    <br>
+    <input type='text' name='id' size='15'><br/>
     
     <label>성명</label>
-    <input type='text' name='name' size='14'/>
-    <br>
+    <input type='text' name='name' size='12'><br/>
     
-    <label>이메일</label>
-    <input type='text' name='email' size='14'/>
-    <br>
+    
+    <label>비밀번호</label>
+    <input type='password' name='pwd' maxlength='10' autocomplete="none"><br/>
     
     <label>연락처</label>
-    <input type='text' name='phone' size='14'/>
-    <br>
+    <input type='text' name='phone' size='12'><br/>
     
     <label>우편번호</label>
     <input type='text' id='zipcode'  size='12'>
@@ -42,10 +45,14 @@
     <input type='text' id='address' size='40'/><br/>
     
     <label>상세주소</label>
-    <input type='text' id='apiAddressDetail' size='40'/>
-    <br>
+    <input type='text' id='detailAddress' size='40'/><br/>
+    
+    <label>이메일</label>
+    <input type='text' name='email' size='30'><br/>
+    <br/>    
+    <label></label>
     <!-- css 접근을 위해 버튼 id 생성 -->
-    <a href='change_2Btn'><button type='button' name='change_2Btn' id='change_2Btn'>수정</button></a>
+    <a href='change_2Btn'><button type='button' name='change_2Btn' id='change_2Btn'>정보수정</button></a>
   </div>
 </div>
 

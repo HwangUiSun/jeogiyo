@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='com.jpro.jmybatis.JloginMapper'>
+
+
+
+<select id='login' parameterType="Map" resultType="JConsumerLoginVo">
+   select * from jstorevo
+   where mid="${mid}" and pwd = "${pwd}"
+
+</select>
+
+<select id="findId" parameterType="JConsumerLoginVo" resultType="String">
+		select mid from jstorevo where name=#{name} and email=#{email}	
+		</select>
+
+	<select id="findPwd" parameterType="JConsumerLoginVo" resultType="String">
+		select pwd from jstorevo where mid=#{mid} and email=#{email}
+	</select>
+
+</mapper>

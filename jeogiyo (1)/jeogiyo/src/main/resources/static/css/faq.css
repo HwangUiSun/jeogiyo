@@ -9,7 +9,6 @@
 }
 #subject{
 	font-weight:bold;
-	
 }
 
 #Toggle, #Toggle_1, #Toggle_2, #Toggle_3,
@@ -17,4 +16,39 @@
 #Toggle_8{
 	color:red;
 	font-style: italic;
+}
+
+div.clickEffect{
+	cursor:url(tongdak.cur),auto;
+	position:fixed;
+	box-sizing:border-box;
+	border-style:solid;
+	border-color:#FF007F;
+	border-radius:50%;
+	animation:clickEffect 0.4s ease-out;
+	z-index:99999;
+}
+@keyframes clickEffect{
+	0%{
+		opacity:1;
+		width:0.5em; height:0.5em;
+		margin:-0.25em;
+		border-width:0.3em;
+	}
+	100%{
+		opacity:0.1;
+		width:10em; height:10em;
+		margin:-5em;
+		border-width:0.01em;
+	}
+}
+
+body,html{
+	cursor:url(mouse.cur),auto;
+}
+#faq_line {
+
+    padding:10px 15px 15px 15px; 
+    border:4px solid #4ea0d8; 
+    border-radius: 10px;
 }

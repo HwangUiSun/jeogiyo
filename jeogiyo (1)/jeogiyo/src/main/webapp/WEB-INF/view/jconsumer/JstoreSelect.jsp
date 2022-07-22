@@ -10,6 +10,16 @@
 
 <title>JstoreSelect</title>
 <link href="css/JstoreSelect.css" rel="stylesheet">
+<script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
 <div id='JstoreSelect'>
@@ -21,7 +31,7 @@
 		<form name='frm_Jstore' method='post' id='frm_Jstore' action="JstoreSelect">
 	             
 	            
-				<select class='mapFind' id='mapFindStr' name='mapFindStr' onchange='storeSelect(this)'>
+				<select class='mapFind' id='mapFindStr' name='mapFindStr' onchange='cityFindChange(this)'>
 				
 				<option>선택해주세요</option>
 				<option value='seoul'>서울</option>

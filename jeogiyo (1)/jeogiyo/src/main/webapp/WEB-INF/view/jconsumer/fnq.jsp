@@ -7,11 +7,21 @@
 <meta charset="UTF-8">
 <title>FAQ</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/faq.css'>
+<script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
 
 <div id = 'subject_title'>자주묻는 질문(FAQ)</div>
-
+<div id = faq_line>
 <div id=question>
     <div id='subject'>Q.주문은 어디서 할 수 있나요?
     <button id='btnToggle' onclick='Toggle()'>확인</button></div><br/>
@@ -86,7 +96,7 @@
       </div><br/>
       <hr/>
 </div>
-
+</div>
 </body>
 <script>
 function Toggle(){
