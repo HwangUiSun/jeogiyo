@@ -22,8 +22,8 @@ public class JcenterstoreDropService {
 		return this.page;
 	}
 	
-	public List<JstoreVo> storeDrop(Page page){
-		List<JstoreVo> list = null;
+	public List<JcenterDropListVo> storeDrop(Page page){
+		List<JcenterDropListVo> list = null;
 		this.page = page;
 		try {
 			int totSize = mapper.storeDrop(page);

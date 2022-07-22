@@ -55,7 +55,6 @@ body{
 	right:0px;
 	bottom:-100px;
 	background-size: contain;
-
 }
 #consumer a{
 	color:#000;
@@ -93,6 +92,9 @@ body{
 	background:#FFFABD;
 
 }
+
+
+}
 body,html,label{
 	cursor:url(mouse.cur),auto;
 }
@@ -120,3 +122,4 @@ div.clickEffect{
 		border-width:0.01em;
 	}
 }
+

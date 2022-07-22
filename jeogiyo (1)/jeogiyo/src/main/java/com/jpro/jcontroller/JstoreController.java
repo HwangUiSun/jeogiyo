@@ -25,6 +25,7 @@ import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.common.Page;
 import com.jpro.common.TableVo;
+import com.jpro.jcenter.JbaljuManageVo;
 import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
@@ -63,11 +64,21 @@ public class JstoreController {
 	@RequestMapping("storeCenter")
 	public ModelAndView storeCenter() {
 		ModelAndView mv = new ModelAndView();
-		
+			
 		mv.setViewName("common/SC_login");
 		
 		return mv;
 	}
+	@RequestMapping("store_home")
+	public ModelAndView store_home() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_main.jsp";
+		mv.addObject("inc", url);
+		mv.setViewName("store/store_index");
+		
+		return mv;
+	}
+	
 	
 	@RequestMapping("store_login")
 	public ModelAndView store_login(JstoreVo vo, HttpServletRequest req) {
@@ -81,9 +92,14 @@ public class JstoreController {
 		if(rVo != null) {
 			if(rVo.getMid().equals("root")) {
 				session.setAttribute("id", rVo.getMid());
+				String url = "../center/center_main.jsp";
+				mv.addObject("inc", url);
 				mv.setViewName("center/center_index");
 			}else{
 				session.setAttribute("id", rVo.getMid());
+				String url = "../store/store_main.jsp";
+				mv.addObject("inc", url);
+				
 				mv.setViewName("store/store_index");
 				tableName = baljuDao.createTable((String)s.getAttribute("mid"));
 				s.setAttribute("tableName", tableName);
@@ -331,18 +347,46 @@ public class JstoreController {
 	
 	
 	@RequestMapping("store_orderStatus")
-	public ModelAndView store_orderStatus(com.jpro.jstore.statusPage statusPage) {
+	public ModelAndView store_orderStatus(com.jpro.jstore.statusPage statusPage, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../store/store_orderStatus.jsp";
 		System.out.println(statusPage.getNowPage());
 		List<JstoreOrderStatusVo> statuslist = orderStatusDao.select(statusPage);
 		statusPage = orderStatusDao.getStatusPage();
+		String min = orderStatusDao.orderTimeMin(req);
+		String sec = orderStatusDao.orderTimeSec(req);
+		
 		
 		mv.addObject("inc",url);
 		mv.addObject("statuslist", statuslist);
 		mv.addObject("statusPage", statusPage);
+		mv.addObject("min", min);
+		mv.addObject("sec", sec);
 		mv.setViewName("store/store_index");
 		
+		return mv;
+	}
+	
+	@RequestMapping("store_orderStatus2")
+	public ModelAndView store_orderStatus2(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String url = "../store/store_orderStatus2.jsp";
+		String min = orderStatusDao.orderTimeMin(req);
+		
+		System.out.println(min);
+		mv.addObject("inc", url);
+		mv.addObject("min", min);
+		mv.setViewName("store/store_index");
+		
+		return mv;
+	}
+	
+	@RequestMapping("store_orderStatus_Drop")
+	public ModelAndView store_orderStatus_Drop(com.jpro.jstore.statusPage statusPage, HttpServletRequest req, int sno) {
+		ModelAndView mv = new ModelAndView();
+		
+		orderStatusDao.delete(sno);
+		mv = store_orderStatus(statusPage, req);
 		return mv;
 	}
 	
@@ -527,5 +571,30 @@ public class JstoreController {
 		return mv;
 	}
 	
+	@RequestMapping("updateTable")
+	public ModelAndView updateTable(com.jpro.jstore.Page page, HttpServletRequest req, HttpServletResponse resp) {
+		ModelAndView mv = new ModelAndView();	
+		HttpSession s = req.getSession();
+		String tableName="";
+		if((String)s.getAttribute("tableName")!=null) {
+			tableName = (String)s.getAttribute("tableName");
+		}else {
+			tableName = "jbaljulist";
+		}
+		String url = "../store/store_orderInput2.jsp";		
+		boolean b  = baljuDao.updateTable(tableName);
+		List<JbaljuListVo> baljulist = baljuDao.selectList(page,tableName);
+		List<JbaljuListVo> baljulist2 = baljuDao.selecSubtList(page,tableName);	
+		mv.addObject("inc",url);
+		mv.addObject("baljupage2",page);
+		mv.addObject("baljulist2",baljulist);
+		mv.addObject("baljulist3",baljulist2);
+		mv.setViewName("store/store_index");		
+		
+		
+		
+		
+		return mv;
+	}
 	
 }

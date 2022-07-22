@@ -32,20 +32,21 @@
 	margin : 0 30px;
 }
 
-#orderStatus .info>.method{
-	display : inline-block;
-	background-color : #ddd;
-	border : 1px solid #000;
-	padding : 2px;
-	color : #f22;
-	font : bold small generic-family;
-	width : 80px;
-}
-
 #orderStatus .info>.amount{
 	display : inline-block;
 	width : 150px;
 	font : bold medium generic-family;
+}
+
+#orderStatus .info>.method{
+	display : inline-block;
+	background-color : #ddd;
+	border : 1px solid #000;
+	text-align : center;
+	padding : 2px;
+	color : #f22;
+	font : bold small generic-family;
+	width : 80px;
 }
 
 #orderStatus .info>.menu{
@@ -63,7 +64,7 @@
 }
 
 #orderStatus .btns button[name = accept]{
-	background-color : #6f6;
+	background-color : #5ad226;
 	font : bold	 xx-large generic-family;
 	color : #fff;
 	margin : 0 15px;
@@ -74,7 +75,7 @@
 }
 
 #orderStatus .btns button:hover[name = accept]{
-	background-color : #0f0;
+	background-color : #4eb621;
 	cursor : pointer;
 }
 
@@ -100,9 +101,10 @@
 	visibility : hidden;
 	position : relative;
 	text-align : center;
-	bottom : 180px;
-	left : 725px;
+	bottom : 215px;
+	left : 770px;
 	width : 350px;
+	height : 200px;
 }
 
 #orderStatus .end_time	{
@@ -111,14 +113,15 @@
 	visibility : hidden;
 	position : relative;
 	text-align : center;
-	bottom : 260px;
-	left : 340px;
-	padding : 50px;
+	line-height : 200px;
+	bottom : 246px;
+	left : 414px;
 	width : 350px;
+	height : 200px;	
 }
 
 .paging{
-	background:#B2B2B2;
+	--background:#B2B2B2;
 	height:60px;
 	margin:2px auto;
 	display:flex;
@@ -126,16 +129,18 @@
 	justify-content:center;
 }
 .paging button{
-	background:#B2B2B2;
-	display:block;
-	border:0px;
-	text-align:center;
-	height:30px;
-	margin:15px 5px;
-	padding:1px 10px;
-	font-size:20px;
+	margin : 5px;
+	height : 30px;
+	width : 80px;
+	background-color : #a5ea89;
+	border : none;
+	border-radius : 10px;
+	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
+	margin-top : 30px;
 }
 .paging button:hover{
 	cursor : pointer;
-	background-color : #999;
+	background-color : #5ad226;
 }

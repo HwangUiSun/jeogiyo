@@ -8,6 +8,9 @@
 <title>noti_main</title>
 <link href="/css/noti.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+</style>
 </head>
 <body>
 <div id="subject">공지 사항</div>
@@ -21,7 +24,7 @@
 			<button type='button' onclick="noti_view.find(this.form)">검색</button>
 		</div>
 		<div id="inputbutton">
-			<button type='button' onclick="noti_view.input(this.form)"  >공지사항작성</button>	
+			<button type='button' onclick="noti_view.input(this.form)"  >작성</button>	
 		</div>		
 		<input type="hidden" name="sno" value="${vo.sno }">
 		<input type="hidden" name="nowPage" value="${notipage.nowPage}" >

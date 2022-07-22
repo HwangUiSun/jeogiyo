@@ -32,5 +32,6 @@ public interface JbaljuMapper {
 	public void changeStatus(String title);
 	public void waitOrder(String title);
 	public List<JbaljudetailsVo> selectTitle();
+	public void updateTable(String tableName);
 
 }

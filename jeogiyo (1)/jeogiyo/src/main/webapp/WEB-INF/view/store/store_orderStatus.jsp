@@ -11,37 +11,33 @@
 <script src = './js/store_orderStatus.js'></script>
 </head>
 <body>
-<a href='storeCenter'>Home</a>
 <div id = 'subject'>주문 현황</div>
 <form name = 'frm_orderStatus' id = 'frm_orderStatus' method = 'post'>
-	<input type="text" name="nowPage" value="${statusPage.nowPage}" >
+	<input type="hidden" name="nowPage" value="${statusPage.nowPage}" >
+	<input type = 'hidden' name = 'sno' value = '${vo.sno }'>
 </form>
 <c:set var = 'num' value = '${statusPage.startNo }'/>
 <c:forEach var = 'status' items= '${statuslist}'>
 	<div id = 'orderStatus'>
 		<div class = 'time'>${status.ordertime}</div>
 		<div class = 'info'>
-			<div class ='sno' value = '${status.sno }'>${status.sno }</div>
 			<div class = 'amount'>총 금액 ${status.totalprice}</div>
 			<div class = 'method'>${status.howtopay }</div>
 			<div class = 'menu'>${status.ordermenu }</div>
 			<div class = 'address'>${status.address }</div>
 		</div>
 		<div class = 'btns'	>
-			<div class = '${status.sno}' value = '${status.sno}'>
-				<button type = 'button' name = 'accept' onclick = 'btnAccept(${status.sno})'>접수</button>
-				<button type = 'button' name = 'deny' onclick = 'btnDeny(${status.sno})'>거부</button>						
+			<div class = 'btn'>
+				<button type = 'button' name = 'accept' onclick = 'btnAccept(${num-1}%3)'>접수</button>
+				<button type = 'button' name = 'deny' class = 'deny' onclick = 'btnDeny(${status.sno})'>거부</button>						
 			</div>
 		</div>
 		<div class = 'order_expected_time'>
-			<div class = 'start'>
-				<h1></h1><br/><h3></h3>			
-			</div>
+			<input type = 'text' name = 'min' class = 'minute' value = 'min'>
+			<input type = 'text' name = 'sec' class = 'second' value = 'sec'>
 		</div>
 		<div class = 'end_time'>
-			<div class = 'end'>
-				<h1>배달 완료!</h1>	
-			</div>
+			<h1>배달 완료!</h1>	
 		</div>
 	</div>
 	<hr/>
