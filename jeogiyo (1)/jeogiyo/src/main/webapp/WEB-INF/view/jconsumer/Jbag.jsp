@@ -36,16 +36,21 @@ document.addEventListener('click',clickEffect);
 			<hr/>
 			
 		</div>
-		<c:forEach var = 'status' begin = '1' end = '3'>
-	<div id = 'itemsWrap'>
-	       <div class='items'>
-		<span class = sno'>${num+1 }  <img src='../img/chicken1.png'width='240px' height='240px'/>
-		 자바치킨 1개 <button type = 'button' name = 'cancelBtn'>삭제</button></div>
-		</div>
-	</div>
-	<hr/>
-	<c:set var='num' value='${num=num+1 }'/>
-</c:forEach>
+		<c:forEach var = 'v' items="${menus}">
+			<div id = 'itemsWrap'>
+	     	  <div class='items'>
+	     	  		<img src='../img/chicken1.png'width='240px' height='240px'/>
+					<span class = sno'>${num+1 }  
+					 ${v}
+					</span>				
+					<span>${prices}</span>					
+					<button type = 'button' name = 'cancelBtn'>삭제</button>
+				</div>
+			</div>
+			<hr/>
+			<c:set var='num' value='${num=num+1 }'/>
+		</c:forEach>
+		
 
   		<div class= 'paging'>	
 	

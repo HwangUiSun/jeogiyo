@@ -62,24 +62,28 @@ ul.tabs li.current{
 	   </ul>
 	          
 		<div id="category_1" class="tab-content current">
+		 <div class="testdiv" onclick="check(0)">
           <img src='../img/chicken1.png' width='240px' height='240px'/>
-	       <div class='subject' id='productName1_1'><a>발사믹 치킨</a><br/></div>
+	       <div class='subject' id='productName1_1'><a>발사믹 치킨</a></div>
 	       <br/>
-	       <div class='menuInfo' id='menuInfo1_1'>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</div><br/>
-	       <div class='price' id='price1_1'>소비자가격 : 18500원</div><br/>
+	       <div class='menuInfo' id='menuInfo1_1'>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</div>
+	       <div class='price' id='price1_1'>소비자가격 : 18500원</div>
 	       <input type='checkbox' style='zoom:2.0' name='check' value='발사믹 치킨'/>선택 
 	       <hr/>
+	       </div>
 	    </div>
 	    
 		<div id="category_2" class="tab-content">
+		 <div class="testdiv" onclick="check(1)">
           <img src='../img/original.png' width='240px' height='240px'/>
-	       <div class='subject' id='productName2_1'><a>달콤허니 오리지날</a><br/></div>
+	       <div class='subject' id='productName2_1'><a>달콤허니 오리지날</a></div>
 	       <br/>
-	       <div class='menuInfo' id='menuInfo2_1'>달콤한 허니소스에 쫄깃한 날개와 담백한 다리가 만난 메뉴</div><br/>
-	       <div class='price' id='price2_1'>소비자가격 : 20000원</div><br/>
+	       <div class='menuInfo' id='menuInfo2_1'>달콤한 허니소스에 쫄깃한 날개와 담백한 다리가 만난 메뉴</div>
+	       <div class='price' id='price2_1'>소비자가격 : 20000원</div>
 	       <input type='checkbox' style='zoom:2.0'  name='check' value='달콤허니 오리지날'/>선택 
 		   <hr/>
-		   
+		   </div>
+		    <div class="testdiv" onclick="check(2)">
           <img src='../img/honey combo.png' width='240px' height='240px'/>
 	       <div class='subject' id='productName2_2'><a>달콤허니콤보</a><br/></div>
 	       <br/>
@@ -87,75 +91,96 @@ ul.tabs li.current{
 	       <div class='price' id='price2_2'>소비자가격 : 16000원</div><br/>
 	       <input type='checkbox' style='zoom:2.0'  name='check' value='달콤허니콤보'/>선택 
      	   <hr/>
+     	   </div>
 		   
 	    </div>
 	    
 		<div id="category_3" class="tab-content">
+		 <div class="testdiv" onclick="check(3)">
           <img src='../img/red original.png' width='240px' height='240px'/>
-	       <div class='subject' id='productName3_1'><a>매콤레드 오리지날</a><br/></div>
+	       <div class='subject' id='productName3_1'><a>매콤레드 오리지날</a></div>
 	       <br/>
-	       <div class='menuInfo' id='menuInfo3_1'>국내산 청양 홍고추의 매콤함이 일품인 매콤레드 오리지날</div><br/>
-	       <div class='price' id='price3_1'>소비자가격 : 17000원</div><br/>
+	       <div class='menuInfo' id='menuInfo3_1'>국내산 청양 홍고추의 매콤함이 일품인 매콤레드 오리지날</div>
+	       <div class='price' id='price3_1'>소비자가격 : 17000원</div>
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='매콤레드 오리지날'/>선택 
 		   <br/>
 		   <hr/>
-		   
+		   </div>
+		    <div class="testdiv" onclick="check(4)">
           <img src='../img/red wing.png' width='240px' height='240px'/>
-	       <div class='subject' id='productName3_2'><a>매콤레드 윙</a><br/></div>
+	       <div class='subject' id='productName3_2'><a>매콤레드 윙</a></div>
 	       <br/>
-	       <div class='menuInfo' id='menuInfo3_2'>국내산 청양 홍고추의 매콤함이 골고루 밴 쫄깃한 날개와 봉의 만남</div><br/>
-	       <div class='price' id='menuInfo3_2'>소비자가격 : 20000원</div><br/>
+	       <div class='menuInfo' id='menuInfo3_2'>국내산 청양 홍고추의 매콤함이 골고루 밴 쫄깃한 날개와 봉의 만남</div>
+	       <div class='price' id='menuInfo3_2'>소비자가격 : 20000원</div>
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='매콤레드 윙'/>선택 
 		   <br/>
 		   <hr/>
+		   </div>
+		   
 	    </div>
 	   
 	    
 		<div id="category_4" class="tab-content">
+		 <div class="testdiv" onclick="check(5)">
 		  <img src='../img/cheese stick.jfif' width='240px' height='240px'/>
-	       <div class='subject' id='productName4_1'><a>치즈스틱</a></div><br/>
-	       <div class='price' id='price4_1'>소비자가격 :2500원</div><br/>
+	       <div class='subject' id='productName4_1'><a>치즈스틱</a></div>
+	      <br/>
+	       <div class='menuInfo' id='menuInfo3_2'></div>
+	       <div class='price' id='price4_1'>소비자가격 :2500원</div>
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='치즈스틱'/>선택 
 		   <br/>
 		   <hr/>
-		   
+		   </div>
+		    <div class="testdiv" onclick="check(6)">
 		  <img src='../img/cheese ball.jfif' width='240px' height='240px'/>
-	       <div class='subject' id='productName4_2'><a>치즈볼</a></div><br/>
-	       <div class='price' id='price4_2'>소비자가격 : 3000원</div><br/>
+	       <div class='subject' id='productName4_2'><a>치즈볼</a></div>
+	       <br/>
+	       <div class='menuInfo' id='menuInfo3_2'></div>
+	       <div class='price' id='price4_2'>소비자가격 : 3000원</div>
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='치즈볼'/>선택 
 		   <br/>
 		   <hr/>
+		   </div>
 	    </div>
 	    
 		<div id="category_5" class="tab-content">
-		  <img src='../img/coke.jfif' width='240px' height='240px'/>
-	       <div class='subject' id='productName5_1'><a>콜라</a></div><br/>
-	       <div class='price' id='price5_1'>소비자가격 : 2000원</div><br/>
+		 <div class="testdiv" onclick="check(7)">
+		 	<img src='../img/coke.jfif' width='240px' height='240px'/>
+	       <div class='subject' id='productName5_1'><a>콜라</a></div>
+	       <br/>
+	       <div class='menuInfo' id='menuInfo3_2'></div>
+	       <div class='price' id='price5_1'>소비자가격 : 2000원</div>
 		   <input type='checkbox' style='zoom:2.0' name='check' value='콜라'/>선택 
-		   <br/>
+		  
 		   <hr/>
+		 </div>
 		   
-		   <img src='../img/cider.jfif' width='240px' height='240px'/>
-	       <div class='subject' id='productName5_2'><a>사이다</a></div><br/>
-	       <div class='price' id='price5_2'>소비자가격 : 2000원</div><br/>
-		   <input type='checkbox'  style='zoom:2.0' name='check' value='사이다'/>선택 
-		   <br/>
-		   <hr/>
+		   <div class="testdiv" onclick="check(8)">
+		   	<img src='../img/cider.jfif' width='240px' height='240px'/>
+	       	<div class='subject' id='productName5_2'><a>사이다</a></div>
+	       	<br/>
+	       <div class='menuInfo' id='menuInfo3_2'></div>
+	       	<div class='price' id='price5_2'>소비자가격 : 2000원</div>
+		   	<input type='checkbox'  style='zoom:2.0' name='check' value='사이다'/>선택 
+		   	<br/>
+		   	<hr/>
+		   </div>
 		   
-		   <div id="testdiv" onclick="check()">
+		   <div class="testdiv" onclick="check(9)">
 		     <img src='../img/fanta.jfif' width='240px' height='240px'/>
-	      	 <div class='subject' id='productName5_3'><a>환타</a></div><br/>
-	      	 <div class='price' id='price5_3'>소비자가격 : 2000원</div><br/>
+	      	 <div class='subject' id='productName5_3'><a>환타</a></div>
+	      	 <br/>
+	       <div class='menuInfo' id='menuInfo3_2'></div>
+	      	 <div class='price' id='price5_3'>소비자가격 : 2000원</div>
 		  	 <input type='checkbox' style='zoom:2.0' name='check' value='환타'/>선택 
 		   	 <br/>
 		   	 <hr/>
 		   </div>
-		 
 	    </div>
 	    </div>
 	    </form>
-	    <button type='button' id='button' onclick='test()'>버튼</button>
-	    <a href='bagBtn'><button type='button' class='bagBtn'>장바구니</button></a>
+	
+	    <a href='bagBtn'><button type='button' class='test()'>장바구니</button></a>
 
 
 </body>
@@ -179,7 +204,7 @@ $(document).ready(function(){
 	
 	$('ul.tabs li').click(function(){
 		var tab_id = $(this).attr('data-tab');
-		
+			
 		$('ul.tabs li').removeClass('current'); //선택된 탭의 css 제거
 		$('.tab-content').removeClass('current');
 		
@@ -207,17 +232,27 @@ function test(){
 		}	
 	}
 */
-function check(){
-	let div = document.getElementById('testdiv').children
-	console.log(div)
+var menuArray =[]
+var priceArray =[]
+function check(sno){
 	
-	div.check.checked="true"
-	test();
+	let div = document.getElementsByClassName('testdiv')
+	div[sno].children.check.checked="true"
+	let productName = div[sno].children[1].innerText
+	let price = div[sno].children[4].innerText
+	var regex = /[^0-9]/g;				// 숫자가 아닌 문자열을 선택하는 정규식
+	var result = price.replace(regex, "")
+	
+	menuArray.push(productName)
+	priceArray.push(result)
+	console.log(menuArray)
+	console.log(priceArray)
+	
+
 }
 
-
 function test(){
-	var value = document.getElementsByName("check");
+/* 	var value = document.getElementsByName("check");
 	var valueOfvalue =[]
 	for(let i =0 ; i< value.length;i++){
 		if(value[i].checked == true){
@@ -225,7 +260,10 @@ function test(){
 		}
 		 
 	}
-
+	console.log(valueOfvalue) 
+*/
+	let strMenu = menuArray.join()
+	let strResult = priceArray.join()
 	let form = document.createElement('form')
 	form.action ="bagBtn"
 	form.name="jmenu"
@@ -234,9 +272,15 @@ function test(){
 	let valueinput = document.createElement('input')
 	valueinput.setAttribute("name","values")
 	valueinput.setAttribute("type","hidden")
-	valueinput.setAttribute("value",valueOfvalue)
+	valueinput.setAttribute("value",strMenu)
+	
+	let priceinput = document.createElement('input')
+	priceinput.setAttribute("name","prices")
+	priceinput.setAttribute("type","hidden")
+	priceinput.setAttribute("value",strResult)
 	
 	form.appendChild(valueinput);
+	form.appendChild(priceinput);
     document.body.appendChild(form);
     
     form.submit();

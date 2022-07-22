@@ -1,5 +1,6 @@
  package com.jpro.jcontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -301,11 +302,34 @@ public class JConsumerController {
 	public ModelAndView bagBtn(com.jpro.jconsumer.Page consumerpage, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/Jbag.jsp";
-		String str = req.getParameter("values");
-		System.out.println(str);
-		mv.addObject("inc",url);
+		String strMenu = req.getParameter("values");
+		String strPrice = req.getParameter("prices");
+	
+		String[] TempMenu = strMenu.split(",");
+		String[] TempstrPrice = strPrice.split(",");
+		List<String> menus = new ArrayList<String>();
+		List<String> prices = new ArrayList<String>();
+		for(String i : TempMenu) {
+			if(i.equals("")) {
+				
+			}else {
+				menus.add(i);
+			}
+		}
+		for(String i : TempstrPrice) {
+			if(i.equals("")) {
+				
+			}else {
+				prices.add(i);
+			}
+		}
+		System.out.print(menus);
+		System.out.println();
+		System.out.println(prices);
 		
-
+		mv.addObject("inc",url);		
+		mv.addObject("menus",menus);
+		mv.addObject("prices",prices);
 		mv.setViewName("jconsumer/Jconsumer_index");		
 		return mv;
 	}
