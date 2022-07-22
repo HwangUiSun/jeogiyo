@@ -27,6 +27,7 @@
 	width : 650px;
 	position : relative;
 	left : 547px;
+	top : -800px;
 }
 
 #sale_find{
@@ -57,6 +58,7 @@
 #top_title{
 	position : relative;
 	font-size : 3em;
+	left : 330px;
 }
 
 #top1{
@@ -72,7 +74,7 @@
 	position : relative;
 	width : 350px;
 	text-align : center;
-	left : 120px;
+	left : 90px;
 	top : -50px;
 	font-size : 2em;
 }
@@ -82,7 +84,7 @@
 	position : relative;
 	width : 350px;
 	text-align : center;
-	left : 170px;
+	left : 150px;
 	top : -80px;
 	font-size : 1.5em;
 }
@@ -101,4 +103,34 @@
 #cancelBtn:hover{
 	cursor : pointer;
 	background-color : #999;
+}
+
+#sale_img{
+	background-image: url("../img/centerstoresale.png");
+	background-size : cover;
+	background-repeat : no-repeat;
+	position : relative;
+	width : 1050px;
+	height : 800px;
+	left : -140px;
+	bottom : 200px;
+	background-size: contain;
+	display: inline-block;
+	margin-top: 28px;
+}
+#top_list{
+	position: relative;
+	top : -740px;
+}
+
+
+#gold{
+	
+	color: #D5A11E;
+}
+#s{
+	color :#A3A3A3;
+}
+#b{
+	color :#CD7F32;
 }

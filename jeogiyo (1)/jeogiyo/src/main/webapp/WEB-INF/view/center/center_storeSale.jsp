@@ -12,7 +12,9 @@
 <div id='subject'>
 	지역별 매출 현황
 </div>
+	<div id="sale_img"></div>
 <div id='container2'>
+	
 	<div id='sale_find'>
 		매출 조회
 	</div>
@@ -43,12 +45,12 @@
 
 <div id='top_list'>
 	<div id= 'top_title'>
-		<h1>매출 TOP3 가맹점</h1>
+		<h1>【매출 TOP3 가맹점】</h1>
 	</div>
 	
 	<div id='top1'>
 		<h1>
-			★1위 가맹점★<br/><br/>
+			<span id='gold'>★1위 가맹점★</span><br/><br/>
 			${list[0].storeName}<br/>
 			${list[0].harutotal} 원
 		</h1>
@@ -58,7 +60,7 @@
 	
 	<div id='top2'>
 		<h2>
-			★2위 가맹점★<br/><br/>
+			<span id='s'>★2위 가맹점★</span><br/><br/>
 			${list[1].storeName}<br/>
 			${list[1].harutotal} 원
 		</h2>
@@ -67,7 +69,7 @@
 	
 	<div id='top3'>
 		<h3>
-			★3위 가맹점★<br/><br/>
+			<span id='b'>★3위 가맹점★</span><br/><br/>
 			${list[2].storeName}<br/>
 			${list[2].harutotal} 원
 		</h3>

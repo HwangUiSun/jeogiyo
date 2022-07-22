@@ -24,7 +24,7 @@
 			<button type='button' onclick="noti_view.find(this.form)">검색</button>
 		</div>
 		<div id="inputbutton">
-			<button type='button' onclick="noti_view.input(this.form)"  >공지사항작성</button>	
+			<button type='button' onclick="noti_view.input(this.form)"  >작성</button>	
 		</div>		
 		<input type="hidden" name="sno" value="${vo.sno }">
 		<input type="hidden" name="nowPage" value="${notipage.nowPage}" >
