@@ -82,13 +82,13 @@ public class JConsumerController {
 		return mv;
 	}*/
 	
-	@RequestMapping("login_fail")
-	public ModelAndView login_fail() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("jconsumer/Jlogin");
-		
-		return mv;
-	}
+//	@RequestMapping("login_fail")
+//	public ModelAndView login_fail() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("jconsumer/Jlogin");
+//		
+//		return mv;
+//	}
 	
 	
 	@RequestMapping("JsignUp")
