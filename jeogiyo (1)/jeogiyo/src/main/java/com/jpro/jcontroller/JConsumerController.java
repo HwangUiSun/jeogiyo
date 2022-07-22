@@ -3,12 +3,14 @@
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jpro.jconsumer.JConsumerLoginVo;
 import com.jpro.jconsumer.JConsumerService;
 import com.jpro.jconsumer.JConsumerVo;
 import com.jpro.jconsumer.JConsumerVo3;
@@ -35,16 +37,28 @@ public class JConsumerController {
 	//로그인페이지
 	
 	@RequestMapping("loginBtn")
-	
-	public ModelAndView loginBtn(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView loginBtn( HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		String url = "../jconsumer/JstoreSelect.jsp";
-
-		mv.addObject("inc",url);
-		
-
-		mv.setViewName("jconsumer/Jconsumer_index");		
+		HttpSession session =req.getSession();
+	    String mid =req.getParameter("mId");
+		String pwd = req.getParameter("password");
+		System.out.println(mid);
+		System.out.println(pwd);
+		JConsumerLoginVo rVo = dao.login(mid, pwd);
+		mv.addObject("rVo",rVo);
+		System.out.println(rVo+"fff");
+//		//HttpSession s = req.getSession();
+//		if(rVo != null) {
+//			if(rVo.getMid().equals("ehgmlwn")) {
+//				session.setAttribute("id", rVo.getMid());
+//				mv.setViewName("jconsumer/Jconsumer_index");
+//			}else{
+//			    mv.setViewName("jconsumer/Jlogin_result");
+//		       }
+//		}
+		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
+	
 	}
 	
 /*	@RequestMapping("loginR")
@@ -54,12 +68,26 @@ public class JConsumerController {
 		JConsumerVo rVo = dao.login(vo,req);
 		String url = "../jconsumer/JstoreSelect.jsp";
 
-		mv.addObject("inc",url);
+		mv.addObject("inc",url);	@RequestMapping("login_fail")
+	public ModelAndView login_fail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("jconsumer/Jlogin");
+		
+		return mv;
+	}
 		
 				
 		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
 	}*/
+	
+	@RequestMapping("login_fail")
+	public ModelAndView login_fail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("jconsumer/Jlogin");
+		
+		return mv;
+	}
 	
 	
 	@RequestMapping("JsignUp")

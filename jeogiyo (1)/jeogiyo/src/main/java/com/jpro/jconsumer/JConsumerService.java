@@ -2,7 +2,9 @@ package com.jpro.jconsumer;
 
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,6 +16,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jpro.jmybatis.JConsumerMapper;
+import com.jpro.jmybatis.JloginMapper;
 import com.jpro.jmybatis.JorderlistMapper;
 
 @Service
@@ -27,6 +30,10 @@ public class JConsumerService implements JConsumerInterface {
 	@Qualifier("JorderlistMapper")
 	JorderlistMapper amapper;
 	Page apage;
+	
+	@Autowired
+	@Qualifier("JloginMapper")
+	JloginMapper JloginMapper;
 	
 	@Autowired
 	DataSourceTransactionManager transaction;
@@ -60,9 +67,22 @@ public class JConsumerService implements JConsumerInterface {
 		return list;
 
 }
-	public JConsumerVo login(JConsumerVo vo, HttpServletRequest req) {
-		// TODO Auto-generated method stub
-		return null;
+	public JConsumerLoginVo login(String mid, String pwd) {
+		JConsumerLoginVo rVo = null;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mid", mid);
+		map.put("pwd", pwd);
+	
+		try {  
+	        
+			rVo = JloginMapper.login(map);
+
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return rVo;
 	}
 	public String findId(JConsumerVo vo) {
 	String mId ="";
