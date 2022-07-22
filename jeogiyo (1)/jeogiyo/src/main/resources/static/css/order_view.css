@@ -74,12 +74,13 @@
 }
 
 .titles {
-	border-top : 1px solid #fa323a;
+	background:#5ad226;
 }
 .items{
 	width:100%;
 	display:flex;
 	flex-direction: row;
+	border-bottom : 1px solid #666666;
 }
 
 .items span{
@@ -90,11 +91,6 @@
 	box-sizing:border-box;
 	padding: 10px 5px;
 	line-height:21px;
-	border-bottom:1px solid #aaa;
-
-}
-.items:nth-child(2n){
-	background: #f1a2fc;
 }
 .items span input{
 	width:50px;
@@ -117,4 +113,22 @@
 
 }
 
+#eaCss{
+	position : relative;
+	left : -7px;
+	top : -9px;
+}
 
+#updateCss{
+	position : relative;
+	left : -7px;
+	top : -7px;
+	background-color : #a5ea89;
+	border : none;
+	border-radius : 10px;
+}
+
+#updateCss:hover{
+	background-color : #5ad226;
+	cursor : pointer;
+}
