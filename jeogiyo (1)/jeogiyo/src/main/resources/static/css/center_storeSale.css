@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 #subject{
 	text-align : center;
 	font-size: 3em;
@@ -11,18 +13,30 @@
 
 
 #sale_section{
-	margin-left : 670px;
+	margin-left : 150px;
 }
 
 #sale_section select{
 	width : 100px;
 }
 
+#container2{
+	border-bottom : 1px dashed #000;
+	border-left : 1px dashed #000;
+	height : 380px;
+	width : 650px;
+	position : relative;
+	left : 547px;
+}
+
 #sale_find{
 	display : inline-block;
-	margin-left : 800px;
+	margin-left : 360px;
 	margin-bottom : 30px;
 	font-size : 2em;
+	background-color : #a5ea89;
+	width : 150px;
+	text-align : center;
 }
 
 #sale_date{
@@ -37,17 +51,40 @@
 	width : 310px;
 	float : right;
 	text-align : right;
+	margin-top : -50px;
 }
 
 #top_title{
-	margin-top : 300px;
+	position : relative;
+	font-size : 3em;
 }
 
-#top1, #top2, #top3{
+#top1{
 	display : inline-block;
-	width : 350px;
-	margin : 21px;
+	width : 400px;
 	text-align : center;
+	font-size : 3em;
+	position : relative;
+}
+
+#top2{
+	display : inline-block;
+	position : relative;
+	width : 350px;
+	text-align : center;
+	left : 120px;
+	top : -50px;
+	font-size : 2em;
+}
+
+#top3{
+	display : inline-block;
+	position : relative;
+	width : 350px;
+	text-align : center;
+	left : 170px;
+	top : -80px;
+	font-size : 1.5em;
 }
 
 #cancelBtn{

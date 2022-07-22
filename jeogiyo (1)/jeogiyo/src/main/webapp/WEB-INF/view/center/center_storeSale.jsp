@@ -12,32 +12,33 @@
 <div id='subject'>
 	지역별 매출 현황
 </div>
-<a href='storeCenter'>Home</a>
-
-<div id='sale_find'>
-	매출 조회
-</div>
-<form method='post' name='frm_center_storeSale'>
-	<div id='sale_date'>	
-		<input type='date' name='date1' value='${date1 }'>~
-		<input type='date' name='date2' value='${date2 }'>
-		<button type='button' name='btndata' onclick='findSale(this.form)'>조회</button>
+<div id='container2'>
+	<div id='sale_find'>
+		매출 조회
 	</div>
+	<form method='post' name='frm_center_storeSale'>
 	
-	<div id ='sale_section'>
-		<select name='address' size='4' multiple>
-			<option value='전지역'>전지역</option>
-			<option value='서울'>서울</option>
-			<option value='인천'>인천</option>
-			<option value='경기'>경기</option>
-		</select>
+		<div id='sale_date'>	
+			<input type='date' name='date1' value='${date1 }'>~
+			<input type='date' name='date2' value='${date2 }'>
+			<button type='button' name='btndata' onclick='findSale(this.form)'>조회</button>
+		</div>
+		
+		<div id ='sale_section'>
+			<select name='address' size='4' multiple>
+				<option value='전지역'>전지역</option>
+				<option value='서울'>서울</option>
+				<option value='인천'>인천</option>
+				<option value='경기'>경기</option>
+			</select>
+		</div>
+	</form>
+		
+	<div id='sale_doc'>
+			<h3>${date1} ~ ${date2}<br/>
+			${address} 매출 현황</h3> ${totSale } 원<br/>
+			<h3>총 판매 건수 </h3> ${totHit } 건
 	</div>
-</form>
-	
-<div id='sale_doc'>
-		<h3>${date1} ~ ${date2}<br/>
-		${address} 매출 현황</h3> ${totSale } 원<br/>
-		<h3>총 판매 건수 </h3> ${totHit } 건
 </div>
 
 <div id='top_list'>
