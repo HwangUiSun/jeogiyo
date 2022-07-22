@@ -7,16 +7,6 @@
 <title>SC_login</title>
  <link rel="stylesheet" type="text/css" href="css/Jlogin.css">
  <script src="/js/Jlogin.js"></script>
- <script>
-function clickEffect(e){
-  var d=document.createElement("div");
-  d.className="clickEffect";
-  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
-  document.body.appendChild(d);
-  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
-}
-document.addEventListener('click',clickEffect);
-</script>
 </head>
 <body>
 
@@ -35,17 +25,14 @@ document.addEventListener('click',clickEffect);
 	                <form name="loginFrm" method="post" id="loginFrm">                
 	                    <div class="inputBx">
 	                        <span>Username</span>
-	                        <input type='text' name="mId" value="${param.mId}">
+	                        <input type='text' name="mId" id="mId">
 	                    </div>
 	                    <div class="inputBx">
 	                        <span>Password</span>
-	                        <input type='password' name="password">
-	                    </div>
-	                    <div class="remember">
-	                        <label><input type="checkbox" name="">Remember me</label>
+	                        <input type='password' name="password" onkeyup="onKeyUp()">
 	                    </div>
 	                    <div class="inputBx">
-	                        <label><input type="button" value="Sign in" name="loginBtn" id="loginBtn"></label>
+	                        <label><input type="button" value="Sign in" name="loginBtn" id="loginBtn" onclick='login(this.form)'></label>
 	                    </div>
 	                    <div class="inputBx">
 	                        <p>Don't have a account? <a href='JsignUp'><span class="JsignUp">회원가입</span></a></p>
@@ -64,19 +51,6 @@ document.addEventListener('click',clickEffect);
             </div>
         </div>
 </body>
-<script>
-let store = document.getElementById("loginBtn");
+<script src='./js/Jlogin.js'></script>
 
-store.onclick=function(){
-	location.href="/loginBtn"	
-}	
-
-
-let logs = document.getElementsByClassName("loginSelcete")
-logs[0].style.borderBottom.color = "#DC143C";
-
-
-
-
-</script>
 </html>
