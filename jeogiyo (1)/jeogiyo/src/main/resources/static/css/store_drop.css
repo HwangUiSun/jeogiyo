@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
+
 /*가맹 탈퇴 현황 CSS 시작*/
 
 
 #Drop{
 	text-align : right;
 }
-
 
 
 #subject{
@@ -96,3 +96,149 @@
 	cursor:pointer;
 }
 /*공지사항 리스트 CSS 끝*/
+=======
+#subject{
+	text-align : center;
+	font-size: 3em;
+    background-color : #9997;
+    height : 90px;
+    margin-bottom : 20px;
+    padding-top : 20px;
+}
+
+/* 회원가입 약관 */
+
+  p{text-align:center;color: #c7254e;background: #f9f2f4;padding:10px;border:1px solid #ecc7d2;margin:0 0 5px}
+
+section {margin:10px auto 30px;border:1px solid #dbdbdb;position:relative;border-radius:3px 3px 0 0 ;
+-webkit-box-shadow:  0 1px 3px #eee;
+-moz-box-shadow:  0 1px 3px #eee;
+box-shadow: 0 1px 3px #eee;
+}
+ _chkall{text-align:right}
+  h2 {text-align:left;padding:15px 20px;border-bottom:1px solid #dbdbdb;background:#f8f8f8}
+  textarea {display:block;padding:20px;width:1160px;height:150px;background:#fff;border:0;line-height:1.6em}
+  .fregister_agree {position:absolute;top:0;right:0;;padding:15px}
+ _private div{padding:20px;background:#fff}
+
+ _private table{width:100%;border-collapse:collapse}
+ _private table caption {position:absolute;font-size:0;line-height:0;overflow:hidden}
+ _private table  th{background:#646982;width:33.33%;color:#fff;padding:10px;border:1px solid #555971}
+ _private table  td{border:1px solid #ddd;padding:10px;}
+  .btn_confirm{text-align:center;}
+  
+
+.btn_submit, .btn_cancel{
+	height:50px;
+	border-radius:3px;
+	padding:0 40px;
+	font-weight:bold;
+	font-size:1.083em;
+	line-height:45px;
+	margin-bottom : 30px;
+}
+
+
+/* 회원가입 입력 */
+#register_form{background:#fff;padding:20px;margin-bottom:20px}
+ form #msg_certify {margin:5px 0 0;padding:5px;border:1px solid #dbecff;background:#eaf4ff;text-align:center}
+ form .frm_address {margin:5px 0 0}
+ form #mb_addr3 {display:inline-block;margin:5px 0 0;vertical-align:middle}
+ form #mb_addr_jibeon {display:block;margin:5px 0 0}
+ form .btn_confirm{text-align:center}
+ form .frm_info{display:block;color:#3497d9;font-size:0.92em}
+ form .form_01 div{margin: 0 0 50px}
+ form .captcha{display:block;margin:5px 0 0}
+ form .reg_mb_img_file img{max-width:100%;height:auto}
+
+#center_storeDrop_view {
+	width : 1200px;
+	margin : 20px auto;
+	line-height : 1.4em;
+}
+
+#center_storeDrop_view .frm_storeDrop_view label{
+	display : inline-block;
+	width : 70px;
+	height : 25px;
+	margin-bottom : 15px;
+	line-height : 1.5em;
+	text-align : left;
+}
+
+
+#center_storeDrop_view .frm_storeDrop_view input{
+	width : 300px;
+	height : 25px;
+	line-height : 1.5em;
+}
+
+#center_storeDrop_view .frm_storeDrop_view textarea{
+	display : inline-block;
+	width : 300px;
+	height : 200px;
+}
+
+#center_storeDrop_view .btns{
+	margin-left : 70px;
+}
+
+#center_storeDrop_view .btns button[name = accept]{
+	background-color : #88f;
+	color : #fff;
+	font-weight : bold;
+	margin : 5px;
+	height : 30px;
+	width : 70px;
+	border-radius : 10px;
+	border : none;
+}
+
+#center_storeDrop_view .btns button:hover[name = accept]{
+	background-color : #00f;
+	cursor : pointer;
+}
+
+#center_storeDrop_view .btns button[name = back]{
+	background-color : #88f;
+	color : #fff;
+	font-weight : bold;
+	margin : 5px;
+	height : 30px;
+	width : 70px;
+	border-radius : 10px;
+	border : none;
+}
+
+#center_storeDrop_view .btns button:hover[name = back]{
+	background-color : #00f;
+	cursor : pointer;
+}
+
+.frm_storeDrop_view{
+	border : 1px solid #9997;
+	text-align : left;
+}
+
+.frm_storeDrop_view label{
+	display : inline-block;
+	width : 70px;
+	text-align : left;
+	margin-top : 5px;
+	margin-left : 60px;
+	font-weight : bold;
+}
+
+.doc{
+	display : inline-block;
+	width : 1000px;
+	height : 250px;
+	margin-top : 8px;
+	margin-bottom : 30px;
+}
+
+.frm_storeDrop_view label[name = doc_r]{
+	position : relative;
+	top : -118px;
+	
+}

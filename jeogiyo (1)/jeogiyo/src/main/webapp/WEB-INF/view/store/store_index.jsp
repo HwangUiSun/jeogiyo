@@ -13,7 +13,9 @@
 <div id='container'>
 	<header id="top_logo">
 		<h1>jeogiyo</h1>
+		<div id="loginIdprint">● : ${sessionScope.id}님</div>
 		<button type='button' id='store_logoutBtn' onclick="location.href='index'">로그아웃</button>
+		<a href='store_drop' class='store_drop'>가맹탈퇴 신청</a>
 	</header>
 	
 	<div id='title_menu'>
@@ -28,7 +30,9 @@
 	<div id="section">
 		<jsp:include page="${inc}"></jsp:include>
 	</div>
-
+	<form>
+		<input type="hidden" name="mid" value="${mid}"/>
+	</form>
 </div>
 </body>
 </html>

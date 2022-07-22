@@ -1,7 +1,55 @@
 package com.jpro.jstore;
 
 public class JstoreVo {
-	String mid, pwd, name, email, phone, address, zipcode, storeName;
+	String mid, pwd, name, email, phone, address, zipcode, storeName, mainLocal, subLocal, status, doc, subject, nal;
+	
+	public String getMainLocal() {
+		return mainLocal;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public String getNal() {
+		return nal;
+	}
+
+	public void setNal(String nal) {
+		this.nal = nal;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getDoc() {
+		return doc;
+	}
+
+	public void setDoc(String doc) {
+		this.doc = doc;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public void setMainLocal(String mainLocal) {
+		this.mainLocal = mainLocal;
+	}
+
+	public String getSubLocal() {
+		return subLocal;
+	}
+
+	public void setSubLocal(String subLocal) {
+		this.subLocal = subLocal;
+	}
 
 	public String getMid() {
 		return mid;

@@ -22,6 +22,56 @@ noti_view.init = function(){
 					sendFile(i, files[i]);
 				}
 			}
+			
 		}
 	});
+	// 오늘 날짜로 설정하기 
+	let nal = document.getElementById("noti_nal");
+	date = new Date();
+ 	date = date.toISOString().slice(0,10);
+	nal.value = date; 
+	hideIU()
+	// summernote 수정 불가능하게 만들기
+	$('#summernote').next().find(".note-editable").attr("contenteditable", false);
+	
+}	
+ noti_view_updateview = function(frm){
+	
+	frm.action="center_notiUpdate";
+	frm.submit();
+		
 }
+ noti_view_delete = function(frm){
+	frm.action="center_notiDelete";
+	frm.submit();
+}
+ noti_view_back = function(frm){
+	let log = $("#ioginId").attr("value")
+	if(log=="root"){
+		frm.action="center_noti";
+		frm.submit();	
+	}else{
+		frm.action='noti';
+		frm.submit();	
+	}
+	
+	
+}
+
+
+function hideIU(){
+		// 수정 작성 버튼 보이게 안보이게
+	let log = $("#ioginId").attr('value')
+	if(log != "root"){
+		$("#input").hide();
+		$("#delete").hide();
+	}
+}
+
+
+
+
+
+
+
+

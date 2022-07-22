@@ -23,7 +23,7 @@
 	background-color : #999;
 }
 
-#select1, #select2, #select3{
+.select_local {
 	display : inline-block;
 	background-color : #9998;
 	border-radius :200px;
@@ -37,12 +37,12 @@
 	box-sizing : border-box;
 }
 
-#select1:hover, #select2:hover, #select3:hover{
+.select_local:hover {
 	cursor : pointer;
 	background-color : #999;
 }
 
-#storeName{
+.storeName{
 	display : inline-block;
 	box-sizing : border-box;
 	width : 300px;
@@ -54,19 +54,19 @@
 	font-weight: bolder;
 }
 
-#storeAddressPhone{
+.storeAddressPhone{
 	display : inline-block;
 	margin-left : 90px;
 }
 
-#storeAddressPhone label{
+.storeAddressPhone label{
 	display : inline-block;
 	font-size : 20px;
 	font-weight: bold;
 	width : 90px;
 }
 
-#store_view{
+.store_view{
 	display : inline-block;
 	width :70px;
 	height : 70px;
@@ -74,7 +74,7 @@
 	background-image: url("../img/돋보기.png");
 }
 
-#store_view:hover{
+.store_view:hover{
 	cursor : pointer;
 }
 
