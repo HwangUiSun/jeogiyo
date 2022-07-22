@@ -2,6 +2,22 @@ package com.jpro.jconsumer;
 
 public class JConsumerLoginVo {
 	String mid, pwd, name, email, phone, address, zipcode, storeName, mainLocal, subLocal, status, doc, subject, nal;
+	
+	public JConsumerLoginVo(String mid,String pwd,String name,String email,String phone,String address,String zipcode,String storeName,String mainLocal,String subLocal,String status,String doc,String subject,String nal) {
+		
+		this.mid = mid;
+		this.name= name;
+		this.pwd = pwd;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.zipcode =zipcode;
+		this.storeName =storeName;
+		this.mainLocal=mainLocal;
+		this.status=status;
+		this.doc=doc;
+		this.nal=nal;
+	}
 		
 		public String getMainLocal() {
 			return mainLocal;

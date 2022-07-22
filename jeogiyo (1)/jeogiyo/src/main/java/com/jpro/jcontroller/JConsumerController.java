@@ -138,11 +138,11 @@ public class JConsumerController {
 		return mv;
 	}*/
 	@RequestMapping("findIdR")
-	public ModelAndView findIdR(JConsumerVo vo) {
+	public ModelAndView findIdR(JConsumerLoginVo vo) {
 		ModelAndView mv = new ModelAndView();
-		String mId = dao.findId(vo);
+		String mid = dao.findId(vo);
 		
-		mv.addObject("msg", mId);
+		mv.addObject("msg", mid);
 		mv.setViewName("jconsumer/find_id_result");
 		return mv;
 	}
@@ -158,9 +158,9 @@ public class JConsumerController {
 	}*/
 	
 	@RequestMapping("findPwdR")
-	public ModelAndView findPwdR(JConsumerVo vo) {
+	public ModelAndView findPwdR(JConsumerLoginVo vo) {
 		ModelAndView mv = new ModelAndView();
-		String pwd = dao.findpwd(vo);
+		String pwd = dao.findPwd(vo);
 		
 		mv.addObject("msg", pwd);
 		mv.setViewName("jconsumer/find_pwd_result");

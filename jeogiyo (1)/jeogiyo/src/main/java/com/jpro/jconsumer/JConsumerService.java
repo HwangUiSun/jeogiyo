@@ -84,11 +84,11 @@ public class JConsumerService implements JConsumerInterface {
 		}
 		return rVo;
 	}
-	public String findId(JConsumerVo vo) {
+	public String findId(JConsumerLoginVo vo) {
 	String mId ="";
 		
 		try {
-			mId=mapper.findId(vo);
+			mId=JloginMapper.findId(vo);
 	
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -97,11 +97,11 @@ public class JConsumerService implements JConsumerInterface {
 		return mId;
 		
 	}
-	public String findpwd(JConsumerVo vo) {
+	public String findPwd(JConsumerLoginVo vo) {
 	String pwd ="";
 		
 		try {
-			pwd=mapper.findpwd(vo);
+			pwd=JloginMapper.findPwd(vo);
 	
 		}catch(Exception ex) {
 			ex.printStackTrace();

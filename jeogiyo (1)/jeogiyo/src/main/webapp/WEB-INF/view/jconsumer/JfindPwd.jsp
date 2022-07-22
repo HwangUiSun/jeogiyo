@@ -15,7 +15,7 @@
       
       
       <div class="textForm">
-        <input name="name" type="password" class="mId" placeholder="아이디">
+        <input name="name" type="text" class="mId" placeholder="아이디">
       </div>
        <div class="textForm">
         <input name="email" type="text" class="email" placeholder="이메일">

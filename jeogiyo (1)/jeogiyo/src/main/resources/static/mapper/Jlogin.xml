@@ -12,4 +12,12 @@
 
 </select>
 
+<select id="findId" parameterType="JConsumerLoginVo" resultType="String">
+		select mid from jstorevo where name=#{name} and email=#{email}	
+		</select>
+
+	<select id="findPwd" parameterType="JConsumerLoginVo" resultType="String">
+		select pwd from jstorevo where mid=#{mid} and email=#{email}
+	</select>
+
 </mapper>
