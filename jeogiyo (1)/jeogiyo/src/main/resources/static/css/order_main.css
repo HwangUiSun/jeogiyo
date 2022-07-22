@@ -16,7 +16,7 @@
 	margin:2px auto;
 	display:flex;
 	flex-direction: row;
-	margin-top : 50px;
+	margin-top : 20px;
 }
 .itemsWrap{
 	
@@ -88,7 +88,7 @@
 
 #menuTitle button{
 	margin : 5px;
-	height : 30px;
+	height : 40px;
 	width : 80px;
 	background-color : #a5ea89;
 	border : none;
@@ -112,6 +112,7 @@
 	font-weight : bold;
 	height : 30px;
 	width : 80px;
+	margin-top : 20px;
 }
 
 #baljuM:hover{

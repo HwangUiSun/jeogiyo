@@ -97,6 +97,7 @@
 	color : #666666;
 	margin-top : 30px;
 	border-radius : 10px;
+	font-weight : bold
 }
 
 #paging button:hover{

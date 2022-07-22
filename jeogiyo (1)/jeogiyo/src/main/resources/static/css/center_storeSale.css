@@ -32,16 +32,35 @@
 
 #sale_find{
 	display : inline-block;
-	margin-left : 360px;
+	margin-left : 354px;
 	margin-bottom : 30px;
 	font-size : 2em;
-	background-color : #a5ea89;
+	background-color : #f998;
 	width : 150px;
 	text-align : center;
+	border-radius : 10px;
 }
 
 #sale_date{
 	float : right;
+}
+
+#sale_date button{
+	background:#a5ea89;
+	display:inline-block;
+	border: none;
+	text-align:center;
+	height:30px;
+	padding:1px 10px;
+	font-size:20px;
+	color : #666666;
+	border-radius : 10px;
+	font-weight : bold;
+}
+
+#sale_date button:hover{
+	background-color : #5ad226;
+	cursor : pointer;		
 }
 
 #sale_date input{
