@@ -85,10 +85,10 @@ ul.tabs li.current{
 		   </div>
 		    <div class="testdiv" onclick="check(2)">
           <img src='../img/honey combo.png' width='240px' height='240px'/>
-	       <div class='subject' id='productName2_2'><a>달콤허니콤보</a><br/></div>
+	       <div class='subject' id='productName2_2'><a>달콤허니콤보</a></div>
 	       <br/>
-	       <div class='menuInfo' id='menuInfo2_2'>달콤바삭한 맛이 일품인 한 마리 치킨</div><br/>
-	       <div class='price' id='price2_2'>소비자가격 : 16000원</div><br/>
+	       <div class='menuInfo' id='menuInfo2_2'>달콤바삭한 맛이 일품인 한 마리 치킨</div>
+	       <div class='price' id='price2_2'>소비자가격 : 16000원</div>
 	       <input type='checkbox' style='zoom:2.0'  name='check' value='달콤허니콤보'/>선택 
      	   <hr/>
      	   </div>
@@ -234,16 +234,30 @@ function test(){
 var menuArray =[]
 var priceArray =[]
 function check(sno){
-	
+	let productName=""
+	let price =""
 	let div = document.getElementsByClassName('testdiv')
-	div[sno].children.check.checked="true"
-	let productName = div[sno].children[1].innerText
-	let price = div[sno].children[4].innerText
-	var regex = /[^0-9]/g;				// 숫자가 아닌 문자열을 선택하는 정규식
-	var result = price.replace(regex, "")
+	if(div[sno].children.check.checked ===true){
+		div[sno].children.check.checked= false
+		productName = div[sno].children[1].innerText
+		price = div[sno].children[4].innerText
+		for(let i = 0 ; i < menuArray.length;i++){
+			if(menuArray[i]==productName){
+				menuArray.splice(i,1)
+				priceArray.splice(i,1)
+			}
+		}
+		
+	}else{
+		div[sno].children.check.checked=true
+		productName = div[sno].children[1].innerText
+		price = div[sno].children[4].innerText
+		var regex = /[^0-9]/g;				// 숫자가 아닌 문자열을 선택하는 정규식
+		var result = price.replace(regex, "")	
+		menuArray.push(productName)
+		priceArray.push(result)
+	}	
 	
-	menuArray.push(productName)
-	priceArray.push(result)
 	console.log(menuArray)
 	console.log(priceArray)
 	
