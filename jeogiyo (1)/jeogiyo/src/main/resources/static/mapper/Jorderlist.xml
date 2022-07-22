@@ -6,12 +6,14 @@
 
 <select id='totSize' parameterType="dPage" resultType="Integer">
   select count(mid) from orders
+  where mid = #{mid}
  
 </select>
 
 
 <select id='Jorderlist' parameterType="dPage" resultType="JconsumerVo3">
   select * from orders
+   where mid = #{mid}
   limit ${startNo}, ${listSize}
 
 </select>

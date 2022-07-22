@@ -16,6 +16,7 @@ import com.jpro.jconsumer.JConsumerService;
 import com.jpro.jconsumer.JConsumerVo;
 import com.jpro.jconsumer.JConsumerVo3;
 import com.jpro.jconsumer.JconsumerVo2;
+import com.jpro.jconsumer.JpayHistoryVo;
 import com.jpro.jconsumer.Page;
 
 
@@ -390,9 +391,21 @@ public class JConsumerController {
 	
 
 	//주문하기페이지
+
 	
 	@RequestMapping("payBtn")
-	public ModelAndView payBtn(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView payBtn(HttpServletRequest req) {
+		System.out.println(req);
+		JpayHistoryVo vo = new JpayHistoryVo();
+		vo.setAddress(req.getParameter("address")+" "+req.getParameter("apiAddressDetail"));
+		System.out.println(req.getParameter("address")+" "+req.getParameter("apiAddressDetail"));
+		vo.setHowtopay(req.getParameter("radioSelect"));
+		System.out.println(req.getParameter("radioSelect"));
+		vo.setOrdermenu(req.getParameter("menu"));
+		System.out.println(req.getParameter("menu"));
+		vo.setTotalprice(req.getParameter("totalPrice"));
+		System.out.println(req.getParameter("totalPrice"));
+		dao.insertPayHistory(vo);
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JpayAfter.jsp";
 

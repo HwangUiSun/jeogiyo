@@ -176,6 +176,13 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public void insertPayHistory(JpayHistoryVo vo) {
+		mapper.insertPayHistory(vo);
+		
+		
+		
+	}
+	
 
 }
 

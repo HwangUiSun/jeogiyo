@@ -16,4 +16,9 @@
 
 </select>
 
+<insert id ='insertPayHistory' parameterType='JpayHistoryVo'>
+   insert into orders(mid, phone, address, ordertime, totalprice, howtopay, ordermenu) 
+	values('test','010-1234-0012',#{address},DATE_FORMAT(now(), '%Y-%m-%d'),#{totalprice}, #{howtopay}, #{ordermenu} ) 
+   </insert>
+
 </mapper>

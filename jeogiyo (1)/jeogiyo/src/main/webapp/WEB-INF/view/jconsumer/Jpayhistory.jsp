@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/Jpayhistory.css" rel="stylesheet">
-<script src="/js/Jpayhistory.js"></script>
+<!-- <script src="/js/Jpayhistory.js"></script> -->
 <title>Jpayhistory</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/Jpayhistory.css'>
  <script>
@@ -25,6 +25,8 @@ document.addEventListener('click',clickEffect);
 
 	<div id= 'Jpayhistory_list'>
 	        <div id='subject'>주문하기</div>
+	   <form action='' method='post' id="frmPay" name="frmPay">
+	   <input type="hidden" name="totalPrice" id='totalPrice' value="${totalPrice+3000}"/>
 	   <div id='payInfo'>
 	        <div class='sub'>결제정보</div>
 	         
@@ -32,7 +34,7 @@ document.addEventListener('click',clickEffect);
 	  </div>
 	        
 	        <div class="fieldlabel"><label>이름</label></div>
-	        <input type='text' class='name'/><br/>
+	        <input type='text' class='name' /><br/>
 	        
 	        <div class="fieldlabel"><label>연락처</label></div>
 	        <input type='text' class='phone'/><br/>
@@ -44,11 +46,11 @@ document.addEventListener('click',clickEffect);
 			<br/>
     
 	       <div class="fieldlabel"><label>주소</label></div>
-	        <input type='text' id='address'/>
+	        <input type='text' name='address' id='address'/>
 	        <br/>
 	        	       
 	        <div class="fieldlabel"><label>상세주소</label></div>
-	        <input type='text' id='apiAddressDetail'/><br/>
+	        <input type='text' id='apiAddressDetail' name='apiAddressDetail'/><br/>
 	        
 	        <div class="fieldlabel"><label>요청사항</label></div>
 	        <input type='text' class='request'/>
@@ -72,14 +74,14 @@ document.addEventListener('click',clickEffect);
 		    <fmt:formatNumber value="${i}" pattern="#,###" />원</span><br/>
 	  
 	   
-	   <form action="/status">
+	   <!-- <form action="/status"> -->
 	     <label class='paySelect'>결제방법
 		       <br/>
-		         <input type='radio' name='radioSelect' id='meetPayBtn' value='1'/>만나서 결제
-		         <input type='radio' name='radioSelect' id='cardPayBtn' value='2' />카드 결제
+		         <input type='radio' name='radioSelect' id='meetPayBtn' value='만나서결제'/>만나서 결제
+		         <input type='radio' name='radioSelect' id='cardPayBtn' value='카드결제' />카드 결제
 		       <br/>
          </label>	
-	   </form>
+	  <!--  </form> -->
 	   
 	   <div id='point'>
 	          <div class='sub'>포인트사용</div>
@@ -111,10 +113,11 @@ document.addEventListener('click',clickEffect);
 	         원</span> 
 	         </div>
 	   </div>
+	   </form>
 	   
 	   <div id='Btns'>
 	        <hr/>
-	        <a href='payBtn'><button type='button' class='payBtn'>결제</button></a>
+	        <button type='button' class='payBtn' onclick='payBtn();'>결제</button>
 	        <a href='paycancelBtn'><button type='button' class='paycancelBtn'>취소하기</button></a>
 	   </div>
 	</div>
@@ -144,16 +147,72 @@ window.onload = function(){
         }).open();
     });
 }
+function payBtn(){
+	console.log("1");
+	var form = document.frmPay;
+	console.log("2");
+	
+	
+	
+	var menu = '${menus}';
+	menu = menu.replace('[', '');
+	menu = menu.replace(']', '');
+	
+	let menuInput = document.createElement('input')
+	menuInput.setAttribute("name","menu")
+	menuInput.setAttribute("type","hidden")
+	menuInput.setAttribute("value",menu)
+	
+	form.appendChild(menuInput);
+	
+	console.log(form);
+	form.action = 'payBtn';
+	form.submit(); 
+}
 </script>
 
 <script>
-$("input[type=radio]").click(function(){
+/* $("input[type=radio]").click(function(){
 	$(this).prop("checked", true);
 	$("form").submit();
 })
-
-String radioSelect[] = request.getParameterValues("radioSelect");
+ */
+//String radioSelect[] = request.getParameterValues("radioSelect");
 // X
+/* function test(){
+	let strnal = nalArray.join()
+	let strtotalPrice = totalPriceArray.join()
+	let strpaySelect = paySelectArray.join()
+	let strMenu = menuArray.join()
+	let straddress = addressArray.join()
+	let form = document.createElement('form')
+	form.action ="payBtn"
+	form.name="jpayInfo"
+	form.method="post"
+	
+	let strnalinput = document.createElement('input')
+	strnalinput.setAttribute("name","values")
+	strnalinput.setAttribute("type","hidden")
+	strnalinput.setAttribute("value",strnal)
+	
+	let priceinput = document.createElement('input')
+	priceinput.setAttribute("name","prices")
+	priceinput.setAttribute("type","hidden")
+	priceinput.setAttribute("value",strtotalPrice)
+	
+	let strpaySelect = document.createElement('input')
+	strpaySelect.setAttribute("name","values")
+	strpaySelect.setAttribute("type","hidden")
+	strpaySelect.setAttribute("value",strpaySelect)
+	
+	form.appendChild(valueinput);
+	form.appendChild(priceinput);
+    document.body.appendChild(form);
+    
+    form.submit();
+} */
+
+
 
 </script>
 </html>
