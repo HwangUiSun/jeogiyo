@@ -9,7 +9,7 @@
 <body>
 <script>
 	alert("아이디나 비밀번호를 확인해주세요");
-	document.location.href = "login_fail";
+	document.location.href = "SC_login_fail";
 </script>
 </body>
 </html>

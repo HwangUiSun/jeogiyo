@@ -111,7 +111,7 @@ public class JstoreController {
 		return mv;
 	}
 	
-	@RequestMapping("login_fail")
+	@RequestMapping("SC_login_fail")
 	public ModelAndView login_fail() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/SC_login");
