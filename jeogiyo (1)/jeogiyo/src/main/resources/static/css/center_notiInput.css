@@ -24,8 +24,8 @@
 }
 
 #center_notiInput .btns button[name = input]{
-	background-color : #88f;
-	color : #fff;
+	background-color : #a5ea89;
+	color : #666666;
 	font-weight : bold;
 	margin : 5px;
 	height : 30px;
@@ -36,13 +36,13 @@
 
 
 #center_notiInput .btns button:hover[name = input]{
-	background-color : #00f;
+	background-color : #5ad226;
 	cursor : pointer;
 }
 
 #center_notiInput .btns button[name = back]{
-	background-color : #88f;
-	color : #fff;
+	background-color : #a5ea89;
+	color : #666666;
 	font-weight : bold;
 	margin : 5px;
 	height : 30px;
@@ -52,7 +52,7 @@
 }
 
 #center_notiInput .btns button:hover[name = back]{
-	background-color : #00f;
+	background-color : #5ad226;
 	cursor : pointer;
 }
 

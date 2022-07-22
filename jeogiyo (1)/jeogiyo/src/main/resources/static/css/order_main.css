@@ -11,12 +11,12 @@
 
 .title{
 	font-weight:600;
-	color:#fff;
-	background:#353434;
+	background:#5ad226;
 	width:1200px;
 	margin:2px auto;
 	display:flex;
 	flex-direction: row;
+	margin-top : 20px;
 }
 .itemsWrap{
 	
@@ -25,12 +25,10 @@
 }
 .itemsWrap .items{
 	font-weight:200;
-	color:#fff;
 	margin:2px 0;
 	display:flex;
 	flex-direction: row;
-	background:#565656;
-	
+	border-bottom : 1px solid #666666;
 }
 
 .itemsWrap .items span, .title span{
@@ -42,9 +40,6 @@
 	line-height:21px;
 }
 
-.itemsWrap .items:nth-child(2n-1){
-	background:#353434;
-}
 .itemsWrap .items span:nth-child(1), .title span:nth-child(1){
 	width:10%;
  
@@ -63,7 +58,7 @@
 .itemsWrap .items:hover{
 	color:#000000;
 	cursor:pointer;
-	bacKground: #ffffff;
+	bacKground: #a5ea89;
 }
 
 .paging{
@@ -84,6 +79,7 @@
 	font-size : 15px;
 	color : #666666;
 	font-weight : bold;
+	margin-top : 30px;
 }
 .paging button:hover{
 	background-color : #5ad226;
@@ -92,7 +88,7 @@
 
 #menuTitle button{
 	margin : 5px;
-	height : 30px;
+	height : 40px;
 	width : 80px;
 	background-color : #a5ea89;
 	border : none;
@@ -103,6 +99,23 @@
 }
 
 #menuTitle button:hover{
+	background-color : #5ad226;
+	cursor : pointer;
+}
+
+#baljuM{
+	background-color : #a5ea89;
+	border : none;
+	border-radius : 10px;
+	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
+	height : 30px;
+	width : 80px;
+	margin-top : 20px;
+}
+
+#baljuM:hover{
 	background-color : #5ad226;
 	cursor : pointer;
 }

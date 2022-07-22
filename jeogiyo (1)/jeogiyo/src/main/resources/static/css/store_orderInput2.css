@@ -43,9 +43,6 @@
 	flex-direction:row;
 	justify-content:space-between;
 }
-.subList .items span{
-	
-}
 .subList .items span:nth-child(1){width: 50px;}
 .subList .items span:nth-child(2){width: 200px;}
 .subList .items span:nth-child(3){width: 50px;}
@@ -74,8 +71,7 @@
 }
 
 .title {
-	background:#565656;
-	color: #fff;
+	background:#5ad226;
 	display: flex;
 	font-size: 30px;
 	height: 40px;
@@ -83,17 +79,16 @@
 	width:683px;
 	flex-direction: row;
 	justify-content:space-around;
-	
+	font-weight: bold;	
 }
 
 .orderInput_list .items{
 	font-weight:600;
-	color:#fff;
 	margin:1px 0;
 	display:flex;
 	flex-direction: row;
 	justify-content:space-around;
-	background:#565656;
+	border-bottom : 1px solid #666666;
 }
 .title span{
 	display:block;

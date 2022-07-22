@@ -42,9 +42,9 @@
 			<div class="items " >
 					<span id="productName">${v.productName}</span>
 					<span class="rid">${param.id}</span>
-					<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
+					<span><input type="text" value="${v.ea}" id="eaCss" name="ea" id="ea${v.sno}"></span>
 					<c:if test ="${mid == 'root'}">
-					<span><button type="button"  onclick="addC('${v.sno}', 'ea${v.sno}','${param.title}')">수정</button></span>
+					<span><button type="button"  id="updateCss" onclick="addC('${v.sno}', 'ea${v.sno}','${param.title}')">수정</button></span>
 					</c:if>
 					<input type="hidden" value="${v.sno}" name="sno" id="sno">
 				</div>

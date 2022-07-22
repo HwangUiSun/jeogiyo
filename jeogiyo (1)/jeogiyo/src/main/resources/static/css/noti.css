@@ -12,10 +12,10 @@
 
 .title{
 	font-weight:600;
-	color:#fff;
-	background:#353434;
+	background:#5ad226;
 	width:1200px;
 	margin:2px auto;
+	margin-top : 20px;
 	display:flex;
 	flex-direction: row;
 }
@@ -26,15 +26,10 @@
 }
 .itemsWrap .items{
 	font-weight:200;
-	color:#fff;
 	margin:2px 0;
 	display:flex;
 	flex-direction: row;
-	background:#565656;
-	
-}
-.itemsWrap .items:nth-child(2n){
-	background:#353434;
+	border-bottom : 1px solid #666666;
 }
 .itemsWrap .items span, .title span{
 	display:block;
@@ -62,7 +57,7 @@
 .itemsWrap .items:hover{
 	color:#000000;
 	cursor:pointer;
-	bacKground: #ffffff;
+	bacKground: #a5ea89;
 }
 
 .paging{
@@ -83,6 +78,7 @@
 	font-size : 15px;
 	color : #666666;
 	font-weight : bold;
+	margin-top : 30px;
 }
 .paging button:hover{
 	background-color : #5ad226;
@@ -106,10 +102,10 @@
 	cursor : pointer;
 }
 
-#inputbutton{
+#inputbutton button{
 	position: relative;
-	width: 100px;
-	top : -50px	
+	width: 90px;
+	top : -40px	
 }
 
 #menuTitle{

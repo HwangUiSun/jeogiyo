@@ -14,7 +14,6 @@
 	<div id='subject'>가맹관리</div>
 	<button type='button' id='go_storeDropBtn'
 		onclick="location.href='center_storeDrop'">탈퇴신청 현황</button>
-	<a href='storeCenter'>Home</a>
 	<div id='center_storeM'>
 		<input type="hidden" id="selectLocal" value="${selectLocal}">
 		<c:forEach var="local" items="${localList}" >
