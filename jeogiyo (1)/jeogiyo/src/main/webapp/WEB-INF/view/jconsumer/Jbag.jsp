@@ -36,14 +36,14 @@ document.addEventListener('click',clickEffect);
 			<hr/>
 			
 		</div>
-		<c:forEach var = 'v' items="${menus}">
+		<c:forEach var = 'v' items="${menus}" varStatus="status">
 			<div id = 'itemsWrap'>
 	     	  <div class='items'>
 	     	  		<img src='../img/chicken1.png'width='240px' height='240px'/>
 					<span class = sno'>${num+1 }  
 					 ${v}
 					</span>				
-					<span>${prices}</span>					
+					<span> ${prices[status.index]}</span>					
 					<button type = 'button' name = 'cancelBtn'>삭제</button>
 				</div>
 			</div>
