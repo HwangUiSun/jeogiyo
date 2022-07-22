@@ -10,7 +10,7 @@
 <body>
 <div id='container'>
 	<header id="top_logo">
-		<h1>jeogiyo</h1>
+		 <div id='Logo'></div>
 		<a href='homeBtn'><button type='button' id='homeBtn'>HOME</button></a>
 	</header>
 	
