@@ -179,8 +179,7 @@ ul.tabs li.current{
 	    </div>
 	    </div>
 	    </form>
-
-	    <a href='bagBtn'><button type='button' onclick='test()'>장바구니</button></a>
+	    <button type='button' onclick='test()' class="bagBtn">장바구니</button>
 
 
 </body>
