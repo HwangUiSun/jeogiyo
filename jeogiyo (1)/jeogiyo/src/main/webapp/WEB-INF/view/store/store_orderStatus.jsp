@@ -11,7 +11,6 @@
 <script src = './js/store_orderStatus.js'></script>
 </head>
 <body>
-<a href='storeCenter'>Home</a>
 <div id = 'subject'>주문 현황</div>
 <form name = 'frm_orderStatus' id = 'frm_orderStatus' method = 'post'>
 	<input type="hidden" name="nowPage" value="${statusPage.nowPage}" >
