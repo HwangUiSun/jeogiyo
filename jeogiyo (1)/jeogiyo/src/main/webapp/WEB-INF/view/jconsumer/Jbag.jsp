@@ -71,10 +71,22 @@ document.addEventListener('click',clickEffect);
 	</div>
 			
 		
-
-		<span class='menuPrice'>총 금액 : 18500원</span><br/>
-		<a href='menuAddBtn'><button type='button' class='menuAddBtn'>메뉴추가</button></a>
-		<a href='jorderBtn'><button type='button' class='jorderBtn'>주문하기</button></a>
+		<c:forEach var="p" items="${prices}">
+		<c:set var='num' value='${nums=nums+p}'/>		
+		</c:forEach>
+		<span class='menuPrice'>총 금액 :		
+		${nums}
+		</span><br/>
+		<form name="jbag_frm" method="post" action="menuAddBtn">
+			<button type='submit' class='menuAddBtn'>메뉴추가</button>		
+		</form>
+		<form name="jbag_frm" method="post" action="jorderBtn">
+			<input type="hidden" name="totalPrice" value="${nums}">
+			<input type="hidden" name="priceArray" value="${prices}">
+			<input type="hidden" name="menus" value="${menus}">
+			<button type='submit' class='jorderBtn'>주문하기</button>
+		</form>
+		
   </div>
   
 	

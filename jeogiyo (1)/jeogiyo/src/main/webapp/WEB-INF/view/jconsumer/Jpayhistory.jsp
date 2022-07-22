@@ -1,3 +1,5 @@
+<%@ taglib prefix ='c' uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -54,14 +56,21 @@ document.addEventListener('click',clickEffect);
 	   
 	   <div id='priceInfo'>
 	        <div class='sub'>주문내역</div>
-	       <span class = 'foodImg'><img src='../img/chicken1.png'width='240px' height='240px'/></span>
-	     
-	       <span class = 'foodInfo'>발사믹치킨</span>
-	       <span class = 'ea'>1개</span>
-	       <span class = ' menuEaPrice'>18500원</span><br/>
-	       <img src='../img/line.png'width='600px' height='20px'/><br/>
-	       <span class = 'menuPrice'>총 결제금액 18500원</span><br/>
-	   </div>
+		        <c:forEach var ="v" items="${menus}" varStatus="status">
+		       		<img src='../img/chicken1.png'width='240px' height='240px'/>		     
+		       		<span class = 'foodInfo'>${v}</span>
+		       		<span class = 'ea'>1개</span>
+		       		<span class = ' menuEaPrice'>
+		       		<fmt:parseNumber var="i" value="${priceArray[status.index]}" />
+		       		<fmt:formatNumber value="${i}" pattern="#,###" />원
+					</span><br/>
+		       		<img src='../img/line.png'width='600px' height='20px'/><br/>
+		       </c:forEach>
+		    </div>
+	       <span class = 'menuPrice'> 총 금액 : 
+	       <fmt:parseNumber var="i" value="${totalPrice}" />
+		    <fmt:formatNumber value="${i}" pattern="#,###" />원</span><br/>
+	  
 	   
 	   <form action="/status">
 	     <label class='paySelect'>결제방법
@@ -92,11 +101,14 @@ document.addEventListener('click',clickEffect);
 	         </div>
 	         
 	         <div class='font2'>
-	         <span class = 'menuprice'>18500원</span>
+	         <span class = 'menuprice'>${totalPrice}</span>
 	          <span>+</span>
-	         <span class = 'riderPrice'>2000원</span>
+	         <span class = 'riderPrice'>3000원</span>
 	         <span>=</span>
-	         <span class = 'totalPrice'>2000원</span> 
+	         <span class = 'totalPrice'>
+	         <fmt:parseNumber var="i" value="${totalPrice+3000}" />
+		     <fmt:formatNumber value="${i}" pattern="#,###" />원
+	         원</span> 
 	         </div>
 	   </div>
 	   

@@ -323,9 +323,7 @@ public class JConsumerController {
 				prices.add(i);
 			}
 		}
-		System.out.print(menus);
-		System.out.println();
-		System.out.println(prices);
+
 		
 		mv.addObject("inc",url);		
 		mv.addObject("menus",menus);
@@ -340,9 +338,9 @@ public class JConsumerController {
 	public ModelAndView menuAddBtn(com.jpro.jconsumer.Page consumerpage) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JmenuSelect.jsp";
-
+		String msg = "처음부터 다시 선택해주세요";
 		mv.addObject("inc",url);
-		
+		mv.addObject("msg",msg);
 
 		mv.setViewName("jconsumer/Jconsumer_index");		
 		return mv;
@@ -350,12 +348,41 @@ public class JConsumerController {
 
 	
 	@RequestMapping("jorderBtn")
-	public ModelAndView jorderBtn(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView jorderBtn(com.jpro.jconsumer.Page consumerpage,
+			HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/Jpayhistory.jsp";
+		//String가져와 '[',']',','요소 제거하기
+		String prices = req.getParameter("priceArray");
+		prices = prices.replace("[", "");
+		prices = prices.replace("]", "");
+		prices = prices.replace(" ", "");
 
-		mv.addObject("inc",url);
+		String totalPrice = req.getParameter("totalPrice");
+		String menus = req.getParameter("menus");
+		menus = menus.replace("[", "");
+		menus = menus.replace("]", "");
+		menus = menus.replace(" ", "");
 		
+		//문자열 -> 배열로전환
+		String[] menusTepm = menus.split(",");
+		String[] priceArrayTepm = prices.split(",");
+		
+		//list형으로 전환해주기
+		List<String> priceArray = new ArrayList<String>();
+		List<String> menusArray = new ArrayList<String>();
+		for(String i : priceArrayTepm) {	
+			priceArray.add(i);
+		}
+		for(String i : menusTepm) {	
+			menusArray.add(i);
+		}
+
+		//값 mv에 담아서 리턴
+		mv.addObject("menus",menusArray);
+		mv.addObject("totalPrice",totalPrice);
+		mv.addObject("priceArray",priceArray);
+		mv.addObject("inc",url);		
 
 		mv.setViewName("jconsumer/Jconsumer_index");		
 		return mv;

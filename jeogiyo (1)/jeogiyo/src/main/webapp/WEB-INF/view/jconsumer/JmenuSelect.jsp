@@ -180,6 +180,7 @@ ul.tabs li.current{
 	    </div>
 	    </form>
 	    <button type='button' onclick='test()' class="bagBtn">장바구니</button>
+	    <input type="hidden" name="msg" value="${msg}" id="msg">
 
 
 </body>
@@ -200,6 +201,12 @@ if (typeof window === 'object') {
 	  }
 */	  
 $(document).ready(function(){
+	let msg = document.getElementById('msg')
+	if(msg.value ===""){
+		
+	}else{
+		alert(msg.value);
+	}
 	
 	$('ul.tabs li').click(function(){
 		var tab_id = $(this).attr('data-tab');
