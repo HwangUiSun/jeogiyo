@@ -35,10 +35,82 @@ div.clickEffect{
 	}
 }
 
-.ordertime{
-	font-weight: bold;
-	font-size: 20px;
+#items .ordertime{
+	display : inline-block;
+	padding : 50px;
+	width : 150px;
+	font : bold	 x-large generic-family;
 }
+#items .info{
+	display : inline-block;
+	width : 400px;
+	margin : 0 130px;
+	padding: 10px;
+	
+}
+
+#items .info>.method{
+	display : inline-block;
+	background-color : #ddd;
+	border : 1px solid #000;
+	padding : 2px;
+	color : #f22;
+	font : bold small generic-family;
+	width : 80px;
+	text-align: center;
+	
+}
+
+#items .info>.amount{
+	display : inline-block;
+	width : 150px;
+	font : bold large generic-family;
+	margin-top: 30px;
+}
+
+#items .info>.menu{
+	font-size : 15px;
+	margin-top: 10px;
+	font : bold medium generic-family;
+}
+
+#items .info>.address{
+	font : bold large generic-family;
+	margin-top: 10px;
+	
+}
+.reviewBtn{
+	background-color : #ffffff; 
+	font : bold	 x-large generic-family;
+	color : #000000;
+	margin : 0 15px;
+	width : 140px;
+	height : 80px;
+	
+	border-radius : 10px;
+}
+
+.reviewBtn:hover{
+	background-color : #4ea0d8;
+	cursor : pointer;
+}
+
+ .paging{
+	text-align: center;
+}
+.paging>button{
+	
+	padding:3px 10px;
+	border:0;
+	border-radius:10px;
+	background-color: #4ea0d8;
+	color: #fff;	
+}
+.paging>button:hover{
+	cursor: pointer;
+	background-color:  #778899;
+}
+
 #wrap {
 
     padding:10px 15px 15px 15px; 

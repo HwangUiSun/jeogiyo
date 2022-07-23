@@ -64,7 +64,7 @@ document.addEventListener('click',clickEffect);
 			<c:set var='num' value='${consumerpage.startNo}' />
 			<c:forEach var='v' items='${storeSelectlist}'>
 		       <div class='items'onclick="">
-			        <span class='no'     >${num+1 }</span>
+			        <span class='no'     >${num }</span>
 					<span class='storeName'>${v.storeName}</span>
 					<span class='storeaddress'  >${v.address } </span>
 					<span class='genstorecall' >${v.phone} &nbsp;&nbsp;
