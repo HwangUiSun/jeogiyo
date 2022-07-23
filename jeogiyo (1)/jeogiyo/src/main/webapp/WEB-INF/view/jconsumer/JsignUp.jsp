@@ -80,7 +80,11 @@ function signUp(){
 	
 	console.log(form);
 	form.action = 'signUpBtn';
+	alert("회원가입이 완료되었습니다.");
 	form.submit(); 
+	
 } 
+
+
 </script>
 </html>

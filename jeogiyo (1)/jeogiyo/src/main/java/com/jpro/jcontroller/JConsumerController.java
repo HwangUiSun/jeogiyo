@@ -524,15 +524,13 @@ public class JConsumerController {
 		return mv;
 	}
 
-	// 내정보 -> 회원탈퇴 버튼 -> 매장페이지
+	// 내정보 -> 회원탈퇴 버튼 -> 로그인페이지
 	@RequestMapping("joinOutBtn")
-	public ModelAndView joinOutBtn(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView joinOutBtn() {
 		ModelAndView mv = new ModelAndView();
-		String url = "../jconsumer/JstoreSelect.jsp";
+		
 
-		mv.addObject("inc", url);
-
-		mv.setViewName("jconsumer/Jconsumer_index");
+		mv.setViewName("jconsumer/Jlogin");
 
 		return mv;
 	}

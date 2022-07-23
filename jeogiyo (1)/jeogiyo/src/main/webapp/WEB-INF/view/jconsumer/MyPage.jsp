@@ -56,7 +56,7 @@ document.addEventListener('click',clickEffect);
   
   <label></label>
   <button type='button' id='change_1Btn'onclick='change_1Btn2();'>수정하기</button>
-  <a href='joinOutBtn'><button type='button' id='joinOutBtn' onclick='joinOutBtn()'>회원탈퇴</button></a>
+  <button type='button' id='joinOutBtn' onclick='joinOutBtn2();'>회원탈퇴</button>
   <input type='hidden' name='findStr' value='${param.findStr}'/>
   <input type='hidden' name='nowPage' value='${param.nowPage}'/>
   </form>
@@ -94,14 +94,22 @@ window.onload = function(){
 		
 		console.log(form);
 		form.action = 'change_1Btn';
+		alert("정보가 수정되었습니다");
 		form.submit(); 
 	} 
+  function joinOutBtn2(){
+	  var form = document.frm_MyPage;
+		console.log("2");
+	
+		
+		console.log(form);
+		form.action = 'joinOutBtn';
+		alert("정말로 탈퇴하시겠습니까?")
+		form.submit(); 
+	}
 </script>
 
 <script>
-  function joinOutBtn(){
-		var returnValue = prompt('정말 탈퇴하시겠습니까?','비밀번호를 입력해 주세요');
-	}
   
 
 </script>
