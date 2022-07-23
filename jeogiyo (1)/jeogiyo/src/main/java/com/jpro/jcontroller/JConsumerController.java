@@ -50,6 +50,9 @@ public class JConsumerController {
 		HttpSession s = req.getSession();
 		if (rVo != null) {
 			session.setAttribute("id", rVo.getMid());
+			String url = "../jconsumer/Jmain.jsp";
+
+			mv.addObject("inc", url);
 			mv.setViewName("jconsumer/Jconsumer_index");
 		} else {
 			mv.setViewName("jconsumer/Jlogin_result");

@@ -11,7 +11,7 @@ body {
   background-image:#34495e;
 }
 
-.joinForm {
+.joinForm, #JsignUp {
   position:absolute;
   width:400px;
   height:400px;
@@ -24,12 +24,12 @@ body {
   border-radius: 15px;
 }
 
-.joinForm h2 {
+.joinForm h2, #JsignUp h2 {
   text-align: center;
   margin: 30px;
 }
 
-.textForm {
+.textForm, #main {
   border-bottom: 2px solid #adadad;
   margin: 30px;
   padding: 10px 10px;
@@ -68,7 +68,7 @@ body {
 }
 
 
-.findIdBtn, .findPwdBtn {
+.findIdBtn, .findPwdBtn{
   position:relative;
   left:40%;
   transform: translateX(-50%);
@@ -86,6 +86,55 @@ body {
   display:inline;
 }
 
-.findIdBtn:hover, .findPwdBtn:hover {
+.findIdBtn:hover, .findPwdBtn:hover, #signUpBtn:hover, #btnZipFind:hover {
   background-position: right;
+  
+  
+}
+
+#mid, #name, #pwd, #phone, #zipcode, #address, #email{
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+#signUpBtn {
+  position:relative;
+  left:40%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:80%;
+  height:40px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+#btnZipFind {
+  position:relative;
+  left:90%;
+  bottom: 60%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:40%;
+  height:40px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
 }

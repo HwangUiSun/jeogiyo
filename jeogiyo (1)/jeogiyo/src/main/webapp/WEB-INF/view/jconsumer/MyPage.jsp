@@ -24,37 +24,51 @@ document.addEventListener('click',clickEffect);
  
   <form action='' name='frm_MyPage' method='post' id='frm_MyPage'>
   
+    <div id='main'>
     <label>아이디</label>
-    <input type='text' name='mid' id='mid' value='${mid }' readonly size='15'><br/>
+    <input type='text' name='mid' id='mid' value='${mid }' readonly ><br/>
+    </div>
     
-    <label>성명</label>
-    <input type='text' name='name' id='name'value='${name }'size='12'><br/>
+    <div id='main'> 
+    <label>성명</label> 
+    <input type='text' name='name' id='name'value='${name }'><br/>
+    </div>
     
+    <div id='main'> 
     <label>연락처</label>
-    <input type='text' name='phone' id='phone' value='${phone }' size='12'><br/>
+    <input type='text' name='phone' id='phone' value='${phone }' ><br/>
+    </div>
     
+    <div id='main'> 
     <label>우편번호</label>
-    <input type='text' id='zipcode'  name='zipcode' value='${zipcode }' size='12'>
+    <input type='text' id='zipcode'  name='zipcode' value='${zipcode }' >
+    </div>
     
-    <button type='button' id='btnZipFind'>우편번호 검색</button>
-    <br/>
     
-    <label>주소</label>
-    <input type='text' id='address'  name='address' value='${address }'size='40'/><br/>
     
+    <div id='main'>
+    <label>주소</label> 
+    <input type='text' id='address'  name='address' value='${address }'/><br/>
+    </div>
+    
+    <div id='main'> 
     <label>이메일</label>
-    <input type='text' name='email' name='email' value='${email }' size='30'><br/>
-    <br/>
+    <input type='text' id='email' name='email' value='${email }'><br/>
+    </div><br/>
     
+   <div id='main'> 
    <label>사용가능 포인트</label>
-   <input type='text' class='usePoint' value='2000p' readonly/>
-   <br/>
+   <input type='text' id='usePoint'class='usePoint' value='2000p' readonly/>
+   </div>
+   
+   <div id='main'> 
    <label>소멸예정 포인트</label>
-    <input type='text' class='havePoint' value='2000p' readonly/>
-    <br/>
+    <input type='text' id='havePoint'class='havePoint' value='2000p' readonly/>
+    </div><br/>
     <br/>
   
-  <label></label>
+    <button type='button' id='btnZipFind'>우편번호 검색</button>
+
   <button type='button' id='change_1Btn'onclick='change_1Btn2();'>수정하기</button>
   <button type='button' id='joinOutBtn' onclick='joinOutBtn2();'>회원탈퇴</button>
   <input type='hidden' name='findStr' value='${param.findStr}'/>

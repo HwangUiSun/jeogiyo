@@ -5,45 +5,48 @@
 <head>
 <meta charset="UTF-8">
 <title>JsignUp</title>
-<link rel = 'stylesheet' type='text/css' href = 'css/JsignUp.css'>
+<link rel = 'stylesheet' type='text/css' href = 'css/JfindId.css'>
 </head>
 <body>
 
 <div id='JsignUp'>
-  <h1>회원가입</h1>
-  <div id='main'>
   <form name='JsignUp' method='post' id='JsignUp' name='JsignUp'>
-    <label>아이디</label>
-    <input type='text' name='mid' id='mid' size='15'><br/>
+	  <h2>회원가입</h2>
+  <div id='main'>
+    <input type='text' name='mid' id='mid' placeholder="아이디"><br/>
+   </div>
+   
+     <div id='main'>
+    <input type='text' name='name' id='name'placeholder="성명"'><br/>
+    </div>
     
-    <label>성명</label>
-    <input type='text' name='name' id='name' size='12'><br/>
+     <div id='main'>
+    <input type='password' name='pwd' id='pwd' maxlength='10'placeholder="비밀번호" autocomplete="none"><br/>
+    </div>
+    
+     <div id='main'>
+    <input type='text' name='phone' id='phone' placeholder="연락처"/><br/>
+    </div>
+    
+     <div id='main'>
+    <input type='text' name='zipcode'  id='zipcode' placeholder="우편번호"/>
+     </div> 
     
     
-    <label>비밀번호</label>
-    <input type='password' name='pwd' id='pwd' maxlength='10' autocomplete="none"><br/>
+     <div id='main'>
+    <input type='text' name='address' id='address' placeholder="주소"/><br/>
+    </div>
     
-    <label>연락처</label>
-    <input type='text' name='phone' id='phone' size='12'/><br/>
-    
-    <label>우편번호</label>
-    <input type='text' name='zipcode'  id='zipcod' size='12'/>
-    
+     <div id='main'>
+    <input type='text' name='email'id='email' placeholder="이메일"><br/>
+    </div>
     <button type='button' id='btnZipFind'>우편번호 검색</button>
-    <br/>
-    
-    <label>주소</label>
-    <input type='text' name='address' id='address' size='40'/><br/>
-    
-    <label>이메일</label>
-    <input type='text' name='email'id='email' size='30'><br/>
-    <br/>
   
-  </form>
-  <label></label>
+  
+ 
    <button type='button' id='signUpBtn'onclick='signUp();'>가입완료</button> 
+  </form>
   
-  </div>
 </div>
 </body>
 

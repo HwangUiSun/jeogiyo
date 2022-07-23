@@ -61,10 +61,17 @@
 	margin-bottom : 20px;
 	position : relative;
 	left : 1100px;
-	   top : -90px;
+	   top : -160px;
 }
 
 #homeBtn:hover{
 	cursor : pointer;
 	background-color : #999;
+}
+
+#loginIdprint{
+	font-size: 0.4cm;
+	font-family: sans-serif;
+	position: relative;
+	left : 1110px;
 }
