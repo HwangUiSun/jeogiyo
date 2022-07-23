@@ -35,5 +35,11 @@
 	          email = #{email}
 	       where mid = #{mid};
 	</update>
+	
+	<insert id='insertUser' parameterType='JConsumerLoginVo'>
+	      
+         insert into jstoreVo(mid,pwd,email,phone,address,zipcode)
+      values(#{mid},#{pwd},#{email},#{phone},#{address},#{zipcode});
+	</insert>
 
 </mapper>

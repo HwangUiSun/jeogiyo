@@ -12,40 +12,36 @@
 <div id='JsignUp'>
   <h1>회원가입</h1>
   <div id='main'>
-  <!--form name='JsignUp' method='post' id='JsignUp'  -->
+  <form name='JsignUp' method='post' id='JsignUp' name='JsignUp'>
     <label>아이디</label>
-    <input type='text' name='id' size='15'><br/>
+    <input type='text' name='mid' id='mid' size='15'><br/>
     
     <label>성명</label>
-    <input type='text' name='mName' size='12'><br/>
+    <input type='text' name='name' id='name' size='12'><br/>
     
     
     <label>비밀번호</label>
-    <input type='password' name='pwd' maxlength='10' autocomplete="none"><br/>
+    <input type='password' name='pwd' id='pwd' maxlength='10' autocomplete="none"><br/>
     
     <label>연락처</label>
-    <input type='text' name='phone' size='12'/><br/>
+    <input type='text' name='phone' id='phone' size='12'/><br/>
     
     <label>우편번호</label>
-    <input type='text' name='zipcode'  size='12'/>
+    <input type='text' name='zipcode'  id='zipcod' size='12'/>
     
     <button type='button' id='btnZipFind'>우편번호 검색</button>
     <br/>
     
     <label>주소</label>
-    <input type='text' name='address' size='40'/><br/>
-    
-    <label>상세주소</label>
-    <input type='text' id='apiAddressDetail' size='40'/>
-    <br>
+    <input type='text' name='address' id='address' size='40'/><br/>
     
     <label>이메일</label>
-    <input type='text' name='email' size='30'><br/>
+    <input type='text' name='email'id='email' size='30'><br/>
     <br/>
   
-  
+  </form>
   <label></label>
-  <a href ='signUpBtn'><button type='button' id='signUpBtn'>가입완료</button></a>
+   <button type='button' id='signUpBtn'onclick='signUp();'>가입완료</button> 
   
   </div>
 </div>
@@ -75,5 +71,16 @@ window.onload = function(){
         }).open();
     })
 };
+
+function signUp(){
+	console.log("1");
+	var form = document.JsignUp;
+	console.log("2");
+
+	
+	console.log(form);
+	form.action = 'signUpBtn';
+	form.submit(); 
+} 
 </script>
 </html>

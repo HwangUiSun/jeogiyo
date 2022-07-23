@@ -21,6 +21,7 @@ public interface JloginMapper {
 
     public JConsumerLoginVo selectUserInfo(Object object); 
 	public void updateUserInfo(JConsumerLoginVo attribute);
+	public void insertUser(JConsumerLoginVo vo);
 	
 	
 

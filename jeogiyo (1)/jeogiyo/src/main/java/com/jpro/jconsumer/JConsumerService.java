@@ -220,5 +220,9 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public void insertUser(JConsumerLoginVo vo) {
+		JloginMapper.insertUser(vo);
+		
+	}
 
 }

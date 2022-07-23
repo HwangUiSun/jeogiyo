@@ -161,18 +161,19 @@ public class JConsumerController {
 	// 회원가입페이지
 
 	@RequestMapping("signUpBtn")
-	public ModelAndView signUpBtn(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView signUpBtn(JConsumerLoginVo vo, HttpServletRequest req) {
+		
+		
+		
+		dao.insertUser(vo);
 		ModelAndView mv = new ModelAndView();
-		String url = "../jconsumer/JstoreSelect.jsp";
-
-		mv.addObject("inc", url);
 		/*
 		 * List<JConsumerVo> conlist = dao.storeSelect(consumerpage); consumerpage =
 		 * dao.getPage(); mv.addObject("storeSelectlist",conlist);
 		 * mv.addObject("storeSelectpage",consumerpage);
 		 */
 
-		mv.setViewName("jconsumer/Jconsumer_index");
+		mv.setViewName("jconsumer/Jlogin");
 		return mv;
 	}
 
