@@ -6,18 +6,24 @@
 
 
 
-<select id='login' parameterType="Map" resultType="JConsumerLoginVo">
-   select * from jstorevo
-   where mid= #{mid} and pwd = #{pwd}
-
-</select>
-
-<select id="findId" parameterType="JConsumerLoginVo" resultType="String">
-		select mid from jstorevo where name=#{name} and email=#{email}	
-		</select>
+	<select id='login' parameterType="Map" resultType="JConsumerLoginVo">
+	   select * from jstorevo
+	   where mid='${mid}' and pwd = '${pwd}'
+	
+	</select>
+	
+	<select id="findId" parameterType="JConsumerLoginVo" resultType="String">
+			select mid from jstorevo where name=#{name} and email=#{email}	
+	</select>
 
 	<select id="findPwd" parameterType="JConsumerLoginVo" resultType="String">
 		select pwd from jstorevo where mid=#{mid} and email=#{email}
+	</select>
+	
+	<select id='selectUserInfo' parameterType="Object" resultType="JConsumerLoginVo">
+	   select * from jstorevo
+	   where mid= #{mid} 
+	
 	</select>
 
 </mapper>

@@ -25,32 +25,28 @@ document.addEventListener('click',clickEffect);
   <form name='frm_member' method='post' id='frm_member'>
   
     <label>아이디</label>
-    <input type='text' name='id' size='15'><br/>
+    <input type='text' name='mid' id='mid' value='${mid }' size='15'><br/>
     
     <label>성명</label>
-    <input type='text' name='name' size='12'><br/>
-    
-    
-    <label>비밀번호</label>
-    <input type='password' name='pwd' maxlength='10' autocomplete="none"><br/>
+    <input type='text' name='name' id='name'value='${name }'size='12'><br/>
     
     <label>연락처</label>
-    <input type='text' name='phone' size='12'><br/>
+    <input type='text' name='phone' id='phone' value='${phone }' size='12'><br/>
     
     <label>우편번호</label>
-    <input type='text' id='zipcode'  size='12'>
+    <input type='text' id='zipcode'  name='zipcode' value='${zipcode }' size='12'>
     
     <button type='button' id='btnZipFind'>우편번호 검색</button>
     <br/>
     
     <label>주소</label>
-    <input type='text' id='address' size='40'/><br/>
+    <input type='text' id='address'  name='address' value='${address }'size='40'/><br/>
     
     <label>상세주소</label>
-    <input type='text' id='detailAddress' size='40'/><br/>
+    <input type='text' id='apiAddressDetail'name='apiAddressDetail' value='${apiAddressDetail }' size='40'/><br/>
     
     <label>이메일</label>
-    <input type='text' name='email' size='30'><br/>
+    <input type='text' name='email' name='email' value='${email }' size='30'><br/>
     <br/>
     
    <label>사용가능 포인트</label>

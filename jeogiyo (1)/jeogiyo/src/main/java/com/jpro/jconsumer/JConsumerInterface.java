@@ -23,6 +23,7 @@ public interface JConsumerInterface {
 	
 	//마이페이지
 	public String JMyPage(String mId, String name, String email, int phone, int zipcode, String address);
+	public JConsumerLoginVo selectUserInfo(Object object);
 	
 	//마이 페이지 수정
 	
@@ -40,6 +41,9 @@ public interface JConsumerInterface {
 	
 	//FAQ(리스트)
 	public List<String> JFAQ(List<String> list);
+
+	
+
 
 
 

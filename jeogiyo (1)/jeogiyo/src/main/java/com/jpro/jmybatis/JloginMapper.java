@@ -18,6 +18,7 @@ public interface JloginMapper {
 	public JConsumerLoginVo login(Map map);
 	public String findId(JConsumerLoginVo vo);
 	public String findPwd(JConsumerLoginVo vo);
+	public JConsumerLoginVo selectUserInfo(Object object);
 	
 
 }

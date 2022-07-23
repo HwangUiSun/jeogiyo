@@ -52,13 +52,11 @@ public class JConsumerController {
 		System.out.println(rVo+"fff");
 		HttpSession s = req.getSession();
 		if(rVo != null) {
-				session.setAttribute("id", rVo.getMid());
-				
-				mv.setViewName("jconsumer/Jconsumer_index");
-			}else{
-			    mv.setViewName("jconsumer/Jlogin_result");
-		 }
-		mv.setViewName("jconsumer/Jconsumer_index");
+			session.setAttribute("id", rVo.getMid());
+			mv.setViewName("jconsumer/Jconsumer_index");
+		}else{
+			mv.setViewName("jconsumer/Jlogin_result");
+		}
 		return mv;
 	
 	}
@@ -85,13 +83,12 @@ public class JConsumerController {
 		return mv;
 	}*/
 	
-//	@RequestMapping("login_fail")
-//	public ModelAndView login_fail() {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("jconsumer/Jlogin");
-//		
-//		return mv;
-//	}
+	@RequestMapping("Jlogin_fail")
+	public ModelAndView login_fail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("jconsumer/Jlogin");		
+		return mv;
+	}
 	
 	
 	@RequestMapping("JsignUp")
@@ -221,12 +218,18 @@ public class JConsumerController {
 	}
 	
 	@RequestMapping("MyPage")
-	public ModelAndView MyPage(HttpServletRequest req) {
-		//JConsumerLoginVo vo = new JConsumerLoginVo();
-		
-		
-		
+	public ModelAndView MyPage(Page page, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		HttpSession session =req.getSession();
+		JConsumerLoginVo rVo = dao.selectUserInfo(session.getAttribute("id"));
+		page=dao.getPage();
+		mv.addObject("mid" , rVo.getMid());
+		mv.addObject("name" , rVo.getName());
+		mv.addObject("phone" , rVo.getPhone());
+		mv.addObject("zipcode" , rVo.getZipcode());
+		mv.addObject("address" , rVo.getAddress());
+		mv.addObject("email" , rVo.getEmail());
+		
 		String url = "../jconsumer/MyPage.jsp";
 
 		mv.addObject("inc",url);

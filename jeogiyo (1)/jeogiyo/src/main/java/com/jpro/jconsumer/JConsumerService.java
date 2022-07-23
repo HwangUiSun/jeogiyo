@@ -73,6 +73,7 @@ public class JConsumerService implements JConsumerInterface {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("mid", mid);
 		map.put("pwd", pwd);
+		System.out.println(map);
 	
 		try {  
 	        
@@ -82,8 +83,11 @@ public class JConsumerService implements JConsumerInterface {
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		System.out.println(JloginMapper.login(map));
 		return rVo;
 	}
+	
+	
 	public String findId(JConsumerLoginVo vo) {
 	String mId ="";
 		
@@ -130,11 +134,29 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public String JMyPage(String mId, String name, String email, int phone, int zipcode, String address) {
-		// TODO Auto-generated method stub
-		return null;
+	/*
+	 * @Override public JConsumerLoginVo selectUserInfo(Object attribute) {
+	 * 
+	 * }
+	 */
+	
+	@Override 
+	public JConsumerLoginVo selectUserInfo(Object object) {
+		JConsumerLoginVo vo =null;
+		
+		try {
+			vo = JloginMapper.selectUserInfo(object);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
 	}
+		  
+		  
+	
+
+
 	@Override
 	public String JMyPageChange(String mId, String name, String email, int phone, int zipcode, String address) {
 		// TODO Auto-generated method stub
@@ -179,10 +201,10 @@ public class JConsumerService implements JConsumerInterface {
 	public void insertPayHistory(JpayHistoryVo vo) {
 		mapper.insertPayHistory(vo);
 		
-		
-		
 	}
-	
-
+	@Override
+	public String JMyPage(String mId, String name, String email, int phone, int zipcode, String address) {
+		// TODO Auto-generated method stub
+		return null;
+		}
 }
-
