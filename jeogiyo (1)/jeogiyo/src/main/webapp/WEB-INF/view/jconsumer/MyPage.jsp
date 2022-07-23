@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>MyPage</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/MyPage.css'>
-<script src = './js/consumer.js'></script>
+<!-- <script src = './js/consumer.js'></script> -->
 <script>
 function clickEffect(e){
   var d=document.createElement("div");
@@ -22,10 +22,10 @@ document.addEventListener('click',clickEffect);
 <div id = 'subject'>내정보 </div>
 <div id='MyPage'>
  
-  <form name='frm_member' method='post' id='frm_member'>
+  <form action='' name='frm_MyPage' method='post' id='frm_MyPage'>
   
     <label>아이디</label>
-    <input type='text' name='mid' id='mid' value='${mid }' size='15'><br/>
+    <input type='text' name='mid' id='mid' value='${mid }' readonly size='15'><br/>
     
     <label>성명</label>
     <input type='text' name='name' id='name'value='${name }'size='12'><br/>
@@ -42,9 +42,6 @@ document.addEventListener('click',clickEffect);
     <label>주소</label>
     <input type='text' id='address'  name='address' value='${address }'size='40'/><br/>
     
-    <label>상세주소</label>
-    <input type='text' id='apiAddressDetail'name='apiAddressDetail' value='${apiAddressDetail }' size='40'/><br/>
-    
     <label>이메일</label>
     <input type='text' name='email' name='email' value='${email }' size='30'><br/>
     <br/>
@@ -58,7 +55,7 @@ document.addEventListener('click',clickEffect);
     <br/>
   
   <label></label>
-  <a href ='change_1Btn'><button type='button' id='change_1Btn'>수정하기</button></a>
+  <button type='button' id='change_1Btn'onclick='change_1Btn2();'>수정하기</button>
   <a href='joinOutBtn'><button type='button' id='joinOutBtn' onclick='joinOutBtn()'>회원탈퇴</button></a>
   <input type='hidden' name='findStr' value='${param.findStr}'/>
   <input type='hidden' name='nowPage' value='${param.nowPage}'/>
@@ -89,12 +86,23 @@ window.onload = function(){
         }).open();
     });
 }
+    function change_1Btn2(){
+		console.log("1");
+		var form = document.frm_MyPage;
+		console.log("2");
+	
+		
+		console.log(form);
+		form.action = 'change_1Btn';
+		form.submit(); 
+	} 
 </script>
 
 <script>
   function joinOutBtn(){
 		var returnValue = prompt('정말 탈퇴하시겠습니까?','비밀번호를 입력해 주세요');
 	}
+  
 
 </script>
 </body>

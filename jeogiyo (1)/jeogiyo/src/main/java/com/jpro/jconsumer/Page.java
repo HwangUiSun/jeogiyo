@@ -15,8 +15,17 @@ public class Page {
   int endPage; // 페이지의 끝 위치
   int nowPage=1; // 사용자자가 보고 있는 현재 페이지
   String findStr;
-  
-  public Page() {
+  String mapFindStr, storeFindStr,findStore;
+  String mid;
+   
+
+public String getMid() {
+	return mid;
+}
+public void setMid(String mid) {
+	this.mid = mid;
+}
+public Page() {
   	compute();
   }
   public Page(int totSize, int nowPage) {
@@ -104,6 +113,24 @@ public class Page {
 	public void setFindStr(String findStr) {
 		this.findStr = findStr;
 	}
+	  public String getMapFindStr() {
+			return mapFindStr;
+		}
+		public void setMapFindStr(String mapFindStr) {
+			this.mapFindStr = mapFindStr;
+		}
+		public String getStoreFindStr() {
+			return storeFindStr;
+		}
+		public void setStoreFindStr(String storeFindStr) {
+			this.storeFindStr = storeFindStr;
+		}
+		public String getFindStore() {
+			return findStore;
+		}
+		public void setFindStore(String findStore) {
+			this.findStore = findStore;
+		}
   
 }
 

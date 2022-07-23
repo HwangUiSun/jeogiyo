@@ -134,12 +134,8 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		
 	}
-	/*
-	 * @Override public JConsumerLoginVo selectUserInfo(Object attribute) {
-	 * 
-	 * }
-	 */
-	
+
+	//마이페이지
 	@Override 
 	public JConsumerLoginVo selectUserInfo(Object object) {
 		JConsumerLoginVo vo =null;
@@ -153,15 +149,26 @@ public class JConsumerService implements JConsumerInterface {
 		return vo;
 	}
 		  
-		  
-	
-
-
+    //마이페이지 수정
 	@Override
-	public String JMyPageChange(String mId, String name, String email, int phone, int zipcode, String address) {
+	public void updateUserInfo(JConsumerLoginVo vo) {
+		
+		try {
+			JloginMapper.updateUserInfo(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	/*
+	 * @Override
+	 * public void updateUserInfo(JConsumerLoginVo vo) {
+	 * 	public JConsumerLoginVo updateUserInfo(Object attribute) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	} }
+	 */
+	
+	 
 	
 	@Override
 	public List<JConsumerVo3> Jorderlist(Page apage) {		
@@ -198,6 +205,7 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	public void insertPayHistory(JpayHistoryVo vo) {
 		mapper.insertPayHistory(vo);
 		
@@ -207,4 +215,10 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		return null;
 		}
+	@Override
+	public String JMyPageChange(String mId, String name, String email, int phone, int zipcode, String address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

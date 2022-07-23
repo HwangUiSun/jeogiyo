@@ -28,6 +28,8 @@ public interface JConsumerInterface {
 	//마이 페이지 수정
 	
 	public String JMyPageChange(String mId, String name, String email, int phone, int zipcode, String address);
+	public void updateUserInfo(JConsumerLoginVo attribute);
+	//public void updateUserInfo(JConsumerLoginVo vo);
 	
 	//주문 내역(보류, 이유 : 매개변수로 받아야 할 변수가 너무 많음)
 	
@@ -41,6 +43,9 @@ public interface JConsumerInterface {
 	
 	//FAQ(리스트)
 	public List<String> JFAQ(List<String> list);
+
+
+
 
 	
 

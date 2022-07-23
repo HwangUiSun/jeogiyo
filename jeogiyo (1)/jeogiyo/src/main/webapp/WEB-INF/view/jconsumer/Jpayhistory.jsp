@@ -37,7 +37,7 @@ document.addEventListener('click',clickEffect);
 	        <input type='text' class='name' /><br/>
 	        
 	        <div class="fieldlabel"><label>연락처</label></div>
-	        <input type='text' class='phone'/><br/>
+	        <input type='text' class='phone' name="phone" id="phone"/><br/>
 	        
 		    <div class="fieldlabel"><label>우편번호</label></div>
 		    <input type='text' id='zipcode' size='12'>

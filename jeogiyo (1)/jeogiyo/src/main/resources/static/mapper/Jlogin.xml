@@ -25,5 +25,15 @@
 	   where mid= #{mid} 
 	
 	</select>
+	
+	<update id='updateUserInfo' parameterType='JConsumerLoginVo'>
+	       update jstorevo
+             set name = #{name},
+	          phone = #{phone},
+	          zipcode = #{zipcode},
+	          address = #{address},
+	          email = #{email}
+	       where mid = #{mid};
+	</update>
 
 </mapper>

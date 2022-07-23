@@ -43,7 +43,7 @@ document.addEventListener('click',clickEffect);
 				<option>선택해주세요</option>
 				
 				</select>
-				<input type='text' id='findStore'/>
+				<input type='text' id='findStore' name='findStore'/>
 				<button type='submit' id='storeListBtn'>매장찾기</button>
 				<input type='hidden' name='nowPage' value='${page.nowPage }'/>
 		</form>
