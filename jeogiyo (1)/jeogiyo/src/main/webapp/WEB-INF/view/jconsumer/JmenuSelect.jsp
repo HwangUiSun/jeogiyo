@@ -47,7 +47,9 @@ ul.tabs li.current{
 .tab-content.current{
     display : inherit;
 }
-
+input:invalid {
+  border: 3px solid red;
+}
 </style>
 <body>
 <div id='subject'>메뉴보기</div>
@@ -68,9 +70,12 @@ ul.tabs li.current{
 	       <br/>
 	       <div class='menuInfo' id='menuInfo1_1'>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</div>
 	       <div class='price' id='price1_1'>소비자가격 : 18500원</div>
+	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
 	       <input type='checkbox' style='zoom:2.0' name='check' value='발사믹 치킨'/>선택 
-	       <hr/>
 	       </div>
+	        <div><input class="ea" type="text" onkeyup="checkEa(0)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
 	    </div>
 	    
 		<div id="category_2" class="tab-content">
@@ -80,18 +85,25 @@ ul.tabs li.current{
 	       <br/>
 	       <div class='menuInfo' id='menuInfo2_1'>달콤한 허니소스에 쫄깃한 날개와 담백한 다리가 만난 메뉴</div>
 	       <div class='price' id='price2_1'>소비자가격 : 20000원</div>
+	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
 	       <input type='checkbox' style='zoom:2.0'  name='check' value='달콤허니 오리지날'/>선택 
-		   <hr/>
 		   </div>
+		    <div><input class="ea" type="text" onkeyup="checkEa(1)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
+		    
 		    <div class="testdiv" onclick="check(2)">
           <img src='../img/honey combo.png' width='240px' height='240px'/>
 	       <div class='subject' id='productName2_2'><a>달콤허니콤보</a></div>
 	       <br/>
 	       <div class='menuInfo' id='menuInfo2_2'>달콤바삭한 맛이 일품인 한 마리 치킨</div>
 	       <div class='price' id='price2_2'>소비자가격 : 16000원</div>
+	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
 	       <input type='checkbox' style='zoom:2.0'  name='check' value='달콤허니콤보'/>선택 
-     	   <hr/>
-     	   </div>
+     	    </div>
+     	     <div><input class="ea" type="text" onkeyup="checkEa(2)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
 		   
 	    </div>
 	    
@@ -102,20 +114,27 @@ ul.tabs li.current{
 	       <br/>
 	       <div class='menuInfo' id='menuInfo3_1'>국내산 청양 홍고추의 매콤함이 일품인 매콤레드 오리지날</div>
 	       <div class='price' id='price3_1'>소비자가격 : 17000원</div>
+	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='매콤레드 오리지날'/>선택 
 		   <br/>
-		   <hr/>
 		   </div>
+		    <div><input class="ea" type="text" onkeyup="checkEa(3)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
+		   
 		    <div class="testdiv" onclick="check(4)">
           <img src='../img/red wing.png' width='240px' height='240px'/>
 	       <div class='subject' id='productName3_2'><a>매콤레드 윙</a></div>
 	       <br/>
 	       <div class='menuInfo' id='menuInfo3_2'>국내산 청양 홍고추의 매콤함이 골고루 밴 쫄깃한 날개와 봉의 만남</div>
 	       <div class='price' id='menuInfo3_2'>소비자가격 : 20000원</div>
+	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='매콤레드 윙'/>선택 
 		   <br/>
-		   <hr/>
 		   </div>
+		    <div><input class="ea" type="text" onkeyup="checkEa(4)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
 		   
 	    </div>
 	   
@@ -127,20 +146,27 @@ ul.tabs li.current{
 	      <br/>
 	       <div class='menuInfo' id='menuInfo3_2'></div>
 	       <div class='price' id='price4_1'>소비자가격 :2500원</div>
+	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='치즈스틱'/>선택 
 		   <br/>
-		   <hr/>
 		   </div>
+		    <div><input class="ea" type="text" onkeyup="checkEa(5)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
+		    
 		    <div class="testdiv" onclick="check(6)">
 		  <img src='../img/cheese ball.jfif' width='240px' height='240px'/>
 	       <div class='subject' id='productName4_2'><a>치즈볼</a></div>
 	       <br/>
 	       <div class='menuInfo' id='menuInfo3_2'></div>
 	       <div class='price' id='price4_2'>소비자가격 : 3000원</div>
+	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='치즈볼'/>선택 
 		   <br/>
-		   <hr/>
 		   </div>
+		    <div><input class="ea" type="text" onkeyup="checkEa(6)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
 	    </div>
 	    
 		<div id="category_5" class="tab-content">
@@ -150,32 +176,39 @@ ul.tabs li.current{
 	       <br/>
 	       <div class='menuInfo' id='menuInfo3_2'></div>
 	       <div class='price' id='price5_1'>소비자가격 : 2000원</div>
+	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
 		   <input type='checkbox' style='zoom:2.0' name='check' value='콜라'/>선택 
-		  
-		   <hr/>
 		 </div>
+		  <div><input class="ea" type="text" onkeyup="checkEa(7)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
 		   
 		   <div class="testdiv" onclick="check(8)">
 		   	<img src='../img/cider.jfif' width='240px' height='240px'/>
 	       	<div class='subject' id='productName5_2'><a>사이다</a></div>
 	       	<br/>
 	       <div class='menuInfo' id='menuInfo3_2'></div>
-	       	<div class='price' id='price5_2'>소비자가격 : 2000원</div>
+	       	<div class='price' id='price5_2'>소비자가격 : 2000원</div>	       	
 		   	<input type='checkbox'  style='zoom:2.0' name='check' value='사이다'/>선택 
-		   	<br/>
-		   	<hr/>
+		   	<br/>		   
 		   </div>
-		   
+		   <div><input class="ea" type="text" onkeyup="checkEa(8)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
+		   	
 		   <div class="testdiv" onclick="check(9)">
 		     <img src='../img/fanta.jfif' width='240px' height='240px'/>
 	      	 <div class='subject' id='productName5_3'><a>환타</a></div>
 	      	 <br/>
 	       <div class='menuInfo' id='menuInfo3_2'></div>
-	      	 <div class='price' id='price5_3'>소비자가격 : 2000원</div>
+	      	 <div class='price' id='price5_3'>소비자가격 : 2000원</div>	      	 
 		  	 <input type='checkbox' style='zoom:2.0' name='check' value='환타'/>선택 
 		   	 <br/>
-		   	 <hr/>
+		   	<input type="hidden" name="ea" value="1">
 		   </div>
+		    <div><input class="ea" type="text" onkeyup="checkEa(9)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
+		    <hr/>
 	    </div>
 	    </div>
 	    </form>
@@ -240,34 +273,50 @@ function test(){
 */
 var menuArray =[]
 var priceArray =[]
+var eaArray=[]
+function checkEa(sno){
+	let div = document.getElementsByClassName('testdiv')
+	productName = div[sno].children[1].innerText	
+	let ea  = document.getElementsByClassName('ea')[sno].value
+	if(div[sno].children.check.checked ===true ){
+		const index = menuArray.indexOf(productName)
+		eaArray[index]= ea;
+	}
+	
+
+	
+}
+
 function check(sno){
 	let productName=""
 	let price =""
+	let ea = 0;
 	let div = document.getElementsByClassName('testdiv')
 	if(div[sno].children.check.checked ===true){
 		div[sno].children.check.checked= false
-		productName = div[sno].children[1].innerText
+		productName = div[sno].children[1].innerText		
 		price = div[sno].children[4].innerText
 		for(let i = 0 ; i < menuArray.length;i++){
 			if(menuArray[i]==productName){
 				menuArray.splice(i,1)
 				priceArray.splice(i,1)
+				eaArray.splice(i,1)
+				
 			}
 		}
 		
 	}else{
 		div[sno].children.check.checked=true
 		productName = div[sno].children[1].innerText
-		price = div[sno].children[4].innerText
+		price = div[sno].children[4].innerText		
+		let ea  = document.getElementsByClassName('ea')[sno].value
 		var regex = /[^0-9]/g;				// 숫자가 아닌 문자열을 선택하는 정규식
 		var result = price.replace(regex, "")	
 		menuArray.push(productName)
 		priceArray.push(result)
+		eaArray.push(ea)
+		
 	}	
-	
-	console.log(menuArray)
-	console.log(priceArray)
-	
 
 }
 
@@ -299,8 +348,14 @@ function test(){
 	priceinput.setAttribute("type","hidden")
 	priceinput.setAttribute("value",strResult)
 	
+	let eainput = document.createElement('input')
+	eainput.setAttribute("name","eaArray")
+	eainput.setAttribute("type","hidden")
+	eainput.setAttribute("value",eaArray)
+	
 	form.appendChild(valueinput);
 	form.appendChild(priceinput);
+	form.appendChild(eainput);
     document.body.appendChild(form);
     
     form.submit();
