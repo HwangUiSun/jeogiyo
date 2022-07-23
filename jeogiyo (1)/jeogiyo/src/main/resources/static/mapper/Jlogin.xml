@@ -8,7 +8,7 @@
 
 <select id='login' parameterType="Map" resultType="JConsumerLoginVo">
    select * from jstorevo
-   where mid="${mid}" and pwd = "${pwd}"
+   where mid= #{mid} and pwd = #{pwd}
 
 </select>
 

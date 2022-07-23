@@ -42,6 +42,7 @@ public class JConsumerController {
 	public ModelAndView loginBtn( HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session =req.getSession();
+		System.out.println(req.getSession());
 	    String mid =req.getParameter("mId");
 		String pwd = req.getParameter("password");
 		System.out.println(mid);
@@ -49,15 +50,14 @@ public class JConsumerController {
 		JConsumerLoginVo rVo = dao.login(mid, pwd);
 		mv.addObject("rVo",rVo);
 		System.out.println(rVo+"fff");
-//		//HttpSession s = req.getSession();
-//		if(rVo != null) {
-//			if(rVo.getMid().equals("ehgmlwn")) {
-//				session.setAttribute("id", rVo.getMid());
-//				mv.setViewName("jconsumer/Jconsumer_index");
-//			}else{
-//			    mv.setViewName("jconsumer/Jlogin_result");
-//		       }
-//		}
+		HttpSession s = req.getSession();
+		if(rVo != null) {
+				session.setAttribute("id", rVo.getMid());
+				
+				mv.setViewName("jconsumer/Jconsumer_index");
+			}else{
+			    mv.setViewName("jconsumer/Jlogin_result");
+		 }
 		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
 	
@@ -70,7 +70,9 @@ public class JConsumerController {
 		JConsumerVo rVo = dao.login(vo,req);
 		String url = "../jconsumer/JstoreSelect.jsp";
 
-		mv.addObject("inc",url);	@RequestMapping("login_fail")
+		mv.addObject("inc",url);	
+		
+		@RequestMapping("login_fail")
 	public ModelAndView login_fail() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("jconsumer/Jlogin");
@@ -219,7 +221,11 @@ public class JConsumerController {
 	}
 	
 	@RequestMapping("MyPage")
-	public ModelAndView MyPage(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView MyPage(HttpServletRequest req) {
+		//JConsumerLoginVo vo = new JConsumerLoginVo();
+		
+		
+		
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/MyPage.jsp";
 
