@@ -29,9 +29,9 @@ document.addEventListener('click',clickEffect);
 	   <input type="hidden" name="totalPrice" id='totalPrice' value="${totalPrice+3000}"/>
 	   <div id='payInfo'>
 	        <div class='sub'>결제정보</div>
-	         
-	        <br/><h2><label>수령인정보</label></h2><br/>
 	  </div>
+	         <div id='userInfo'>
+	        <br/><h2><label>수령인정보</label></h2><br/>
 	        
 	        <div class="fieldlabel"><label>이름</label></div>
 	        <input type='text' class='name' /><br/>
@@ -54,12 +54,12 @@ document.addEventListener('click',clickEffect);
 	        
 	        <div class="fieldlabel"><label>요청사항</label></div>
 	        <input type='text' class='request'/>
-	  
+	       </div>
 	   
 	   <div id='priceInfo'>
 	        <div class='sub'>주문내역</div>
 		        <c:forEach var ="v" items="${menus}" varStatus="status">
-		       		<img src='../img/chicken1.png'width='240px' height='240px'/>		     
+		       		<img src="${imgArray[status.index]}" width='240px' height='240px'/>		     
 		       		<span class = 'foodInfo'>${v}</span>
 		       		<span class = 'ea'>1개</span>
 		       		<span class = ' menuEaPrice'>
@@ -74,43 +74,46 @@ document.addEventListener('click',clickEffect);
 		    <fmt:formatNumber value="${i}" pattern="#,###" />원</span><br/>
 	  
 	   
-	   <!-- <form action="/status"> -->
+	   <!-- <form action="/status"> 
 	     <label class='paySelect'>결제방법
 		       <br/>
 		         <input type='radio' name='radioSelect' id='meetPayBtn' value='만나서결제'/>만나서 결제
 		         <input type='radio' name='radioSelect' id='cardPayBtn' value='카드결제' />카드 결제
 		       <br/>
-         </label>	
+         </label>	 -->
 	  <!--  </form> -->
 	   
 	   <div id='point'>
-	          <div class='sub'>포인트사용</div>
+	          <div class='sub'>결제방법</div>
 	          <div class='msg'>
-	        <label>보유포인트</label>
+	          <input type='radio' name='radioSelect' id='meetPayBtn' value='만나서결제'/>만나서 결제&nbsp;&nbsp;&nbsp;
+		         <input type='radio' name='radioSelect' id='cardPayBtn' value='카드결제' />카드 결제
+	        <!-- <label>보유포인트</label>
 	        <input type='text' class='havePoint' value='10000p' readonly/><br/>
 	         <label>포인트사용</label>
 	        <input type='text' class='usePoint'/>
-	        <button type='button' class='usePointBtn'>포인트 전액 사용</button><br/>
+	        <button type='button' class='usePointBtn'>포인트 사용</button><br/> -->
 	        </div>
 	   </div>
 	   
 	   <div id='payPrice'>
 	         <div class='sub'>최종결제금액</div>
 	         <div class='font'>
-	         <br/><label>총 상품 금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-	         <label>배송 금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-	         <label>결제 금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><br/>
+	         <br/><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 상품 금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+	         <label>배송 금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+	         <label>결제 금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><br/>
 	         </div>
 	         
 	         <div class='font2'>
-	         <span class = 'menuprice'>${totalPrice}</span>
+	         <span class = 'menuprice'>${totalPrice}원</span>
+	         
 	          <span>+</span>
 	         <span class = 'riderPrice'>3000원</span>
 	         <span>=</span>
 	         <span class = 'totalPrice'>
 	         <fmt:parseNumber var="i" value="${totalPrice+3000}" />
 		     <fmt:formatNumber value="${i}" pattern="#,###" />원
-	         원</span> 
+	         </span> 
 	         </div>
 	   </div>
 	   </form>
@@ -118,7 +121,7 @@ document.addEventListener('click',clickEffect);
 	   <div id='Btns'>
 	        <hr/>
 	        <button type='button' class='payBtn' onclick='payBtn();'>결제</button>
-	        <a href='paycancelBtn'><button type='button' class='paycancelBtn'>취소하기</button></a>
+	       <button type='button' class='paycancelBtn'onclick='paycancel();'>취소하기</button>
 	   </div>
 	</div>
 </body>
@@ -167,6 +170,14 @@ function payBtn(){
 	
 	console.log(form);
 	form.action = 'payBtn';
+	form.submit(); 
+}
+
+function paycancel(){
+	console.log("1");
+	var form = document.frmPay;
+	console.log("2");
+	form.action = 'JstoreSelect';
 	form.submit(); 
 }
 </script>
