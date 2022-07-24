@@ -1,3 +1,5 @@
+<%@ taglib prefix ='c' uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -18,22 +20,24 @@
 	</div>
 	<div id='priceInfo'>
 	       <div class='sub'>주문내역</div>
-	       <span class = 'foodImg'><img src='../img/chicken1.png'width='240px' height='240px'/></span>
-	     
-	       <span class = 'foodInfo'>발사믹치킨</span>
-	       <span class = 'ea'>1개</span>
-	        <span class = ' menuEaPrice'>18500원</span><br/><br/>
+	       <c:forEach var="v" items="${menus}" varStatus="status">
+		    	<div>
+		       		<span class = 'foodImg'><img src='../img/chicken1.png'width='240px' height='240px'/></span>
+		       		<span class = 'foodInfo'>${v}</span>
+		       		<span class = 'ea'>${eaArray[status.index]}개</span>
+		      		<span class = ' menuEaPrice'>
+		      		<fmt:parseNumber var="i" value="${priceArray[status.index]*eaArray[status.index]}" />
+		       		<fmt:formatNumber value="${i}" pattern="#,###" />원
+		       		</span><br/><br/>
+		      	</div>
+		    </c:forEach>
 	       <button type='button'onclick="javascript:callInfoBtn()" class='callInfoBtn'>☎ 전화걸기</button>
 	       
-	       <div id = 'totaPayInfo'>
-	          <div class = 'msg'>
-	       <span class = 'foodInfo'>발사믹치킨</span>
-	       <span class = 'ea'>1개</span>
-	       <span class = ' menuEaPrice'>18500원</span><br/>
-	       <label>배송 금액</label>
-	       <hr/>
-	       <span class = 'riderPrice'>2000원</span><br/>
-	       <span class = 'menuPrice'>총 결제금액 18500원</span><br/>
+	       <div id = 'totaPayInfo'>	       
+	       <span class = 'menuPrice'>결제방법 :  ${howToPay}</span><br/>	       	      
+	       <span class = 'menuPrice'>총 결제금액 :  ${totalPrice}</span><br/>
+	       <span class = 'menuPrice'>요청사항:  ${consumerRequest}</span><br/>
+	        
 	        </div>
 	       </div>
 	 </div>

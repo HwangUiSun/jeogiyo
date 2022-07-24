@@ -72,11 +72,10 @@ input:invalid {
 	       <div class='menuInfo' id='menuInfo1_1'>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</div>
 	       <div class='price' id='price1_1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소비자가격 : 18500원</div>
 	       <input type='hidden' id='imga' name='imga' value='../img/chicken1.png'/>
-	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
-	        <div><label>수량&nbsp;&nbsp;</label><input class="ea" type="text" size ='5' onkeyup="checkEa(0)"
-		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 	       <input type='checkbox' style='zoom:2.0' name='check' value='발사믹 치킨'/>선택 
 	       </div>
+		     <div>수량<input class="ea" type="text" onkeyup="checkEa(0)"
+		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 	    </div>
 	    
@@ -89,10 +88,9 @@ input:invalid {
 	       <div class='menuInfo' id='menuInfo2_1'>달콤한 허니소스에 쫄깃한 날개와 담백한 다리가 만난 메뉴</div>
 	       <div class='price' id='price2_1'>소비자가격 : 20000원</div>
 	        <input type='hidden' id='imga' name='imga' value='../img/original.png'/>
-	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
-	       <input type='checkbox' style='zoom:2.0'  name='check' value='달콤허니 오리지날'/>선택 
+	        <input type='checkbox' style='zoom:2.0'  name='check' value='달콤허니 오리지날'/>선택 
 		   </div>
-		    <div><input class="ea" type="text" onkeyup="checkEa(1)"
+		    <div>수량<input class="ea" type="text" onkeyup="checkEa(1)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 		    
@@ -104,10 +102,10 @@ input:invalid {
 	       <div class='menuInfo' id='menuInfo2_2'>달콤바삭한 맛이 일품인 한 마리 치킨</div>
 	       <div class='price' id='price2_2'>소비자가격 : 16000원</div>
 	        <input type='hidden' id='imga' name='imga' value='../img/honeycombo.png'/>
-	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
+	     
 	       <input type='checkbox' style='zoom:2.0'  name='check' value='달콤허니콤보'/>선택 
      	    </div>
-     	     <div><input class="ea" type="text" onkeyup="checkEa(2)"
+     	     <div>수량<input class="ea" type="text" onkeyup="checkEa(2)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 		   
@@ -122,11 +120,11 @@ input:invalid {
 	       <div class='menuInfo' id='menuInfo3_1'>국내산 청양 홍고추의 매콤함이 일품인 매콤레드 오리지날</div>
 	       <div class='price' id='price3_1'>소비자가격 : 17000원</div>
 	       <input type='hidden' id='imga' name='imga' value='../img/red original.png'/>
-	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
+	     
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='매콤레드 오리지날'/>선택 
 		   <br/>
 		   </div>
-		    <div><input class="ea" type="text" onkeyup="checkEa(3)"
+		    <div>수량<input class="ea" type="text" onkeyup="checkEa(3)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 		   
@@ -138,11 +136,11 @@ input:invalid {
 	       <div class='menuInfo' id='menuInfo3_2'>국내산 청양 홍고추의 매콤함이 골고루 밴 쫄깃한 날개와 봉의 만남</div>
 	       <div class='price' id='menuInfo3_2'>소비자가격 : 20000원</div>
 	       <input type='hidden' id='imga' name='imga' value='../img/red wing.png'/>
-	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
+	       
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='매콤레드 윙'/>선택 
 		   <br/>
 		   </div>
-		    <div><input class="ea" type="text" onkeyup="checkEa(4)"
+		    <div>수량<input class="ea" type="text" onkeyup="checkEa(4)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 		   
@@ -158,11 +156,11 @@ input:invalid {
 	       <div class='menuInfo' id='menuInfo3_2'></div>
 	       <div class='price' id='price4_1'>소비자가격 :2500원</div>
 	       <input type='hidden' id='imga' name='imga' value='../img/cheese stick.jfif'/>
-	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
+	       
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='치즈스틱'/>선택 
 		   <br/>
 		   </div>
-		    <div><input class="ea" type="text" onkeyup="checkEa(5)"
+		    <div>수량<input class="ea" type="text" onkeyup="checkEa(5)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 		    
@@ -174,11 +172,11 @@ input:invalid {
 	       <div class='menuInfo' id='menuInfo3_2'></div>
 	       <div class='price' id='price4_2'>소비자가격 : 3000원</div>
 	       <input type='hidden' id='imga' name='imga' value='../img/cheese ball.jfif'/>
-	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
+	    
 		   <input type='checkbox'  style='zoom:2.0' name='check' value='치즈볼'/>선택 
 		   <br/>
 		   </div>
-		    <div><input class="ea" type="text" onkeyup="checkEa(6)"
+		    <div>수량<input class="ea" type="text" onkeyup="checkEa(6)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 	    </div>
@@ -192,10 +190,10 @@ input:invalid {
 	       <div class='menuInfo' id='menuInfo3_2'></div>
 	       <div class='price' id='price5_1'>소비자가격 : 2000원</div>
 	       <input type='hidden' id='imga' name='imga' value='../img/coke.jfif'/>
-	       <div><input id="ea" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></div>
+	     
 		   <input type='checkbox' style='zoom:2.0' name='check' value='콜라'/>선택 
 		 </div>
-		  <div><input class="ea" type="text" onkeyup="checkEa(7)"
+		  <div>수량<input class="ea" type="text" onkeyup="checkEa(7)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 		   
@@ -210,7 +208,7 @@ input:invalid {
 		   	<input type='checkbox'  style='zoom:2.0' name='check' value='사이다'/>선택 
 		   	<br/>		   
 		   </div>
-		   <div><input class="ea" type="text" onkeyup="checkEa(8)"
+		   <div>수량<input class="ea" type="text" onkeyup="checkEa(8)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 		   	
@@ -223,9 +221,8 @@ input:invalid {
 		    <input type='hidden' id='imga' name='imga' value='../img/fanta.jfif'/>
 		  	 <input type='checkbox' style='zoom:2.0' name='check' value='환타'/>선택 
 		   	 <br/>
-		   	<input type="hidden" name="ea" value="1">
 		   </div>
-		    <div><input class="ea" type="text" onkeyup="checkEa(9)"
+		    <div>수량<input class="ea" type="text" onkeyup="checkEa(9)"
 		   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="1"/></div>
 		    <hr/>
 	    </div>

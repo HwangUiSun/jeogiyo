@@ -35,8 +35,9 @@ document.addEventListener('click',clickEffect);
 	     	  		<img src="${imgs[status.index]}" width='240px' height='240px'/>
 					<span class = 'sno'>${num+1 }  
 					 ${v}
-					</span>				
-					<span class='price'> ${prices[status.index]}원</span>					
+					</span>	
+					<span>	${eas[status.index]}개 </span>		
+					<span class='price'> ${prices[status.index]*eas[status.index]}원</span>					
 					<button type = 'button' class='cancelBtn'name = 'cancelBtn'>삭제</button>
 				</div>
 			</div>
@@ -64,8 +65,8 @@ document.addEventListener('click',clickEffect);
 	</div>
 			
 		
-		<c:forEach var="p" items="${prices}">
-		<c:set var='num' value='${nums=nums+p}'/>		
+		<c:forEach var="p" items="${prices}" varStatus="status">
+		<c:set var='num' value='${nums=nums+(p*eas[status.index])}'/>		
 		</c:forEach>
 		<span class='menuPrice'>총 금액 :		
 		${nums}원
@@ -76,6 +77,7 @@ document.addEventListener('click',clickEffect);
 		<form name="jbag_frm" method="post" action="jorderBtn">
 			<input type="hidden" name="totalPrice" value="${nums}">
 			<input type="hidden" name="priceArray" value="${prices}">
+			<input type="hidden" name="eaArray" value="${eas}">
 			<input type="hidden" name="menus" value="${menus}">
 			<input type='hidden' name='imgArray' value="${imgs}">
 			<button type='submit' class='jorderBtn'>주문하기</button>

@@ -34,26 +34,23 @@ document.addEventListener('click',clickEffect);
 	        <br/><h2><label>수령인정보</label></h2><br/>
 	        
 	        <div class="fieldlabel"><label>이름</label></div>
-	        <input type='text' class='name' /><br/>
+	        <input type='text' class='name' value="${name}" /><br/>
 	        
 	        <div class="fieldlabel"><label>연락처</label></div>
-	        <input type='text' class='phone' name="phone" id="phone"/><br/>
+	        <input type='text' class='phone' name="phone" id="phone" value="${phone}"/><br/>
 	        
 		    <div class="fieldlabel"><label>우편번호</label></div>
-		    <input type='text' id='zipcode' size='12'>
+		    <input type='text' id='zipcode' size='12' value="${zipcode}">
 		    
 		   	<button type='button' id='btnZipFind'>주소변경</button>
 			<br/>
     
 	       <div class="fieldlabel"><label>주소</label></div>
-	        <input type='text' name='address' id='address'/>
+	        <input type='text' name='address' id='address' value="${address}"/>
 	        <br/>
-	        	       
-	        <div class="fieldlabel"><label>상세주소</label></div>
-	        <input type='text' id='apiAddressDetail' name='apiAddressDetail'/><br/>
-	        
+	  	        
 	        <div class="fieldlabel"><label>요청사항</label></div>
-	        <input type='text' class='request'/>
+	        <input type='text' class='request' name="request"/>
 	       </div>
 	   
 	   <div id='priceInfo'>
@@ -61,9 +58,9 @@ document.addEventListener('click',clickEffect);
 		        <c:forEach var ="v" items="${menus}" varStatus="status">
 		       		<img src="${imgArray[status.index]}" width='240px' height='240px'/>		     
 		       		<span class = 'foodInfo'>${v}</span>
-		       		<span class = 'ea'>1개</span>
+		       		<span class = 'ea'>${eaArray[status.index]}</span>
 		       		<span class = ' menuEaPrice'>
-		       		<fmt:parseNumber var="i" value="${priceArray[status.index]}" />
+		       		<fmt:parseNumber var="i" value="${priceArray[status.index]*eaArray[status.index]}" />
 		       		<fmt:formatNumber value="${i}" pattern="#,###" />원
 					</span><br/>
 		       		<img src='../img/line.png'width='600px' height='20px'/><br/>
@@ -86,8 +83,8 @@ document.addEventListener('click',clickEffect);
 	   <div id='point'>
 	          <div class='sub'>결제방법</div>
 	          <div class='msg'>
-	          <input type='radio' name='radioSelect' id='meetPayBtn' value='만나서결제'/>만나서 결제&nbsp;&nbsp;&nbsp;
-		         <input type='radio' name='radioSelect' id='cardPayBtn' value='카드결제' />카드 결제
+	          <input type='radio' name='radioSelect' class="radioSelect" id='meetPayBtn' value='만나서결제'/>만나서 결제&nbsp;&nbsp;&nbsp;
+		      <input type='radio' name='radioSelect' class="radioSelect" id='cardPayBtn' value='카드결제' />카드 결제
 	        <!-- <label>보유포인트</label>
 	        <input type='text' class='havePoint' value='10000p' readonly/><br/>
 	         <label>포인트사용</label>
@@ -122,6 +119,13 @@ document.addEventListener('click',clickEffect);
 	        <hr/>
 	        <button type='button' class='payBtn' onclick='payBtn();'>결제</button>
 	       <button type='button' class='paycancelBtn'onclick='paycancel();'>취소하기</button>
+	       <form name="jhostory_frm" method="post" action="jorderBtn">
+			<input type="hidden" name="totalPrice" value="${totalPrice+3000}">
+			<input type="hidden" name="priceArray" value="${priceArray}">
+			<input type="hidden" name="eaArray" value="${eaArray}">
+			<input type="hidden" name="menus" value="${menus}">
+			<input type='hidden' name='imgArray' value="${imgArray}">
+		</form>
 	   </div>
 	</div>
 </body>
@@ -151,10 +155,8 @@ window.onload = function(){
     });
 }
 function payBtn(){
-	console.log("1");
 	var form = document.frmPay;
-	console.log("2");
-	
+	let frm = document.jhostory_frm
 	
 	
 	var menu = '${menus}';
@@ -166,9 +168,28 @@ function payBtn(){
 	menuInput.setAttribute("type","hidden")
 	menuInput.setAttribute("value",menu)
 	
+	let request = document.getElementsByClassName('request')[0]
+	request.setAttribute("type","hidden")
+	let howtopay = document.getElementsByClassName('radioSelect')
+	let howtopayTrue ;
+	for(let i =0 ; i<howtopay.length;i++){
+		if(howtopay[i].checked===true){
+			howtopayTrue = document.getElementsByClassName('radioSelect')[i]
+		}else{
+			howtopayTrue = document.getElementsByClassName('radioSelect')[0]
+		}
+	}
+	howtopayTrue.setAttribute("type","hidden")
 	form.appendChild(menuInput);
-	
-	console.log(form);
+	form.appendChild(request);
+	form.appendChild(howtopayTrue);
+	form.appendChild(frm.totalPrice);
+	form.appendChild(frm.priceArray);
+	form.appendChild(frm.eaArray);
+	form.appendChild(frm.menus);
+	form.appendChild(frm.imgArray);
+
+
 	form.action = 'payBtn';
 	form.submit(); 
 }

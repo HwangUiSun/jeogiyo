@@ -304,14 +304,17 @@ public class JConsumerController {
 		String url = "../jconsumer/Jbag.jsp";
 		String strMenu = req.getParameter("values");
 		String strPrice = req.getParameter("prices");
+		String strEa = req.getParameter("eaArray");
 		String strimg = req.getParameter("imgs");
-System.out.println(strimg);
+		System.out.println(strimg);
+		String[] TempEa = strEa.split(",");
 		String[] TempMenu = strMenu.split(",");
 		String[] TempstrPrice = strPrice.split(",");
 		String[] Tempstrimg = strimg.split(",");
 		List<String> menus = new ArrayList<String>();
 		List<String> prices = new ArrayList<String>();
 		List<String> imgs = new ArrayList<String>();
+		List<String> eas = new ArrayList<String>();
 		for (String i : TempMenu) {
 			if (i.equals("")) {
 
@@ -333,11 +336,19 @@ System.out.println(strimg);
 				imgs.add(i);
 			}
 		}
+		for (String i : TempEa) {
+			if (i.equals("")) {
+
+			} else {
+				eas.add(i);
+			}
+		}
 
 		mv.addObject("inc", url);
 		mv.addObject("menus", menus);
 		mv.addObject("prices", prices);
 		mv.addObject("imgs" , imgs);
+		mv.addObject("eas" , eas);
 		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
 	}
@@ -376,15 +387,22 @@ System.out.println(strimg);
 		imgs = imgs.replace("]", "");
 		imgs = imgs.replace(" ", "");
 		
+		String eas = req.getParameter("eaArray");
+		eas = eas.replace("[", "");
+		eas = eas.replace("]", "");
+		eas = eas.replace(" ", "");
+		
 		// 문자열 -> 배열로전환
 		String[] menusTepm = menus.split(",");
 		String[] priceArrayTepm = prices.split(",");
 		String[] imgArrayTepm = imgs.split(",");
+		String[] eaTepm = eas.split(",");
 
 		// list형으로 전환해주기
 		List<String> priceArray = new ArrayList<String>();
 		List<String> menusArray = new ArrayList<String>();
 		List<String> imgArray = new ArrayList<String>();
+		List<String> eaArray = new ArrayList<String>();
 		for (String i : priceArrayTepm) {
 			priceArray.add(i);
 		}
@@ -394,13 +412,28 @@ System.out.println(strimg);
 		for (String i : imgArrayTepm) {
 			imgArray.add(i);
 		}
+		for (String i : eaTepm) {
+			eaArray.add(i);
+		}
 
 		// 값 mv에 담아서 리턴
 		mv.addObject("menus", menusArray);
 		mv.addObject("totalPrice", totalPrice);
 		mv.addObject("priceArray", priceArray);
 		mv.addObject("imgArray", imgArray);
+		mv.addObject("eaArray", eaArray);
 		mv.addObject("inc", url);
+		
+		//개인정보 보내기
+		HttpSession s = req.getSession();
+		JConsumerLoginVo rVo = dao.selectUserInfo(s.getAttribute("id"));
+	
+		mv.addObject("mid", rVo.getMid());
+		mv.addObject("name", rVo.getName());
+		mv.addObject("phone", rVo.getPhone());
+		mv.addObject("zipcode", rVo.getZipcode());
+		mv.addObject("address", rVo.getAddress());
+		mv.addObject("email", rVo.getEmail());
 
 		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
@@ -410,24 +443,96 @@ System.out.println(strimg);
 
 	@RequestMapping("payBtn")
 	public ModelAndView payBtn(HttpServletRequest req) {
-		System.out.println(req);
-		JpayHistoryVo vo = new JpayHistoryVo();
-		HttpSession session = req.getSession();
-		vo.setMid((String) session.getAttribute("id"));
-		vo.setPhone(req.getParameter("phone"));
-		vo.setAddress(req.getParameter("address") + " " + req.getParameter("apiAddressDetail"));
-		System.out.println(req.getParameter("address") + " " + req.getParameter("apiAddressDetail"));
-		vo.setHowtopay(req.getParameter("radioSelect"));
-		System.out.println(req.getParameter("radioSelect"));
-		vo.setOrdermenu(req.getParameter("menu"));
-		System.out.println(req.getParameter("menu"));
-		vo.setTotalprice(req.getParameter("totalPrice"));
-		System.out.println(req.getParameter("totalPrice"));
-		dao.insertPayHistory(vo);
+		//System.out.println(req);
+//		JpayHistoryVo vo = new JpayHistoryVo();
+//		HttpSession session = req.getSession();
+//		vo.setMid((String) session.getAttribute("id"));
+//		vo.setPhone(req.getParameter("phone"));
+//		vo.setAddress(req.getParameter("address") + " " + req.getParameter("apiAddressDetail"));
+//		//System.out.println(req.getParameter("address") + " " + req.getParameter("apiAddressDetail"));
+//		vo.setHowtopay(req.getParameter("radioSelect"));
+//		//System.out.println(req.getParameter("radioSelect"));
+//		vo.setOrdermenu(req.getParameter("menu"));
+//		//System.out.println(req.getParameter("menu"));
+//		vo.setTotalprice(req.getParameter("totalPrice"));
+//		//System.out.println(req.getParameter("totalPrice"));
+//		dao.insertPayHistory(vo);
+		//결제방법
+		String howToPay = "";		
+		if(req.getParameter("radioSelect")!=null) {
+			howToPay= req.getParameter("radioSelect");
+		}else {
+			howToPay="만나서 결제";
+		}
+		//고개요청사항
+		String consumerRequest ="";
+		if(req.getParameter("request")!=null) {
+			consumerRequest= req.getParameter("request");
+		}else {
+			consumerRequest="요청사항 없음";
+		}
+		
+		
+	
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JpayAfter.jsp";
 
+		
+		// String가져와 '[',']',','요소 제거하기
+		String prices = req.getParameter("priceArray");
+		prices = prices.replace("[", "");
+		prices = prices.replace("]", "");
+		prices = prices.replace(" ", "");
+
+		String totalPrice = req.getParameter("totalPrice");
+		String menus = req.getParameter("menus");
+		menus = menus.replace("[", "");
+		menus = menus.replace("]", "");
+		menus = menus.replace(" ", "");
+
+		String imgs = req.getParameter("imgArray");
+		imgs = imgs.replace("[", "");
+		imgs = imgs.replace("]", "");
+		imgs = imgs.replace(" ", "");
+				
+		String eas = req.getParameter("eaArray");
+		eas = eas.replace("[", "");
+		eas = eas.replace("]", "");
+		eas = eas.replace(" ", "");
+				
+		// 문자열 -> 배열로전환
+		String[] menusTepm = menus.split(",");
+		String[] priceArrayTepm = prices.split(",");
+		String[] imgArrayTepm = imgs.split(",");
+		String[] eaTepm = eas.split(",");
+
+		// list형으로 전환해주기
+		List<String> priceArray = new ArrayList<String>();
+		List<String> menusArray = new ArrayList<String>();
+		List<String> imgArray = new ArrayList<String>();
+		List<String> eaArray = new ArrayList<String>();
+		for (String i : priceArrayTepm) {
+			priceArray.add(i);
+		}
+		for (String i : menusTepm) {
+			menusArray.add(i);
+		}
+		for (String i : imgArrayTepm) {
+			imgArray.add(i);
+		}
+		for (String i : eaTepm) {
+			eaArray.add(i);
+		}
+
+		// 값 mv에 담아서 리턴
+		mv.addObject("menus", menusArray);
+		mv.addObject("totalPrice", totalPrice);
+		mv.addObject("priceArray", priceArray);
+		mv.addObject("imgArray", imgArray);
+		mv.addObject("eaArray", eaArray);
 		mv.addObject("inc", url);
+		mv.addObject("howToPay", howToPay);
+		mv.addObject("consumerRequest", consumerRequest);
 
 		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
