@@ -28,23 +28,16 @@ document.addEventListener('click',clickEffect);
 	<div id= 'Jbag_list'>
 	        <div id='subject'>장바구니</div>
 	   <div id='wrap'>
-		<div class='title'>
-			<span class='sno'>No</span>
-			<span class='foodImg'>상품정보</span>
-			<span class='foodInfo'>추가특성</span>
-			<span class='ea'>수량</span>
-			<hr/>
-			
-		</div>
+		
 		<c:forEach var = 'v' items="${menus}" varStatus="status">
 			<div id = 'itemsWrap'>
-	     	  <div class='items'>
-	     	  		<img src='../img/chicken1.png'width='240px' height='240px'/>
-					<span class = sno'>${num+1 }  
+	     	  <div class='items'id='items'>
+	     	  		<img src="${imgs[status.index]}" width='240px' height='240px'/>
+					<span class = 'sno'>${num+1 }  
 					 ${v}
 					</span>				
-					<span> ${prices[status.index]}</span>					
-					<button type = 'button' name = 'cancelBtn'>삭제</button>
+					<span class='price'> ${prices[status.index]}원</span>					
+					<button type = 'button' class='cancelBtn'name = 'cancelBtn'>삭제</button>
 				</div>
 			</div>
 			<hr/>
@@ -75,7 +68,7 @@ document.addEventListener('click',clickEffect);
 		<c:set var='num' value='${nums=nums+p}'/>		
 		</c:forEach>
 		<span class='menuPrice'>총 금액 :		
-		${nums}
+		${nums}원
 		</span><br/>
 		<form name="jbag_frm" method="post" action="menuAddBtn">
 			<button type='submit' class='menuAddBtn'>메뉴추가</button>		
@@ -84,6 +77,7 @@ document.addEventListener('click',clickEffect);
 			<input type="hidden" name="totalPrice" value="${nums}">
 			<input type="hidden" name="priceArray" value="${prices}">
 			<input type="hidden" name="menus" value="${menus}">
+			<input type='hidden' name='imgArray' value="${imgs}">
 			<button type='submit' class='jorderBtn'>주문하기</button>
 		</form>
 		

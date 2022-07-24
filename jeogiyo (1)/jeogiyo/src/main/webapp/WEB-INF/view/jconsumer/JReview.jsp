@@ -29,8 +29,8 @@
    <td><input type=button value="글쓰기"></td>
   </tr>
 </table>
-<div id="section">
+<%-- <div id="section">
 		<jsp:include page="${inc}"></jsp:include>
-	</div>
+	</div> --%>
 </body>
 </html>

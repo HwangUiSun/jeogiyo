@@ -17,4 +17,10 @@
   limit ${startNo}, ${listSize}
 
 </select>
+
+<insert id='insertReview' parameterType='JConsumerVo3'>
+	      
+         insert into orders(subject,mid,ordertime,doc)
+      values(#{subject},#{mid},#{ordertime},#{doc});
+	</insert>
 </mapper>

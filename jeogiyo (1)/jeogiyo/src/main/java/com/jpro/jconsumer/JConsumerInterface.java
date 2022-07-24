@@ -37,12 +37,14 @@ public interface JConsumerInterface {
 	
 	//리뷰 작성 페이지(보류)
 	public List<com.jpro.jconsumer.BoardAtt> upload(List<MultipartFile> multi);
+	public void insertReview(JConsumerVo3 vo);
 	
 	//리뷰 목록 확인 페이지(리스트)
 	public List<String> JReviewList(List<String> list);
 	
 	//FAQ(리스트)
 	public List<String> JFAQ(List<String> list);
+
 
 
 

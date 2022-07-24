@@ -16,6 +16,8 @@ public interface JorderlistMapper {
 	public int totSize(Page page);
 	
 	public List<JConsumerVo3> Jorderlist(Page cosumerpage);
+
+	public void insertReview(JConsumerVo3 vo);
 	
 
 }

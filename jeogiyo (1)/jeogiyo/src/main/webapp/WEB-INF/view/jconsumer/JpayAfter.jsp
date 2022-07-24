@@ -40,13 +40,23 @@
 	 <div id='ridertime'>
 	        <div class='sub'>배송상태</div>
 	 
-	 </div>  
-	 <a href='endBtn'><button type='button' class='endBtn'>확인</button></a>
+	 </div> 
+	 <form id="payAfter" name="payAfter" class=""payAfter"">
+	<button type='button' class='endBtn' onclick="end();">확인</button>>
+	</form> 
 </div>
 </body>
 <script>
   function callInfoBtn(){
 		alert("서울 강남점 : 02-1234-1234");
+	}
+  
+  function end(){
+		console.log("1");
+		var form = document.payAfter;
+		console.log("2");
+		form.action = 'JstoreSelect';
+		form.submit(); 
 	}
 
 </script>

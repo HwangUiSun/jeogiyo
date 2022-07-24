@@ -229,5 +229,10 @@ public class JConsumerService implements JConsumerInterface {
 		JloginMapper.insertUser(vo);
 		
 	}
+	@Override
+	public void insertReview(JConsumerVo3 vo) {
+		amapper.insertReview(vo);
+		
+	}
 
 }

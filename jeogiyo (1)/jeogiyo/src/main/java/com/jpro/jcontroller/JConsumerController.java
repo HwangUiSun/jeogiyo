@@ -304,11 +304,14 @@ public class JConsumerController {
 		String url = "../jconsumer/Jbag.jsp";
 		String strMenu = req.getParameter("values");
 		String strPrice = req.getParameter("prices");
-
+		String strimg = req.getParameter("imgs");
+System.out.println(strimg);
 		String[] TempMenu = strMenu.split(",");
 		String[] TempstrPrice = strPrice.split(",");
+		String[] Tempstrimg = strimg.split(",");
 		List<String> menus = new ArrayList<String>();
 		List<String> prices = new ArrayList<String>();
+		List<String> imgs = new ArrayList<String>();
 		for (String i : TempMenu) {
 			if (i.equals("")) {
 
@@ -323,10 +326,18 @@ public class JConsumerController {
 				prices.add(i);
 			}
 		}
+		for (String i : Tempstrimg) {
+			if (i.equals("")) {
+
+			} else {
+				imgs.add(i);
+			}
+		}
 
 		mv.addObject("inc", url);
 		mv.addObject("menus", menus);
 		mv.addObject("prices", prices);
+		mv.addObject("imgs" , imgs);
 		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
 	}
@@ -360,24 +371,35 @@ public class JConsumerController {
 		menus = menus.replace("]", "");
 		menus = menus.replace(" ", "");
 
+		String imgs = req.getParameter("imgArray");
+		imgs = imgs.replace("[", "");
+		imgs = imgs.replace("]", "");
+		imgs = imgs.replace(" ", "");
+		
 		// 문자열 -> 배열로전환
 		String[] menusTepm = menus.split(",");
 		String[] priceArrayTepm = prices.split(",");
+		String[] imgArrayTepm = imgs.split(",");
 
 		// list형으로 전환해주기
 		List<String> priceArray = new ArrayList<String>();
 		List<String> menusArray = new ArrayList<String>();
+		List<String> imgArray = new ArrayList<String>();
 		for (String i : priceArrayTepm) {
 			priceArray.add(i);
 		}
 		for (String i : menusTepm) {
 			menusArray.add(i);
 		}
+		for (String i : imgArrayTepm) {
+			imgArray.add(i);
+		}
 
 		// 값 mv에 담아서 리턴
 		mv.addObject("menus", menusArray);
 		mv.addObject("totalPrice", totalPrice);
 		mv.addObject("priceArray", priceArray);
+		mv.addObject("imgArray", imgArray);
 		mv.addObject("inc", url);
 
 		mv.setViewName("jconsumer/Jconsumer_index");
@@ -501,8 +523,11 @@ public class JConsumerController {
 
 	// 주문 내역 -> 리뷰작성
 	@RequestMapping("reviewBtn")
-	public ModelAndView reviewBtn(com.jpro.jconsumer.Page consumerpage) {
+	public ModelAndView reviewBtn(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("mid", session.getAttribute("id"));
 		String url = "../jconsumer/upload.jsp";
 
 		mv.addObject("inc", url);
@@ -514,10 +539,18 @@ public class JConsumerController {
 	// 리뷰 작성 버튼 -> 리뷰 작성 리스트
 
 	@RequestMapping("writeBtn")
-	public ModelAndView upload() {
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView upload(JConsumerVo3 vo, HttpServletRequest req) {
+		 
+		  dao.insertReview(vo);
+		 
+		
+		ModelAndView mv = new ModelAndView(); 
+		String url = "../jconsumer/JReview.jsp";
 
-		mv.setViewName("jconsumer/JReview");
+		mv.addObject("inc", url);
+		
+
+		mv.setViewName("jconsumer/Jconsumer_index");
 
 		return mv;
 	}
