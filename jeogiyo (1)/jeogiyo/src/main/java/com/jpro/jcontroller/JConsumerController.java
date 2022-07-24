@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -196,8 +197,14 @@ public class JConsumerController {
 		String url = "../jconsumer/JstoreSelect.jsp";
 
 		mv.addObject("inc", url);
+		
+		
 
-		System.out.println("111");
+		System.out.println(page.getStartNo());
+		System.out.println(page.getListSize());
+		System.out.println(page.getMapFindStr());
+		System.out.println(page.getStoreFindStr());
+		System.out.println(page.getFindStore());
 		List<JconsumerVo2> conlist = dao.storeSelect(page);
 		System.out.println(conlist);
 		page = dao.getPage();

@@ -22,10 +22,10 @@ document.addEventListener('click',clickEffect);
 </script>
 </head>
 <body>
+	       <div id = 'subject' >주문하기</div>
 <div id='JstoreSelect'>
 	
 	<div id= 'Jstore_list'>
-	       <div id = 'subject' >주문하기</div>
 	        <div id = 'sub'>매장찾기</div>
 			
 		<form name='frm_Jstore' method='post' id='frm_Jstore' action="JstoreSelect">
@@ -33,19 +33,21 @@ document.addEventListener('click',clickEffect);
 	            
 				<select class='mapFind' id='mapFindStr' name='mapFindStr' onchange='cityFindChange(this)'>
 				
-				<option>선택해주세요</option>
-				<option value='seoul'>서울</option>
-				<option value='gyeonggi'>경기</option>
-				<option value='pusan'>부산</option>
+				<option value=''>선택해주세요</option>
+				<option value='서울'>서울</option>
+				<option value='경기'>경기</option>
+				<option value='인천'>인천</option>
 				</select>
 				
 				<select class='mapFindcity' id='storeFindStr' name='storeFindStr' onchange='mapFindChange(this)' >
-				<option>선택해주세요</option>
+				<option value=''>선택해주세요</option>
 				
 				</select>
-				<input type='text' id='findStore' name='findStore'/>
-				<button type='submit' id='storeListBtn'>매장찾기</button>
-				<input type='hidden' name='nowPage' value='${page.nowPage }'/>
+				<input type='text' id='findStore' name='findStore' value="${consumerpage.findStore }"/>
+				<button type='submit' id='storeListBtn' action="storeList(this.form);">매장찾기</button>
+				<input type='hidden' name='nowPage' value='${consumerpage.nowPage }'/>
+				
+				<input type="hidden" name="ioginId" id="ioginId" value="${sessionScope.id }" >
 		</form>
 	</div>
 	
@@ -53,23 +55,21 @@ document.addEventListener('click',clickEffect);
 		 						
 	
 	<div id='wrap'>
-		<div class='title'>
-			<span>No</span>
-			<span>매장명</span>
-			<span>주소</span>
-			<span>전화번호</span>
+		
 			
 		</div>
 		<div id = 'itemsWrap'>
 			<c:set var='num' value='${consumerpage.startNo}' />
 			<c:forEach var='v' items='${storeSelectlist}'>
-		       <div class='items'onclick="">
-			        <span class='no'     >${num }</span>
-					<span class='storeName'>${v.storeName}</span>
-					<span class='storeaddress'  >${v.address } </span>
-					<span class='genstorecall' >${v.phone} &nbsp;&nbsp;
-					<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기&nbsp;&nbsp;</button></a>
-					<a href='orderBtn'><button type='button' class='orderBtn'>주문하기&nbsp;&nbsp;</button></a>
+		       <div id='items' class='items'onclick="">
+			        <div class='no'     >${num }</div>
+					<div class='storeName'>${v.storeName} ${num }호점</div>
+					<div class='storeaddress'  >${v.address } </div>
+					<div class='genstorecall' >${v.phone} </div>
+					<div id='btns'>
+					<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기</button></a>
+					<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a>
+					</div>
 			 	</div>
 				
 		<hr/>

@@ -86,6 +86,7 @@ div.clickEffect{
 	margin : 0 15px;
 	width : 140px;
 	height : 80px;
+	border-color: #0074e8;
 	
 	border-radius : 10px;
 }

@@ -50,7 +50,12 @@ public class JConsumerService implements JConsumerInterface {
 	public List<JconsumerVo2> storeSelect(com.jpro.jconsumer.Page cosumerpage) {
 		
 		List<JconsumerVo2> list = null;
-		try {			
+		try {
+			System.out.println(cosumerpage.getStartNo());
+			System.out.println(cosumerpage.getListSize());
+			System.out.println(cosumerpage.getMapFindStr());
+			System.out.println(cosumerpage.getStoreFindStr());
+			System.out.println(cosumerpage.getFindStore());
 			int totSize = mapper.totSize(cosumerpage);			
 			cosumerpage.setTotSize(totSize);
 			cosumerpage.compute();

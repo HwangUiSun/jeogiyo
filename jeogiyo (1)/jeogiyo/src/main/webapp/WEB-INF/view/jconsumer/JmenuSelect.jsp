@@ -315,7 +315,7 @@ function check(sno){
 		menuArray.push(productName)
 		priceArray.push(result)
 		eaArray.push(ea)
-		
+		console.log(document.getElementsByClassName('ea')[sno].value)
 	}	
 
 }

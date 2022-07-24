@@ -12,7 +12,7 @@
 	<header id="top_logo">
 		 <div id='Logo'></div>
 		 <div id="loginIdprint"> [ ${sessionScope.id}님 ]</div>
-		<a href='homeBtn'><button type='button' id='homeBtn'>HOME</button></a>
+		<a href='homeBtn'><button type='button' id='homeBtn'>logout</button></a>
 	</header>
 	
 	<div id="title_menu">

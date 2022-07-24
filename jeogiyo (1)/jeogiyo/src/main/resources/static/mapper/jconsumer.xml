@@ -9,7 +9,6 @@
   where mainlocal LIKE "%${mapFindStr}%"
   and sublocal LIKE "%${storeFindStr}%"
   and storeName LIKE "%${findStore}%"
- 
 </select>
 
 
@@ -19,7 +18,6 @@
   and sublocal LIKE "%${storeFindStr}%"
   and storeName LIKE "%${findStore}%"
   limit ${startNo}, ${listSize}
-
 </select>
 
 <insert id ='insertPayHistory' parameterType='JpayHistoryVo'>
