@@ -30,32 +30,16 @@ document.addEventListener('click',clickEffect);
 	        <div id='subject'>장바구니</div>
 	   <div id='wrap'>
 		<c:set var='num' value='0'/>
-		<c:forEach var = 'v' items="${menus}" varStatus="status">
-			<div id = 'itemsWrap'>
+		<c:forEach var = 'v' items="${menus}" varStatus="status">			
 	     	  <div class='items'id='items'>
 	     	  		<img src="${imgs[status.index]}" width='240px' height='240px'/>
-<<<<<<< HEAD
 					<span class = 'sno'>${num+1 }</span>
-					<span class = 'menu'>${v}</span>						
-					<span class = 'ea'>	${eas[status.index]}개 </span>		
-=======
-					<span class = 'sno'>${num+1 }  
-					 ${v}
-					</span>	
+					<span class = 'menu'>${v}</span>
 					<span class='ea'>	${eas[status.index]}개 </span>		
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> a2e8e4a222d65ba6a827f84dada3f23cccc88d8b
-=======
->>>>>>> a2e8e4a222d65ba6a827f84dada3f23cccc88d8b
-=======
->>>>>>> a2e8e4a222d65ba6a827f84dada3f23cccc88d8b
 					<span class='price'> ${prices[status.index]*eas[status.index]}원</span>					
 					<button type = 'button' class='cancelBtn'name = 'cancelBtn' 
 					onclick ="cancle(this)">삭제</button>
-				</div>
-			</div>
-			<hr/>
+				</div>			
 			<c:set var='num' value='${num=num+1 }'/>
 		</c:forEach>
 	
