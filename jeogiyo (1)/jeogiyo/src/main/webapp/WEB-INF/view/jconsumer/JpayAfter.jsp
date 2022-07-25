@@ -21,8 +21,8 @@
 	<div id='priceInfo'>
 	       <div class='sub'>주문내역</div>
 	       <c:forEach var="v" items="${menus}" varStatus="status">
-		    	<div>
-		       		<span class = 'foodImg'><img src='../img/chicken1.png'width='240px' height='240px'/></span>
+		    	<div id='pay'>
+		       		<span class = 'foodImg'><img src='${imgArray[status.index]}' width='240px' height='240px'/></span>
 		       		<span class = 'foodInfo'>${v}</span>
 		       		<span class = 'ea'>${eaArray[status.index]}개</span>
 		      		<span class = ' menuEaPrice'>
@@ -32,10 +32,10 @@
 		      	</div>
 		    </c:forEach>
 	       <button type='button'onclick="javascript:callInfoBtn()" class='callInfoBtn'>☎ 전화걸기</button>
-	       
+	       <hr>
 	       <div id = 'totaPayInfo'>	       
 	       <span class = 'menuPrice'>결제방법 :  ${howToPay}</span><br/>	       	      
-	       <span class = 'menuPrice'>총 결제금액 :  ${totalPrice}</span><br/>
+	       <span class = 'menuPrice'>총 결제금액 :  ${totalPrice}원</span><br/>
 	       <span class = 'menuPrice'>요청사항:  ${consumerRequest}</span><br/>
 	        
 	        </div>

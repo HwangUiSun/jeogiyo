@@ -305,10 +305,11 @@ public class JConsumerController {
 		String strMenu = req.getParameter("values");
 		String strPrice = req.getParameter("prices");
 		String strEa = req.getParameter("eaArray");
-		String strimg = req.getParameter("imgs");
+		String strimg = req.getParameter("imgs");		
 		System.out.println(strimg);
 		String[] TempEa = strEa.split(",");
 		String[] TempMenu = strMenu.split(",");
+		
 		String[] TempstrPrice = strPrice.split(",");
 		String[] Tempstrimg = strimg.split(",");
 		List<String> menus = new ArrayList<String>();

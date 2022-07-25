@@ -8,6 +8,7 @@
 <title>Jbag</title>
 <link href="css/Jbag.css" rel="stylesheet">
 <script src = './js/consumer.js'></script>
+<script src = './js/ordercancle.js'></script>
  <script>
 function clickEffect(e){
   var d=document.createElement("div");
@@ -28,41 +29,33 @@ document.addEventListener('click',clickEffect);
 	<div id= 'Jbag_list'>
 	        <div id='subject'>장바구니</div>
 	   <div id='wrap'>
-		
+		<c:set var='num' value='0'/>
 		<c:forEach var = 'v' items="${menus}" varStatus="status">
 			<div id = 'itemsWrap'>
 	     	  <div class='items'id='items'>
 	     	  		<img src="${imgs[status.index]}" width='240px' height='240px'/>
+<<<<<<< HEAD
+					<span class = 'sno'>${num+1 }</span>
+					<span class = 'menu'>${v}</span>						
+					<span class = 'ea'>	${eas[status.index]}개 </span>		
+=======
 					<span class = 'sno'>${num+1 }  
 					 ${v}
 					</span>	
-					<span>	${eas[status.index]}개 </span>		
+					<span class='ea'>	${eas[status.index]}개 </span>		
+<<<<<<< HEAD
+>>>>>>> a2e8e4a222d65ba6a827f84dada3f23cccc88d8b
+=======
+>>>>>>> a2e8e4a222d65ba6a827f84dada3f23cccc88d8b
 					<span class='price'> ${prices[status.index]*eas[status.index]}원</span>					
-					<button type = 'button' class='cancelBtn'name = 'cancelBtn'>삭제</button>
+					<button type = 'button' class='cancelBtn'name = 'cancelBtn' 
+					onclick ="cancle(this)">삭제</button>
 				</div>
 			</div>
 			<hr/>
 			<c:set var='num' value='${num=num+1 }'/>
 		</c:forEach>
-		
-
-  		<div class= 'paging'>	
 	
-	<c:if test="${page.startPage>1}">
-		<button type= 'button' class= 'btnFirst' onclick='movePage(1)'>맨처음</button>
-		<button type= 'button' class= 'btnPrev' onclick='movePage(${page.startPage-1})'>이전</button>
-	</c:if>
-		
-
-		<c:forEach var='i' begin='${page.startPage}' end='${page.endPage}'>
-		<button type= 'button' class= 'first' onclick ='movePage(${i})'>${i}</button>
-		</c:forEach>
-
-		<c:if test ="${page.endPage<page.totPage}">
-		<button type= 'button' class= 'btnNext' onclick = 'movePage(${page.endPage+1})'>다음</button>
-		<button type= 'button' class= 'btnLast' onclick = 'movePage(${page.totPage})'>맨끝</button>
-		</c:if>
-	</div>
 			
 		
 		<c:forEach var="p" items="${prices}" varStatus="status">
@@ -75,16 +68,16 @@ document.addEventListener('click',clickEffect);
 			<button type='submit' class='menuAddBtn'>메뉴추가</button>		
 		</form>
 		<form name="jbag_frm" method="post" action="jorderBtn">
-			<input type="hidden" name="totalPrice" value="${nums}">
-			<input type="hidden" name="priceArray" value="${prices}">
-			<input type="hidden" name="eaArray" value="${eas}">
-			<input type="hidden" name="menus" value="${menus}">
-			<input type='hidden' name='imgArray' value="${imgs}">
+			<input type="hidden" name="totalPrice" value="${nums}" id="totalPrice">
+			<input type="hidden" name="priceArray" value="${prices}" id="priceArray">
+			<input type="hidden" name="eaArray" value="${eas}" id="eaArray">
+			<input type="hidden" name="menus" value="${menus}" id="menus">
+			<input type='hidden' name='imgArray' value="${imgs}" id="imgArray">
 			<button type='submit' class='jorderBtn'>주문하기</button>
 		</form>
 		
   </div>
-  
+
 	
 	
 </div>
