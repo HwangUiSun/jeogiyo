@@ -84,8 +84,9 @@
 	font-size: 0.6cm;
 	font-family: sans-serif;
 	position: relative;
-	left : 950px;
 	top : -40px;
+	right : 120px;
+	text-align : right;
 }
 
 #slogan{
