@@ -86,10 +86,10 @@ document.addEventListener('click',clickEffect);
 	          <input type='radio' name='radioSelect' class="radioSelect" id='meetPayBtn' value='만나서결제'/>만나서 결제&nbsp;&nbsp;&nbsp;
 		      <input type='radio' name='radioSelect' class="radioSelect" id='cardPayBtn' value='카드결제' />카드 결제
 	        <label>보유포인트</label>
-	        <input type='text' class='havePoint' value='${points}' readonly/><br/>
+	       <%--  <input type='text' class='havePoint' value='${points}' readonly/><br/>
 	         <label>포인트사용</label>
 	        <input type='text' class='usePoint'/>
-	        <button type='button' class='usePointBtn'>포인트 사용</button><br/>
+	        <button type='button' class='usePointBtn'>포인트 사용</button><br/> --%>
 	        </div>
 	   </div>
 	   
