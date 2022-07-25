@@ -36,7 +36,7 @@ document.addEventListener('click',clickEffect);
 					<span class = 'sno'>${num+1 }  
 					 ${v}
 					</span>	
-					<span>	${eas[status.index]}개 </span>		
+					<span class='ea'>	${eas[status.index]}개 </span>		
 					<span class='price'> ${prices[status.index]*eas[status.index]}원</span>					
 					<button type = 'button' class='cancelBtn'name = 'cancelBtn'>삭제</button>
 				</div>

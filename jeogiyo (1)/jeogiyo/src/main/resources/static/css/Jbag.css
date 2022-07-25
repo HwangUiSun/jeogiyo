@@ -17,7 +17,7 @@
 }
 #items .sno{
 	display : inline-block;
-	width : 300px;
+	width : 270px;
 	margin : 0 10px;
 	padding: 10px;
 	font : bold	 x-large generic-family;
@@ -25,6 +25,15 @@
 	left : 30px;
 	top:-100px;
 	
+}
+#items .ea{
+	display : inline-block;
+	padding : 40px;
+	width : 50px;
+	font : bold	 x-large generic-family;
+	position: relative;
+	left : 30px;
+	top:-100px;
 }
 #items .price{
 	display : inline-block;
@@ -59,8 +68,8 @@
 	width : 140px;
 	height : 80px;
 	position: relative;
-	left : 0px;
-	top: -100px;
+	left : 950px;
+	top: -200px;
 	border-radius : 10px;
 	border-color: #0074e8;
 }

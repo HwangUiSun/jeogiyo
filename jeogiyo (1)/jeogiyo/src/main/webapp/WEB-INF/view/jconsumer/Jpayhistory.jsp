@@ -58,7 +58,7 @@ document.addEventListener('click',clickEffect);
 		        <c:forEach var ="v" items="${menus}" varStatus="status">
 		       		<img src="${imgArray[status.index]}" width='240px' height='240px'/>		     
 		       		<span class = 'foodInfo'>${v}</span>
-		       		<span class = 'ea'>${eaArray[status.index]}</span>
+		       		<span class = 'ea'>${eaArray[status.index]}개</span>
 		       		<span class = ' menuEaPrice'>
 		       		<fmt:parseNumber var="i" value="${priceArray[status.index]*eaArray[status.index]}" />
 		       		<fmt:formatNumber value="${i}" pattern="#,###" />원
