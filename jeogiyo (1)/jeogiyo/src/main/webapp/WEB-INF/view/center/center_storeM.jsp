@@ -28,9 +28,15 @@
 				<label>주소</label> <span>${store.address}</span> <br />
 				<br /> <label>연락처</label> <span>${store.phone}</span>
 			</div>
-			<div class='store_view' onclick="location.href='center_storeMview'"></div>
+			<div class='store_view' onclick="view('${store.storeName}','${store.mid}')"></div>
 			<br /><br /><hr />
 		</c:forEach>
+		<form name ='frm_view'  id ='frm_view' value=''>
+			<input type='hidden' name='storeName' value=''>
+			<input type='hidden' name='mid' value=''>
+		</form>
+
+
 
 		<div id='paging'>
 			<c:if test="${page.startPage>1}">

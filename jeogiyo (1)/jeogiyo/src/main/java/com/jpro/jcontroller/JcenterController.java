@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +19,11 @@ import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.jcenter.JcenterMemberVo;
 import com.jpro.jcenter.JcenterStoreMService;
+import com.jpro.jcenter.JcenterStoreMviewService;
 import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterstoreDropService;
+import com.jpro.jcenter.JpayAfterVo8;
 import com.jpro.jcenter.JcenterDropListVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
@@ -51,6 +55,9 @@ public class JcenterController {
 	
 	@Autowired
 	JstoreDropService dropDao2;
+	
+	@Autowired
+	JcenterStoreMviewService viewDao;
 	
 	@RequestMapping("index")
 	public ModelAndView index() {
@@ -277,7 +284,7 @@ public class JcenterController {
 	
 	
 	@RequestMapping("center_storeM_local")
-	public ModelAndView storeM(Integer startNo, @RequestParam String local, HttpServletRequest req) {
+	public ModelAndView storeM(Integer startNo, @RequestParam(value="local", required=false) String local,  HttpServletRequest req) {
 		if(startNo == null) {
 			startNo =1;
 		}
@@ -295,16 +302,43 @@ public class JcenterController {
 		return mv;
 	}
 	
-	@RequestMapping("center_storeMview")
-	public ModelAndView center_storeMview() {
+	@RequestMapping("center_storeMview")//가맹상세보기에서 아이디 기타등등
+	public ModelAndView center_storeMview(String storeName, String mid) {
 		ModelAndView mv = new ModelAndView();
+		
 		String url = "../center/center_storeMview.jsp";
+		JstoreVo vo = viewDao.view(storeName, mid);
+		mv.addObject("vo", vo);
 		mv.addObject("inc",url);
 		
 		mv.setViewName("center/center_index");
 		
 		return mv;
 	}
+	
+	@RequestMapping("center_storeMview2")//가맹상세보기에서 매출조회
+	public ModelAndView center_storeMview2(JpayAfterVo8 vo) {
+		ModelAndView mv = new ModelAndView();
+		
+		String url = "../center/center_storeMview.jsp";
+		
+		JstoreVo jstoreVo = viewDao.view(vo.getStoreName(), vo.getMid());
+		
+		List<JpayAfterVo8> list = viewDao.view3(vo);
+		
+		mv.addObject("vo", jstoreVo);
+		mv.addObject("inc",url);
+		
+		
+		mv.addObject("startNal", vo.getStartNal());
+		mv.addObject("endNal", vo.getEndNal());
+		
+		mv.setViewName("center/center_index");
+		mv.addObject("saleList", list);
+		return mv;
+	}
+
+	
 	
 	@RequestMapping("center_storeSale")
 	public ModelAndView storeSale() {

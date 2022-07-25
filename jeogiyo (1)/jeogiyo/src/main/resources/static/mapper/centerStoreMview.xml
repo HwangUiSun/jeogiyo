@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace='com.jpro.jmybatis.JcenterStoreMviewMapper'>
+	
+	<select id='centerStoreMview' parameterType='JstoreVo' resultType='JstoreVo'>
+	select storeName , mid , phone, email , address ,zipcode
+	from jstorevo
+	where mid = #{mid} 
+	and storeName = #{storeName}
+	</select>
+
+	<select id='centerStoreMview3' parameterType='JpayAfterVo8' resultType='JpayAfterVo8'>
+	<![CDATA[  
+		select date              as "nal"
+			 , ifnull(paySum, 0) as "saleSum"
+			 , ifnull(cnt, 0)    as "saleTotal"
+		from (
+				select 
+					date_format(date_add(#{startNal}, interval sequence - 1 DAY), '%Y-%m-%d')  as date
+				from (
+					select @num := @num + 1 as sequence
+					  from information_schema.tables a
+					  , (select @num := 0) c
+				) T
+				where T.sequence  <= datediff(#{endNal}, #{startNal}) + 1
+		) T1
+		left  join 
+			(
+				select nal            as "nal",
+			           sum(harutotal) as "paySum",
+			           count(1)       as "cnt"
+				from jpayafter2
+				where 
+				     storeName = #{storeName} and mid = #{mid} 
+				and nal  between #{startNal} and #{endNal}
+				group by nal
+			) T2
+		on T1.date = T2.nal	
+		union all 
+		select "총합"            as "nal",
+		       sum(harutotal)   as "paySum",
+		       count(1)         as "cnt"
+		from jpayafter2
+		where 
+		     storeName = #{storeName} and mid = #{mid} 
+		and nal  between #{startNal}  and #{endNal}
+	]]>
+	</select>
+	
+	<select id='totHit' parameterType='JpayAfterVo' resultType='Integer'>
+		select count(mid)
+		from jpayafter2
+		where storeName = #{storeName}
+		and DATE(nal) between #{date1}
+		and #{date2}
+	</select>
+	
+	<select id='JsaleFind3_all' parameterType='JpayAfterVo' resultType='Integer'>
+		select sum(harutotal)
+		from jpayafter2
+		where DATE(nal)
+	    between #{date1}
+	    and #{date2}
+	</select>
+</mapper>
