@@ -47,7 +47,7 @@ deny = document.getElementsByClassName('deny');
 })
  
 function btnDeny(sno){
-	let url = 'store_orderStatus';
+	let url = 'store_orderStatus_Drop';
 	let frm = document.frm_orderStatus;
 	frm.sno.value = sno;
 	frm.action = url;
