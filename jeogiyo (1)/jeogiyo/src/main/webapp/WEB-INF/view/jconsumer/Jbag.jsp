@@ -44,6 +44,9 @@ document.addEventListener('click',clickEffect);
 					</span>	
 					<span class='ea'>	${eas[status.index]}개 </span>		
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a2e8e4a222d65ba6a827f84dada3f23cccc88d8b
+=======
 >>>>>>> a2e8e4a222d65ba6a827f84dada3f23cccc88d8b
 =======
 >>>>>>> a2e8e4a222d65ba6a827f84dada3f23cccc88d8b
