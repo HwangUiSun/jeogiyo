@@ -1,8 +1,9 @@
 package com.jpro.jconsumer;
 
+import org.apache.ibatis.type.Alias;
 import org.springframework.context.annotation.Primary;
 
-@Primary
+@Alias("dPage")
 public class Page {
 	int startNo; // 목록의 시작 위치
 	int endNo; // 목록의 끝 위치

@@ -1,5 +1,101 @@
 @charset "UTF-8";
 
+
+/*가맹 탈퇴 현황 CSS 시작*/
+
+
+#Drop{
+	text-align : right;
+}
+
+
+#subject{
+	width : 1200px;
+	text-align : center;
+	font-size: 3em;
+	background-color : #9997;
+	height : 90px;
+	margin-bottom : 20px;
+	padding-top : 20px;
+}
+
+.title{
+	font-weight:600;
+	color:#fff;
+	background:#353434;
+	width:70%;
+	margin:2px auto;
+	display:flex;
+	flex-direction: row;
+}
+.center_Drop{
+	
+	width:70%;
+	margin:2px auto;
+}
+.center_Drop .items{
+	font-weight:200;
+	color:#fff;
+	margin:2px 0;
+	display:flex;
+	flex-direction: row;
+	background:#565656;
+	
+}
+.center_Drop .items:nth-child(2n){
+	background:#353434;
+}
+.center_Drop .items span, .title span{
+	display:block;
+	text-align:center;
+	height:42px;
+	box-sizing:border-box;
+	padding: 10px 5px;
+	line-height:21px;
+}
+.center_Drop .items span:nth-child(1), .title span:nth-child(1){
+	width:10%;
+ 
+ }
+.center_Drop .items span:nth-child(2), .title span:nth-child(2){ 
+	width:40%;
+ 
+}
+.center_Drop .items span:nth-child(3), .title span:nth-child(3){ 
+	width:10%;
+
+}
+.center_Drop .items span:nth-child(4), .title span:nth-child(4){ 
+	width:40%;
+}
+.center_Drop .items:hover{
+	color:#000000;
+	cursor:pointer;
+	bacKground: #ffffff;
+}
+
+.paging{
+	background:#B2B2B2;
+	height:60px;
+	margin:2px auto;
+	display:flex;
+	flex-direction: row;
+	justify-content:center;
+}
+.paging button{
+	background:#B2B2B2;
+	display:block;
+	border:0px;
+	text-align:center;
+	height:30px;
+	margin:15px 5px;
+	padding:1px 10px;
+	font-size:20px;
+}
+.paging button:hover{
+	cursor:pointer;
+}
+/*공지사항 리스트 CSS 끝*/
 #subject{
 	text-align : center;
 	font-size: 3em;

@@ -1,14 +1,25 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
-<script src="/js/JstoreSelect.js"></script>
+
 <title>JstoreSelect</title>
 <link href="css/JstoreSelect.css" rel="stylesheet">
+<script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
 <div id='JstoreSelect'>
@@ -17,7 +28,7 @@
 	       <div id = 'subject' >주문하기</div>
 	        <div id = 'sub'>매장찾기</div>
 			
-		<form name='frm_Jstore' method='post' id='frm_Jstore'>
+		<form name='frm_Jstore' method='post' id='frm_Jstore' action="JstoreSelect">
 	             
 	            
 				<select class='mapFind' id='mapFindStr' name='mapFindStr' onchange='cityFindChange(this)'>
@@ -28,13 +39,12 @@
 				<option value='pusan'>부산</option>
 				</select>
 				
-				
 				<select class='mapFindcity' id='storeFindStr' name='storeFindStr' onchange='mapFindChange(this)' >
 				<option>선택해주세요</option>
 				
 				</select>
 				<input type='text' id='findStore'/>
-				<button type='button' id='storeListBtn' onclick="test()">매장찾기</button>
+				<button type='submit' id='storeListBtn'>매장찾기</button>
 				<input type='hidden' name='nowPage' value='${page.nowPage }'/>
 		</form>
 	</div>
@@ -51,22 +61,21 @@
 			
 		</div>
 		<div id = 'itemsWrap'>
-		<c:set var='num' value='${consumerpage.startNo }' />
-		<c:forEach var='v' items='${storeSelectlist}'>
+			<c:set var='num' value='${consumerpage.startNo}' />
+			<c:forEach var='v' items='${storeSelectlist}'>
 		       <div class='items'onclick="">
 			        <span class='no'     >${num+1 }</span>
-					<span class='storeName'     >${v.sotreName} }</span>
+					<span class='storeName'>${v.storeName}</span>
 					<span class='storeaddress'  >${v.address } </span>
 					<span class='genstorecall' >${v.phone} &nbsp;&nbsp;
-			<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기&nbsp;&nbsp;</button></a>
-			<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a></span>
-			 </div>
-			</div>
-		
+					<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기&nbsp;&nbsp;</button></a>
+					<a href='orderBtn'><button type='button' class='orderBtn'>주문하기&nbsp;&nbsp;</button></a>
+			 	</div>
+				
 		<hr/>
 		<c:set var='num' value='${num=num+1 }'/>
-	</c:forEach>
-		
+		</c:forEach>
+		</div>
 				
 		
 		<div class= 'paging'>	
@@ -91,4 +100,7 @@
 </div>
 
 </body>
+<script src="/js/JstoreSelect.js"></script>
+<script>
+</script>
 </html>

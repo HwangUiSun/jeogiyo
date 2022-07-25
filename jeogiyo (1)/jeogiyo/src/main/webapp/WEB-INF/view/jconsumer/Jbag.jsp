@@ -8,6 +8,16 @@
 <title>Jbag</title>
 <link href="css/Jbag.css" rel="stylesheet">
 <script src = './js/consumer.js'></script>
+ <script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
 
@@ -15,7 +25,7 @@
 
 <div id='Jag'>
 	
-	<div id= 'Jbeg_list'>
+	<div id= 'Jbag_list'>
 	        <div id='subject'>장바구니</div>
 	   <div id='wrap'>
 		<div class='title'>
@@ -26,16 +36,21 @@
 			<hr/>
 			
 		</div>
-		<c:forEach var = 'status' begin = '1' end = '3'>
-	<div id = 'itemsWrap'>
-	       <div class='items'>
-		<span class = sno'>${num+1 }  <img src='../img/chicken1.png'width='240px' height='240px'/>
-		 자바치킨 1개 <button type = 'button' name = 'cancelBtn'>삭제</button></div>
-		</div>
-	</div>
-	<hr/>
-	<c:set var='num' value='${num=num+1 }'/>
-</c:forEach>
+		<c:forEach var = 'v' items="${menus}">
+			<div id = 'itemsWrap'>
+	     	  <div class='items'>
+	     	  		<img src='../img/chicken1.png'width='240px' height='240px'/>
+					<span class = sno'>${num+1 }  
+					 ${v}
+					</span>				
+					<span>${prices}</span>					
+					<button type = 'button' name = 'cancelBtn'>삭제</button>
+				</div>
+			</div>
+			<hr/>
+			<c:set var='num' value='${num=num+1 }'/>
+		</c:forEach>
+		
 
   		<div class= 'paging'>	
 	

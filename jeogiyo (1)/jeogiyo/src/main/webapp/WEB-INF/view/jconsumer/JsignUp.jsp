@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel='stylesheet' href='./css/member.css'>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<title>JsignUp</title>
+<link rel = 'stylesheet' type='text/css' href = 'css/JsignUp.css'>
 </head>
 <body>
+
 <div id='JsignUp'>
   <h1>회원가입</h1>
-  <form name='frm_member' method='post' id='frm_member'>
+  <div id='main'>
+  <!--form name='JsignUp' method='post' id='JsignUp'  -->
     <label>아이디</label>
     <input type='text' name='id' size='15'><br/>
     
@@ -23,27 +24,56 @@
     <input type='password' name='pwd' maxlength='10' autocomplete="none"><br/>
     
     <label>연락처</label>
-    <input type='text' name='phone' size='12'><br/>
+    <input type='text' name='phone' size='12'/><br/>
     
     <label>우편번호</label>
-    <input type='text' name='zipcode'  size='12'>
+    <input type='text' name='zipcode'  size='12'/>
+    
     <button type='button' id='btnZipFind'>우편번호 검색</button>
     <br/>
     
     <label>주소</label>
-    <input type='text' name='address' size='40' autocomplete="none"><br/>
+    <input type='text' name='address' size='40'/><br/>
+    
+    <label>상세주소</label>
+    <input type='text' id='apiAddressDetail' size='40'/>
+    <br>
     
     <label>이메일</label>
     <input type='text' name='email' size='30'><br/>
     <br/>
   
+  
   <label></label>
   <a href ='signUpBtn'><button type='button' id='signUpBtn'>가입완료</button></a>
   
-  <input type='hidden' name='findStr' value='${param.findStr}'/>
-  <input type='hidden' name='nowPage' value='${param.nowPage}'/>
-  </form>
-<script src='js/member.js'></script>
+  </div>
 </div>
 </body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("btnZipFind").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+            	
+            var addr = '';
+            
+            if(data.userSelectedType === 'R'){
+            	addr = data.roadAddress;
+            }else{
+            	addr = data.jibunAddress;
+            }
+            
+                document.getElementById("zipcode").value = data.zonecode;
+                document.getElementById("address").value = addr;
+                
+                document.getElementById("apiAddressDetail").focus(); //상세입력 포커싱
+            }
+        }).open();
+    })
+};
+</script>
 </html>

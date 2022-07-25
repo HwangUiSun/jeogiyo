@@ -4,6 +4,7 @@
  //document.addEventListener('DOMContentLoaded', () => {
 	
   function movePage(page){
+	console.log("movePage")
 	let frm = document.frm_Jstore;
 	let url = 'JstoreSelect';
 	frm.nowPage.value = page;

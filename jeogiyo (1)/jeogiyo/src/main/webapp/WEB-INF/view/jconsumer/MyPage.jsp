@@ -7,11 +7,23 @@
 <title>MyPage</title>
 <link rel = 'stylesheet' type='text/css' href = 'css/MyPage.css'>
 <script src = './js/consumer.js'></script>
+<script>
+function clickEffect(e){
+  var d=document.createElement("div");
+  d.className="clickEffect";
+  d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+  document.body.appendChild(d);
+  d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+}
+document.addEventListener('click',clickEffect);
+</script>
 </head>
 <body>
+<div id = 'subject'>내정보 </div>
 <div id='MyPage'>
-  <h1>내정보</h1>
+ 
   <form name='frm_member' method='post' id='frm_member'>
+  
     <label>아이디</label>
     <input type='text' name='id' size='15'><br/>
     
@@ -47,11 +59,11 @@
    <label>소멸예정 포인트</label>
     <input type='text' class='havePoint' value='2000p' readonly/>
     <br/>
+    <br/>
   
   <label></label>
   <a href ='change_1Btn'><button type='button' id='change_1Btn'>수정하기</button></a>
   <a href='joinOutBtn'><button type='button' id='joinOutBtn' onclick='joinOutBtn()'>회원탈퇴</button></a>
-  
   <input type='hidden' name='findStr' value='${param.findStr}'/>
   <input type='hidden' name='nowPage' value='${param.nowPage}'/>
   </form>
@@ -73,7 +85,6 @@ window.onload = function(){
             	addr = data.jibunAddress;
             }
             
-                //document.getElementById("btnZipFind").value = data.zipcode; // 주소 넣기
                 document.getElementById("zipcode").value = data.zonecode;
                 document.getElementById("address").value = addr;
                 

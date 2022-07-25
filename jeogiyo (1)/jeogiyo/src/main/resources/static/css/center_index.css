@@ -18,6 +18,7 @@
 }
 
 #top_logo #Logo{
+
 	background-image: url("../img/logo.png");
 	background-size : cover;
 	background-repeat : no-repeat;
@@ -26,6 +27,8 @@
 	height : 150px;
 	left : 400px;
 	background-size: contain;
+
+
 }
 
 #title_menu{

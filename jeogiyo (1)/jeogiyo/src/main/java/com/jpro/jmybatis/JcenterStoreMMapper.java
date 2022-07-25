@@ -17,6 +17,7 @@ public interface JcenterStoreMMapper {
 	public List<JstoreVo> storeSelect(com.jpro.jcenter.Page page);
 	public JstoreVo JsaleFind2(String date1, String date2);
 	public boolean storeBan(JstoreVo vo);
+
 	
 	// 지역별 매출 현황
 	public JstoreVo JsaleFind3(String date1, String date2);
