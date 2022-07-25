@@ -67,7 +67,7 @@ input:invalid {
 		 <div class="testdiv" onclick="check(0);">
          <!--    <input type='image' src='../img/chicken1.png' width='240px' height='240px' id='img' name='img' value='../img/chicken1.png'/> -->
            <img src='../img/chicken1.png' width='240px' height='240px'/>
-	       <div class='subject' id='productName1_1'><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;발사믹 치킨</a></div>
+	       <div class='subject' id='productName1_1'>발사믹 치킨</div>
 	       <br/>
 	       <div class='menuInfo' id='menuInfo1_1'>발사믹 비네거의 풍미와 달콤함의 기막힌 조화</div>
 	       <div class='price' id='price1_1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소비자가격 : 18500원</div>

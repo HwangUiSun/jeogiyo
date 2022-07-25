@@ -15,10 +15,12 @@
    padding-top : 20px;
    font: bold;
 }
-#items .sno{
+.items {
+	width:100%;
+}
+.items .sno{
 	display : inline-block;
-	width : 270px;
-	margin : 0 10px;
+	width : 30px;
 	padding: 10px;
 	font : bold	 x-large generic-family;
 	position: relative;
@@ -26,32 +28,57 @@
 	top:-100px;
 	
 }
-#items .ea{
-	display : inline-block;
+.items .menu{
+	display :  inline-block;
+	width : 270px;
+	padding: 10px;
+	font : bold	 x-large generic-family;
+	position: relative;
+	left : 30px;
+	top:-100px;
+	
+}
+.items .ea{
+	display :  inline-block;
 	padding : 40px;
 	width : 50px;
 	font : bold	 x-large generic-family;
 	position: relative;
 	left : 30px;
 	top:-100px;
+
+
 }
-#items .price{
-	display : inline-block;
-	padding : 50px;
-	width : 230px;
+.items .price{
+	display :  inline-block;
+	padding : 10px;
+	width : 150px;
 	font : bold	 x-large generic-family;
 	position: relative;
 	left : 30px;
 	top:-100px;
 }
+.items .cancelBtn{
+	display : inline-block;
+	padding : 10px;
+	width : 150px;
+	font : bold	 x-large generic-family;
+	position: relative;
+	left : 30px;
+	top:-100px;
+}
+
+
 /* #items .storeaddress {
 	display : inline-block;
-	width : 300px;
+	width : 250px;
 	margin : 0 0px;
 	padding: 10px;
 	
 	
 }
+
+
 #items .genstorecall {
 	display : inline-block;
 	width : 150px;
