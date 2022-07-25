@@ -234,5 +234,27 @@ public class JConsumerService implements JConsumerInterface {
 		amapper.insertReview(vo);
 		
 	}
+	public List<JConsumerVo3> review(Page apage) {
+		List<JConsumerVo3> list = null;
+		try {
+		System.out.println(apage.getStartNo());
+		System.out.println(apage.getListSize());
+		System.out.println(apage.getMapFindStr());
+		System.out.println(apage.getStoreFindStr());
+		System.out.println(apage.getFindStore());
+		int totpage = amapper.totpage(apage);			
+		apage.setTotSize(totpage);
+		apage.compute();
+		list = amapper.reviewInput(apage);
+		System.out.println(list);
+		System.out.println(totpage);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		this.apage = apage;
+		return list;
+		
+	}
 
 }

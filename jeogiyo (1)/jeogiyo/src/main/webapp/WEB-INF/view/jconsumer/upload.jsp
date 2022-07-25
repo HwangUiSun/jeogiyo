@@ -23,7 +23,7 @@
 <div id='upload'>
   <div id='uploadReview'>
   </div>
-  <form name='upload' class='upload' method='post'>
+  <form name='upload' class='upload' id='upload' method='post'>
     <label>제목</label>
     <input type='text' name='subject' value="${subject }" size='14'/>
     <br>
@@ -33,21 +33,21 @@
     <br>
   
     <label>날짜</label>
-    <input type='text' id='nal' name = 'nal' value ='${nal }'/>
+    <input type='text' id='nal' name = 'nal' value ='${ordertime }'/>
     <br>
   
-    <label>내용</label>
+    <label></label>
     <textarea name = 'doc' id='summernote'>${doc }</textarea>
    <br>
    
   <div class='btns'>
-    <a href='writeBtn'><button type='button' id='writeBtn' onclick='write(this.form);'>확인</button></a>
+   <a href='writeBtn'> <button type='button' id='writeBtn' onclick='write();'>확인</button></a>
     <a href='backBtn'><button type='button' id='backBtn' >돌아가기</button></a>
     </div>
     
     <input type="hidden" name="sno" value="${vo.sno }">
-	<input type="hidden" name="nowPage" value="${notipage.nowPage}" >
-	<input type="hidden" name="findStr" value="${notipage.findStr}" >
+	<input type="hidden" name="nowPage" value="${reviewpage.nowPage}" >
+	<input type="hidden" name="findStr" value="${reviewpage.findStr}" >
 	<input type="hidden" name="ioginId" id="ioginId" value="${sessionScope.id }" >
   </form>
 </div>

@@ -23,4 +23,17 @@
          insert into orders(subject,mid,ordertime,doc)
       values(#{subject},#{mid},#{ordertime},#{doc});
 	</insert>
+	
+	<select id='totpage' parameterType="dPage" resultType="Integer">
+  				select count(mid) from orders
+ 
+ 
+</select>
+	
+	<select id='reviewInput' parameterType="dPage" resultType="JConsumerVo3">
+		  select * from orders
+		   
+		  limit ${startNo}, ${listSize}
+
+</select>
 </mapper>

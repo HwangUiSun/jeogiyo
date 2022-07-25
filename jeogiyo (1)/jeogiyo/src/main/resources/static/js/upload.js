@@ -30,30 +30,17 @@ upload.init = function(){
 	date = new Date();
  	date = date.toISOString().slice(0,10);
 	nal.value = date; 
-	hideIU()
+	
 	
 	
 }	
- write = function(frm){
-	
-	frm.action="writeBtn";
-	frm.submit();
-		
+
+
+
+function write(){
+	console.log("1");
+	var form = document.upload;
+	console.log("2");
+	form.action = 'writeBtn';
+	form.submit(); 
 }
-
- noti_view_back = function(frm){
-	
-		frm.action='noti';
-		frm.submit();	
-	}
-	
-	
-
-
-
-
-
-
-
-
-

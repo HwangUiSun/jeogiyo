@@ -644,16 +644,30 @@ public class JConsumerController {
 	// 리뷰 작성 버튼 -> 리뷰 작성 리스트
 
 	@RequestMapping("writeBtn")
-	public ModelAndView upload(JConsumerVo3 vo, HttpServletRequest req) {
-		 
+	public ModelAndView upload(JConsumerVo3 vo, HttpServletRequest req, Page page) {
+		
+		/*
+		 * String nal = req.getParameter("nal"); String id = req.getParameter("id");
+		 * String subject = req.getParameter("subject"); String doc =
+		 * req.getParameter("doc");
+		 * 
+		 * JConsumerVo3 rVo= new JConsumerVo3(); rVo.setOrdertime(nal); rVo.setMid(id);
+		 * rVo.setSubject(subject); rVo.setDoc(doc);
+		 */
 		  dao.insertReview(vo);
-		 
+		  
+		  System.out.println("console...");  
 		
 		ModelAndView mv = new ModelAndView(); 
+	
+		List<JConsumerVo3> conlist = dao.review(page);
+		System.out.println(conlist);
+		page = dao.getPage();
+		mv.addObject("reviewlist", conlist);
+		mv.addObject("reviewpage", page);
 		String url = "../jconsumer/JReview.jsp";
-
-		mv.addObject("inc", url);
 		
+		mv.addObject("inc", url);
 
 		mv.setViewName("jconsumer/Jconsumer_index");
 

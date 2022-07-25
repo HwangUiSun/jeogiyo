@@ -67,7 +67,7 @@ document.addEventListener('click',clickEffect);
 					<div class='storeaddress'  >${v.address } </div>
 					<div class='genstorecall' >${v.phone} </div>
 					<div id='btns'>
-					<a href='checkReviewBtn'><button type='button' class='checkReviewBtn'>리뷰보기</button></a>
+					<a href='writeBtn'><button type='button' class='checkReviewBtn'>리뷰보기</button></a>
 					<a href='orderBtn'><button type='button' class='orderBtn'>주문하기</button></a>
 					</div>
 			 	</div>
