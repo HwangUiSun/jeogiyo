@@ -24,7 +24,7 @@ deny = document.getElementsByClassName('deny');
 	start[sno].innerHTML = "<h1>min + ':' + sec</h1><br/><h3>배달 중</h3>";
 	
 	var timer = setInterval(function(){
-		// time--;
+		time--;
 		var timeOrigin = time;
 		var min = parseInt(timeOrigin / 3600);	
 		$(".minute").val(min);
@@ -34,7 +34,7 @@ deny = document.getElementsByClassName('deny');
 		console.log(min);
 		console.log(sec);
 		
-		// start[sno].innerHTML = "<h1>" + min + ':' + sec + "</h1>" + "<br/>" + "<h3>" + "배달 중" + "</h3>";
+		start[sno].innerHTML = "<h1>" + min + ':' + sec + "</h1>" + "<br/>" + "<h3>" + "배달 중" + "</h3>";
 		if(time == 0){
 			start[sno].style.visibility = "hidden";
 			end[sno].style.visibility = "visible";

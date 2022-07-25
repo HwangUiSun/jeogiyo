@@ -21,7 +21,7 @@
 	<div id = 'orderStatus'>
 		<div class = 'time'>${status.ordertime}</div>
 		<div class = 'info'>
-			<div class = 'amount'>총 금액 ${status.totalprice}</div>
+			<div class = 'amount'>총 금액 : ${status.totalprice}원</div>
 			<div class = 'method'>${status.howtopay }</div>
 			<div class = 'menu'>${status.ordermenu }</div>
 			<div class = 'address'>${status.address }</div>
