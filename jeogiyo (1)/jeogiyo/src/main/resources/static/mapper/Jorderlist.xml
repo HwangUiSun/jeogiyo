@@ -14,6 +14,7 @@
 <select id='Jorderlist' parameterType="dPage" resultType="JconsumerVo3">
   select * from orders
    where mid = #{mid}
+   order by sno desc
   limit ${startNo}, ${listSize}
 
 </select>

@@ -445,19 +445,20 @@ public class JConsumerController {
 	@RequestMapping("payBtn")
 	public ModelAndView payBtn(HttpServletRequest req) {
 		//System.out.println(req);
-//		JpayHistoryVo vo = new JpayHistoryVo();
-//		HttpSession session = req.getSession();
-//		vo.setMid((String) session.getAttribute("id"));
-//		vo.setPhone(req.getParameter("phone"));
-//		vo.setAddress(req.getParameter("address") + " " + req.getParameter("apiAddressDetail"));
-//		//System.out.println(req.getParameter("address") + " " + req.getParameter("apiAddressDetail"));
-//		vo.setHowtopay(req.getParameter("radioSelect"));
-//		//System.out.println(req.getParameter("radioSelect"));
-//		vo.setOrdermenu(req.getParameter("menu"));
-//		//System.out.println(req.getParameter("menu"));
-//		vo.setTotalprice(req.getParameter("totalPrice"));
-//		//System.out.println(req.getParameter("totalPrice"));
-//		dao.insertPayHistory(vo);
+		JpayHistoryVo vo = new JpayHistoryVo();
+	HttpSession session = req.getSession();
+		vo.setMid((String) session.getAttribute("id"));
+		vo.setPhone(req.getParameter("phone"));
+		vo.setAddress(req.getParameter("address") );
+		//System.out.println(req.getParameter("address") + " " + req.getParameter("apiAddressDetail"));
+		vo.setHowtopay(req.getParameter("radioSelect"));
+		//System.out.println(req.getParameter("radioSelect"));
+		vo.setOrdermenu(req.getParameter("menu"));
+		//System.out.println(req.getParameter("menu"));
+		vo.setTotalprice(req.getParameter("totalPrice"));
+		//System.out.println(req.getParameter("totalPrice"));
+		dao.insertPayHistory(vo);
+		
 		//결제방법
 		String howToPay = "";		
 		if(req.getParameter("radioSelect")!=null) {
@@ -645,21 +646,34 @@ public class JConsumerController {
 	// 리뷰 작성 버튼 -> 리뷰 작성 리스트
 
 	@RequestMapping("writeBtn")
-	public ModelAndView upload(JConsumerVo3 vo, HttpServletRequest req, Page page) {
-		
-		/*
-		 * String nal = req.getParameter("nal"); String id = req.getParameter("id");
-		 * String subject = req.getParameter("subject"); String doc =
-		 * req.getParameter("doc");
-		 * 
-		 * JConsumerVo3 rVo= new JConsumerVo3(); rVo.setOrdertime(nal); rVo.setMid(id);
-		 * rVo.setSubject(subject); rVo.setDoc(doc);
-		 */
+	public ModelAndView upload( HttpServletRequest req, Page page) {
+		JConsumerVo3 vo = new JConsumerVo3(); 
+		  vo.setMid(req.getParameter("mid"));
+		  System.out.println(req.getParameter("mid"));
+		  vo.setSubject(req.getParameter("subject"));
+		  System.out.println(req.getParameter("subject"));
+		  vo.setOrdertime(req.getParameter("nal"));
+		  System.out.println(req.getParameter("nal"));
+		  vo.setDoc(req.getParameter("doc"));
+		  System.out.println(req.getParameter("doc"));
+		  
+		  
+		 
 		  dao.insertReview(vo);
 		  
-		  System.out.println("console...");  
+		  ModelAndView mv = new ModelAndView(); 
+		  mv.addObject("mid", vo.getMid());
+			mv.addObject("subject", vo.getSubject());
+			mv.addObject("phone", vo.getPhone());
+			mv.addObject("nal", vo.getOrdertime());
+			mv.addObject("doc", vo.getDoc());
+			
+		 
+		  
+		  System.out.println(vo.getSubject());  
+		  System.out.println(vo.getDoc());  
 		
-		ModelAndView mv = new ModelAndView(); 
+		 
 	
 		List<JConsumerVo3> conlist = dao.review(page);
 		System.out.println(conlist);
