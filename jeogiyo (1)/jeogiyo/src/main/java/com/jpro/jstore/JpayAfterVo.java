@@ -2,10 +2,16 @@ package com.jpro.jstore;
 
 public class JpayAfterVo {
 
-	String address, apiAddressDetail, nal, storeName, mainLocal, date1, date2;
+	String address, apiAddressDetail, nal, storeName, mainLocal, date1, date2, mid, phone, email,  zipcode;
 	int harutotal;
 
 	
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 	public String getAddress() {
 		return address;
 	}

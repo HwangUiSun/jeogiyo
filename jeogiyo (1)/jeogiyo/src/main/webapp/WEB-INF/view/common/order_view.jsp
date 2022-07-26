@@ -42,7 +42,7 @@
 			<div class="items " >
 					<span id="productName">${v.productName}</span>
 					<span class="rid">${param.id}</span>
-					<span><input type="text" value="${v.ea}" id="eaCss" name="ea" id="ea${v.sno}"></span>
+					<span><input type="text" value="${v.ea}" id="eaCss" name="ea" class="ea${v.sno}"></span>
 					<c:if test ="${mid == 'root'}">
 					<span><button type="button"  id="updateCss" onclick="addC('${v.sno}', 'ea${v.sno}','${param.title}')">수정</button></span>
 					</c:if>
@@ -68,7 +68,7 @@
 <script>
 let ids = [];
 function addC(sno,eas,title){
-	let ea = document.getElementById(eas)
+	let ea = document.getElementsByClassName(eas)[0]
 	/* Javascript */
 	// create element (form)
 	var newForm = document.createElement('form');
@@ -76,7 +76,7 @@ function addC(sno,eas,title){
 	newForm.name = 'newForm';
 	newForm.method = 'post';
 	newForm.action = '/addsC';	
-
+	console.log(ea, sno, title)
 	// create element (input)
 	var eainput = document.createElement('input');
 	var snoinput = document.createElement('input');

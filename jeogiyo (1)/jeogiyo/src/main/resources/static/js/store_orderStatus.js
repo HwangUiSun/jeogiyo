@@ -1,53 +1,46 @@
 /**
  * 
  */
- btn = document.getElementsByClassName('btns'); //추가한거
+btn = document.getElementsByClassName('btns'); //추가한거
 start = document.getElementsByClassName('order_expected_time');
 order = document.getElementsByClassName('orderTime');
 end = document.getElementsByClassName('end_time');
 deny = document.getElementsByClassName('deny');
- document.addEventListener('DOMContentLoaded', (event) => { 
-    
+document.addEventListener('DOMContentLoaded', (event) => { 
     btnAccept = function(sno){
-	
-	
-	btn[sno].style.visibility ="hidden";//추가한거
-	start[sno].style.visibility = "visible";
-	var time = 60 * 60;
-	var timeOrigin = time;
-	var min = parseInt(timeOrigin / 3600);
-	
-	timeOrigin = timeOrigin % 3600;
-	var sec = parseInt(timeOrigin / 60);
-	
-	$('.order_expected_time h1').empty();	
-	start[sno].innerHTML = "<h1>min + ':' + sec</h1><br/><h3>배달 중</h3>";
-	
-	var timer = setInterval(function(){
-		// time--;
+		btn[sno].style.visibility ="hidden";//추가한거
+		start[sno].style.visibility = "visible";
+		var time = 60 * 60;
 		var timeOrigin = time;
-		var min = parseInt(timeOrigin / 3600);	
-		$(".minute").val(min);
+		var min = parseInt(timeOrigin / 3600);
 		timeOrigin = timeOrigin % 3600;
 		var sec = parseInt(timeOrigin / 60);
-		$(".second").val(sec);
-		console.log(min);
-		console.log(sec);
 		
-		// start[sno].innerHTML = "<h1>" + min + ':' + sec + "</h1>" + "<br/>" + "<h3>" + "배달 중" + "</h3>";
-		if(time == 0){
-			start[sno].style.visibility = "hidden";
-			end[sno].style.visibility = "visible";
-		}
-	})
-	
-
-}
-
+		$('.order_expected_time h1').empty();	
+		start[sno].innerHTML = "<h1>min + ':' + sec</h1><br/><h3>배달 중</h3>";
+		
+		var timer = setInterval(function(){
+			time--;
+			var timeOrigin = time;
+			var min = parseInt(timeOrigin / 3600);	
+			$(".minute").val(min);
+			timeOrigin = timeOrigin % 3600;
+			var sec = parseInt(timeOrigin / 60);
+			$(".second").val(sec);
+			console.log(min);
+			console.log(sec);
+			
+			start[sno].innerHTML = "<h1>" + min + ':' + sec + "</h1>" + "<br/>" + "<h3>" + "배달 중" + "</h3>";
+			if(time == 0){
+				start[sno].style.visibility = "hidden";
+				end[sno].style.visibility = "visible";
+			}
+		})
+	}
 })
  
 function btnDeny(sno){
-	let url = 'store_orderStatus';
+	let url = 'store_orderStatus_Drop';
 	let frm = document.frm_orderStatus;
 	frm.sno.value = sno;
 	frm.action = url;
