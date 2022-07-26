@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 #subject{
 	text-align : center;
 	font-size: 3em;
@@ -11,22 +13,54 @@
 
 
 #sale_section{
-	margin-left : 670px;
+	margin-left : 150px;
 }
 
 #sale_section select{
 	width : 100px;
 }
 
+#container2{
+	border-bottom : 1px dashed #000;
+	border-left : 1px dashed #000;
+	height : 380px;
+	width : 650px;
+	position : relative;
+	left : 547px;
+	top : -800px;
+}
+
 #sale_find{
 	display : inline-block;
-	margin-left : 800px;
+	margin-left : 354px;
 	margin-bottom : 30px;
 	font-size : 2em;
+	background-color : #f998;
+	width : 150px;
+	text-align : center;
+	border-radius : 10px;
 }
 
 #sale_date{
 	float : right;
+}
+
+#sale_date button{
+	background:#a5ea89;
+	display:inline-block;
+	border: none;
+	text-align:center;
+	height:30px;
+	padding:1px 10px;
+	font-size:20px;
+	color : #666666;
+	border-radius : 10px;
+	font-weight : bold;
+}
+
+#sale_date button:hover{
+	background-color : #5ad226;
+	cursor : pointer;		
 }
 
 #sale_date input{
@@ -37,17 +71,41 @@
 	width : 310px;
 	float : right;
 	text-align : right;
+	margin-top : -50px;
 }
 
 #top_title{
-	margin-top : 300px;
+	position : relative;
+	font-size : 3em;
+	left : 330px;
 }
 
-#top1, #top2, #top3{
+#top1{
 	display : inline-block;
-	width : 350px;
-	margin : 21px;
+	width : 400px;
 	text-align : center;
+	font-size : 3em;
+	position : relative;
+}
+
+#top2{
+	display : inline-block;
+	position : relative;
+	width : 350px;
+	text-align : center;
+	left : 90px;
+	top : -50px;
+	font-size : 2em;
+}
+
+#top3{
+	display : inline-block;
+	position : relative;
+	width : 350px;
+	text-align : center;
+	left : 150px;
+	top : -80px;
+	font-size : 1.5em;
 }
 
 #cancelBtn{
@@ -64,4 +122,34 @@
 #cancelBtn:hover{
 	cursor : pointer;
 	background-color : #999;
+}
+
+#sale_img{
+	background-image: url("../img/centerstoresale.png");
+	background-size : cover;
+	background-repeat : no-repeat;
+	position : relative;
+	width : 1050px;
+	height : 800px;
+	left : -140px;
+	bottom : 200px;
+	background-size: contain;
+	display: inline-block;
+	margin-top: 28px;
+}
+#top_list{
+	position: relative;
+	top : -740px;
+}
+
+
+#gold{
+	
+	color: #D5A11E;
+}
+#s{
+	color :#A3A3A3;
+}
+#b{
+	color :#CD7F32;
 }

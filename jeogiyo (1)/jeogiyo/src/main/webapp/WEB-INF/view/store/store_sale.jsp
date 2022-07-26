@@ -9,7 +9,6 @@
 <link rel='stylesheet' type='text/css' href='/css/store_sale.css'>
 </head>
 <body>
-<a href='storeCenter'>Home</a>
 <div id='subject'>매출관리</div>
 <div id='store_sale'>
 	

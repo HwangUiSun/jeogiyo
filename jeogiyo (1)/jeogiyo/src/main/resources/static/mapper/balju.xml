@@ -36,6 +36,12 @@
 	<select id="createTable" parameterType="map">		
 			${create_table}		
 	</select>
+	
+	<update id="updateTable" parameterType="String">
+		update ${tableName} t, jbaljulist j
+		set t.status = j.status
+		where t.sno = j.sno;
+	</update>
 
 	<update id="update" parameterType="map">
 		${insertTable}

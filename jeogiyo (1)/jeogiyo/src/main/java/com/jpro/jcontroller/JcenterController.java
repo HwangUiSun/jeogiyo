@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +19,11 @@ import com.jpro.common.J_notiService;
 import com.jpro.common.J_notiVo;
 import com.jpro.jcenter.JcenterMemberVo;
 import com.jpro.jcenter.JcenterStoreMService;
+import com.jpro.jcenter.JcenterStoreMviewService;
 import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jcenter.JcenterStoreVo;
 import com.jpro.jcenter.JcenterstoreDropService;
+import com.jpro.jcenter.JpayAfterVo8;
 import com.jpro.jcenter.JcenterDropListVo;
 import com.jpro.jcenter.JcenterMemberService;
 import com.jpro.jcenter.Page;
@@ -52,10 +56,21 @@ public class JcenterController {
 	@Autowired
 	JstoreDropService dropDao2;
 	
+	@Autowired
+	JcenterStoreMviewService viewDao;
+	
 	@RequestMapping("index")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index");
+		return mv;
+	}
+	@RequestMapping("Center_home")
+	public ModelAndView Center() {
+		ModelAndView mv = new ModelAndView();
+		String url = "../center/center_main.jsp";
+		mv.addObject("inc", url);
+		mv.setViewName("center/center_index");
 		return mv;
 	}
 	
@@ -269,7 +284,7 @@ public class JcenterController {
 	
 	
 	@RequestMapping("center_storeM_local")
-	public ModelAndView storeM(Integer startNo, @RequestParam String local, HttpServletRequest req) {
+	public ModelAndView storeM(Integer startNo, @RequestParam(value="local", required=false) String local,  HttpServletRequest req) {
 		if(startNo == null) {
 			startNo =1;
 		}
@@ -287,16 +302,43 @@ public class JcenterController {
 		return mv;
 	}
 	
-	@RequestMapping("center_storeMview")
-	public ModelAndView center_storeMview() {
+	@RequestMapping("center_storeMview")//가맹상세보기에서 아이디 기타등등
+	public ModelAndView center_storeMview(String storeName, String mid) {
 		ModelAndView mv = new ModelAndView();
+		
 		String url = "../center/center_storeMview.jsp";
+		JstoreVo vo = viewDao.view(storeName, mid);
+		mv.addObject("vo", vo);
 		mv.addObject("inc",url);
 		
 		mv.setViewName("center/center_index");
 		
 		return mv;
 	}
+	
+	@RequestMapping("center_storeMview2")//가맹상세보기에서 매출조회
+	public ModelAndView center_storeMview2(JpayAfterVo8 vo) {
+		ModelAndView mv = new ModelAndView();
+		
+		String url = "../center/center_storeMview.jsp";
+		
+		JstoreVo jstoreVo = viewDao.view(vo.getStoreName(), vo.getMid());
+		
+		List<JpayAfterVo8> list = viewDao.view3(vo);
+		
+		mv.addObject("vo", jstoreVo);
+		mv.addObject("inc",url);
+		
+		
+		mv.addObject("startNal", vo.getStartNal());
+		mv.addObject("endNal", vo.getEndNal());
+		
+		mv.setViewName("center/center_index");
+		mv.addObject("saleList", list);
+		return mv;
+	}
+
+	
 	
 	@RequestMapping("center_storeSale")
 	public ModelAndView storeSale() {
@@ -357,10 +399,8 @@ public class JcenterController {
 			storepage =  new com.jpro.jcenter.Page();
 			storepage.setNowPage(1);
 			storepage.setFindStr("");
-			
 		}
-		
-		List<JstoreVo> storelist = dropDao.storeDrop(storepage);
+		List<JcenterDropListVo> storelist = dropDao.storeDrop(storepage);
 		
 		storepage = dropDao.getPage();
 		mv.addObject("storelist",storelist);
@@ -384,9 +424,8 @@ public class JcenterController {
 			storepage.setFindStr("");
 			
 		}
-	
 		
-		List<JstoreVo> storelist = dropDao.storeDrop(storepage); 
+		List<JcenterDropListVo> storelist = dropDao.storeDrop(storepage); 
 		storepage =  dropDao.getPage();
 		
 		mv.addObject("inc",url);
@@ -401,14 +440,38 @@ public class JcenterController {
 	
 
 	@RequestMapping("center_storeDropView")
-	public ModelAndView center_storeDropView(JcenterDropListVo vo) {
+	public ModelAndView center_storeDropView(com.jpro.jcenter.Page page, String storeName) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../center/center_storeDrop_view.jsp";
-		
 		mv.addObject("inc", url);
-		System.out.println(vo.getStoreName());
-		JcenterDropListVo rVo = dropDao2.drop_view(vo.getMid());
+		System.out.println("상세보기의 가맹점명" + storeName);
+		JcenterDropListVo rVo = dropDao2.drop_view(storeName);
+		System.out.println("MID 값은?" + rVo.getMid());
 		mv.addObject("vo", rVo);
+		
+		mv.setViewName("center/center_index");
+		return mv;
+	}
+	
+	@RequestMapping("center_storeDropOK")
+	public ModelAndView center_storeDropOK(com.jpro.jcenter.Page storepage, String storeName) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("Drop OK" + storeName);
+		dropDao2.drop_OK(storeName);
+		
+		String url = "../center/center_storeDrop.jsp";
+		mv.addObject("inc", url);
+		
+		if(storepage.getFindStr() ==null) {
+			storepage =  new com.jpro.jcenter.Page();
+			storepage.setNowPage(1);
+			storepage.setFindStr("");
+		}
+		List<JcenterDropListVo> storelist = dropDao.storeDrop(storepage);
+		
+		storepage = dropDao.getPage();
+		mv.addObject("storelist",storelist);
+		mv.addObject("storepage",storepage);
 		
 		mv.setViewName("center/center_index");
 		return mv;
@@ -459,9 +522,10 @@ public class JcenterController {
 		String url = "../common/order_view.jsp";
 		mv.addObject("inc",url);
 		HttpSession s = req.getSession();
-		String tableName = req.getParameter("title");
-		System.out.println("addc"+tableName);
+		String tableName = req.getParameter("title");	
 		page.setTableName(tableName);	
+		int nowPage =Integer.parseInt(req.getParameter("nowPage"));
+		mv.addObject("nowPage",nowPage);
 		baljuDao.updateEa(ea, sno, tableName);
 		
 

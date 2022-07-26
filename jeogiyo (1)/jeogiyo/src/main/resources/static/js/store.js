@@ -169,3 +169,5 @@
 	document.getElementById("nal").value=str;
 
   document.getElementById('today').value = new Date().toISOString().substring(0, 10);
+  
+ 

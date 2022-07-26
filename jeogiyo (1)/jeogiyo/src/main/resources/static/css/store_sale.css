@@ -17,20 +17,23 @@
 	margin:2px auto;
 }
 
-.title, .items{
+.title{
 	font-weight:600;
-	color:#fff;
+	background:#5ad226;
+	margin:2px auto;
+	margin-top : 20px;
+	display:flex;
+	flex-direction: row;
+}
+
+.items{
+	font-weight:200;
 	margin:2px 0;
 	display:flex;
 	flex-direction: row;
-	background:#565656;
-	
+	border-bottom : 1px solid #666666;
 }
 
-.items{font-weight:200;}
-.items:nth-child(2n){
-	background:#353434;
-}
 .title span, .items span{
 	display:block;
 	box-sizing:border-box;
@@ -55,41 +58,39 @@
 	justify-content : center;
 }
 .paging button{
-	background-color : #9997;
-	font-weight : bold;
 	margin : 5px;
-	margin-top : 30px;
 	height : 30px;
-	width : 60px;
-	border-radius : 10px;
+	width : 80px;
+	background-color : #a5ea89;
 	border : none;
+	border-radius : 10px;
+	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
 }
 .paging button:hover{
 	cursor:pointer;
 }
- .items:hover{
- 	color:#000;
- 	cursor:pointer;
- 	background : #fff;
- }
 #frm_store_sale button[name = lookUp]{
-	background-color : #9997;
-	font-weight : bold;
 	margin : 5px;
 	height : 30px;
-	width : 60px;
-	border-radius : 10px;
+	width : 80px;
+	background-color : #a5ea89;
 	border : none;
+	border-radius : 10px;
+	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
 }
 
 #frm_store_sale button[name = lookUp]:hover{
+	background-color : #5ad226;
 	cursor : pointer;
-	background-color : #999;
 }
  
  .paging button:hover{
- 	cursor : pointer;
-	background-color : #999;
+	background-color : #5ad226;
+	cursor : pointer;
  }
  
  #left_area{

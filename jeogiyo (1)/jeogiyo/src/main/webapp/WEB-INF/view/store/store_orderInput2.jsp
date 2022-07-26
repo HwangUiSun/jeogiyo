@@ -57,17 +57,22 @@
 					<span>${num}.</span>
 					<span id="productName">${v.productName }</span>
 					<span><input type="text" value="${v.ea}" name="ea" id="ea${v.sno}"></span>
+					<c:if test="${v.status == 'true' }">
 					<span><button type="button" id="add" onclick="add(${v.sno},'ea${v.sno}')">추가</button></span>
+					</c:if>
+					<c:if test="${v.status == 'false' }">
+					<span>불가</span>
+					</c:if>
 					<input type="hidden" value="${v.sno}" name="sno" id="sno">
 				</div>
 				<c:set var='num' value='${num=num+1 }'/>
 				</c:forEach>
 	</div>
-
+	
 <input type="hidden" name="title" id="title" value="${param.title}">
 <input type="hidden" name="nal" id="nal" value="">
 </div>
-
+<a href="updateTable">업데이트</a>
 
 </body>
 </html>

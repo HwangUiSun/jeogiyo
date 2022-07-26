@@ -12,10 +12,10 @@
 
 .title{
 	font-weight:600;
-	color:#fff;
-	background:#353434;
+	background:#5ad226;
 	width:1200px;
 	margin:2px auto;
+	margin-top : 20px;
 	display:flex;
 	flex-direction: row;
 }
@@ -26,15 +26,10 @@
 }
 .itemsWrap .items{
 	font-weight:200;
-	color:#fff;
 	margin:2px 0;
 	display:flex;
 	flex-direction: row;
-	background:#565656;
-	
-}
-.itemsWrap .items:nth-child(2n){
-	background:#353434;
+	border-bottom : 1px solid #666666;
 }
 .itemsWrap .items span, .title span{
 	display:block;
@@ -62,11 +57,11 @@
 .itemsWrap .items:hover{
 	color:#000000;
 	cursor:pointer;
-	bacKground: #ffffff;
+	bacKground: #a5ea89;
 }
 
 .paging{
-	background:#B2B2B2;
+	--background:#B2B2B2;
 	height:60px;
 	margin:2px auto;
 	display:flex;
@@ -74,39 +69,43 @@
 	justify-content:center;
 }
 .paging button{
-	background:#B2B2B2;
-	display:block;
-	border:0px;
-	text-align:center;
-	height:30px;
-	margin:15px 5px;
-	padding:1px 10px;
-	font-size:20px;
+	margin : 5px;
+	height : 30px;
+	width : 80px;
+	background-color : #a5ea89;
+	border : none;
+	border-radius : 10px;
+	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
+	margin-top : 30px;
 }
 .paging button:hover{
+	background-color : #5ad226;
 	cursor : pointer;
-	background-color : #999;
 }
 
 #menuTitle button{
+	margin : 5px;
 	height : 30px;
-	width : 110px;
-	background-color : #9997;
+	width : 80px;
+	background-color : #a5ea89;
 	border : none;
-	border-radius : 15px;
+	border-radius : 10px;
 	font-size : 15px;
-	margin-bottom : 20px;
+	color : #666666;
+	font-weight : bold;
 }
 
 #menuTitle button:hover{
+	background-color : #5ad226;
 	cursor : pointer;
-	background-color : #999;
 }
 
-#inputbutton{
+#inputbutton button{
 	position: relative;
-	width: 100px;
-	top : -50px	
+	width: 90px;
+	top : -40px	
 }
 
 #menuTitle{

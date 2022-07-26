@@ -49,21 +49,7 @@ public class JbaljuService {
 			list = mapper.selectList(sql);
 		}catch(Exception ex) {
 			String msg = ex.getMessage();
-			try {
-				 // 1. 파일 객체 생성            
-				File file = new File("C:/Temp/writeFile.txt");             
-				// 2. 파일 존재여부 체크 및 생성            
-				if (!file.exists()) {                file.createNewFile()  ;          }             
-				// 3. Writer 생성            
-				FileWriter fw = new FileWriter(file);            
-				PrintWriter writer = new PrintWriter(fw,true);             
-				// 4. 파일에 쓰기            
-				writer.write(msg);   
-				// 5. PrintWriter close          
-				writer.close();	
-			}catch(Exception ex2) {
-				ex2.printStackTrace();
-			}			
+					
 		}
 		
 		return list;
@@ -79,21 +65,7 @@ public class JbaljuService {
 			list = mapper.selecSubtList(sql);			
 		}catch(Exception ex) {
 			String msg = ex.getMessage();
-			try {
-				 // 1. 파일 객체 생성            
-				File file = new File("C:/Temp/writeFile.txt");             
-				// 2. 파일 존재여부 체크 및 생성            
-				if (!file.exists()) {                file.createNewFile();            }             
-				// 3. Writer 생성            
-				FileWriter fw = new FileWriter(file);            
-				PrintWriter writer = new PrintWriter(fw,true);             
-				// 4. 파일에 쓰기            
-				writer.write(msg);   
-				// 5. PrintWriter close          
-				writer.close();	
-			}catch(Exception ex2) {
-				ex2.printStackTrace();
-			}
+		
 		}
 		
 		return list;
@@ -152,7 +124,7 @@ public class JbaljuService {
 		int dayOfMonth = now.getDayOfMonth();  
 		String days = year+"_"+monthValue+"_"+dayOfMonth;
 		String storeName=mstoreName ;
-		String create_table = "CREATE TABLE "+storeName+days+ " AS select *from jbaljulist";
+		String create_table = "CREATE TABLE "+storeName+days+ " AS select * from jbaljulist";
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("create_table",create_table);
 		try {
@@ -160,22 +132,7 @@ public class JbaljuService {
 			mapper.createTable(map);
 			transaction.commit(status);
 		}catch(Exception ex) {
-			String msg = ex.getMessage();
-			try {
-				 // 1. 파일 객체 생성            
-				File file = new File("C:/Temp/writeFile.txt");             
-				// 2. 파일 존재여부 체크 및 생성            
-				if (!file.exists()) {                file.createNewFile()  ;          }             
-				// 3. Writer 생성            
-				FileWriter fw = new FileWriter(file,true);            
-				PrintWriter writer = new PrintWriter(fw);             
-				// 4. 파일에 쓰기            
-				writer.write(msg);   
-				// 5. PrintWriter close          
-				writer.close();	
-			}catch(Exception ex2) {
-				ex2.printStackTrace();
-			}		
+			String msg = ex.getMessage();			
 		}
 		
 		return storeName+days;
@@ -189,8 +146,7 @@ public class JbaljuService {
 		map.put("insertTable",insertTable);
 		try {			
 				mapper.update(map);
-				status = transaction.getTransaction(new DefaultTransactionDefinition());
-				transaction.commit(status);
+				status = transaction.getTransaction(new DefaultTransactionDefinition());				transaction.commit(status);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -316,6 +272,20 @@ public class JbaljuService {
 			msg ="이미 있습니다";
 		}
 		return msg;
+	}
+	
+	public boolean updateTable(String tableName) {
+		boolean b = false;
+		try {
+			status = transaction.getTransaction(new DefaultTransactionDefinition());
+			mapper.updateTable(tableName);
+			transaction.commit(status);
+			b=true;					
+		}catch(Exception ex) {
+			
+		}
+
+		return b;
 	}
 	
 }

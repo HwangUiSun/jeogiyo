@@ -1,53 +1,50 @@
 /**
  * 
  */
- btnAccept = function(sno){
-	
-	
-	var a = $('.sno').attr('value');
-	if(sno == $('.sno').attr('value')){
-		
-	}
-	console.log(a);
-	var b = $('.a').attr('value');
-	console.log(b);	
-	$('.btn').val();
-	$('.btns').css('visibility', 'hidden');
-	$('.order_expected_time').css('visibility', 'visible');
-	
-	$('.order_expected_time h1').css('text-align', 'center');
-	
-	var time = 60 * 60;
-	var timeOrigin = time;
-	var hour = parseInt(timeOrigin / 3600);
-	
-	timeOrigin = timeOrigin % 3600;
-	var min = parseInt(timeOrigin / 60);
-	var second = timeOrigin % 60;
-	
-	$('.order_expected_time h1').empty();	
-	$('.order_expected_time h1').text(hour + ":" + min);
-	$('.order_expected_time h3').text("배달 중");
-	
-	var timer = setInterval(function(){
-		time--;
+btn = document.getElementsByClassName('btns'); //추가한거
+start = document.getElementsByClassName('order_expected_time');
+order = document.getElementsByClassName('orderTime');
+end = document.getElementsByClassName('end_time');
+deny = document.getElementsByClassName('deny');
+document.addEventListener('DOMContentLoaded', (event) => { 
+    btnAccept = function(sno){
+		btn[sno].style.visibility ="hidden";//추가한거
+		start[sno].style.visibility = "visible";
+		var time = 60 * 60;
 		var timeOrigin = time;
-		var hour = parseInt(timeOrigin / 3600);	
+		var min = parseInt(timeOrigin / 3600);
 		timeOrigin = timeOrigin % 3600;
-		var min = parseInt(timeOrigin / 60);
-		var second = timeOrigin % 60;
-		$('.order_expected_time h1').empty();
-		$('.order_expected_time h1').text(hour + ":" + min	);
-		if(time == 0){
-			$('.order_expected_time').css('visibility', 'hidden');
-			$('.end_time').css('visibility', 'visible');
-		}else{
-			skip = function(){
-				$('.order_expected_time').css('visibility', 'hidden');
-			$('.end_time').css('visibility', 'visible');
+		var sec = parseInt(timeOrigin / 60);
+		
+		$('.order_expected_time h1').empty();	
+		start[sno].innerHTML = "<h1>min + ':' + sec</h1><br/><h3>배달 중</h3>";
+		
+		var timer = setInterval(function(){
+			time--;
+			var timeOrigin = time;
+			var min = parseInt(timeOrigin / 3600);	
+			$(".minute").val(min);
+			timeOrigin = timeOrigin % 3600;
+			var sec = parseInt(timeOrigin / 60);
+			$(".second").val(sec);
+			console.log(min);
+			console.log(sec);
+			
+			start[sno].innerHTML = "<h1>" + min + ':' + sec + "</h1>" + "<br/>" + "<h3>" + "배달 중" + "</h3>";
+			if(time == 0){
+				start[sno].style.visibility = "hidden";
+				end[sno].style.visibility = "visible";
 			}
-		}
-	})
+		})
+	}
+})
+ 
+function btnDeny(sno){
+	let url = 'store_orderStatus_Drop';
+	let frm = document.frm_orderStatus;
+	frm.sno.value = sno;
+	frm.action = url;
+	frm.submit();
 }
 
 function movePage(page){

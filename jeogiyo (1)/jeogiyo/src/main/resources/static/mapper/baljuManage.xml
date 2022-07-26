@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='com.jpro.jmybatis.JbaljuManageMapper'>
+
+	<select id="selectTotoSize" parameterType="cPage" resultType="Integer">
+		select count(sno) from jbaljulist
+	</select>
+	
+	<select id="select" parameterType="Integer" resultType="JbaljuManageVo">
+		select * from jbaljulist
+	</select>
+	
+	<update id="changeStatus" parameterType="map">
+		update jbaljulist set status = ${bool} where sno = ${sno}
+	</update>
+	
+	<insert id="add" parameterType="String">
+		insert into jbaljulist(category, productName, ea, status) values("신상품", '${productName}', 0, false)
+	</insert>
+	
+	<delete id="sub" parameterType="String">
+		delete from jbaljulist where sno = ${sno}
+	</delete>
+	
+</mapper> 

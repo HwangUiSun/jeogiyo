@@ -23,7 +23,7 @@ HTTP 통신
 	=> 보안상 중요한거는 post
  */  
 
- 
+
 // 화면에 들어올때 초기화
 $(function() {
 	$("#selectLocal").empty();
@@ -43,9 +43,21 @@ center_storeM.movePage = function(page){
 	let selectLocalValue = $("#selectLocal").val();
 	// 값이 비어있다면
 	if (!selectLocalValue) {
-		location.href='center_storeM_local?startNo='+page;	
+		location.href='center_storeM?startNo=' + page;	
 	} else {
-		location.href='center_storeM_local?startNo='+page+'&local=' + selectLocalValue		
+		location.href='center_storeM_local?startNo=' + page + '&local=' + selectLocalValue		
 	}
 }
+
+function view(storeName, mid){
+	let frm = $('#frm_view')[0];
+	frm.storeName.value = storeName;
+	frm.mid.value = mid;
+	console.log(storeName);
+	let url = 'center_storeMview';
+	frm.action = url;
+	
+	frm.submit();
+}
+
 

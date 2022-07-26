@@ -10,7 +10,6 @@
 </head>
 <body>
 <div id="subject">회원 목록</div>
-<a href='storeCenter'>Home</a>
 <div id="wrap">
 	
 	<div class="title">

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+*{
+	padding:0px;
+	margin:0px;
+	box-sizing:border-box;
+}
+.wrap{
+	width:1200px;
+	margin:0 auto;
+}
+.wrap:after{
+	content:"";
+	display:block;
+	clear:both;
+	width:0px;
+}
+#left{
+	width:20%;
+}
+#right{
+	width:65%;
+	margin-left:5%;
+}
+#left,#right{	
+	
+	float:left;
+	
+}
+#left{
+	width:30%;
+}
+#baljuList{
+	width:100%;
+	overflow-x: hidden; /* Hide horizontal scrollbar */
+  	overflow-y: scroll; /* Add vertical scrollbar */
+	height:500px;
+	
+}
+.items{
+	display:flex;
+	justify-content:space-around;
+	margin-top:10px;
+}
+
+.items span:nth-child(1){
+	width:10%;
+}
+.items span:nth-child(2){
+	width:50%;
+}
+.items span:nth-child(3){
+	width:20%;
+}
+.items span:nth-child(4){
+	width:20%;
+}
+.items button{
+	color:#fff;
+	font-weight:400;
+	width:40%;
+}

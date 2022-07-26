@@ -10,17 +10,19 @@
 }
 
 #go_storeDropBtn{
-	height : 50px;
-	width : 120px;
-	background-color : #9997;
+	height : 30px;
+	width : 90px;
+	background-color : #a5ea89;
 	border : none;
-	border-radius : 15px;
+	border-radius : 10px;
 	font-size : 15px;
+	color : #666666;
+	font-weight : bold;
 }
 
 #go_storeDropBtn:hover{
+	background-color : #5ad226;
 	cursor : pointer;
-	background-color : #999;
 }
 
 .select_local {
@@ -38,8 +40,8 @@
 }
 
 .select_local:hover {
+	background-color : #aaf;
 	cursor : pointer;
-	background-color : #999;
 }
 
 .storeName{
@@ -83,18 +85,22 @@
 	text-align : center;
 }
 
-#pageBtn{
-	background:#B2B2B2;
+#paging button{
+	background:#a5ea89;
 	display:inline-block;
-	border:0px;
+	border: none;
 	text-align:center;
 	height:30px;
 	margin:15px 5px;
 	padding:1px 10px;
 	font-size:20px;
+	color : #666666;
+	margin-top : 30px;
+	border-radius : 10px;
+	font-weight : bold
 }
 
-#pageBtn:hover{
-	cursor : pointer;
-	background-color : #999;	
+#paging button:hover{
+	background-color : #5ad226;
+	cursor : pointer;	
 }

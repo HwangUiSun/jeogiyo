@@ -14,7 +14,6 @@
 	<div id='subject'>가맹관리</div>
 	<button type='button' id='go_storeDropBtn'
 		onclick="location.href='center_storeDrop'">탈퇴신청 현황</button>
-	<a href='storeCenter'>Home</a>
 	<div id='center_storeM'>
 		<input type="hidden" id="selectLocal" value="${selectLocal}">
 		<c:forEach var="local" items="${localList}" >
@@ -29,9 +28,15 @@
 				<label>주소</label> <span>${store.address}</span> <br />
 				<br /> <label>연락처</label> <span>${store.phone}</span>
 			</div>
-			<div class='store_view' onclick="location.href='center_storeMview'"></div>
+			<div class='store_view' onclick="view('${store.storeName}','${store.mid}')"></div>
 			<br /><br /><hr />
 		</c:forEach>
+		<form name ='frm_view'  id ='frm_view' value=''>
+			<input type='hidden' name='storeName' value=''>
+			<input type='hidden' name='mid' value=''>
+		</form>
+
+
 
 		<div id='paging'>
 			<c:if test="${page.startPage>1}">
