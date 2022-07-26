@@ -643,7 +643,7 @@ public class JConsumerController {
 		return mv;
 	}
 
-	// 리뷰 작성 버튼 -> 리뷰 작성 리스트
+	// 리뷰 작성 버튼 -> 리뷰 작성 리스트 수정
 
 	@RequestMapping("writeBtn")
 	public ModelAndView upload( HttpServletRequest req, Page page) {
