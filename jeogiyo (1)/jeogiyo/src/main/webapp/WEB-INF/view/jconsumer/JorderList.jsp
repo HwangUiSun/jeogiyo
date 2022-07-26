@@ -28,12 +28,20 @@ document.addEventListener('click',clickEffect);
 		<div id = 'itemsWrap'>
 			
 			<c:forEach var='v' items='${orderlist}'>
-		       <div class='items'onclick="">
+		       <div id='items'class='items'onclick="">
 			      
 					<span class='ordertime'>${v.ordertime}</span>
-					<br/>
-					<span class='totalprice'  >총금액  ${v.totalprice}원 ${v.howtopay}<br/>${v.ordermenu}<br/>${v.address} </span>					
-					<a href='reviewBtn'><button type = 'button' name = 'reviewBtn'>리뷰 작성</button></a>
+					<div class='info'>
+					
+					<div class = 'amount'>총 금액 ${v.totalprice}원</div>
+					<div class = 'method'>${v.howtopay}</div>
+					<div class = 'menu'>${v.ordermenu}</div>
+					<div class = 'address'>${v.address} </div>
+										
+					</div>
+					
+					<a href='reviewBtn'><button type = 'button' class='reviewBtn'name = 'reviewBtn'>리뷰쓰기</button></a>
+					
 			 	</div>
 				
 		<hr/>

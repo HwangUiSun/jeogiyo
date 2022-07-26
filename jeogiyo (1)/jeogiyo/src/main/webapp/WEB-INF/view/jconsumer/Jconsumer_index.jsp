@@ -11,7 +11,8 @@
 <div id='container'>
 	<header id="top_logo">
 		 <div id='Logo'></div>
-		<a href='homeBtn'><button type='button' id='homeBtn'>HOME</button></a>
+		 <div id="loginIdprint"> [ ${sessionScope.id}님 ]</div>
+		<a href='homeBtn'><button type='button' id='homeBtn'>logout</button></a>
 	</header>
 	
 	<div id="title_menu">

@@ -6,13 +6,35 @@
 
 <select id='totSize' parameterType="dPage" resultType="Integer">
   select count(mid) from orders
+  where mid = #{mid}
  
 </select>
 
 
 <select id='Jorderlist' parameterType="dPage" resultType="JconsumerVo3">
   select * from orders
+   where mid = #{mid}
+   order by sno desc
   limit ${startNo}, ${listSize}
+
+</select>
+
+<insert id='insertReview' parameterType='JConsumerVo3'>
+	      
+         insert into orders(subject,mid,ordertime,doc)
+      values(#{subject},#{mid},#{ordertime},#{doc});
+	</insert>
+	
+	<select id='totpage' parameterType="dPage" resultType="Integer">
+  				select count(mid) from orders
+ 
+ 
+</select>
+	
+	<select id='reviewInput' parameterType="dPage" resultType="JConsumerVo3">
+		  select * from orders
+		   
+		  limit ${startNo}, ${listSize}
 
 </select>
 </mapper>

@@ -12,6 +12,7 @@ import com.jpro.jconsumer.BoardAtt;
 import com.jpro.jconsumer.JConsumerVo;
 import com.jpro.jconsumer.JConsumerVo3;
 import com.jpro.jconsumer.JconsumerVo2;
+import com.jpro.jconsumer.JpayHistoryVo;
 import com.jpro.jconsumer.Page;
 
 @Mapper
@@ -56,6 +57,7 @@ public interface JConsumerMapper {
 	public List<String> JFAQ(List<String> list);
 	public String findId(JConsumerVo vo);
 	public String findpwd(JConsumerVo vo);
+	public void insertPayHistory(JpayHistoryVo vo);
 
 	
 }

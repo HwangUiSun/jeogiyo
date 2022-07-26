@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#mai{
+	text-align: center;
+}
+
+#mai:hover{
+	cursor: pointer;
+}

@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login_result</title>
+<title>SC_loginResult</title>
 </head>
 <body>
 <script>
-	alert('${msg}');
-	location.href='../index.jsp';
+	alert("아이디나 비밀번호를 확인해주세요");
+	document.location.href = "Jlogin_fail";
 </script>
 </body>
 </html>

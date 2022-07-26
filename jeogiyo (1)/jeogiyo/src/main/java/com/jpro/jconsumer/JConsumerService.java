@@ -50,7 +50,12 @@ public class JConsumerService implements JConsumerInterface {
 	public List<JconsumerVo2> storeSelect(com.jpro.jconsumer.Page cosumerpage) {
 		
 		List<JconsumerVo2> list = null;
-		try {			
+		try {
+			System.out.println(cosumerpage.getStartNo());
+			System.out.println(cosumerpage.getListSize());
+			System.out.println(cosumerpage.getMapFindStr());
+			System.out.println(cosumerpage.getStoreFindStr());
+			System.out.println(cosumerpage.getFindStore());
 			int totSize = mapper.totSize(cosumerpage);			
 			cosumerpage.setTotSize(totSize);
 			cosumerpage.compute();
@@ -73,6 +78,7 @@ public class JConsumerService implements JConsumerInterface {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("mid", mid);
 		map.put("pwd", pwd);
+		System.out.println(map);
 	
 		try {  
 	        
@@ -82,8 +88,11 @@ public class JConsumerService implements JConsumerInterface {
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		System.out.println(JloginMapper.login(map));
 		return rVo;
 	}
+	
+	
 	public String findId(JConsumerLoginVo vo) {
 	String mId ="";
 		
@@ -130,16 +139,41 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		
 	}
+
+	//마이페이지
+	@Override 
+	public JConsumerLoginVo selectUserInfo(Object object) {
+		JConsumerLoginVo vo =null;
+		
+		try {
+			vo = JloginMapper.selectUserInfo(object);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
+		  
+    //마이페이지 수정
 	@Override
-	public String JMyPage(String mId, String name, String email, int phone, int zipcode, String address) {
+	public void updateUserInfo(JConsumerLoginVo vo) {
+		
+		try {
+			JloginMapper.updateUserInfo(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	/*
+	 * @Override
+	 * public void updateUserInfo(JConsumerLoginVo vo) {
+	 * 	public JConsumerLoginVo updateUserInfo(Object attribute) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	@Override
-	public String JMyPageChange(String mId, String name, String email, int phone, int zipcode, String address) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	} }
+	 */
+	
+	 
 	
 	@Override
 	public List<JConsumerVo3> Jorderlist(Page apage) {		
@@ -176,6 +210,51 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public void insertPayHistory(JpayHistoryVo vo) {
+		mapper.insertPayHistory(vo);
+		
+	}
+	@Override
+	public String JMyPage(String mId, String name, String email, int phone, int zipcode, String address) {
+		// TODO Auto-generated method stub
+		return null;
+		}
+	@Override
+	public String JMyPageChange(String mId, String name, String email, int phone, int zipcode, String address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void insertUser(JConsumerLoginVo vo) {
+		JloginMapper.insertUser(vo);
+		
+	}
+	@Override
+	public void insertReview(JConsumerVo3 vo) {
+		amapper.insertReview(vo);
+		
+	}
+	public List<JConsumerVo3> review(Page apage) {
+		List<JConsumerVo3> list = null;
+		try {
+		System.out.println(apage.getStartNo());
+		System.out.println(apage.getListSize());
+		System.out.println(apage.getMapFindStr());
+		System.out.println(apage.getStoreFindStr());
+		System.out.println(apage.getFindStore());
+		int totpage = amapper.totpage(apage);			
+		apage.setTotSize(totpage);
+		apage.compute();
+		list = amapper.reviewInput(apage);
+		System.out.println(list);
+		System.out.println(totpage);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		this.apage = apage;
+		return list;
+		
+	}
 
 }
-

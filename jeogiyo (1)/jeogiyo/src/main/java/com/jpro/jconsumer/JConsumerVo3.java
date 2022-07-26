@@ -3,9 +3,22 @@ package com.jpro.jconsumer;
 public class JConsumerVo3 {
 	 int sno , totalprice ;
 	 String mid,phone,address,ordertime,howtopay,ordermenu;
+	 String subject, doc;
 	
 	 
-	 public int getSno() {
+	 public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public String getDoc() {
+		return doc;
+	}
+	public void setDoc(String doc) {
+		this.doc = doc;
+	}
+	public int getSno() {
 		return sno;
 	}
 	public void setSno(int sno) {
