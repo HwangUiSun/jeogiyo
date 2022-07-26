@@ -356,7 +356,6 @@ public class JstoreController {
 		String min = orderStatusDao.orderTimeMin(req);
 		String sec = orderStatusDao.orderTimeSec(req);
 		
-		
 		mv.addObject("inc",url);
 		mv.addObject("statuslist", statuslist);
 		mv.addObject("statusPage", statusPage);
