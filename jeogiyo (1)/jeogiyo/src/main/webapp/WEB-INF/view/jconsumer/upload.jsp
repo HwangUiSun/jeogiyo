@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>upload</title>
-<script src="./js/upload.js"></script>
+
 <link rel = 'stylesheet' type='text/css' href = 'css/upload.css'>
+
 <!-- summernote를 위한 라이브러리 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -14,7 +15,7 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-
+<script src="./js/upload.js"></script>
 </head>
 
 
@@ -23,36 +24,37 @@
 <div id='upload'>
   <div id='uploadReview'>
   </div>
-  <form name='upload' class='upload' id='upload' method='post'>
+  <form name='upload' class='upload' id='upload'>
     <label>제목</label>
-    <input type='text' name='subject' value="${subject }" size='14'/>
+    <input type='text' name='subject' id="subjects" value="${subject }" size='14'/>
     <br>
   
     <label>아이디</label>
-    <input type='text' name='id' size='14'value = '${mid }' readonly/>
+    <input type='text' name='id' id="mid" size='14'value = '${mid }' readonly/>
     <br>
   
     <label>날짜</label>
-    <input type='text' id='nal' name = 'nal' value ='${ordertime }'/>
+    <input type='text' id='nal' name = 'nal' value ='${ordertime}'/>
     <br>
   
     <label></label>
     <textarea name = 'doc' id='summernote'>${doc }</textarea>
    <br>
    
-  <div class='btns'>
-   <a href='writeBtn'> <button type='button' id='writeBtn' onclick='write();'>확인</button></a>
-    <a href='backBtn'><button type='button' id='backBtn' >돌아가기</button></a>
-    </div>
+  	
     
-    <input type="hidden" name="sno" value="${vo.sno }">
-	<input type="hidden" name="nowPage" value="${reviewpage.nowPage}" >
-	<input type="hidden" name="findStr" value="${reviewpage.findStr}" >
-	<input type="hidden" name="ioginId" id="ioginId" value="${sessionScope.id }" >
+    <input type="hidden" id="sno" name="sno" value="${sno}">
+	<input type="hidden" id="nowPage" name="nowPage" value="${reviewpage.nowPage}" >
+	<input type="hidden" id="findStr" name="findStr" value="${reviewpage.findStr}" >
+	<input type="hidden" id="ioginId" name="ioginId" id="ioginId" value="${sessionScope.id }" >
   </form>
+  <div class='btns'>
+    <p onclick='writereview()'>upload.write</p>
+    <p onclick='back()'>돌아가기</p>
+   </div>
 </div>
 <script>
-upload.init();
+upload.init()
 </script>
 
 </body>

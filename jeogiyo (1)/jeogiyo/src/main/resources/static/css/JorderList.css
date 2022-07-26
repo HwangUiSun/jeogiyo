@@ -34,11 +34,18 @@ div.clickEffect{
 		border-width:0.01em;
 	}
 }
+.items{
+	display:flex;
+	
+}
+.items.form{
+	display:flex;
+}
 
 #items .ordertime{
 	display : inline-block;
 	padding : 50px;
-	width : 150px;
+	width : 170px;
 	font : bold	 x-large generic-family;
 }
 #items .info{
@@ -83,11 +90,10 @@ div.clickEffect{
 	background-color : #ffffff; 
 	font : bold	 x-large generic-family;
 	color : #000000;
-	margin : 0 15px;
+	margin : 20px 15px;
 	width : 140px;
 	height : 80px;
-	border-color: #0074e8;
-	
+	border-color: #0074e8;	
 	border-radius : 10px;
 }
 
