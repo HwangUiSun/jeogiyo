@@ -26,8 +26,8 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'per won');
-        let totals = document.getElementsByClassName('totals')[0].value;
-        let nals = document.getElementsByClassName('nals')[0].value;
+        totals = document.getElementsByClassName('totals')[0].value;
+        nals = document.getElementsByClassName('nals')[0].value;
         totals = totals.replace("[","");
         totals = totals.replace("]","");
         
@@ -53,6 +53,7 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
+    
     </script>
 <title>store_orderInput</title>
 </head>
@@ -69,10 +70,7 @@
 			<label>판매 기간</label><br/>
 			<input type='text' readonly value='${date1}' id="startdate"><br/>~<br/>
 			<input type='text' readonly value='${date2}' id="enddate"><br/>
-			<div id='left_area_dateSales_down'>
-				<label>총 판매건수</label>&nbsp;&nbsp;: ${hit }건<br/>
-				<label>총 매출</label>&nbsp;&nbsp;: ${tot }₩
-			</div>
+		
 		</div>	
 	</div>
 	<div id='right_area'>
