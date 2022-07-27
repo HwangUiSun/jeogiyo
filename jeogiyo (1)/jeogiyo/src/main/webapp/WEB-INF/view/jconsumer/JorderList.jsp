@@ -24,7 +24,7 @@ document.addEventListener('click',clickEffect);
 <div id = 'subject'>주문 내역</div>
 
 <div id='wrap'>
-		<form name='frm_JorderList' method='post' id='frm_JorderList' action="JorderList">
+		<div id='frm_JorderList'>
 		<div id = 'itemsWrap'>
 			
 			<c:forEach var='v' items='${orderlist}'>
@@ -36,19 +36,19 @@ document.addEventListener('click',clickEffect);
 					<div class = 'amount'>총 금액 ${v.totalprice}원</div>
 					<div class = 'method'>${v.howtopay}</div>
 					<div class = 'menu'>${v.ordermenu}</div>
-					<div class = 'address'>${v.address} </div>
-										
+					<div class = 'address'>${v.address} </div>										
 					</div>
-					
-					<a href='reviewBtn'><button type = 'button' class='reviewBtn'name = 'reviewBtn'>리뷰쓰기</button></a>
-					
-			 	</div>
 				
-		<hr/>
+					<form name='frm_items${v.sno}' method='post'  action="reviewBtn">
+					<button type = 'submit' class='reviewBtn'name = 'reviewBtn'>리뷰쓰기</button>
+					<input type="hidden" value ="${v.sno}" name="sno" >
+					</form>
+			 	</div>
+				<hr/>
 		
 		</c:forEach>
 		  </div>
-		</form>
+		</div>
 		
 		
 				

@@ -15,12 +15,9 @@
 
 <div id='menuTitle'>
 	
-	<form name="frm_review" id="frm_review" method="post">
-		
-		
-			
+	<form name="frm_review" id="frm_review" method="post">			
 		<input type="hidden" name="sno" value="${v.sno }">
-		<input type="hidden" name="nowPage" value="${reviewpage.nowPage}" >
+		<input type="hidden" name="nowPage" value="${reviewpage.nowPage}">
 		<input type="hidden" name="ioginId" id="ioginId" value="${sessionScope.id }" >
 	</form>
 </div>
@@ -31,13 +28,15 @@
 		<span class='ordertime' >날짜</span>
 	</div>
 	<div class="itemsWrap">
+	<c:set var='num' value="1"/>
 	<c:forEach var='v' items='${reviewlist}'>
 		<div class='items' onclick="noti_view.view(${v.sno})">
-			<span class='sno'>${v.sno-1}</span>
+			<span class='sno'>${num}</span>
 			<span  class='subject'>${v.subject}</span>
 			<span class='id'>${v.mid }</span>
 			<span  class='ordertime'>${v.ordertime}</span>
 		</div>
+		<c:set var='num' value="${num=num+1}"/>
 	</c:forEach>
 	<div class='paging'>
 		
@@ -61,7 +60,7 @@
 </div>	
 <script src='./js/Jreview.js'></script>
 <script>
-	button()
+	//button()
 </script>
 </body>
 </html>

@@ -22,6 +22,7 @@ public interface JorderlistMapper {
 	public List<JConsumerVo3> reviewInput(Page apage);
 	
 	public int totpage(Page page);
+	public void insertOrder(JConsumerVo3 vo);
 	
 
 }
