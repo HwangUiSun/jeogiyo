@@ -36,7 +36,7 @@ upload.init = function(){
 }	
 
 
-
+//수정
 function write(){
 	console.log("1");
 	var form = document.upload;
