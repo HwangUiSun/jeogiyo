@@ -13,16 +13,13 @@ import com.jpro.jconsumer.Page;
 @Repository
 @Qualifier("JorderlistMapper")
 public interface JorderlistMapper {
-	public int totSize(Page page);
-	
+	public int totSize(Page page);	
 	public List<JConsumerVo3> Jorderlist(Page cosumerpage);
-
 	public void insertReview(JConsumerVo3 vo);
-
-	public List<JConsumerVo3> reviewInput(Page apage);
-	
+	public List<JConsumerVo3> reviewInput(Page apage);	
 	public int totpage(Page page);
 	public void insertOrder(JConsumerVo3 vo);
+	public JConsumerVo3 selectOneVo(String sno);
 	
 
 }

@@ -30,7 +30,7 @@
 	<div class="itemsWrap">
 	<c:set var='num' value="1"/>
 	<c:forEach var='v' items='${reviewlist}'>
-		<div class='items' onclick="noti_view.view(${v.sno})">
+		<div class='items' onclick="view(${v.sno})">
 			<span class='sno'>${num}</span>
 			<span  class='subject'>${v.subject}</span>
 			<span class='id'>${v.mid }</span>

@@ -16,6 +16,12 @@
 
 </select>
 
+<select id='selectOneVo' parameterType="String" resultType="JconsumerVo3">
+ 	select * from orders where sno = '${sno}'
+</select>
+
+
+
 <insert id="insertOrder" parameterType='JConsumerVo3'>
 	insert into orders(mid, ordertime,phone, address, howtopay, ordermenu, totalprice)
 	values("${mid}", now(),"${phone}", "${address}", "${howtopay}", "${ordermenu}", #{totalprice})

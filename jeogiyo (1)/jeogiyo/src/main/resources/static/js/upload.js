@@ -34,15 +34,15 @@
 	}			
 
 
-<<<<<<< HEAD
-//수정
+
+
 function write(){
 	console.log("1");
 	var form = document.upload;
 	console.log("2");
 	form.action = 'writeBtn';
 	form.submit(); 
-=======
+}
 
 function back(){
 		let bform = document.createElement("form");
@@ -104,7 +104,7 @@ function back(){
 		document.body.appendChild(mainform);
 		// submit form
 		mainform.submit();	
->>>>>>> accf7872c6c6dbf74c70b5583c187b899ae7c6b6
+
 }
 
 

@@ -213,6 +213,11 @@ public class JConsumerService implements JConsumerInterface {
 	public void insertOrder(JConsumerVo3 vo) {
 		amapper.insertOrder(vo);
 	}
+	public JConsumerVo3 selectOneVo(String sno) {
+		JConsumerVo3 rvo = null;
+		rvo = amapper.selectOneVo(sno);
+		return rvo;
+	}
 	public void insertPayHistory(JpayHistoryVo vo) {
 		mapper.insertPayHistory(vo);
 		

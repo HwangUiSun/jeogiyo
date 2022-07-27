@@ -644,6 +644,23 @@ public class JConsumerController {
 		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
 	}
+	
+	@RequestMapping("reviewRead")
+	public ModelAndView reviewRead(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("mid", session.getAttribute("id"));
+		String url = "../jconsumer/read.jsp";
+		
+		String sno = req.getParameter("sno");
+		JConsumerVo3 vo = dao.selectOneVo(sno);
+		System.out.println(vo.getMid());
+		mv.addObject("inc", url);
+		mv.addObject("sno",sno);
+		mv.addObject("vo",vo);
+		mv.setViewName("jconsumer/Jconsumer_index");
+		return mv;
+	}
 
 	// 리뷰 작성 버튼 -> 리뷰 작성 리스트 수정
 
