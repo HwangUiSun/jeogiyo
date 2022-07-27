@@ -34,7 +34,7 @@ function clickEffect(e){
 		<ul>
 			<a href='noti'><li>공지사항&nbsp;&nbsp;&nbsp;&nbsp;|</li></a>
 			<a href='order'><li>발주&nbsp;&nbsp;&nbsp;|</li></a>
-			<a href='store_sale'><li>매출관리&nbsp;&nbsp;&nbsp;|</li></a>
+			<a href='chart'><li>매출관리&nbsp;&nbsp;&nbsp;|</li></a>
 			<a href='store_orderStatus'><li>주문현황&nbsp;&nbsp;&nbsp;|</li></a>
 			<a href='store_drop'><li>탈퇴신청</li></a>
 		</ul>

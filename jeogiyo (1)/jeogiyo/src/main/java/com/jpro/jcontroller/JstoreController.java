@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.http.HttpRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -30,7 +31,8 @@ import com.jpro.jcenter.JcenterStoreSaleService;
 import com.jpro.jstore.JbaljuListVo;
 import com.jpro.jstore.JbaljuService;
 import com.jpro.jstore.JbaljudetailsVo;
-
+import com.jpro.jstore.JgetMService;
+import com.jpro.jstore.JgetMVo;
 import com.jpro.jstore.JstoreOrderStatusService;
 import com.jpro.jstore.JstoreOrderStatusVo;
 
@@ -48,6 +50,9 @@ public class JstoreController {
 	
 	@Autowired
 	JbaljuService baljuDao;
+	
+	@Autowired
+	JgetMService mDao;
 	
 	@Autowired
 	J_loginService loginDao;
@@ -588,11 +593,39 @@ public class JstoreController {
 		mv.addObject("baljupage2",page);
 		mv.addObject("baljulist2",baljulist);
 		mv.addObject("baljulist3",baljulist2);
-		mv.setViewName("store/store_index");		
+		mv.setViewName("store/store_index");	
+		return mv;
+	}
+	
+	@RequestMapping("chart")
+	public ModelAndView chart(com.jpro.jstore.Page page, HttpServletRequest req, HttpServletResponse resp) {
+		ModelAndView mv = new ModelAndView();	
+		String url = "../store/store_chart.jsp";
+		mv.addObject("inc",url);
+			
+		HttpSession session = req.getSession();		
 		
+		String mid = (String)session.getAttribute("mid");		
+		String date1 = req.getParameter("date1");
+		String date2 = req.getParameter("date2");
 		
+		List<JgetMVo> list = mDao.chart(date1, date2);
 		
+		List<String> nals= new ArrayList<String>();
+		List<Integer> totals = new ArrayList<Integer>();;
+		int i = 0;
+		for(JgetMVo v : list) {
+			nals.add(v.getNal()) ;
+			totals.add(v.getTotalday()) ;
+			i ++;
+		}
 		
+		mv.addObject("nals",nals);
+		mv.addObject("totals",totals);
+		mv.addObject("date1",date1);
+		mv.addObject("date2",date2);
+		
+		mv.setViewName("store/store_index");	
 		return mv;
 	}
 	

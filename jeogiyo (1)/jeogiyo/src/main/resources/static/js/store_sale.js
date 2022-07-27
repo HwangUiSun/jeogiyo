@@ -29,6 +29,12 @@ function find(frm){
 	frm.submit()
 }
 
+function find2(frm){
+	frm.action="chart"
+	console.log(frm)
+	frm.submit()
+}
+
 
 
 
