@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -192,7 +194,7 @@ public class JConsumerController {
 	}
 
 	@RequestMapping("JstoreSelect")
-	public ModelAndView JstoreSelect(Page page) {
+	public ModelAndView JstoreSelect( Page  page, BindingResult bindingResult) {
 		ModelAndView mv = new ModelAndView();
 		String url = "../jconsumer/JstoreSelect.jsp";
 
