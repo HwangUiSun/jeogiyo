@@ -49,7 +49,7 @@
 	<input type="hidden" id="ioginId" name="ioginId" id="ioginId" value="${sessionScope.id }" >
   </form>
   <div class='btns'>
-    <p onclick='backwriteBtn()'>돌아가기</p>
+    <input type='button'id='back' value='돌아가기' onclick='backwriteBtn()'>
    </div>
 </div>
 <script>

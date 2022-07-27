@@ -49,8 +49,8 @@
 	<input type="hidden" id="ioginId" name="ioginId" id="ioginId" value="${sessionScope.id }" >
   </form>
   <div class='btns'>
-    <p onclick='writereview()'>upload.write</p>
-    <p onclick='back()'>돌아가기</p>
+    <input type='button' id='write'onclick='writereview()'value='작성'>
+    <input type='button' id='writeback' value='돌아가기' onclick='back()'/>
    </div>
 </div>
 <script>

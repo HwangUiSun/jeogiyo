@@ -65,7 +65,7 @@ function backwriteBtn(){
 	
 		
 	function writereview(){
-	alert("")
+	alert("리뷰가 작성되었습니다")
 	let mainform = document.createElement("form");
 	mainform.name = 'mainform';
 	mainform.method = 'post';
