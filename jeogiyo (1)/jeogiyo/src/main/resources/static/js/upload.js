@@ -53,6 +53,15 @@ function back(){
 			bform.submit();	
 		
 	}
+function backwriteBtn(){
+		let bform = document.createElement("form");
+			bform.name = 'bform';
+			bform.method = 'post';
+			bform.action = 'reviewRead';
+			document.body.appendChild(bform);
+			bform.submit();	
+		
+	}
 	
 		
 	function writereview(){
