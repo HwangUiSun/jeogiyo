@@ -243,10 +243,10 @@ public class JConsumerController {
 		page.setMid((String)session.getAttribute("id"));
 
 		mv.addObject("inc", url);
-		System.out.println("222");
 		List<JConsumerVo3> conlist = dao.Jorderlist(page);
-		System.out.println(conlist);
+		System.out.println("sd"+conlist);
 		page = dao.getPage();
+		
 		mv.addObject("orderlist", conlist);
 		mv.addObject("orderlistpage", page);
 
@@ -445,9 +445,10 @@ public class JConsumerController {
 	@RequestMapping("payBtn")
 	public ModelAndView payBtn(HttpServletRequest req) {
 		//System.out.println(req);
-		JpayHistoryVo vo = new JpayHistoryVo();
-	HttpSession session = req.getSession();
+		JConsumerVo3 vo = new JConsumerVo3();
+		HttpSession session = req.getSession();
 		vo.setMid((String) session.getAttribute("id"));
+		System.out.println(vo.getMid());
 		vo.setPhone(req.getParameter("phone"));
 		vo.setAddress(req.getParameter("address") );
 		//System.out.println(req.getParameter("address") + " " + req.getParameter("apiAddressDetail"));
@@ -455,10 +456,10 @@ public class JConsumerController {
 		//System.out.println(req.getParameter("radioSelect"));
 		vo.setOrdermenu(req.getParameter("menu"));
 		//System.out.println(req.getParameter("menu"));
-		vo.setTotalprice(req.getParameter("totalPrice"));
+		vo.setTotalprice(Integer.parseInt(req.getParameter("totalPrice")));
 		//System.out.println(req.getParameter("totalPrice"));
-		dao.insertPayHistory(vo);
-		
+		dao.insertOrder(vo);
+			
 		//결제방법
 		String howToPay = "";		
 		if(req.getParameter("radioSelect")!=null) {
@@ -632,51 +633,56 @@ public class JConsumerController {
 	@RequestMapping("reviewBtn")
 	public ModelAndView reviewBtn(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("mid", session.getAttribute("id"));
 		String url = "../jconsumer/upload.jsp";
-
+		System.out.println(req.getParameter("sno"));
+		String sno = req.getParameter("sno");
 		mv.addObject("inc", url);
+		mv.addObject("sno",sno);
 
 		mv.setViewName("jconsumer/Jconsumer_index");
 		return mv;
 	}
+	
+	@RequestMapping("reviewRead")
+	public ModelAndView reviewRead(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("mid", session.getAttribute("id"));
+		String url = "../jconsumer/read.jsp";
+		
+		String sno = req.getParameter("sno");
+		JConsumerVo3 vo = dao.selectOneVo(sno);
+		System.out.println(vo.getMid());
+		mv.addObject("inc", url);
+		mv.addObject("sno",sno);
+		mv.addObject("vo",vo);
+		mv.setViewName("jconsumer/Jconsumer_index");
+		return mv;
+	}
 
-	// 리뷰 작성 버튼 -> 리뷰 작성 리스트
+	// 리뷰 작성 버튼 -> 리뷰 작성 리스트 수정
 
 	@RequestMapping("writeBtn")
 	public ModelAndView upload( HttpServletRequest req, Page page) {
-		JConsumerVo3 vo = new JConsumerVo3(); 
-		  vo.setMid(req.getParameter("mid"));
-		  System.out.println(req.getParameter("mid"));
-		  vo.setSubject(req.getParameter("subject"));
-		  System.out.println(req.getParameter("subject"));
-		  vo.setOrdertime(req.getParameter("nal"));
-		  System.out.println(req.getParameter("nal"));
-		  vo.setDoc(req.getParameter("doc"));
-		  System.out.println(req.getParameter("doc"));
-		  
-		  
-		 
-		  dao.insertReview(vo);
-		  
-		  ModelAndView mv = new ModelAndView(); 
-		  mv.addObject("mid", vo.getMid());
-			mv.addObject("subject", vo.getSubject());
-			mv.addObject("phone", vo.getPhone());
-			mv.addObject("nal", vo.getOrdertime());
-			mv.addObject("doc", vo.getDoc());
-			
-		 
-		  
-		  System.out.println(vo.getSubject());  
-		  System.out.println(vo.getDoc());  
+		JConsumerVo3 vo = new JConsumerVo3(); 		
 		
-		 
+		if(req.getParameter("subjectinput") !=null) {
+			vo.setDoc(req.getParameter("docinput"));
+			vo.setSubject(req.getParameter("subjectinput"));
+			vo.setMid(req.getParameter("mid"));
+			vo.setOrdertime(req.getParameter("nal"));	
+			vo.setSno(Integer.parseInt(req.getParameter("sno")));
+			dao.insertReview(vo);
+		}
+				  
+		
+		
+		ModelAndView mv = new ModelAndView(); 
+
 	
 		List<JConsumerVo3> conlist = dao.review(page);
-		System.out.println(conlist);
 		page = dao.getPage();
 		mv.addObject("reviewlist", conlist);
 		mv.addObject("reviewpage", page);

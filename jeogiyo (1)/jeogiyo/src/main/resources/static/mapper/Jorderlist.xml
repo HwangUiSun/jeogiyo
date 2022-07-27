@@ -5,36 +5,42 @@
 <mapper namespace='com.jpro.jmybatis.JorderlistMapper'>
 
 <select id='totSize' parameterType="dPage" resultType="Integer">
-  select count(mid) from orders
-  where mid = #{mid}
- 
+  select count(sno) from orders
 </select>
 
 
 <select id='Jorderlist' parameterType="dPage" resultType="JconsumerVo3">
   select * from orders
-   where mid = #{mid}
-   order by sno desc
-  limit ${startNo}, ${listSize}
+  order by sno desc
+  limit ${startNo-1}, ${listSize}
 
 </select>
+
+<select id='selectOneVo' parameterType="String" resultType="JconsumerVo3">
+ 	select * from orders where sno = '${sno}'
+</select>
+
+
+
+<insert id="insertOrder" parameterType='JConsumerVo3'>
+	insert into orders(mid, ordertime,phone, address, howtopay, ordermenu, totalprice)
+	values("${mid}", now(),"${phone}", "${address}", "${howtopay}", "${ordermenu}", #{totalprice})
+</insert>
 
 <insert id='insertReview' parameterType='JConsumerVo3'>
 	      
-         insert into orders(subject,mid,ordertime,doc)
-      values(#{subject},#{mid},#{ordertime},#{doc});
-	</insert>
+       update orders set subject = #{subject},mid = #{mid},
+       ordertime = #{ordertime}, doc =#{doc}
+       where sno = #{sno}
+</insert>
 	
-	<select id='totpage' parameterType="dPage" resultType="Integer">
-  				select count(mid) from orders
- 
- 
+<select id='totpage' parameterType="dPage" resultType="Integer">
+		select count(mid) from orders
 </select>
 	
-	<select id='reviewInput' parameterType="dPage" resultType="JConsumerVo3">
-		  select * from orders
-		   
-		  limit ${startNo}, ${listSize}
-
+<select id='reviewInput' parameterType="dPage" resultType="JConsumerVo3">
+	select * from orders
+	order by sno desc	   
+	limit ${startNo-1}, ${listSize}
 </select>
 </mapper>

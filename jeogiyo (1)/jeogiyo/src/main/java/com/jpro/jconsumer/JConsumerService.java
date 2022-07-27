@@ -38,13 +38,13 @@ public class JConsumerService implements JConsumerInterface {
 	@Autowired
 	DataSourceTransactionManager transaction;
 	TransactionStatus status;
-	private Page page;
+	Page page;
 	
 	public JConsumerService() {
 		System.out.println("JConsumerService......");
 	}
 	public com.jpro.jconsumer.Page getPage() {
-		return this.consumerpage;
+		return this.page;
 	}
 	
 	public List<JconsumerVo2> storeSelect(com.jpro.jconsumer.Page cosumerpage) {
@@ -183,15 +183,15 @@ public class JConsumerService implements JConsumerInterface {
 			apage.setTotSize(totSize);
 			apage.compute();
 			list = amapper.Jorderlist(apage);
-			System.out.println(list);
-			System.out.println(totSize);
+			//System.out.println(list);
+			System.out.println("dd"+totSize);
 			
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
-		
-		this.apage = apage;
+		System.out.println(apage.getEndPage());
+		this.page = apage;
 		return list;
 
 }
@@ -210,7 +210,14 @@ public class JConsumerService implements JConsumerInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	public void insertOrder(JConsumerVo3 vo) {
+		amapper.insertOrder(vo);
+	}
+	public JConsumerVo3 selectOneVo(String sno) {
+		JConsumerVo3 rvo = null;
+		rvo = amapper.selectOneVo(sno);
+		return rvo;
+	}
 	public void insertPayHistory(JpayHistoryVo vo) {
 		mapper.insertPayHistory(vo);
 		
@@ -237,11 +244,6 @@ public class JConsumerService implements JConsumerInterface {
 	public List<JConsumerVo3> review(Page apage) {
 		List<JConsumerVo3> list = null;
 		try {
-		System.out.println(apage.getStartNo());
-		System.out.println(apage.getListSize());
-		System.out.println(apage.getMapFindStr());
-		System.out.println(apage.getStoreFindStr());
-		System.out.println(apage.getFindStore());
 		int totpage = amapper.totpage(apage);			
 		apage.setTotSize(totpage);
 		apage.compute();

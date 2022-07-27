@@ -26,31 +26,30 @@
   </div>
   <form name='upload' class='upload' id='upload'>
     <label>제목</label>
-    <input type='text' name='subject' id="subjects" value="${subject }" size='14'/>
+    <input type='text' name='subject' id="subjects" value="${vo.subject }" size='14'/>
     <br>
   
     <label>아이디</label>
-    <input type='text' name='id' id="mid" size='14'value = '${mid }' readonly/>
+    <input type='text' name='id' id="mid" size='14'value = '${vo.mid }' readonly/>
     <br>
   
     <label>날짜</label>
-    <input type='text' id='nal' name = 'nal' value ='${ordertime}'/>
+    <input type='text' id='nal' name = 'nal' value ='${vo.ordertime}'/>
     <br>
   
     <label></label>
-    <textarea name = 'doc' id='summernote'>${doc }</textarea>
+    <textarea name = 'doc' id='summernote' readonly>${vo.doc }</textarea>
    <br>
    
   	
     
-    <input type="hidden" id="sno" name="sno" value="${sno}">
+    <input type="hidden" id="sno" name="sno" value="${vo.sno}">
 	<input type="hidden" id="nowPage" name="nowPage" value="${reviewpage.nowPage}" >
 	<input type="hidden" id="findStr" name="findStr" value="${reviewpage.findStr}" >
 	<input type="hidden" id="ioginId" name="ioginId" id="ioginId" value="${sessionScope.id }" >
   </form>
   <div class='btns'>
-    <input type='button' id='write'onclick='writereview()'value='작성'>
-    <input type='button' id='writeback' value='돌아가기' onclick='back()'/>
+    <input type='button'id='back' value='돌아가기' onclick='backwriteBtn()'>
    </div>
 </div>
 <script>
