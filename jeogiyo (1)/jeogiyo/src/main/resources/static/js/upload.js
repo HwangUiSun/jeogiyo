@@ -57,7 +57,7 @@ function backwriteBtn(){
 		let bform = document.createElement("form");
 			bform.name = 'bform';
 			bform.method = 'post';
-			bform.action = 'reviewRead';
+			bform.action = 'writeBtn';
 			document.body.appendChild(bform);
 			bform.submit();	
 		
